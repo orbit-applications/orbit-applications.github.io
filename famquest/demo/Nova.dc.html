@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<svg width="{{ size }}" height="{{ size }}" viewBox="0 0 100 100" style="display:block;overflow:visible">
+<g opacity="{{ s3 }}"><ellipse cx="50" cy="58" rx="54" ry="12" fill="none" stroke="#FFD36B" stroke-width="3.5" opacity="0.85" transform="rotate(-14 50 58)"></ellipse></g>
+<polygon points="50,11 64.1,33.6 89.9,40 72.8,60.4 74.7,87 50,77 25.3,87 27.2,60.4 10.1,40 35.9,33.6" fill="{{ c2 }}" stroke="{{ c2 }}" stroke-width="15" stroke-linejoin="round"></polygon>
+<polygon points="50,11 64.1,33.6 89.9,40 72.8,60.4 74.7,87 50,77 25.3,87 27.2,60.4 10.1,40 35.9,33.6" fill="{{ c1 }}" stroke="{{ c1 }}" stroke-width="9" stroke-linejoin="round"></polygon>
+<ellipse cx="41" cy="33" rx="5.5" ry="2.6" fill="{{ c3 }}" transform="rotate(-38 41 33)"></ellipse>
+<g opacity="{{ s3 }}"><path d="M14 66 Q50 82 86 50" fill="none" stroke="#FFD36B" stroke-width="3.5" opacity="0.85" stroke-linecap="round"></path></g>
+<ellipse cx="32.5" cy="61.5" rx="4.6" ry="2.8" fill="#FF7A59" opacity="0.45"></ellipse>
+<ellipse cx="67.5" cy="61.5" rx="4.6" ry="2.8" fill="#FF7A59" opacity="0.45"></ellipse>
+<g opacity="{{ open }}">
+<ellipse cx="40.5" cy="52" rx="5.2" ry="6.6" fill="#2B2118"></ellipse>
+<ellipse cx="59.5" cy="52" rx="5.2" ry="6.6" fill="#2B2118"></ellipse>
+<circle cx="42.4" cy="49.3" r="2" fill="#FFFFFF"></circle>
+<circle cx="61.4" cy="49.3" r="2" fill="#FFFFFF"></circle>
+<circle cx="39" cy="54.8" r="0.9" fill="#FFFFFF"></circle>
+<circle cx="58" cy="54.8" r="0.9" fill="#FFFFFF"></circle>
+</g>
+<g opacity="{{ closed }}">
+<path d="M35.5 52.5 Q40.5 57 45.5 52.5" stroke="#2B2118" stroke-width="2.6" fill="none" stroke-linecap="round"></path>
+<path d="M54.5 52.5 Q59.5 57 64.5 52.5" stroke="#2B2118" stroke-width="2.6" fill="none" stroke-linecap="round"></path>
+</g>
+<g opacity="{{ smile }}"><path d="M45 61.5 Q50 66.5 55 61.5" stroke="#2B2118" stroke-width="2.6" fill="none" stroke-linecap="round"></path></g>
+<g opacity="{{ cheer }}"><path d="M43.5 60.5 Q50 71 56.5 60.5 Q50 62.8 43.5 60.5 Z" fill="#2B2118" stroke="#2B2118" stroke-width="1.2" stroke-linejoin="round"></path><ellipse cx="50" cy="65.6" rx="3" ry="1.5" fill="#FF7A59"></ellipse></g>
+<g opacity="{{ tiny }}"><path d="M47.5 62.5 Q50 64.3 52.5 62.5" stroke="#2B2118" stroke-width="2.2" fill="none" stroke-linecap="round"></path></g>
+<g opacity="{{ s2 }}"><polygon points="90,10 92.5,16 98.5,18.5 92.5,21 90,27 87.5,21 81.5,18.5 87.5,16" fill="#FFE29A"></polygon><polygon points="9,70 10.8,74.2 15,76 10.8,77.8 9,82 7.2,77.8 3,76 7.2,74.2" fill="#FFE29A"></polygon><circle cx="94" cy="62" r="2" fill="#FFE29A"></circle></g>
+<g opacity="{{ hParty }}" transform="rotate(-10 50 14)"><polygon points="39,19 61,19 50,-16" fill="#FF7A59" stroke="#E0623F" stroke-width="1.5" stroke-linejoin="round"></polygon><path d="M43 8 L57 8 M46 -2 L54 -2" stroke="#FFF4E2" stroke-width="3" stroke-linecap="round"></path><circle cx="50" cy="-17" r="4.5" fill="#FFD36B"></circle></g>
+<g opacity="{{ hCrown }}"><polygon points="35,17 65,17 67,-3 57.5,6 50,-8 42.5,6 33,-3" fill="#FFD36B" stroke="#C98200" stroke-width="1.8" stroke-linejoin="round"></polygon><circle cx="50" cy="9" r="3" fill="#FF7A59"></circle><circle cx="40" cy="11" r="2" fill="#6FB1E6"></circle><circle cx="60" cy="11" r="2" fill="#6FB1E6"></circle></g>
+<g opacity="{{ hWizard }}" transform="rotate(8 50 14)"><polygon points="35,18 65,18 55,-24" fill="#6B58A8" stroke="#4E3E85" stroke-width="1.5" stroke-linejoin="round"></polygon><ellipse cx="50" cy="18" rx="21" ry="4.5" fill="#4E3E85"></ellipse><circle cx="49" cy="4" r="2.4" fill="#FFD36B"></circle><circle cx="54" cy="-8" r="1.6" fill="#FFD36B"></circle></g>
+<g opacity="{{ hBeanie }}"><path d="M33 20 Q50 -8 67 20 Z" fill="#6FB1E6"></path><rect x="32" y="14" width="36" height="8" rx="4" fill="#4F95CC"></rect><circle cx="50" cy="-2" r="5.5" fill="#FFF4E2"></circle></g>
+<g opacity="{{ hPhones }}"><path d="M20 48 Q20 6 50 6 Q80 6 80 48" stroke="#2B2118" stroke-width="4.5" fill="none" stroke-linecap="round"></path><rect x="13" y="40" width="12" height="20" rx="6" fill="#FF7A59" stroke="#2B2118" stroke-width="2"></rect><rect x="75" y="40" width="12" height="20" rx="6" fill="#FF7A59" stroke="#2B2118" stroke-width="2"></rect></g>
+</svg>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:180,&quot;height&quot;:180},&quot;size&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:120,&quot;tsType&quot;:&quot;number&quot;},&quot;mood&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;happy&quot;,&quot;cheer&quot;,&quot;sleepy&quot;],&quot;default&quot;:&quot;happy&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;color&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gold&quot;,&quot;coral&quot;,&quot;sky&quot;,&quot;matcha&quot;,&quot;nebula&quot;],&quot;default&quot;:&quot;gold&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hat&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;none&quot;,&quot;party&quot;,&quot;crown&quot;,&quot;wizard&quot;,&quot;beanie&quot;,&quot;phones&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;],&quot;default&quot;:&quot;1&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const COLORS = {gold:['#FFB020','#E8930A','#FFE29A'],coral:['#FF8A6B','#E0623F','#FFD3C4'],sky:['#7DBBEA','#4F95CC','#D7ECFB'],matcha:['#8CC870','#5E9A45','#D9EFCB'],nebula:['#B49AF0','#8669D0','#E8DEFF']};
+class Component extends DCLogic {
+  renderVals() {
+    const m = this.props.mood ?? 'happy', h = this.props.hat ?? 'none', st = Number(this.props.stage ?? 1);
+    const c = COLORS[this.props.color] || COLORS.gold;
+    return {
+      size: this.props.size ?? 120, c1:c[0], c2:c[1], c3:c[2],
+      open: m === 'sleepy' ? 0 : 1, closed: m === 'sleepy' ? 1 : 0,
+      smile: m === 'happy' ? 1 : 0, cheer: m === 'cheer' ? 1 : 0, tiny: m === 'sleepy' ? 1 : 0,
+      s2: st >= 2 ? 1 : 0, s3: st >= 3 ? 1 : 0,
+      hParty: h === 'party' ? 1 : 0, hCrown: h === 'crown' ? 1 : 0, hWizard: h === 'wizard' ? 1 : 0, hBeanie: h === 'beanie' ? 1 : 0, hPhones: h === 'phones' ? 1 : 0
+    };
+  }
+}
+</script>
+</body>
+</html>
