@@ -1,1 +1,186 @@
-<!-- FoldAndFern opening list page (placeholder; replaced by upload) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FoldAndFern — Opening Soon on Etsy</title>
+<meta name="description" content="FoldAndFern — printable greeting cards and Cricut SVGs, designed from scratch. Opening on Etsy November 2026. Join the opening list for a free starter pack + launch-day discount code.">
+<meta property="og:title" content="FoldAndFern — Opening Soon">
+<meta property="og:description" content="Printable cards + Cricut SVGs. Join the opening list: free starter pack + launch-day discount code.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orbit-applications.github.io/foldandfern/">
+<style>
+  :root{
+    --cream:#FAF6EF; --paper:#FFFDF8; --ink:#3A3226; --ink2:#6E6151;
+    --fern:#3E6B3A; --fern-deep:#2C4F29; --fern-soft:#E7F0E2;
+    --gold:#C99B3F; --gold-soft:#FBF3DF; --line:#E7DCC8; --coral:#C96A4A;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 20px;}
+  header{padding:26px 0 6px;text-align:center;}
+  .badge{display:inline-block;background:var(--fern-soft);color:var(--fern-deep);
+    font-size:12px;font-weight:800;letter-spacing:2px;padding:8px 18px;border-radius:999px;
+    border:1px solid #CBDDBF;}
+  h1{font-size:34px;line-height:1.15;margin:18px 0 10px;letter-spacing:-0.5px;}
+  h1 .fern{color:var(--fern);}
+  .sub{font-size:17px;color:var(--ink2);margin:0 0 6px;}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;
+    padding:24px 22px;margin:22px 0;box-shadow:0 6px 24px rgba(62,107,58,.08);}
+  .card h2{margin:0 0 8px;font-size:21px;}
+  .offer-list{list-style:none;padding:0;margin:14px 0;}
+  .offer-list li{padding:9px 0 9px 34px;position:relative;font-size:16px;}
+  .offer-list li::before{content:"🌿";position:absolute;left:0;top:9px;}
+  label.email-label{display:block;font-size:13px;font-weight:700;color:var(--ink2);margin:14px 0 6px;}
+  input[type=email]{width:100%;font-size:17px;padding:14px 16px;border:2px solid var(--line);
+    border-radius:12px;background:#fff;color:var(--ink);}
+  input[type=email]:focus{outline:none;border-color:var(--fern);}
+  .consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-size:14px;color:var(--ink2);}
+  .consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--fern);flex-shrink:0;}
+  button.cta{width:100%;font-size:18px;font-weight:800;color:#fff;background:var(--fern);
+    border:none;border-radius:14px;padding:16px;cursor:pointer;margin-top:4px;}
+  button.cta:hover{background:var(--fern-deep);}
+  button.cta:disabled{opacity:.6;cursor:default;}
+  .micro{font-size:13px;color:var(--ink2);text-align:center;margin:12px 0 0;}
+  .thanks{display:none;text-align:center;}
+  .thanks .big{font-size:44px;}
+  .codebox{display:inline-block;background:var(--gold-soft);border:2px dashed var(--gold);
+    border-radius:12px;padding:12px 26px;font-size:26px;font-weight:800;letter-spacing:3px;
+    color:var(--fern-deep);margin:12px 0;}
+  a.dl{display:inline-block;margin-top:10px;background:var(--fern-deep);color:#fff;text-decoration:none;
+    font-weight:800;font-size:17px;padding:14px 30px;border-radius:14px;}
+  .error{display:none;color:var(--coral);font-size:14px;margin-top:10px;text-align:center;}
+  section.block{margin:30px 0;}
+  section.block h2{font-size:20px;margin:0 0 8px;}
+  .faq{margin:10px 0;border-bottom:1px solid var(--line);padding:10px 0;}
+  .faq summary{font-weight:700;cursor:pointer;font-size:16px;}
+  .faq p{margin:8px 0 4px;color:var(--ink2);font-size:15px;}
+  footer{text-align:center;padding:34px 20px 50px;color:var(--ink2);font-size:13px;}
+  footer a{color:var(--fern-deep);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">OPENING ON ETSY · NOVEMBER 2026</span>
+    <h1>Paper goods <span class="fern">worth waiting for.</span></h1>
+    <p class="sub">FoldAndFern makes printable greeting cards and Cricut SVGs — designed from scratch, printed at home, gift-ready in minutes.</p>
+  </header>
+
+  <div class="card" id="signupCard">
+    <div id="formWrap">
+      <h2>🎁 Get the free opening-day starter pack</h2>
+      <p style="margin:0;color:var(--ink2)">Join the opening list and we'll send you:</p>
+      <ul class="offer-list">
+        <li><strong>Gingerbread recipe card</strong> — printable, personal use</li>
+        <li><strong>Hand-drawn fern coloring page</strong> — print &amp; color</li>
+        <li><strong>Your personal launch-day discount code</strong> — works opening week</li>
+      </ul>
+      <form id="ffForm" novalidate>
+        <label class="email-label" for="ffEmail">Email address</label>
+        <input type="email" id="ffEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <label class="consent">
+          <input type="checkbox" id="ffConsent">
+          <span>Also email me at opening + when new designs drop. <strong>Optional</strong> — leave unchecked and you'll only ever get the free pack.</span>
+        </label>
+        <button type="submit" class="cta" id="ffSubmit">Send my free pack</button>
+        <p class="error" id="ffError"></p>
+        <p class="micro">Free forever, no card required.<br>We'll only email what you asked for — unsubscribe anytime with one click.</p>
+      </form>
+    </div>
+    <div class="thanks" id="ffThanks">
+      <div class="big">🎉</div>
+      <h2>You're on the list!</h2>
+      <p style="color:var(--ink2)">Your free starter pack is ready — download it below.</p>
+      <a class="dl" href="free-printable.pdf" download>⬇ Download my free pack (PDF)</a>
+      <p style="margin:18px 0 4px;color:var(--ink2)">Your personal launch-day code:</p>
+      <div class="codebox" id="ffCode">FERN-····</div>
+      <p class="micro">Save this code — it works during opening week.<br>We sent a copy to your inbox too.</p>
+    </div>
+  </div>
+
+  <section class="block">
+    <h2>What is FoldAndFern?</h2>
+    <ul class="offer-list">
+      <li><strong>Printable greeting cards</strong> — half-fold, double-sided, print at home on cardstock</li>
+      <li><strong>Cricut SVGs</strong> — cut files tested on a real machine, with real photos</li>
+      <li><strong>Original designs only</strong> — every illustration drawn from scratch for the shop</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Questions</h2>
+    <details class="faq"><summary>When does the shop open?</summary>
+      <p>November 2026, on Etsy. Opening-list members hear first — and get the launch-day code.</p></details>
+    <details class="faq"><summary>Is the starter pack really free?</summary>
+      <p>Yes — the recipe card + coloring page are free for personal use, forever. No card, no catch.</p></details>
+    <details class="faq"><summary>What will things cost?</summary>
+      <p>Most printables under C$10, with a launch sale planned for opening week. Your discount code stacks a little extra on top.</p></details>
+    <details class="faq"><summary>What do you email me about?</summary>
+      <p>Only what you asked for: the free pack now, and — only if you checked the box — the opening announcement and new designs. One-click unsubscribe in every email.</p></details>
+  </section>
+
+  <footer>
+    FoldAndFernDesigns · an Orbit Applications project<br>
+    <a href="mailto:support.orbitapplications@gmail.com">support.orbitapplications@gmail.com</a>
+  </footer>
+
+</div>
+<script>
+// ==================== FIREBASE (reuses FamQuest waitlist collection) ====================
+const FIREBASE_CONFIG = { apiKey: "AIzaSyDOC1Xdc2STx2u2EmlI0eQEkRGkqN7x8P0", authDomain: "famquest-732d9.firebaseapp.com", projectId: "famquest-732d9" };
+
+function makeLaunchCode() {
+  var chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  var s = '';
+  for (var i = 0; i < 4; i++) s += chars[Math.floor(Math.random() * chars.length)];
+  return 'FERN-' + s;
+}
+
+document.getElementById('ffForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var emailEl = document.getElementById('ffEmail');
+  var errEl = document.getElementById('ffError');
+  var btn = document.getElementById('ffSubmit');
+  var email = emailEl.value.trim().toLowerCase();
+  errEl.style.display = 'none';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.textContent = 'Please enter a valid email address.';
+    errEl.style.display = 'block';
+    emailEl.focus();
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = 'Joining...';
+  var code = makeLaunchCode();
+  var consent = document.getElementById('ffConsent').checked ? 'yes' : 'no';
+  try {
+    var url = 'https://firestore.googleapis.com/v1/projects/' + FIREBASE_CONFIG.projectId +
+      '/databases/(default)/documents/waitlist?key=' + FIREBASE_CONFIG.apiKey;
+    var resp = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: {
+        email: { stringValue: email },
+        platform: { stringValue: 'foldandfern' },
+        source: { stringValue: 'foldandfern-opening-list' },
+        launchCode: { stringValue: code },
+        consentMarketing: { stringValue: consent }
+      }})
+    });
+    if (!resp.ok) throw new Error('signup failed: ' + resp.status);
+  } catch (err) {
+    // Offline/denied: still show the pack — the email capture is best-effort.
+    console.warn('waitlist write failed', err);
+  }
+  document.getElementById('ffCode').textContent = code;
+  document.getElementById('formWrap').style.display = 'none';
+  document.getElementById('ffThanks').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>
