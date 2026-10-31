@@ -168,6 +168,7 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
 <div class="screen" id="s-game">
   <div><span class="rolebadge" id="g-role">🏃 RUNNER</span> <span class="netpill net-on" id="g-net" style="margin-left:6px;">● live</span></div>
   <h2 id="g-title" style="margin-top:2px;">Stay hidden.</h2>
+  <div id="gamemap" style="height:320px;border-radius:18px;border:1px solid var(--line);margin:6px 0;display:none;"></div>
   <canvas id="radar" width="300" height="300"></canvas>
   <div class="hud">
     <div class="cell"><div class="k">Zone</div><div class="v" id="g-zone">—</div></div>
@@ -295,6 +296,7 @@ function enterLobby(){
   $("hunter-reveal").style.display="none";
   $("btn-start").disabled=true;
   go("s-lobby");
+  leafletReady(()=>{}); /* preload map tiles lib while on wifi */
   FB.ref=gameRef();
   FB.ref.on("value",snap=>onGameUpdate(snap.val()));
 }
@@ -321,8 +323,19 @@ function onGameUpdate(g){
     $("hunter-reveal").style.display="block";
     if(FB.isHost)$("btn-start").disabled=false;
   }
-  if(g.state==="countdown"&&g.startsAt&&!G.counting)beginSharedCountdown(g.startsAt);
+  if(g.state==="countdown"&&g.startsAt&&!G.counting){
+    ensureGame().then(ok=>{if(ok)beginSharedCountdown(g.startsAt);});
+  }
   if(g.state==="ended")endGame("host");
+}
+async function ensureGame(){
+  if(G.game)return true;
+  if(FB.db&&FB.code){
+    try{const s=await FB.db.ref("outrun/games/"+FB.code+"/settings").once("value");
+      if(s.val()){G.game=s.val();return true;}}catch(e){}
+  }
+  alert("Couldn't load the game — please rejoin from the home screen.");
+  go("s-home");return false;
 }
 function copyCode(){try{navigator.clipboard.writeText(FB.code);}catch(e){}alert("Code copied: "+FB.code);}
 async function pickHunter(){
@@ -358,14 +371,21 @@ function leaveLobby(){
 }
 async function hostEnd(){try{await gameRef().update({state:"ended"});}catch(e){}endGame("host");}
 
-/* ---- host map ---- */
-let leafletLoading=false;
-function ensureMap(){
-  if(G.map||leafletLoading)return;leafletLoading=true;
+/* ---- leaflet loader (shared) ---- */
+let leafletLoading=false;const _lcbs=[];
+function leafletReady(cb){
+  if(window.L){if(cb)cb();return;}
+  if(cb)_lcbs.push(cb);
+  if(leafletLoading)return;leafletLoading=true;
   const css=document.createElement("link");css.rel="stylesheet";
   css.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";document.head.appendChild(css);
   const js=document.createElement("script");js.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-  js.onload=initMap;document.head.appendChild(js);
+  js.onload=()=>{const cbs=_lcbs.splice(0);cbs.forEach(f=>{try{f()}catch(e){}});};
+  document.head.appendChild(js);
+}
+/* ---- host map ---- */
+function ensureMap(){
+  leafletReady(()=>{if(G.map||!$("s-host").classList.contains("on"))return;initMap();});
 }
 function initMap(){
   G.map=L.map("map").setView([51.0447,-114.0719],13);
@@ -397,6 +417,38 @@ new MutationObserver(()=>{
   if($("s-host").classList.contains("on")){ensureMap();fbInit().catch(()=>{});}
   if($("s-join").classList.contains("on")){fbInit().catch(()=>{});}
 }).observe(document.body,{attributes:true,subtree:true,attributeFilter:["class"]});
+/* ---- in-game real map ---- */
+function lon2x(lon,z){return Math.floor((lon+180)/360*Math.pow(2,z));}
+function lat2y(lat,z){const r=lat*Math.PI/180;return Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*Math.pow(2,z));}
+function warmTiles(){
+  if(!navigator.onLine)return;
+  try{
+    const g=G.game,R=g.radius*1.4;
+    const dLa=R/111320,dLo=R/(111320*Math.cos(g.lat*Math.PI/180));
+    [15,16,17].forEach(z=>{
+      const x0=lon2x(g.lng-dLo,z),x1=lon2x(g.lng+dLo,z),y0=lat2y(g.lat+dLa,z),y1=lat2y(g.lat-dLa,z);
+      let n=0;
+      for(let x=x0;x<=x1&&n<60;x++)for(let y=y0;y<=y1&&n<60;y++){n++;
+        fetch("https://tile.openstreetmap.org/"+z+"/"+x+"/"+y+".png").catch(()=>{});}
+    });
+  }catch(e){}
+}
+function initGameMap(){
+  leafletReady(()=>{
+    try{
+      const g=G.game;if(!g)return;
+      if(G.gmap){G.gmap.remove();G.gmap=null;}
+      G.gmap=L.map("gamemap",{zoomControl:false,attributionControl:false}).setView([g.lat,g.lng],16);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19}).addTo(G.gmap);
+      G.gzone=L.circle([g.lat,g.lng],{radius:g.radius,color:"#a3e635",weight:3,fillColor:"#a3e635",fillOpacity:0.07}).addTo(G.gmap);
+      G.gmap.fitBounds(G.gzone.getBounds().pad(0.12));
+      G.gme=L.circleMarker([g.lat,g.lng],{radius:9,color:"#0b0f1a",weight:3,fillColor:"#a3e635",fillOpacity:1}).addTo(G.gmap);
+      $("gamemap").style.display="block";$("radar").style.display="none";
+      setTimeout(()=>{try{G.gmap.invalidateSize();}catch(e){}},300);
+      warmTiles();
+    }catch(e){/* fall back to radar */}
+  });
+}
 
 /* ================= ULTRASONIC ENGINE =================
    Hunters must be CLOSE: pings travel as ultrasound (~18-20 kHz),
@@ -500,7 +552,7 @@ async function startGame(startsAt){
   G.t0=startsAt;G.tagged=false;
   try{if(FB.isHost)gameRef().update({state:"playing"});}catch(e){}
   AE.gameId=gameIdFrom(FB.code||"OUTRUN");
-  applyRole();go("s-game");
+  applyRole();go("s-game");initGameMap();
   try{await aeResume();await aeStartMic();}catch(e){
     alert("Microphone blocked — pings won't work, but GPS zones will. Allow mic access and reload to get pings.");}
   aeStartLoop();
@@ -527,7 +579,9 @@ function startGps(){
     ()=>{},{enableHighAccuracy:true,maximumAge:5000,timeout:15000});}catch(e){}
 }
 function tickGame(){
-  const el=Date.now()-G.t0,g=G.game;
+  const g=G.game;
+  if(!g||!G.t0)return; /* hardened: never a dead screen */
+  const el=Date.now()-G.t0;
   const roundEnd=g.roundMin*60000,headEnd=g.headMin*60000;
   $("g-round").textContent=fmtT(roundEnd-el);
   const r=zoneRadiusAt(el);
@@ -545,13 +599,20 @@ function tickGame(){
     $("g-left").textContent=left;
   }
   const io=$("g-inout");
-  if(G.pos){const d=haversine(G.pos.lat,G.pos.lng,g.lat,g.lng);
+  let dist=null;
+  if(G.pos){const d=haversine(G.pos.lat,G.pos.lng,g.lat,g.lng);dist=d;
     if(d<=r){io.textContent="IN ✅";io.className="v zone-ok";}
     else{io.textContent="OUT! ⚠️";io.className="v zone-bad";
       if(Date.now()-G.lastBeep>5000){G.lastBeep=Date.now();outBeep();}}
   }
   else{io.textContent="no GPS";io.className="v";}
-  drawRadar();
+  if(G.gmap){
+    try{
+      G.gzone.setRadius(r);
+      if(G.pos){G.gme.setLatLng([G.pos.lat,G.pos.lng]);
+        G.gme.setStyle({fillColor:dist!==null&&dist<=r?"#a3e635":"#fb7185"});}
+    }catch(e){}
+  }else{drawRadar();}
   if(el>=roundEnd)endGame("time");
 }
 function drawRadar(){
