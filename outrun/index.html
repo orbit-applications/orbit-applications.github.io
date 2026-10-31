@@ -39,6 +39,7 @@ p{color:var(--dim);line-height:1.5;margin:8px 0;}
 .btn.blue{background:var(--blue);color:#0a1428;}
 .btn.big{padding:26px;font-size:24px;border-radius:22px;}
 .btn:disabled{opacity:.4;}
+.btn.off{opacity:.38;filter:saturate(.5);}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;}
 .row{display:flex;gap:10px;}
 .row .btn{flex:1;}
@@ -92,11 +93,6 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   <h2>🎯 Host setup</h2>
   <label>Your name</label>
   <input type="text" id="h-name" placeholder="e.g. Nash" maxlength="16">
-  <label>Your role</label>
-  <div class="row">
-    <button class="btn blue" id="h-role-runner" onclick="setRole('runner')">🏃 Runner</button>
-    <button class="btn red" id="h-role-hunter" onclick="setRole('hunter')">🔦 Hunter</button>
-  </div>
   <label>Zone center — tap the map, or use your location</label>
   <div class="row">
     <button class="btn ghost" onclick="useMyLoc()">📍 Use my location</button>
@@ -130,7 +126,30 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   <label>Players in (tap when everyone is ready)</label>
   <div class="card"><div id="lobby-names"><span class="small">Just you so far…</span></div></div>
   <button class="btn ghost" onclick="addName()">＋ Add player name</button>
+  <button class="btn blue" onclick="pickHunter()">🎲 Pick the hunter</button>
+  <div class="card" id="hunter-reveal" style="display:none;text-align:center;">
+    <div style="font-size:15px;color:var(--dim)">The hunter is…</div>
+    <div style="font-size:36px;font-weight:900;color:var(--red);margin:6px 0;" id="hunter-name">?</div>
+    <div class="small">Everyone taps their own role below 👇</div>
+  </div>
+  <label>Your role (tap your own)</label>
+  <div class="row">
+    <button class="btn blue" onclick="setRole('runner',this)">🏃 Runner</button>
+    <button class="btn red off" onclick="setRole('hunter',this)">🔦 Hunter</button>
+  </div>
   <button class="btn big" onclick="startCountdown()">🏁 START GAME</button>
+  <button class="btn ghost" onclick="go('s-home')">← Back</button>
+</div>
+
+<!-- ============ READY (joiner) ============ -->
+<div class="screen" id="s-ready">
+  <h2>You're in! 🎉</h2>
+  <p>Wait for the host to pick the hunter,<br>then tap your role:</p>
+  <div class="row">
+    <button class="btn blue" onclick="setRole('runner',this)">🏃 I'm a runner</button>
+    <button class="btn red off" onclick="setRole('hunter',this)">🔦 I'm the hunter</button>
+  </div>
+  <button class="btn big" onclick="beginCountdown()">I'm ready →</button>
   <button class="btn ghost" onclick="go('s-home')">← Back</button>
 </div>
 
@@ -139,11 +158,6 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   <h2>🔑 Join a game</h2>
   <label>Your name</label>
   <input type="text" id="j-name" placeholder="e.g. Cole" maxlength="16">
-  <label>Your role</label>
-  <div class="row">
-    <button class="btn blue" id="j-role-runner" onclick="setRole('runner')">🏃 Runner</button>
-    <button class="btn red" id="j-role-hunter" onclick="setRole('hunter')">🔦 Hunter</button>
-  </div>
   <label>Game code (from the host)</label>
   <input type="text" id="j-code" placeholder="XXXX-XXXX-XXXX-XX" autocapitalize="characters" spellcheck="false">
   <p class="small" id="j-err" style="color:var(--red)"></p>
@@ -320,9 +334,19 @@ function aeStopHeartbeat(){if(AE.hbTimer){clearInterval(AE.hbTimer);AE.hbTimer=n
 
 /* ================= GAME STATE ================= */
 const G={name:"",role:"runner",game:null,t0:0,tagged:false,pos:null,pingCoolUntil:0,map:null,marker:null,circle:null,zoneLL:null};
-function setRole(r){G.role=r;
-  ["h-role-runner","h-role-hunter","j-role-runner","j-role-hunter"].forEach(id=>{const e=$(id);if(e)e.classList.add("ghost");});
-  const a=$( (document.querySelector("#s-host.on")?"h":"j")+"-role-"+r);if(a)a.classList.remove("ghost");
+function setRole(r,btn){G.role=r;
+  if(btn&&btn.parentElement){const bs=btn.parentElement.querySelectorAll(".btn");
+    bs.forEach(b=>b.classList.add("off"));btn.classList.remove("off");}
+  vibrate(30);
+}
+function pickHunter(){
+  const r=(G.roster||[]).map(n=>n.trim()).filter(Boolean);
+  if(!r.length){alert("Add the players first!");return;}
+  const pick=r[Math.floor(Math.random()*r.length)];
+  $("hunter-name").textContent=pick;
+  $("hunter-reveal").style.display="block";
+  vibrate([100,50,150]);
+  setTimeout(()=>$("hunter-reveal").scrollIntoView({behavior:"smooth",block:"center"}),100);
 }
 function gameIdFrom(code){let h=0;for(const c of code)h=(h*31+c.charCodeAt(0))&255;return h||1;}
 
@@ -368,19 +392,21 @@ function createGame(){
     shrinkMin:+$("h-shrink").value,roundMin:+$("h-round").value,headMin:+$("h-head").value};
   const code=encGame(G.game);
   G.code=code;$("lobby-code").textContent=code;
-  $("lobby-names").innerHTML="<div>🎯 "+escapeHtml(name)+" (host, "+G.role+")</div>";
+  G.roster=[name];
+  $("lobby-names").innerHTML="<div>🎯 "+escapeHtml(name)+" (host)</div>";
+  $("hunter-reveal").style.display="none";
   go("s-lobby");
 }
 function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 function copyCode(){try{navigator.clipboard.writeText(G.code.replace(/-/g,""));}catch(e){}alert("Code copied: "+G.code);}
-function addName(){const n=prompt("Player name:");if(n&&n.trim()){const d=document.createElement("div");d.textContent="👤 "+n.trim();$("lobby-names").appendChild(d);}}
+function addName(){const n=prompt("Player name:");if(n&&n.trim()){G.roster.push(n.trim());const d=document.createElement("div");d.textContent="👤 "+n.trim();$("lobby-names").appendChild(d);}}
 function joinGame(){
   const name=$("j-name").value.trim()||"Player";
   const g=decGame($("j-code").value);
   if(!g){$("j-err").textContent="That code doesn't look right — check it and try again.";return;}
   $("j-err").textContent="";
   G.name=name;G.game=g;G.code=$("j-code").value.toUpperCase();
-  beginCountdown();
+  go("s-ready");
 }
 function startCountdown(){beginCountdown();}
 function beginCountdown(){
