@@ -91,7 +91,7 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
     and pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear them.
   </div>
   <p class="small">Tip: open this page on wifi first so it saves offline. Do the lobby before you head out.</p>
-  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v10</p>
+  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v11</p>
   <p class="small" style="text-align:center;opacity:.55;" id="bt-check"></p>
 </div>
 
@@ -189,6 +189,7 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   </div>
   <div id="g-hunter-ui" style="display:none;">
     <button class="btn red big" id="btn-ping" onclick="hunterPing()">📡 PING</button>
+    <button class="btn ghost" id="btn-btmode" onclick="toggleBtMode()" style="display:none;">📡 Ping via: ultrasound</button>
     <p class="small" id="ping-status" style="text-align:center;">Tap PING when you think runners are close.<br>🔊 <b>Volume to MAX</b> — pings are silent ultrasound.<br>If none are in earshot, you'll wait 3 min.</p>
   </div>
   <div id="g-runner-ui">
@@ -242,6 +243,9 @@ function setPill(id,on){const e=$(id);if(!e)return;e.className="netpill "+(on?"n
 function toggleTest(){G.testModeOn=!G.testModeOn;const b=$("btn-testmode");
   b.innerHTML=G.testModeOn?"🧪 Test mode: <b style='color:var(--amber)'>ON</b>":"🧪 Test mode: OFF";
   b.style.borderColor=G.testModeOn?"var(--amber)":"var(--line)";vibrate(30);}
+function toggleBtMode(){G.btOnly=!G.btOnly;const b=$("btn-btmode");
+  b.textContent=G.btOnly?"📡 Ping via: BLUETOOTH ONLY (experimental)":"📡 Ping via: ultrasound";
+  b.style.borderColor=G.btOnly?"var(--red)":"var(--line)";vibrate(30);}
 /* ================= FIREBASE LOBBY ================= */
 const FB={db:null,code:null,pid:null,ref:null,isHost:false,net:null};
 const G={name:"",role:"runner",game:null,t0:0,tagged:false,pos:null,pingCoolUntil:0,
@@ -592,6 +596,9 @@ function applyRole(){
   $("g-runner-ui").style.display=hunter?"none":"block";
   $("g-hunters-card").style.display=hunter?"block":"none";
   $("g-host-end").style.display=FB.isHost?"block":"none";
+  const btm=$("btn-btmode");G.btOnly=false;
+  btm.textContent="📡 Ping via: ultrasound";btm.style.borderColor="var(--line)";
+  btm.style.display=(G.game&&G.game.testMode&&hunter)?"block":"none";
 }
 function startGps(){
   if(!navigator.geolocation)return;
@@ -688,10 +695,14 @@ function hunterPing(){
   setTimeout(()=>{
     clearInterval(cd);
     if(AE._hbHeard){
-      /* Nash asked to try Bluetooth: real attempt at ping time, ultrasound still sends */
-      const btTry=navigator.bluetooth?"found, but it can't do phone-to-phone":"not in this browser";
-      txPing();vibrate([100,50,100]);
-      $("ping-status").innerHTML="📡 <b style='color:var(--lime)'>PING SENT!</b> Runners in earshot just got the alert.<br><span class='small'>Bluetooth try: "+btTry+" → ultrasound sent it.</span>";
+      const btVerdict=navigator.bluetooth?"found, but it can't do phone-to-phone":"not in this browser";
+      if(G.btOnly){
+        $("ping-status").innerHTML="📡 <b style='color:var(--amber)'>BLUETOOTH-ONLY MODE</b><br><span class='small'>Bluetooth: "+btVerdict+"<br>Ultrasound disabled → <b>nothing was sent.</b></span>";
+      }else{
+        txPing();
+        $("ping-status").innerHTML="📡 <b style='color:var(--lime)'>PING SENT!</b> Runners in earshot just got the alert.<br><span class='small'>Bluetooth try: "+btVerdict+" → ultrasound sent it.</span>";
+      }
+      vibrate([100,50,100]);
       b.disabled=false;b.textContent="📡 PING";
     }else{
       G.pingCoolUntil=Date.now()+effT().pingCool;
