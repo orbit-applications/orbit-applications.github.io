@@ -91,6 +91,7 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
     and pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear them.
   </div>
   <p class="small">Tip: open this page on wifi first so it saves offline. Do the lobby before you head out.</p>
+  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v7</p>
 </div>
 
 <!-- ============ HOST SETUP ============ -->
@@ -111,9 +112,8 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   <select id="h-head"><option value="5" selected>5 min</option><option value="10">10 min</option><option value="15">15 min</option></select>
   <label>Round length</label>
   <select id="h-round"><option value="20">20 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">60 min</option></select>
-  <label style="display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0;font-size:16px;color:var(--txt);cursor:pointer;">
-    <input type="checkbox" id="h-test" style="width:22px;height:22px;accent-color:var(--amber);"> 🧪 Test mode <span class="small">(15s hide · 30s shrink · 3min round)</span>
-  </label>
+  <button class="btn ghost" id="btn-testmode" onclick="toggleTest()" style="border-style:dashed;">🧪 Test mode: OFF</button>
+  <p class="small" style="margin-top:-4px;">Test mode = 15s hide · 30s shrink · 3min round · instant re-ping</p>
   <button class="btn" id="btn-create" onclick="createGame()">Create game →</button>
   <button class="btn ghost" onclick="go('s-home')">← Back</button>
 </div>
@@ -238,6 +238,9 @@ function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"
 function genCode(){let s="";for(let i=0;i<6;i++)s+=ABC[Math.floor(Math.random()*ABC.length)];return s;}
 function setPill(id,on){const e=$(id);if(!e)return;e.className="netpill "+(on?"net-on":"net-off");e.textContent=on?"● connected":"● offline";}
 
+function toggleTest(){G.testModeOn=!G.testModeOn;const b=$("btn-testmode");
+  b.innerHTML=G.testModeOn?"🧪 Test mode: <b style='color:var(--amber)'>ON</b>":"🧪 Test mode: OFF";
+  b.style.borderColor=G.testModeOn?"var(--amber)":"var(--line)";vibrate(30);}
 /* ================= FIREBASE LOBBY ================= */
 const FB={db:null,code:null,pid:null,ref:null,isHost:false,net:null};
 const G={name:"",role:"runner",game:null,t0:0,tagged:false,pos:null,pingCoolUntil:0,
@@ -267,7 +270,7 @@ async function createGame(){
     G.name=name;
     G.game={lat:G.zoneLL.lat,lng:G.zoneLL.lng,radius:+$("h-radius").value,
       shrinkMin:+$("h-shrink").value,roundMin:+$("h-round").value,headMin:+$("h-head").value,hostName:name,
-      testMode:$("h-test").checked};
+      testMode:!!G.testModeOn};
     await gameRef().set({settings:G.game,state:"lobby",hunterId:null,startsAt:0,createdAt:Date.now(),
       players:{[FB.pid]:{name:name,tagged:false,joinedAt:Date.now()}}});
     gameRef().child("players/"+FB.pid).onDisconnect().remove();
@@ -446,13 +449,13 @@ function initGameMap(){
     try{
       const g=G.game;if(!g)return;
       if(G.gmap){G.gmap.remove();G.gmap=null;}
+      $("gamemap").style.display="block";$("radar").style.display="none";
       G.gmap=L.map("gamemap",{zoomControl:false,attributionControl:false}).setView([g.lat,g.lng],16);
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19}).addTo(G.gmap);
       G.gzone=L.circle([g.lat,g.lng],{radius:g.radius,color:"#a3e635",weight:3,fillColor:"#a3e635",fillOpacity:0.07}).addTo(G.gmap);
-      G.gmap.fitBounds(G.gzone.getBounds().pad(0.12));
       G.gme=L.circleMarker([g.lat,g.lng],{radius:9,color:"#0b0f1a",weight:3,fillColor:"#a3e635",fillOpacity:1}).addTo(G.gmap);
-      $("gamemap").style.display="block";$("radar").style.display="none";
-      setTimeout(()=>{try{G.gmap.invalidateSize();}catch(e){}},300);
+      const fit=()=>{try{G.gmap.invalidateSize();G.gmap.fitBounds(G.gzone.getBounds().pad(0.12));}catch(e){}};
+      fit();setTimeout(fit,400);setTimeout(fit,1200);
       warmTiles();
     }catch(e){/* fall back to radar */}
   });
