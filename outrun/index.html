@@ -91,7 +91,7 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
     and pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear them.
   </div>
   <p class="small">Tip: open this page on wifi first so it saves offline. Do the lobby before you head out.</p>
-  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v9</p>
+  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v10</p>
   <p class="small" style="text-align:center;opacity:.55;" id="bt-check"></p>
 </div>
 
@@ -688,8 +688,10 @@ function hunterPing(){
   setTimeout(()=>{
     clearInterval(cd);
     if(AE._hbHeard){
+      /* Nash asked to try Bluetooth: real attempt at ping time, ultrasound still sends */
+      const btTry=navigator.bluetooth?"found, but it can't do phone-to-phone":"not in this browser";
       txPing();vibrate([100,50,100]);
-      $("ping-status").innerHTML="📡 <b style='color:var(--lime)'>PING SENT!</b> Runners in earshot just got the alert.";
+      $("ping-status").innerHTML="📡 <b style='color:var(--lime)'>PING SENT!</b> Runners in earshot just got the alert.<br><span class='small'>Bluetooth try: "+btTry+" → ultrasound sent it.</span>";
       b.disabled=false;b.textContent="📡 PING";
     }else{
       G.pingCoolUntil=Date.now()+effT().pingCool;
