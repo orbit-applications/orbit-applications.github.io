@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f1a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>OUTRUN — offline hide &amp; seek</title>
+<link rel="manifest" href='data:application/manifest+json,{"name":"OUTRUN","short_name":"OUTRUN","start_url":".","display":"standalone","background_color":"%230b0f1a","theme_color":"%230b0f1a"}'>
+<style>
+:root{
+  --bg:#0b0f1a; --card:#151c2e; --card2:#1b2440; --line:#26314f;
+  --txt:#f1f5ff; --dim:#8b96b8;
+  --lime:#a3e635; --red:#fb7185; --amber:#fbbf24; --blue:#60a5fa;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  min-height:100dvh; overscroll-behavior:none;}
+body{max-width:520px;margin:0 auto;padding:0 0 40px;}
+.screen{display:none;padding:20px 18px 30px;animation:fade .25s ease;}
+.screen.on{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+h1{font-size:34px;margin:6px 0 4px;letter-spacing:-.5px;}
+h2{font-size:24px;margin:4px 0 10px;}
+p{color:var(--dim);line-height:1.5;margin:8px 0;}
+.logo{font-size:52px;font-weight:900;letter-spacing:-1px;margin:26px 0 2px;
+  background:linear-gradient(135deg,var(--lime),#34d399);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.tag{color:var(--dim);font-size:15px;margin-bottom:26px;}
+.btn{display:block;width:100%;padding:17px;border-radius:16px;border:0;font-size:18px;font-weight:800;
+  margin:10px 0;cursor:pointer;color:#0b0f1a;background:var(--lime);}
+.btn:active{transform:scale(.98);}
+.btn.ghost{background:var(--card);color:var(--txt);border:1px solid var(--line);}
+.btn.red{background:var(--red);color:#1a0508;}
+.btn.blue{background:var(--blue);color:#0a1428;}
+.btn.big{padding:26px;font-size:24px;border-radius:22px;}
+.btn:disabled{opacity:.4;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;}
+.row{display:flex;gap:10px;}
+.row .btn{flex:1;}
+label{display:block;font-size:13px;color:var(--dim);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.6px;}
+input[type=text],input[type=number],select{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);
+  background:var(--card2);color:var(--txt);font-size:17px;}
+input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
+.codebox{font-family:ui-monospace,monospace;font-size:30px;font-weight:800;letter-spacing:3px;text-align:center;
+  background:var(--card2);border:2px dashed var(--lime);border-radius:16px;padding:18px 8px;margin:14px 0;color:var(--lime);
+  user-select:all;}
+.hud{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;}
+.hud .cell{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;}
+.hud .k{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.6px;}
+.hud .v{font-size:22px;font-weight:800;margin-top:4px;}
+#radar{display:block;margin:6px auto;border-radius:50%;background:#0e1424;border:2px solid var(--line);}
+.zone-ok{color:var(--lime);} .zone-bad{color:var(--red);animation:blink 1s infinite;}
+.pingalert{position:fixed;inset:0;background:rgba(163,230,53,.96);color:#0b0f1a;display:none;
+  align-items:center;justify-content:center;flex-direction:column;z-index:99;text-align:center;padding:30px;}
+.pingalert.on{display:flex;animation:pulse .7s infinite;}
+.pingalert h1{font-size:44px;margin:0;}
+.pingalert p{color:#0b0f1a;font-weight:700;font-size:20px;}
+.rolebadge{display:inline-block;padding:6px 14px;border-radius:99px;font-weight:800;font-size:14px;margin-bottom:8px;}
+.role-hunter{background:var(--red);color:#1a0508;}
+.role-runner{background:var(--blue);color:#0a1428;}
+.cool{font-variant-numeric:tabular-nums;}
+.small{font-size:13px;color:var(--dim);}
+#map{height:260px;border-radius:16px;border:1px solid var(--line);margin-top:8px;}
+.tick{font-size:13px;color:var(--dim);margin-top:10px;text-align:center;}
+.bar{height:10px;background:var(--card2);border-radius:99px;overflow:hidden;margin-top:8px;}
+.bar>i{display:block;height:100%;background:var(--lime);border-radius:99px;transition:width .5s;}
+</style>
+</head>
+<body>
+
+<!-- ============ HOME ============ -->
+<div class="screen on" id="s-home">
+  <div class="logo">OUTRUN</div>
+  <div class="tag">Real hide &amp; seek. No cell service needed.<br>Hunters hunt. Runners run. Phone does the rest.</div>
+  <button class="btn" onclick="go('s-host')">🎯 Host a game</button>
+  <button class="btn ghost" onclick="go('s-join')">🔑 Join with code</button>
+  <div class="card small">
+    📡 <b>How it works offline:</b> your phone's GPS tracks the shrinking zone with zero bars.
+    Pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear the ping.
+    No accounts, no servers, no service needed after this page loads.
+  </div>
+  <p class="small">Tip: open this page on wifi first so it saves offline. Then it works anywhere.</p>
+</div>
+
+<!-- ============ HOST SETUP ============ -->
+<div class="screen" id="s-host">
+  <h2>🎯 Host setup</h2>
+  <label>Your name</label>
+  <input type="text" id="h-name" placeholder="e.g. Nash" maxlength="16">
+  <label>Your role</label>
+  <div class="row">
+    <button class="btn blue" id="h-role-runner" onclick="setRole('runner')">🏃 Runner</button>
+    <button class="btn red" id="h-role-hunter" onclick="setRole('hunter')">🔦 Hunter</button>
+  </div>
+  <label>Zone center — tap the map, or use your location</label>
+  <div class="row">
+    <button class="btn ghost" onclick="useMyLoc()">📍 Use my location</button>
+  </div>
+  <div id="map"></div>
+  <p class="small" id="zone-label">No zone set yet.</p>
+  <label>Zone radius: <span id="r-val">350</span> m</label>
+  <input type="range" id="h-radius" min="100" max="1000" step="25" value="350" oninput="document.getElementById('r-val').textContent=this.value">
+  <label>Zone shrinks every</label>
+  <select id="h-shrink"><option value="5">5 min</option><option value="10" selected>10 min</option><option value="15">15 min</option></select>
+  <label>Head start for runners</label>
+  <select id="h-head"><option value="5">5 min</option><option value="10" selected>10 min</option><option value="15">15 min</option></select>
+  <label>Round length</label>
+  <select id="h-round"><option value="20">20 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">60 min</option></select>
+  <button class="btn" onclick="createGame()">Create game →</button>
+  <button class="btn ghost" onclick="go('s-home')">← Back</button>
+</div>
+
+<!-- ============ LOBBY / SHARE ============ -->
+<div class="screen" id="s-lobby">
+  <h2>📤 Share this code</h2>
+  <p>Read it out, text it, or have friends type it at <b>join</b>. It contains the whole game setup — no internet needed.</p>
+  <div class="codebox" id="lobby-code">····</div>
+  <button class="btn ghost" onclick="copyCode()">📋 Copy code</button>
+  <div class="card">
+    <b>Before you start:</b><br>
+    1. Everyone opens this page (on wifi once, then it works offline)<br>
+    2. Everyone joins with the code above<br>
+    3. Everyone taps <b>I'm ready</b>, then host taps <b>START</b> — countdown syncs all phones
+  </div>
+  <label>Players in (tap when everyone is ready)</label>
+  <div class="card"><div id="lobby-names"><span class="small">Just you so far…</span></div></div>
+  <button class="btn ghost" onclick="addName()">＋ Add player name</button>
+  <button class="btn big" onclick="startCountdown()">🏁 START GAME</button>
+  <button class="btn ghost" onclick="go('s-home')">← Back</button>
+</div>
+
+<!-- ============ JOIN ============ -->
+<div class="screen" id="s-join">
+  <h2>🔑 Join a game</h2>
+  <label>Your name</label>
+  <input type="text" id="j-name" placeholder="e.g. Cole" maxlength="16">
+  <label>Your role</label>
+  <div class="row">
+    <button class="btn blue" id="j-role-runner" onclick="setRole('runner')">🏃 Runner</button>
+    <button class="btn red" id="j-role-hunter" onclick="setRole('hunter')">🔦 Hunter</button>
+  </div>
+  <label>Game code (from the host)</label>
+  <input type="text" id="j-code" placeholder="XXXX-XXXX-XXXX-XX" autocapitalize="characters" spellcheck="false">
+  <p class="small" id="j-err" style="color:var(--red)"></p>
+  <button class="btn" onclick="joinGame()">Join →</button>
+  <button class="btn ghost" onclick="go('s-home')">← Back</button>
+</div>
+
+<!-- ============ COUNTDOWN ============ -->
+<div class="screen" id="s-count">
+  <h2 style="text-align:center;margin-top:60px;">Get ready…</h2>
+  <div style="font-size:90px;font-weight:900;text-align:center;" id="count-num" class="cool">10</div>
+  <p style="text-align:center;">All phones start together.<br>Runners: hide when the clock hits zero.</p>
+  <div class="card small" id="count-info"></div>
+</div>
+
+<!-- ============ GAME ============ -->
+<div class="screen" id="s-game">
+  <div><span class="rolebadge" id="g-role">🏃 RUNNER</span></div>
+  <h2 id="g-title" style="margin-top:2px;">Stay hidden.</h2>
+  <canvas id="radar" width="300" height="300"></canvas>
+  <div class="hud">
+    <div class="cell"><div class="k">Zone</div><div class="v" id="g-zone">—</div></div>
+    <div class="cell"><div class="k">Next shrink</div><div class="v cool" id="g-shrink">—</div></div>
+    <div class="cell"><div class="k">Round ends</div><div class="v cool" id="g-round">—</div></div>
+    <div class="cell"><div class="k">You are</div><div class="v" id="g-inout">…</div></div>
+  </div>
+  <div id="g-hunter-ui" style="display:none;">
+    <button class="btn red big" id="btn-ping" onclick="hunterPing()">📡 PING</button>
+    <p class="small" id="ping-status" style="text-align:center;">Tap PING when you think runners are close.<br>If none are in earshot, you'll wait 3 min.</p>
+  </div>
+  <div id="g-runner-ui">
+    <p class="small" style="text-align:center;">🎤 Listening for hunter pings…<br>keep this page open.</p>
+    <button class="btn ghost" onclick="gotTagged()">😵 I got tagged</button>
+  </div>
+  <button class="btn ghost" onclick="endGame()">🏁 End game</button>
+</div>
+
+<!-- ============ TAGGED ============ -->
+<div class="screen" id="s-tagged">
+  <h1 style="text-align:center;margin-top:70px;">😵</h1>
+  <h2 style="text-align:center;">You're tagged!</h2>
+  <p style="text-align:center;">Head to home base.<br>No hard feelings — go help hunt.</p>
+  <button class="btn red" onclick="becomeHunter()">🔦 Join the hunters</button>
+  <button class="btn ghost" onclick="go('s-game')">← Spectate</button>
+</div>
+
+<!-- ============ END ============ -->
+<div class="screen" id="s-end">
+  <h1 style="text-align:center;margin-top:60px;">🏁</h1>
+  <h2 style="text-align:center;" id="end-title">Game over!</h2>
+  <p style="text-align:center;" id="end-sub"></p>
+  <button class="btn" onclick="location.reload()">🔄 New game</button>
+</div>
+
+<div class="pingalert" id="pingalert">
+  <h1>🏃<br>YOU'VE BEEN<br>PINGED!</h1>
+  <p>A hunter is CLOSE.<br>RUN!</p>
+  <button class="btn" style="max-width:280px;" onclick="dismissPing()">Got it — running!</button>
+</div>
+
+<script>
+"use strict";
+/* ================= UTIL ================= */
+const $=id=>document.getElementById(id);
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0);}
+function vibrate(p){try{if(navigator.vibrate)navigator.vibrate(p);}catch(e){}}
+function fmtT(ms){if(ms<0)ms=0;const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function haversine(a,b,c,d){const R=6371000,t=Math.PI/180;const dLa=(c-a)*t,dLo=(d-b)*t;
+  const h=Math.sin(dLa/2)**2+Math.cos(a*t)*Math.cos(c*t)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+
+/* ================= GAME CODE CODEC =================
+   65 data bits + 5 checksum bits = 70 bits -> 14 Crockford-base32 chars
+   MSB->LSB: lat(20) lng(21) radiusM(10) shrinkMin-1(4) roundMin-5(6) headMin(4) chk(5) */
+const ABC="ABCDEFGHJKMNPQRSTUVWXYZ23456789";
+function encGame(g){
+  let bits=0n;
+  const put=(v,b)=>{bits=(bits<<BigInt(b))|BigInt(v);};
+  put(Math.round((g.lat+90)/180*(2**20-1)),20);
+  put(Math.round((g.lng+180)/360*(2**21-1)),21);
+  put(Math.min(1023,Math.max(1,Math.round(g.radius))),10);
+  put(Math.min(16,Math.max(1,g.shrinkMin))-1,4);
+  put(Math.min(68,Math.max(5,g.roundMin))-5,6);
+  put(Math.min(15,Math.max(0,g.headMin)),4);
+  let chk=0;for(let i=0;i<65;i+=5)chk^=Number((bits>>BigInt(i))&31n);
+  bits=(bits<<5n)|BigInt(chk);
+  let s="";for(let i=0;i<14;i++)s+=ABC[Number((bits>>BigInt((13-i)*5))&31n)];
+  return s.slice(0,4)+"-"+s.slice(4,8)+"-"+s.slice(8,12)+"-"+s.slice(12,14);
+}
+function decGame(code){
+  const s=code.toUpperCase().replace(/[^A-Z2-9]/g,"");
+  if(s.length!==14)return null;
+  let bits=0n;for(const ch of s){const i=ABC.indexOf(ch);if(i<0)return null;bits=(bits<<5n)|BigInt(i);}
+  const chkGot=Number(bits&31n);bits=bits>>5n;
+  let chk=0;for(let i=0;i<65;i+=5)chk^=Number((bits>>BigInt(i))&31n);
+  if(chk!==chkGot)return null;
+  const get=b=>{const v=Number(bits&((1n<<BigInt(b))-1n));bits=bits>>BigInt(b);return v;};
+  const headMin=get(4),roundMin=get(6)+5,shrinkMin=get(4)+1,radius=get(10),
+        lng=get(21)/(2**21-1)*360-180,lat=get(20)/(2**20-1)*180-90;
+  if(Math.abs(lat)>90||Math.abs(lng)>180)return null;
+  return {lat,lng,radius,shrinkMin,roundMin,headMin};
+}
+
+/* ================= ULTRASONIC ENGINE =================
+   Hunters must be CLOSE: pings travel as ultrasound (~18-20 kHz),
+   which phone speakers/mics carry ~10-30 m. Works on iPhone + Android,
+   fully offline. Game ID encoded in each ping so nearby groups don't clash. */
+const AE={ctx:null,analyser:null,freqData:null,rxTimer:null,hbTimer:null,
+  F_HB:18300,F0:18800,F1:19600,gameId:0,onPing:null,onHeartbeat:null,
+  rx:{mode:'idle',samples:[],quiet:0,consec:0}};
+function aeInit(){if(AE.ctx)return;const C=window.AudioContext||window.webkitAudioContext;if(!C)return;AE.ctx=new C({sampleRate:48000});}
+async function aeResume(){aeInit();if(AE.ctx&&AE.ctx.state==="suspended"){try{await AE.ctx.resume();}catch(e){}}}
+function tone(freq,dur,vol,when){
+  if(!AE.ctx)return;when=when||0;
+  const t0=AE.ctx.currentTime+when,o=AE.ctx.createOscillator(),g=AE.ctx.createGain();
+  o.type="sine";o.frequency.value=freq;
+  g.gain.setValueAtTime(0.0001,t0);
+  g.gain.linearRampToValueAtTime(vol,t0+0.02);
+  g.gain.setValueAtTime(vol,Math.max(t0+0.02,t0+dur-0.02));
+  g.gain.linearRampToValueAtTime(0.0001,t0+dur);
+  o.connect(g);g.connect(AE.ctx.destination);o.start(t0);o.stop(t0+dur+0.05);
+}
+function txHeartbeat(){tone(AE.F_HB,0.12,0.10);tone(AE.F_HB,0.12,0.10,0.22);}
+function txPing(){for(let i=0;i<8;i++){const bit=(AE.gameId>>(7-i))&1;tone(bit?AE.F1:AE.F0,0.18,0.5,i*0.22);}vibrate(100);}
+function alarm(){for(let i=0;i<3;i++)tone(880,0.14,0.25,i*0.22);}
+async function aeStartMic(){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error("no-mic");
+  const stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
+  const src=AE.ctx.createMediaStreamSource(stream);
+  AE.analyser=AE.ctx.createAnalyser();AE.analyser.fftSize=8192;AE.analyser.smoothingTimeConstant=0.25;
+  src.connect(AE.analyser);AE.freqData=new Float32Array(AE.analyser.frequencyBinCount);
+}
+function binOf(f){return Math.round(f/(AE.ctx.sampleRate/AE.analyser.fftSize));}
+function toneEnergy(f){
+  AE.analyser.getFloatFrequencyData(AE.freqData);
+  const b=binOf(f);let sig=-120;
+  for(let i=Math.max(0,b-2);i<=Math.min(AE.freqData.length-1,b+2);i++)sig=Math.max(sig,AE.freqData[i]);
+  let nz=0,n=0;
+  for(let i=Math.max(0,b-50);i<=Math.min(AE.freqData.length-1,b+50);i++){if(Math.abs(i-b)<8)continue;nz+=AE.freqData[i];n++;}
+  return sig-(nz/Math.max(1,n));
+}
+let _hbBlips=[],_hbOn=false;
+function aeTick(){
+  if(!AE.analyser)return;
+  const e0=toneEnergy(AE.F0),e1=toneEnergy(AE.F1),eH=toneEnergy(AE.F_HB),t=performance.now();
+  // heartbeat: two blips close together
+  if(eH>9){if(!_hbOn){_hbOn=true;_hbBlips.push(t);}}else _hbOn=false;
+  _hbBlips=_hbBlips.filter(x=>t-x<900);
+  if(_hbBlips.length>=2){const dt=_hbBlips[_hbBlips.length-1]-_hbBlips[0];
+    if(dt>120&&dt<700){_hbBlips=[];if(AE.onHeartbeat)AE.onHeartbeat();}}
+  // ping burst decode
+  const r=AE.rx,active=Math.max(e0,e1)>9,bit=e1>e0?1:0;
+  if(r.mode==="idle"){
+    if(active){r.consec++;if(r.consec>=2){r.mode="burst";r.samples=[];r.quiet=0;r.consec=0;}}else r.consec=0;
+  }else{
+    r.samples.push(bit);
+    if(!active){r.quiet++;if(r.quiet>=3)finishBurst();}else r.quiet=0;
+    if(r.samples.length>48)finishBurst();
+  }
+}
+function finishBurst(){
+  const s=AE.rx.samples;AE.rx.mode="idle";AE.rx.samples=[];AE.rx.quiet=0;AE.rx.consec=0;
+  if(!s||s.length<10)return;
+  const per=Math.max(1,Math.round(s.length/8));let bits=[];
+  for(let i=0;i<8;i++){const g=s.slice(i*per,(i+1)*per);if(!g.length)break;
+    bits.push(g.filter(x=>x===1).length>=g.length/2?1:0);}
+  if(bits.length<8)return;
+  const val=bits.reduce((a,b)=>(a<<1)|b,0);
+  if(val===AE.gameId&&AE.onPing)AE.onPing();
+}
+function aeStartLoop(){aeStopLoop();AE.rxTimer=setInterval(aeTick,60);}
+function aeStopLoop(){if(AE.rxTimer){clearInterval(AE.rxTimer);AE.rxTimer=null;}}
+function aeStartHeartbeat(){aeStopHeartbeat();txHeartbeat();AE.hbTimer=setInterval(txHeartbeat,25000);}
+function aeStopHeartbeat(){if(AE.hbTimer){clearInterval(AE.hbTimer);AE.hbTimer=null;}}
+
+/* ================= GAME STATE ================= */
+const G={name:"",role:"runner",game:null,t0:0,tagged:false,pos:null,pingCoolUntil:0,map:null,marker:null,circle:null,zoneLL:null};
+function setRole(r){G.role=r;
+  ["h-role-runner","h-role-hunter","j-role-runner","j-role-hunter"].forEach(id=>{const e=$(id);if(e)e.classList.add("ghost");});
+  const a=$( (document.querySelector("#s-host.on")?"h":"j")+"-role-"+r);if(a)a.classList.remove("ghost");
+}
+function gameIdFrom(code){let h=0;for(const c of code)h=(h*31+c.charCodeAt(0))&255;return h||1;}
+
+/* ---- host map ---- */
+let leafletLoading=false;
+function ensureMap(){
+  if(G.map||leafletLoading)return;leafletLoading=true;
+  const css=document.createElement("link");css.rel="stylesheet";
+  css.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";document.head.appendChild(css);
+  const js=document.createElement("script");js.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+  js.onload=initMap;document.head.appendChild(js);
+}
+function initMap(){
+  G.map=L.map("map").setView([51.0447,-114.0719],13);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(G.map);
+  G.map.on("click",e=>setZone(e.latlng.lat,e.latlng.lng));
+  setTimeout(()=>G.map.invalidateSize(),300);
+}
+function setZone(lat,lng){
+  G.zoneLL={lat,lng};
+  if(!G.map)return;
+  if(G.marker)G.map.removeLayer(G.marker);if(G.circle)G.map.removeLayer(G.circle);
+  const r=+$("h-radius").value;
+  G.marker=L.marker([lat,lng]).addTo(G.map);
+  G.circle=L.circle([lat,lng],{radius:r,color:"#a3e635"}).addTo(G.map);
+  G.map.setView([lat,lng],14);
+  $("zone-label").textContent="Zone: "+lat.toFixed(4)+", "+lng.toFixed(4)+" · "+r+" m radius";
+  $("h-radius").oninput=e=>{const v=+$("h-radius").value;$("r-val").textContent=v;
+    if(G.circle)G.circle.setRadius(v);
+    if(G.zoneLL)$("zone-label").textContent="Zone: "+G.zoneLL.lat.toFixed(4)+", "+G.zoneLL.lng.toFixed(4)+" · "+v+" m radius";};
+}
+function useMyLoc(){
+  if(!navigator.geolocation){alert("No GPS on this device.");return;}
+  $("zone-label").textContent="Getting your location…";
+  navigator.geolocation.getCurrentPosition(p=>{ensureMap();setTimeout(()=>setZone(p.coords.latitude,p.coords.longitude),600);},
+    ()=>{$("zone-label").textContent="Couldn't get location — tap the map instead.";},{enableHighAccuracy:true,timeout:10000});
+}
+function createGame(){
+  const name=$("h-name").value.trim()||"Player 1";
+  if(!G.zoneLL){alert("Set the zone first — tap the map or use your location.");return;}
+  G.name=name;
+  G.game={lat:G.zoneLL.lat,lng:G.zoneLL.lng,radius:+$("h-radius").value,
+    shrinkMin:+$("h-shrink").value,roundMin:+$("h-round").value,headMin:+$("h-head").value};
+  const code=encGame(G.game);
+  G.code=code;$("lobby-code").textContent=code;
+  $("lobby-names").innerHTML="<div>🎯 "+escapeHtml(name)+" (host, "+G.role+")</div>";
+  go("s-lobby");
+}
+function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function copyCode(){try{navigator.clipboard.writeText(G.code.replace(/-/g,""));}catch(e){}alert("Code copied: "+G.code);}
+function addName(){const n=prompt("Player name:");if(n&&n.trim()){const d=document.createElement("div");d.textContent="👤 "+n.trim();$("lobby-names").appendChild(d);}}
+function joinGame(){
+  const name=$("j-name").value.trim()||"Player";
+  const g=decGame($("j-code").value);
+  if(!g){$("j-err").textContent="That code doesn't look right — check it and try again.";return;}
+  $("j-err").textContent="";
+  G.name=name;G.game=g;G.code=$("j-code").value.toUpperCase();
+  beginCountdown();
+}
+function startCountdown(){beginCountdown();}
+function beginCountdown(){
+  const g=G.game;
+  $("count-info").innerHTML="Zone: <b>"+g.radius+" m</b> · shrinks every <b>"+g.shrinkMin+" min</b><br>Round: <b>"+g.roundMin+" min</b> · head start <b>"+g.headMin+" min</b><br>Role: <b>"+G.role.toUpperCase()+"</b>";
+  go("s-count");
+  let n=10;$("count-num").textContent=n;
+  const iv=setInterval(()=>{n--;if(n<=0){clearInterval(iv);startGame();}else{$("count-num").textContent=n;tone(660,0.1,0.2);}},1000);
+  aeResume();
+}
+
+/* ---- game ---- */
+function zoneRadiusAt(elapsedMs){
+  const g=G.game,steps=Math.floor(elapsedMs/(g.shrinkMin*60000));
+  return Math.max(30,g.radius*Math.pow(0.7,steps));
+}
+async function startGame(){
+  G.t0=Date.now();G.tagged=false;
+  AE.gameId=gameIdFrom(G.code||"OUTRUN");
+  const rb=$("g-role");
+  applyRole();
+  go("s-game");
+  try{await aeResume();await aeStartMic();}catch(e){
+    alert("Microphone blocked — pings won't work, but GPS zones will. Allow mic access and reload to get pings.");}
+  aeStartLoop();
+  if(G.role==="runner"){aeStartHeartbeat();AE.onPing=showPingAlert;}
+  AE.onHeartbeat=()=>{AE._hbHeard=true;};
+  startGps();
+  G.tick=setInterval(tickGame,1000);tickGame();drawRadar();
+  try{if(navigator.wakeLock){G.wl=await navigator.wakeLock.request("screen");}}catch(e){}
+  vibrate(200);
+}
+function applyRole(){
+  const hunter=G.role==="hunter",rb=$("g-role");
+  rb.textContent=hunter?"🔦 HUNTER":"🏃 RUNNER";
+  rb.className="rolebadge "+(hunter?"role-hunter":"role-runner");
+  $("g-title").textContent=hunter?"Find them. Ping when close.":"Stay hidden.";
+  $("g-hunter-ui").style.display=hunter?"block":"none";
+  $("g-runner-ui").style.display=hunter?"none":"block";
+}
+function startGps(){
+  if(!navigator.geolocation)return;
+  try{navigator.geolocation.watchPosition(p=>{G.pos={lat:p.coords.latitude,lng:p.coords.longitude};},
+    ()=>{},{enableHighAccuracy:true,maximumAge:5000,timeout:15000});}catch(e){}
+}
+function tickGame(){
+  const el=Date.now()-G.t0,g=G.game;
+  const roundEnd=g.roundMin*60000,headEnd=g.headMin*60000;
+  $("g-round").textContent=fmtT(roundEnd-el);
+  const r=zoneRadiusAt(el);
+  $("g-zone").textContent=Math.round(r)+" m";
+  const nextShrink=(Math.floor(el/(g.shrinkMin*60000))+1)*g.shrinkMin*60000;
+  $("g-shrink").textContent=fmtT(nextShrink-el);
+  // ping cooldown
+  const b=$("btn-ping");
+  if(G.role==="hunter"){
+    if(el<headEnd){b.disabled=true;b.textContent="🔒 Runners hiding… "+fmtT(headEnd-el);}
+    else if(Date.now()<G.pingCoolUntil){b.disabled=true;b.textContent="⏳ "+fmtT(G.pingCoolUntil-Date.now());}
+    else{b.disabled=false;b.textContent="📡 PING";}
+  }
+  // zone status
+  const io=$("g-inout");
+  if(G.pos){const d=haversine(G.pos.lat,G.pos.lng,g.lat,g.lng);
+    if(d<=r){io.textContent="IN ✅";io.className="v zone-ok";}
+    else{io.textContent="OUT! ⚠️";io.className="v zone-bad";}}
+  else{io.textContent="no GPS";io.className="v";}
+  drawRadar();
+  if(el>=roundEnd)endGame("time");
+}
+function drawRadar(){
+  const c=$("radar");if(!c)return;const x=c.getContext("2d"),W=300,C=150;
+  x.clearRect(0,0,W,W);
+  const g=G.game,el=Date.now()-(G.t0||Date.now()),r=zoneRadiusAt(el);
+  const scale=(C-14)/r;
+  // zone circle
+  x.beginPath();x.arc(C,C,Math.min(C-14,r*scale),0,7);x.strokeStyle="#a3e635";x.lineWidth=3;x.stroke();
+  x.fillStyle="rgba(163,230,53,.07)";x.fill();
+  // center
+  x.fillStyle="#8b96b8";x.beginPath();x.arc(C,C,4,0,7);x.fill();
+  // player dot
+  if(G.pos){
+    const dx=haversine(g.lat,g.lng,g.lat,G.pos.lng)*(G.pos.lng>=g.lng?1:-1);
+    const dy=haversine(g.lat,G.pos.lng,G.pos.lat,G.pos.lng)*(G.pos.lat>=g.lat?-1:1);
+    let px=C+dx*scale,py=C+dy*scale;
+    const m=Math.hypot(px-C,py-C),max=C-8;
+    if(m>max){px=C+(px-C)/m*max;py=C+(py-C)/m*max;}
+    const d=haversine(G.pos.lat,G.pos.lng,g.lat,g.lng);
+    x.fillStyle=d<=r?"#a3e635":"#fb7185";
+    x.beginPath();x.arc(px,py,9,0,7);x.fill();
+    x.strokeStyle="#0b0f1a";x.lineWidth=3;x.stroke();
+  }else{x.fillStyle="#8b96b8";x.font="13px system-ui";x.textAlign="center";x.fillText("waiting for GPS…",C,C+4);}
+}
+/* ---- hunter ping ---- */
+function hunterPing(){
+  const b=$("btn-ping");if(b.disabled)return;
+  b.disabled=true;AE._hbHeard=false;
+  $("ping-status").innerHTML="👂 Listening for runners… <b class='cool'>8s</b>";
+  let s=8;const cd=setInterval(()=>{s--;$("ping-status").innerHTML="👂 Listening for runners… <b class='cool'>"+s+"s</b>";},1000);
+  setTimeout(()=>{
+    clearInterval(cd);
+    if(AE._hbHeard){
+      txPing();vibrate([100,50,100]);
+      $("ping-status").innerHTML="📡 <b style='color:var(--lime)'>PING SENT!</b> Runners in earshot just got the alert.";
+      b.disabled=false;b.textContent="📡 PING";
+    }else{
+      G.pingCoolUntil=Date.now()+180000;
+      $("ping-status").innerHTML="😅 <b>sry you're not close to anyone, try again later</b><br>Listen for the next heartbeat…";
+      tickGame();
+    }
+  },8000);
+}
+/* ---- runner ---- */
+function showPingAlert(){$("pingalert").classList.add("on");alarm();vibrate([200,100,200,100,300]);}
+function dismissPing(){$("pingalert").classList.remove("on");}
+function gotTagged(){if(confirm("Tagged? No shame — the hunters just got lucky.")){G.tagged=true;aeStopHeartbeat();go("s-tagged");}}
+function becomeHunter(){G.role="hunter";applyRole();go("s-game");tickGame();}
+function endGame(why){
+  clearInterval(G.tick);aeStopLoop();aeStopHeartbeat();
+  $("end-title").textContent=why==="time"?"⏰ Time!":"🏁 Game over!";
+  $("end-sub").textContent=G.role==="hunter"?"Hunters: count your tags. Runners: take the win lap.":"If you're still hidden — legendary.";
+  go("s-end");
+}
+/* ---- misc ---- */
+document.addEventListener("visibilitychange",()=>{if(document.hidden)aeStopLoop();else if(G.t0&&!$("s-end").classList.contains("on")&&!$("s-tagged").classList.contains("on"))aeStartLoop();});
+if("serviceWorker"in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
+</script>
+</body>
+</html>
