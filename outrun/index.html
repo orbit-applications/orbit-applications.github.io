@@ -91,7 +91,7 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
     and pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear them.
   </div>
   <p class="small">Tip: open this page on wifi first so it saves offline. Do the lobby before you head out.</p>
-  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v7</p>
+  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v8</p>
 </div>
 
 <!-- ============ HOST SETUP ============ -->
@@ -188,10 +188,10 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   </div>
   <div id="g-hunter-ui" style="display:none;">
     <button class="btn red big" id="btn-ping" onclick="hunterPing()">📡 PING</button>
-    <p class="small" id="ping-status" style="text-align:center;">Tap PING when you think runners are close.<br>If none are in earshot, you'll wait 3 min.</p>
+    <p class="small" id="ping-status" style="text-align:center;">Tap PING when you think runners are close.<br>🔊 <b>Volume to MAX</b> — pings are silent ultrasound.<br>If none are in earshot, you'll wait 3 min.</p>
   </div>
   <div id="g-runner-ui">
-    <p class="small" style="text-align:center;">🎤 Listening for hunter pings…<br>keep this page open.</p>
+    <p class="small" style="text-align:center;">🎤 Listening for hunter pings…<br>🔊 <b>Volume to MAX</b>, keep this page open.</p>
     <button class="btn ghost" onclick="gotTagged()">😵 I got tagged</button>
   </div>
   <div id="g-host-end" style="display:none;"><button class="btn ghost" onclick="hostEnd()">🏁 End game for everyone</button></div>
@@ -480,8 +480,8 @@ function tone(freq,dur,vol,when){
   g.gain.linearRampToValueAtTime(0.0001,t0+dur);
   o.connect(g);g.connect(AE.ctx.destination);o.start(t0);o.stop(t0+dur+0.05);
 }
-function txHeartbeat(){tone(AE.F_HB,0.12,0.10);tone(AE.F_HB,0.12,0.10,0.22);}
-function txPing(){for(let i=0;i<8;i++){const bit=(AE.gameId>>(7-i))&1;tone(bit?AE.F1:AE.F0,0.18,0.5,i*0.22);}vibrate(100);}
+function txHeartbeat(){tone(AE.F_HB,0.14,0.35);tone(AE.F_HB,0.14,0.35,0.24);}
+function txPing(){for(let rep=0;rep<2;rep++)for(let i=0;i<8;i++){const bit=(AE.gameId>>(7-i))&1;tone(bit?AE.F1:AE.F0,0.2,1.0,rep*2.0+i*0.24);}vibrate(100);}
 function alarm(){for(let i=0;i<3;i++)tone(880,0.14,0.25,i*0.22);}
 function outBeep(){tone(520,0.22,0.3);setTimeout(()=>tone(520,0.22,0.3),320);vibrate([150,100,150]);}
 async function aeStartMic(){
@@ -529,7 +529,7 @@ function finishBurst(){
 }
 function aeStartLoop(){aeStopLoop();AE.rxTimer=setInterval(aeTick,60);}
 function aeStopLoop(){if(AE.rxTimer){clearInterval(AE.rxTimer);AE.rxTimer=null;}}
-function aeStartHeartbeat(){aeStopHeartbeat();txHeartbeat();AE.hbTimer=setInterval(txHeartbeat,25000);}
+function aeStartHeartbeat(){aeStopHeartbeat();txHeartbeat();AE.hbTimer=setInterval(txHeartbeat,5000);}
 function aeStopHeartbeat(){if(AE.hbTimer){clearInterval(AE.hbTimer);AE.hbTimer=null;}}
 
 /* ================= GAME ================= */
@@ -682,8 +682,8 @@ function drawRadar(){
 function hunterPing(){
   const b=$("btn-ping");if(b.disabled)return;
   b.disabled=true;AE._hbHeard=false;
-  $("ping-status").innerHTML="👂 Listening for runners… <b class='cool'>8s</b>";
-  let s=8;const cd=setInterval(()=>{s--;$("ping-status").innerHTML="👂 Listening for runners… <b class='cool'>"+s+"s</b>";},1000);
+  $("ping-status").innerHTML="👂 Listening for runners… <b class='cool'>6s</b>";
+  let s=6;const cd=setInterval(()=>{s--;$("ping-status").innerHTML="👂 Listening for runners… <b class='cool'>"+s+"s</b>";},1000);
   setTimeout(()=>{
     clearInterval(cd);
     if(AE._hbHeard){
@@ -692,10 +692,10 @@ function hunterPing(){
       b.disabled=false;b.textContent="📡 PING";
     }else{
       G.pingCoolUntil=Date.now()+effT().pingCool;
-      $("ping-status").innerHTML="😅 <b>sry you're not close to anyone, try again later</b><br>Listen for the next heartbeat…";
+      $("ping-status").innerHTML="😅 <b>sry you're not close to anyone, try again later</b><br>Get closer, volume to MAX, and try again.";
       tickGame();
     }
-  },8000);
+  },6000);
 }
 function showPingAlert(){$("pingalert").classList.add("on");alarm();vibrate([200,100,200,100,300]);}
 function dismissPing(){$("pingalert").classList.remove("on");}
