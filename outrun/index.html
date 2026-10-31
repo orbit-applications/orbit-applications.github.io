@@ -91,7 +91,8 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
     and pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear them.
   </div>
   <p class="small">Tip: open this page on wifi first so it saves offline. Do the lobby before you head out.</p>
-  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v8</p>
+  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v9</p>
+  <p class="small" style="text-align:center;opacity:.55;" id="bt-check"></p>
 </div>
 
 <!-- ============ HOST SETUP ============ -->
@@ -730,6 +731,7 @@ function endGame(why){
 }
 document.addEventListener("visibilitychange",()=>{if(document.hidden)aeStopLoop();else if(G.t0&&!G.ended)aeStartLoop();});
 if("serviceWorker"in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
+try{document.getElementById("bt-check").textContent="📡 Bluetooth in this browser: "+(navigator.bluetooth?"available ✅":"NOT available ❌ — Apple blocks it on iPhones");}catch(e){}
 </script>
 </body>
 </html>

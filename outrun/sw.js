@@ -1,5 +1,5 @@
 /* OUTRUN service worker — cache-first so the game works fully offline */
-const CACHE = "outrun-v8";
+const CACHE = "outrun-v9";
 const ASSETS = ["./", "./index.html"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
