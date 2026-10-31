@@ -47,7 +47,7 @@ label{display:block;font-size:13px;color:var(--dim);margin:14px 0 6px;text-trans
 input[type=text],input[type=number],select{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);
   background:var(--card2);color:var(--txt);font-size:17px;}
 input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
-.codebox{font-family:ui-monospace,monospace;font-size:30px;font-weight:800;letter-spacing:3px;text-align:center;
+.codebox{font-family:ui-monospace,monospace;font-size:44px;font-weight:800;letter-spacing:8px;text-align:center;
   background:var(--card2);border:2px dashed var(--lime);border-radius:16px;padding:18px 8px;margin:14px 0;color:var(--lime);
   user-select:all;}
 .hud{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;}
@@ -67,9 +67,14 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
 .cool{font-variant-numeric:tabular-nums;}
 .small{font-size:13px;color:var(--dim);}
 #map{height:260px;border-radius:16px;border:1px solid var(--line);margin-top:8px;}
-.tick{font-size:13px;color:var(--dim);margin-top:10px;text-align:center;}
-.bar{height:10px;background:var(--card2);border-radius:99px;overflow:hidden;margin-top:8px;}
-.bar>i{display:block;height:100%;background:var(--lime);border-radius:99px;transition:width .5s;}
+.netpill{display:inline-block;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:6px;}
+.net-on{background:rgba(163,230,53,.15);color:var(--lime);border:1px solid var(--lime);}
+.net-off{background:rgba(251,113,133,.15);color:var(--red);border:1px solid var(--red);}
+.prow{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:16px;}
+.prow:last-child{border-bottom:0;}
+.ptag{font-size:11px;font-weight:800;padding:2px 8px;border-radius:99px;background:var(--card2);color:var(--dim);}
+.ptag.hunt{background:var(--red);color:#1a0508;}
+.ptag.dead{opacity:.55;text-decoration:line-through;}
 </style>
 </head>
 <body>
@@ -77,105 +82,91 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
 <!-- ============ HOME ============ -->
 <div class="screen on" id="s-home">
   <div class="logo">OUTRUN</div>
-  <div class="tag">Real hide &amp; seek. No cell service needed.<br>Hunters hunt. Runners run. Phone does the rest.</div>
+  <div class="tag">Real hide &amp; seek. Hunters hunt. Runners run.<br>Phone does the rest.</div>
   <button class="btn" onclick="go('s-host')">🎯 Host a game</button>
   <button class="btn ghost" onclick="go('s-join')">🔑 Join with code</button>
   <div class="card small">
-    📡 <b>How it works offline:</b> your phone's GPS tracks the shrinking zone with zero bars.
-    Pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear the ping.
-    No accounts, no servers, no service needed after this page loads.
+    📡 <b>How it works:</b> join the lobby on wifi/data — then the game itself runs
+    <b>fully offline</b>. Your phone's GPS tracks the shrinking zone with zero bars,
+    and pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear them.
   </div>
-  <p class="small">Tip: open this page on wifi first so it saves offline. Then it works anywhere.</p>
+  <p class="small">Tip: open this page on wifi first so it saves offline. Do the lobby before you head out.</p>
 </div>
 
 <!-- ============ HOST SETUP ============ -->
 <div class="screen" id="s-host">
   <h2>🎯 Host setup</h2>
+  <div><span class="netpill net-on" id="h-net">● checking connection…</span></div>
   <label>Your name</label>
   <input type="text" id="h-name" placeholder="e.g. Nash" maxlength="16">
   <label>Zone center — tap the map, or use your location</label>
-  <div class="row">
-    <button class="btn ghost" onclick="useMyLoc()">📍 Use my location</button>
-  </div>
+  <div class="row"><button class="btn ghost" onclick="useMyLoc()">📍 Use my location</button></div>
   <div id="map"></div>
   <p class="small" id="zone-label">No zone set yet.</p>
   <label>Zone radius: <span id="r-val">350</span> m</label>
   <input type="range" id="h-radius" min="100" max="1000" step="25" value="350" oninput="document.getElementById('r-val').textContent=this.value">
   <label>Zone shrinks every</label>
   <select id="h-shrink"><option value="5">5 min</option><option value="10" selected>10 min</option><option value="15">15 min</option></select>
-  <label>Head start for runners</label>
-  <select id="h-head"><option value="5">5 min</option><option value="10" selected>10 min</option><option value="15">15 min</option></select>
+  <label>Hide time for runners</label>
+  <select id="h-head"><option value="5" selected>5 min</option><option value="10">10 min</option><option value="15">15 min</option></select>
   <label>Round length</label>
   <select id="h-round"><option value="20">20 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">60 min</option></select>
-  <button class="btn" onclick="createGame()">Create game →</button>
+  <button class="btn" id="btn-create" onclick="createGame()">Create game →</button>
   <button class="btn ghost" onclick="go('s-home')">← Back</button>
 </div>
 
-<!-- ============ LOBBY / SHARE ============ -->
+<!-- ============ LOBBY (host + guests) ============ -->
 <div class="screen" id="s-lobby">
-  <h2>📤 Share this code</h2>
-  <p>Read it out, text it, or have friends type it at <b>join</b>. It contains the whole game setup — no internet needed.</p>
-  <div class="codebox" id="lobby-code">····</div>
+  <div><span class="netpill net-on" id="l-net">● connected</span></div>
+  <h2 id="lobby-title">📤 Lobby</h2>
+  <p id="lobby-sub">Read the code out — friends join on their phones and appear below, live.</p>
+  <div class="codebox" id="lobby-code">······</div>
   <button class="btn ghost" onclick="copyCode()">📋 Copy code</button>
-  <div class="card">
-    <b>Before you start:</b><br>
-    1. Everyone opens this page (on wifi once, then it works offline)<br>
-    2. Everyone joins with the code above<br>
-    3. Everyone taps <b>I'm ready</b>, then host taps <b>START</b> — countdown syncs all phones
-  </div>
-  <label>Players in (tap when everyone is ready)</label>
-  <div class="card"><div id="lobby-names"><span class="small">Just you so far…</span></div></div>
-  <button class="btn ghost" onclick="addName()">＋ Add player name</button>
-  <button class="btn blue" onclick="pickHunter()">🎲 Pick the hunter</button>
+  <div class="card"><div id="lobby-names"><span class="small">Waiting for players…</span></div></div>
   <div class="card" id="hunter-reveal" style="display:none;text-align:center;">
     <div style="font-size:15px;color:var(--dim)">The hunter is…</div>
-    <div style="font-size:36px;font-weight:900;color:var(--red);margin:6px 0;" id="hunter-name">?</div>
-    <div class="small">Everyone taps their own role below 👇</div>
+    <div style="font-size:36px;font-weight:900;margin:6px 0;" id="hunter-name">?</div>
+    <div class="small" id="hunter-sub"></div>
   </div>
-  <label>Your role (tap your own)</label>
-  <div class="row">
-    <button class="btn blue" onclick="setRole('runner',this)">🏃 Runner</button>
-    <button class="btn red off" onclick="setRole('hunter',this)">🔦 Hunter</button>
+  <div id="lobby-host-ctl">
+    <button class="btn blue" id="btn-pick" onclick="pickHunter()">🎲 Pick the hunter</button>
+    <button class="btn big" id="btn-start" onclick="startCountdown()" disabled>🏁 START NOW</button>
+    <div class="row">
+      <input type="time" id="sched-time" style="flex:1;">
+      <button class="btn ghost" style="flex:1;" onclick="scheduleStart()">⏰ Schedule start</button>
+    </div>
+    <p class="small">No service at the park? Do the lobby on wifi, schedule the start time — every phone begins together even with zero bars.</p>
   </div>
-  <button class="btn big" onclick="startCountdown()">🏁 START GAME</button>
-  <button class="btn ghost" onclick="go('s-home')">← Back</button>
-</div>
-
-<!-- ============ READY (joiner) ============ -->
-<div class="screen" id="s-ready">
-  <h2>You're in! 🎉</h2>
-  <p>Wait for the host to pick the hunter,<br>then tap your role:</p>
-  <div class="row">
-    <button class="btn blue" onclick="setRole('runner',this)">🏃 I'm a runner</button>
-    <button class="btn red off" onclick="setRole('hunter',this)">🔦 I'm the hunter</button>
+  <div id="lobby-guest-note" style="display:none;">
+    <p style="text-align:center;">✋ Hang tight — the host picks the hunter and starts the game.<br>You'll see it here the second it happens.</p>
   </div>
-  <button class="btn big" onclick="beginCountdown()">I'm ready →</button>
-  <button class="btn ghost" onclick="go('s-home')">← Back</button>
+  <button class="btn ghost" onclick="leaveLobby()">← Leave</button>
 </div>
 
 <!-- ============ JOIN ============ -->
 <div class="screen" id="s-join">
   <h2>🔑 Join a game</h2>
+  <div><span class="netpill net-on" id="j-net">● checking connection…</span></div>
   <label>Your name</label>
   <input type="text" id="j-name" placeholder="e.g. Cole" maxlength="16">
-  <label>Game code (from the host)</label>
-  <input type="text" id="j-code" placeholder="XXXX-XXXX-XXXX-XX" autocapitalize="characters" spellcheck="false">
+  <label>Game code (6 letters, from the host)</label>
+  <input type="text" id="j-code" placeholder="ABCDEF" maxlength="6" autocapitalize="characters" spellcheck="false" style="text-transform:uppercase;letter-spacing:4px;text-align:center;font-size:26px;font-weight:800;">
   <p class="small" id="j-err" style="color:var(--red)"></p>
-  <button class="btn" onclick="joinGame()">Join →</button>
+  <button class="btn" id="btn-join" onclick="joinGame()">Join →</button>
   <button class="btn ghost" onclick="go('s-home')">← Back</button>
 </div>
 
 <!-- ============ COUNTDOWN ============ -->
 <div class="screen" id="s-count">
   <h2 style="text-align:center;margin-top:60px;">Get ready…</h2>
-  <div style="font-size:90px;font-weight:900;text-align:center;" id="count-num" class="cool">10</div>
-  <p style="text-align:center;">All phones start together.<br>Runners: hide when the clock hits zero.</p>
+  <div style="font-size:90px;font-weight:900;text-align:center;" id="count-num" class="cool">–</div>
+  <p style="text-align:center;" id="count-role"></p>
   <div class="card small" id="count-info"></div>
 </div>
 
 <!-- ============ GAME ============ -->
 <div class="screen" id="s-game">
-  <div><span class="rolebadge" id="g-role">🏃 RUNNER</span></div>
+  <div><span class="rolebadge" id="g-role">🏃 RUNNER</span> <span class="netpill net-on" id="g-net" style="margin-left:6px;">● live</span></div>
   <h2 id="g-title" style="margin-top:2px;">Stay hidden.</h2>
   <canvas id="radar" width="300" height="300"></canvas>
   <div class="hud">
@@ -183,6 +174,9 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
     <div class="cell"><div class="k">Next shrink</div><div class="v cool" id="g-shrink">—</div></div>
     <div class="cell"><div class="k">Round ends</div><div class="v cool" id="g-round">—</div></div>
     <div class="cell"><div class="k">You are</div><div class="v" id="g-inout">…</div></div>
+  </div>
+  <div class="card" id="g-hunters-card" style="display:none;text-align:center;">
+    🎯 Runners still hiding: <b id="g-left" style="font-size:24px;">–</b>
   </div>
   <div id="g-hunter-ui" style="display:none;">
     <button class="btn red big" id="btn-ping" onclick="hunterPing()">📡 PING</button>
@@ -192,15 +186,14 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
     <p class="small" style="text-align:center;">🎤 Listening for hunter pings…<br>keep this page open.</p>
     <button class="btn ghost" onclick="gotTagged()">😵 I got tagged</button>
   </div>
-  <button class="btn ghost" onclick="endGame()">🏁 End game</button>
+  <div id="g-host-end" style="display:none;"><button class="btn ghost" onclick="hostEnd()">🏁 End game for everyone</button></div>
 </div>
 
 <!-- ============ TAGGED ============ -->
 <div class="screen" id="s-tagged">
   <h1 style="text-align:center;margin-top:70px;">😵</h1>
   <h2 style="text-align:center;">You're tagged!</h2>
-  <p style="text-align:center;">Head to home base.<br>No hard feelings — go help hunt.</p>
-  <button class="btn red" onclick="becomeHunter()">🔦 Join the hunters</button>
+  <p style="text-align:center;">Head to home base.<br>The hunters can see you're out.</p>
   <button class="btn ghost" onclick="go('s-game')">← Spectate</button>
 </div>
 
@@ -218,137 +211,152 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   <button class="btn" style="max-width:280px;" onclick="dismissPing()">Got it — running!</button>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script>
 "use strict";
+/* ================= CONFIG (filled at deploy) ================= */
+const firebaseConfig = {"apiKey":"AIzaSyCJVk51ciR_eI58pMogkB9UvhWFd8W8xAI","authDomain":"outrun-962b8.firebaseapp.com","databaseURL":"https://outrun-962b8-default-rtdb.firebaseio.com","projectId":"outrun-962b8","storageBucket":"outrun-962b8.firebasestorage.app","messagingSenderId":"902866996128","appId":"1:902866996128:web:e551a802d3b0f87584f2c5"};
 /* ================= UTIL ================= */
 const $=id=>document.getElementById(id);
+const ABC="ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0);}
 function vibrate(p){try{if(navigator.vibrate)navigator.vibrate(p);}catch(e){}}
 function fmtT(ms){if(ms<0)ms=0;const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
 function haversine(a,b,c,d){const R=6371000,t=Math.PI/180;const dLa=(c-a)*t,dLo=(d-b)*t;
   const h=Math.sin(dLa/2)**2+Math.cos(a*t)*Math.cos(c*t)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function genCode(){let s="";for(let i=0;i<6;i++)s+=ABC[Math.floor(Math.random()*ABC.length)];return s;}
+function setPill(id,on){const e=$(id);if(!e)return;e.className="netpill "+(on?"net-on":"net-off");e.textContent=on?"● connected":"● offline";}
 
-/* ================= GAME CODE CODEC =================
-   65 data bits + 5 checksum bits = 70 bits -> 14 Crockford-base32 chars
-   MSB->LSB: lat(20) lng(21) radiusM(10) shrinkMin-1(4) roundMin-5(6) headMin(4) chk(5) */
-const ABC="ABCDEFGHJKMNPQRSTUVWXYZ23456789";
-function encGame(g){
-  let bits=0n;
-  const put=(v,b)=>{bits=(bits<<BigInt(b))|BigInt(v);};
-  put(Math.round((g.lat+90)/180*(2**20-1)),20);
-  put(Math.round((g.lng+180)/360*(2**21-1)),21);
-  put(Math.min(1023,Math.max(1,Math.round(g.radius))),10);
-  put(Math.min(16,Math.max(1,g.shrinkMin))-1,4);
-  put(Math.min(68,Math.max(5,g.roundMin))-5,6);
-  put(Math.min(15,Math.max(0,g.headMin)),4);
-  let chk=0;for(let i=0;i<65;i+=5)chk^=Number((bits>>BigInt(i))&31n);
-  bits=(bits<<5n)|BigInt(chk);
-  let s="";for(let i=0;i<14;i++)s+=ABC[Number((bits>>BigInt((13-i)*5))&31n)];
-  return s.slice(0,4)+"-"+s.slice(4,8)+"-"+s.slice(8,12)+"-"+s.slice(12,14);
+/* ================= FIREBASE LOBBY ================= */
+const FB={db:null,code:null,pid:null,ref:null,isHost:false,net:null};
+const G={name:"",role:"runner",game:null,t0:0,tagged:false,pos:null,pingCoolUntil:0,
+  map:null,marker:null,circle:null,zoneLL:null,counting:false,lastBeep:0};
+async function fbInit(){
+  if(FB.db)return;
+  if(!firebaseConfig||!firebaseConfig.apiKey)throw new Error("no-config");
+  firebase.initializeApp(firebaseConfig);
+  await firebase.auth().signInAnonymously();
+  FB.db=firebase.database();
+  FB.db.ref(".info/connected").on("value",s=>{
+    FB.net=s.val()===true;
+    ["h-net","j-net","l-net"].forEach(id=>setPill(id,FB.net));
+    const g=$("g-net");if(g){g.className="netpill "+(FB.net?"net-on":"net-off");g.style.marginLeft="6px";g.textContent=FB.net?"● live":"● offline — game still runs";}
+  });
 }
-function decGame(code){
-  const s=code.toUpperCase().replace(/[^A-Z2-9]/g,"");
-  if(s.length!==14)return null;
-  let bits=0n;for(const ch of s){const i=ABC.indexOf(ch);if(i<0)return null;bits=(bits<<5n)|BigInt(i);}
-  const chkGot=Number(bits&31n);bits=bits>>5n;
-  let chk=0;for(let i=0;i<65;i+=5)chk^=Number((bits>>BigInt(i))&31n);
-  if(chk!==chkGot)return null;
-  const get=b=>{const v=Number(bits&((1n<<BigInt(b))-1n));bits=bits>>BigInt(b);return v;};
-  const headMin=get(4),roundMin=get(6)+5,shrinkMin=get(4)+1,radius=get(10),
-        lng=get(21)/(2**21-1)*360-180,lat=get(20)/(2**20-1)*180-90;
-  if(Math.abs(lat)>90||Math.abs(lng)>180)return null;
-  return {lat,lng,radius,shrinkMin,roundMin,headMin};
+function gameRef(){return FB.db.ref("outrun/games/"+FB.code);}
+async function createGame(){
+  const name=$("h-name").value.trim()||"Player 1";
+  if(!G.zoneLL){alert("Set the zone first — tap the map or use your location.");return;}
+  if(!FB.net){alert("You need internet to host — connect to wifi and try again.");return;}
+  $("btn-create").disabled=true;
+  try{
+    await fbInit();
+    const code=genCode();
+    FB.code=code;FB.isHost=true;FB.pid="p_"+Math.random().toString(36).slice(2,10);
+    G.name=name;
+    G.game={lat:G.zoneLL.lat,lng:G.zoneLL.lng,radius:+$("h-radius").value,
+      shrinkMin:+$("h-shrink").value,roundMin:+$("h-round").value,headMin:+$("h-head").value,hostName:name};
+    await gameRef().set({settings:G.game,state:"lobby",hunterId:null,startsAt:0,createdAt:Date.now(),
+      players:{[FB.pid]:{name:name,tagged:false,joinedAt:Date.now()}}});
+    gameRef().child("players/"+FB.pid).onDisconnect().remove();
+    enterLobby();
+  }catch(e){alert("Couldn't reach the game server. Check your connection and try again.");}
+  $("btn-create").disabled=false;
 }
-
-/* ================= ULTRASONIC ENGINE =================
-   Hunters must be CLOSE: pings travel as ultrasound (~18-20 kHz),
-   which phone speakers/mics carry ~10-30 m. Works on iPhone + Android,
-   fully offline. Game ID encoded in each ping so nearby groups don't clash. */
-const AE={ctx:null,analyser:null,freqData:null,rxTimer:null,hbTimer:null,
-  F_HB:18300,F0:18800,F1:19600,gameId:0,onPing:null,onHeartbeat:null,
-  rx:{mode:'idle',samples:[],quiet:0,consec:0}};
-function aeInit(){if(AE.ctx)return;const C=window.AudioContext||window.webkitAudioContext;if(!C)return;AE.ctx=new C({sampleRate:48000});}
-async function aeResume(){aeInit();if(AE.ctx&&AE.ctx.state==="suspended"){try{await AE.ctx.resume();}catch(e){}}}
-function tone(freq,dur,vol,when){
-  if(!AE.ctx)return;when=when||0;
-  const t0=AE.ctx.currentTime+when,o=AE.ctx.createOscillator(),g=AE.ctx.createGain();
-  o.type="sine";o.frequency.value=freq;
-  g.gain.setValueAtTime(0.0001,t0);
-  g.gain.linearRampToValueAtTime(vol,t0+0.02);
-  g.gain.setValueAtTime(vol,Math.max(t0+0.02,t0+dur-0.02));
-  g.gain.linearRampToValueAtTime(0.0001,t0+dur);
-  o.connect(g);g.connect(AE.ctx.destination);o.start(t0);o.stop(t0+dur+0.05);
+async function joinGame(){
+  const name=$("j-name").value.trim()||"Player";
+  const code=$("j-code").value.toUpperCase().replace(/[^A-Z2-9]/g,"");
+  if(code.length!==6){$("j-err").textContent="Codes are 6 letters — check it and try again.";return;}
+  $("j-err").textContent="";$("btn-join").disabled=true;$("btn-join").textContent="Joining…";
+  try{
+    await fbInit();
+    if(!FB.net)throw new Error("offline");
+    const snap=await FB.db.ref("outrun/games/"+code).once("value");
+    const g=snap.val();
+    if(!g){$("j-err").textContent="No game with that code. Check it with the host.";return;}
+    if(g.state!=="lobby"){$("j-err").textContent="That game already started — ask the host for a new one.";return;}
+    FB.code=code;FB.isHost=false;FB.pid="p_"+Math.random().toString(36).slice(2,10);
+    G.name=name;G.game=g.settings;
+    await gameRef().child("players/"+FB.pid).set({name:name,tagged:false,joinedAt:Date.now()});
+    gameRef().child("players/"+FB.pid).onDisconnect().remove();
+    enterLobby();
+  }catch(e){$("j-err").textContent="Couldn't reach the game server. Check your connection and try again.";}
+  finally{$("btn-join").disabled=false;$("btn-join").textContent="Join →";}
 }
-function txHeartbeat(){tone(AE.F_HB,0.12,0.10);tone(AE.F_HB,0.12,0.10,0.22);}
-function txPing(){for(let i=0;i<8;i++){const bit=(AE.gameId>>(7-i))&1;tone(bit?AE.F1:AE.F0,0.18,0.5,i*0.22);}vibrate(100);}
-function alarm(){for(let i=0;i<3;i++)tone(880,0.14,0.25,i*0.22);}
-async function aeStartMic(){
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error("no-mic");
-  const stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
-  const src=AE.ctx.createMediaStreamSource(stream);
-  AE.analyser=AE.ctx.createAnalyser();AE.analyser.fftSize=8192;AE.analyser.smoothingTimeConstant=0.25;
-  src.connect(AE.analyser);AE.freqData=new Float32Array(AE.analyser.frequencyBinCount);
+function enterLobby(){
+  $("lobby-code").textContent=FB.code;
+  $("lobby-title").textContent=FB.isHost?"📤 Lobby (you're hosting)":"📤 Lobby";
+  $("lobby-sub").textContent=FB.isHost?"Read the code out — friends join on their phones and appear below, live.":"You're in! Hang tight for the hunter pick and start.";
+  $("lobby-host-ctl").style.display=FB.isHost?"block":"none";
+  $("lobby-guest-note").style.display=FB.isHost?"none":"block";
+  $("hunter-reveal").style.display="none";
+  $("btn-start").disabled=true;
+  go("s-lobby");
+  FB.ref=gameRef();
+  FB.ref.on("value",snap=>onGameUpdate(snap.val()));
 }
-function binOf(f){return Math.round(f/(AE.ctx.sampleRate/AE.analyser.fftSize));}
-function toneEnergy(f){
-  AE.analyser.getFloatFrequencyData(AE.freqData);
-  const b=binOf(f);let sig=-120;
-  for(let i=Math.max(0,b-2);i<=Math.min(AE.freqData.length-1,b+2);i++)sig=Math.max(sig,AE.freqData[i]);
-  let nz=0,n=0;
-  for(let i=Math.max(0,b-50);i<=Math.min(AE.freqData.length-1,b+50);i++){if(Math.abs(i-b)<8)continue;nz+=AE.freqData[i];n++;}
-  return sig-(nz/Math.max(1,n));
-}
-let _hbBlips=[],_hbOn=false;
-function aeTick(){
-  if(!AE.analyser)return;
-  const e0=toneEnergy(AE.F0),e1=toneEnergy(AE.F1),eH=toneEnergy(AE.F_HB),t=performance.now();
-  // heartbeat: two blips close together
-  if(eH>9){if(!_hbOn){_hbOn=true;_hbBlips.push(t);}}else _hbOn=false;
-  _hbBlips=_hbBlips.filter(x=>t-x<900);
-  if(_hbBlips.length>=2){const dt=_hbBlips[_hbBlips.length-1]-_hbBlips[0];
-    if(dt>120&&dt<700){_hbBlips=[];if(AE.onHeartbeat)AE.onHeartbeat();}}
-  // ping burst decode
-  const r=AE.rx,active=Math.max(e0,e1)>9,bit=e1>e0?1:0;
-  if(r.mode==="idle"){
-    if(active){r.consec++;if(r.consec>=2){r.mode="burst";r.samples=[];r.quiet=0;r.consec=0;}}else r.consec=0;
-  }else{
-    r.samples.push(bit);
-    if(!active){r.quiet++;if(r.quiet>=3)finishBurst();}else r.quiet=0;
-    if(r.samples.length>48)finishBurst();
+function onGameUpdate(g){
+  if(!g)return;
+  if(!G.game&&g.settings)G.game=g.settings;
+  // roster
+  const ps=g.players||{},ids=Object.keys(ps).sort((a,b)=>(ps[a].joinedAt||0)-(ps[b].joinedAt||0));
+  if(!ids.length){$("lobby-names").innerHTML='<span class="small">Waiting for players…</span>';}
+  else{$("lobby-names").innerHTML=ids.map(id=>{
+    const p=ps[id];let tag="";
+    if(g.hunterId===id)tag='<span class="ptag hunt">🔦 HUNTER</span>';
+    else if(p.tagged)tag='<span class="ptag dead">tagged</span>';
+    return '<div class="prow"><span>👤</span><span>'+escapeHtml(p.name)+'</span>'+tag+'</div>';
+  }).join("");}
+  G.net=g;
+  // hunter reveal for everyone
+  if(g.hunterId&&ps[g.hunterId]){
+    const hn=ps[g.hunterId].name,mine=g.hunterId===FB.pid;
+    G.role=mine?"hunter":"runner";
+    $("hunter-name").textContent=mine?"YOU!":hn;
+    $("hunter-name").style.color=mine?"var(--red)":"var(--txt)";
+    $("hunter-sub").textContent=mine?"Everyone is hiding from you. Good luck.":"Stay hidden. Good luck.";
+    $("hunter-reveal").style.display="block";
+    if(FB.isHost)$("btn-start").disabled=false;
   }
+  if(g.state==="countdown"&&g.startsAt&&!G.counting)beginSharedCountdown(g.startsAt);
+  if(g.state==="ended")endGame("host");
 }
-function finishBurst(){
-  const s=AE.rx.samples;AE.rx.mode="idle";AE.rx.samples=[];AE.rx.quiet=0;AE.rx.consec=0;
-  if(!s||s.length<10)return;
-  const per=Math.max(1,Math.round(s.length/8));let bits=[];
-  for(let i=0;i<8;i++){const g=s.slice(i*per,(i+1)*per);if(!g.length)break;
-    bits.push(g.filter(x=>x===1).length>=g.length/2?1:0);}
-  if(bits.length<8)return;
-  const val=bits.reduce((a,b)=>(a<<1)|b,0);
-  if(val===AE.gameId&&AE.onPing)AE.onPing();
+function copyCode(){try{navigator.clipboard.writeText(FB.code);}catch(e){}alert("Code copied: "+FB.code);}
+async function pickHunter(){
+  const ps=(G.net&&G.net.players)||{};
+  const ids=Object.keys(ps);
+  if(ids.length<2){alert("Need at least 2 players to pick a hunter!");return;}
+  const pick=ids[Math.floor(Math.random()*ids.length)];
+  $("btn-pick").disabled=true;
+  try{await gameRef().update({hunterId:pick});}catch(e){alert("Couldn't reach the server — try again.");}
+  $("btn-pick").disabled=false;
 }
-function aeStartLoop(){aeStopLoop();AE.rxTimer=setInterval(aeTick,60);}
-function aeStopLoop(){if(AE.rxTimer){clearInterval(AE.rxTimer);AE.rxTimer=null;}}
-function aeStartHeartbeat(){aeStopHeartbeat();txHeartbeat();AE.hbTimer=setInterval(txHeartbeat,25000);}
-function aeStopHeartbeat(){if(AE.hbTimer){clearInterval(AE.hbTimer);AE.hbTimer=null;}}
-
-/* ================= GAME STATE ================= */
-const G={name:"",role:"runner",game:null,t0:0,tagged:false,pos:null,pingCoolUntil:0,map:null,marker:null,circle:null,zoneLL:null};
-function setRole(r,btn){G.role=r;
-  if(btn&&btn.parentElement){const bs=btn.parentElement.querySelectorAll(".btn");
-    bs.forEach(b=>b.classList.add("off"));btn.classList.remove("off");}
-  vibrate(30);
+function startCountdown(){
+  if(!G.net||!G.net.hunterId){alert("Pick the hunter first!");return;}
+  gameRef().update({state:"countdown",startsAt:Date.now()+8000}).catch(()=>alert("Couldn't reach the server — try again."));
 }
-function pickHunter(){
-  const r=(G.roster||[]).map(n=>n.trim()).filter(Boolean);
-  if(!r.length){alert("Add the players first!");return;}
-  const pick=r[Math.floor(Math.random()*r.length)];
-  $("hunter-name").textContent=pick;
-  $("hunter-reveal").style.display="block";
-  vibrate([100,50,150]);
-  setTimeout(()=>$("hunter-reveal").scrollIntoView({behavior:"smooth",block:"center"}),100);
+function scheduleStart(){
+  const t=$("sched-time").value;
+  if(!t){alert("Pick a time first.");return;}
+  if(!G.net||!G.net.hunterId){alert("Pick the hunter first!");return;}
+  const hm=t.split(":"),d=new Date();
+  d.setHours(+hm[0],+hm[1],0,0);
+  const ts=d.getTime();
+  if(ts<Date.now()+60000){alert("Pick a time at least a minute in the future.");return;}
+  gameRef().update({state:"countdown",startsAt:ts})
+    .then(()=>alert("Start scheduled! Every phone begins together at the set time — even offline."))
+    .catch(()=>alert("Couldn't reach the server — try again."));
 }
-function gameIdFrom(code){let h=0;for(const c of code)h=(h*31+c.charCodeAt(0))&255;return h||1;}
+function leaveLobby(){
+  try{if(FB.ref)FB.ref.off();}catch(e){}
+  try{if(FB.code&&FB.pid)gameRef().child("players/"+FB.pid).remove();}catch(e){}
+  FB.code=null;FB.ref=null;G.counting=false;
+  location.reload();
+}
+async function hostEnd(){try{await gameRef().update({state:"ended"});}catch(e){}endGame("host");}
 
 /* ---- host map ---- */
 let leafletLoading=false;
@@ -373,62 +381,126 @@ function setZone(lat,lng){
   G.marker=L.marker([lat,lng]).addTo(G.map);
   G.circle=L.circle([lat,lng],{radius:r,color:"#a3e635"}).addTo(G.map);
   G.map.setView([lat,lng],14);
-  $("zone-label").textContent="Zone: "+lat.toFixed(4)+", "+lng.toFixed(4)+" · "+r+" m radius";
+  drawZoneLabel();
   $("h-radius").oninput=e=>{const v=+$("h-radius").value;$("r-val").textContent=v;
-    if(G.circle)G.circle.setRadius(v);
-    if(G.zoneLL)$("zone-label").textContent="Zone: "+G.zoneLL.lat.toFixed(4)+", "+G.zoneLL.lng.toFixed(4)+" · "+v+" m radius";};
+    if(G.circle)G.circle.setRadius(v);drawZoneLabel();};
 }
+function drawZoneLabel(){if(G.zoneLL)$("zone-label").textContent="Zone: "+G.zoneLL.lat.toFixed(4)+", "+G.zoneLL.lng.toFixed(4)+" · "+$("h-radius").value+" m radius";}
 function useMyLoc(){
   if(!navigator.geolocation){alert("No GPS on this device.");return;}
   $("zone-label").textContent="Getting your location…";
   navigator.geolocation.getCurrentPosition(p=>{ensureMap();setTimeout(()=>setZone(p.coords.latitude,p.coords.longitude),600);},
     ()=>{$("zone-label").textContent="Couldn't get location — tap the map instead.";},{enableHighAccuracy:true,timeout:10000});
 }
-function createGame(){
-  const name=$("h-name").value.trim()||"Player 1";
-  if(!G.zoneLL){alert("Set the zone first — tap the map or use your location.");return;}
-  G.name=name;
-  G.game={lat:G.zoneLL.lat,lng:G.zoneLL.lng,radius:+$("h-radius").value,
-    shrinkMin:+$("h-shrink").value,roundMin:+$("h-round").value,headMin:+$("h-head").value};
-  const code=encGame(G.game);
-  G.code=code;$("lobby-code").textContent=code;
-  G.roster=[name];
-  $("lobby-names").innerHTML="<div>🎯 "+escapeHtml(name)+" (host)</div>";
-  $("hunter-reveal").style.display="none";
-  go("s-lobby");
-}
-function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
-function copyCode(){try{navigator.clipboard.writeText(G.code.replace(/-/g,""));}catch(e){}alert("Code copied: "+G.code);}
-function addName(){const n=prompt("Player name:");if(n&&n.trim()){G.roster.push(n.trim());const d=document.createElement("div");d.textContent="👤 "+n.trim();$("lobby-names").appendChild(d);}}
-function joinGame(){
-  const name=$("j-name").value.trim()||"Player";
-  const g=decGame($("j-code").value);
-  if(!g){$("j-err").textContent="That code doesn't look right — check it and try again.";return;}
-  $("j-err").textContent="";
-  G.name=name;G.game=g;G.code=$("j-code").value.toUpperCase();
-  go("s-ready");
-}
-function startCountdown(){beginCountdown();}
-function beginCountdown(){
-  const g=G.game;
-  $("count-info").innerHTML="Zone: <b>"+g.radius+" m</b> · shrinks every <b>"+g.shrinkMin+" min</b><br>Round: <b>"+g.roundMin+" min</b> · head start <b>"+g.headMin+" min</b><br>Role: <b>"+G.role.toUpperCase()+"</b>";
-  go("s-count");
-  let n=10;$("count-num").textContent=n;
-  const iv=setInterval(()=>{n--;if(n<=0){clearInterval(iv);startGame();}else{$("count-num").textContent=n;tone(660,0.1,0.2);}},1000);
-  aeResume();
-}
+/* auto-init map + connection pill when host screen opens */
+new MutationObserver(()=>{
+  if($("s-host").classList.contains("on")){ensureMap();fbInit().catch(()=>{});}
+  if($("s-join").classList.contains("on")){fbInit().catch(()=>{});}
+}).observe(document.body,{attributes:true,subtree:true,attributeFilter:["class"]});
 
-/* ---- game ---- */
+/* ================= ULTRASONIC ENGINE =================
+   Hunters must be CLOSE: pings travel as ultrasound (~18-20 kHz),
+   which phone speakers/mics carry ~10-30 m. Works on iPhone + Android,
+   fully offline. Game ID encoded in each ping so nearby groups don't clash. */
+const AE={ctx:null,analyser:null,freqData:null,rxTimer:null,hbTimer:null,
+  F_HB:18300,F0:18800,F1:19600,gameId:0,onPing:null,onHeartbeat:null,
+  rx:{mode:'idle',samples:[],quiet:0,consec:0}};
+function aeInit(){if(AE.ctx)return;const C=window.AudioContext||window.webkitAudioContext;if(!C)return;AE.ctx=new C({sampleRate:48000});}
+async function aeResume(){aeInit();if(AE.ctx&&AE.ctx.state==="suspended"){try{await AE.ctx.resume();}catch(e){}}}
+function tone(freq,dur,vol,when){
+  if(!AE.ctx)return;when=when||0;
+  const t0=AE.ctx.currentTime+when,o=AE.ctx.createOscillator(),g=AE.ctx.createGain();
+  o.type="sine";o.frequency.value=freq;
+  g.gain.setValueAtTime(0.0001,t0);
+  g.gain.linearRampToValueAtTime(vol,t0+0.02);
+  g.gain.setValueAtTime(vol,Math.max(t0+0.02,t0+dur-0.02));
+  g.gain.linearRampToValueAtTime(0.0001,t0+dur);
+  o.connect(g);g.connect(AE.ctx.destination);o.start(t0);o.stop(t0+dur+0.05);
+}
+function txHeartbeat(){tone(AE.F_HB,0.12,0.10);tone(AE.F_HB,0.12,0.10,0.22);}
+function txPing(){for(let i=0;i<8;i++){const bit=(AE.gameId>>(7-i))&1;tone(bit?AE.F1:AE.F0,0.18,0.5,i*0.22);}vibrate(100);}
+function alarm(){for(let i=0;i<3;i++)tone(880,0.14,0.25,i*0.22);}
+function outBeep(){tone(520,0.22,0.3);setTimeout(()=>tone(520,0.22,0.3),320);vibrate([150,100,150]);}
+async function aeStartMic(){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error("no-mic");
+  const stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
+  const src=AE.ctx.createMediaStreamSource(stream);
+  AE.analyser=AE.ctx.createAnalyser();AE.analyser.fftSize=8192;AE.analyser.smoothingTimeConstant=0.25;
+  src.connect(AE.analyser);AE.freqData=new Float32Array(AE.analyser.frequencyBinCount);
+}
+function binOf(f){return Math.round(f/(AE.ctx.sampleRate/AE.analyser.fftSize));}
+function toneEnergy(f){
+  AE.analyser.getFloatFrequencyData(AE.freqData);
+  const b=binOf(f);let sig=-120;
+  for(let i=Math.max(0,b-2);i<=Math.min(AE.freqData.length-1,b+2);i++)sig=Math.max(sig,AE.freqData[i]);
+  let nz=0,n=0;
+  for(let i=Math.max(0,b-50);i<=Math.min(AE.freqData.length-1,b+50);i++){if(Math.abs(i-b)<8)continue;nz+=AE.freqData[i];n++;}
+  return sig-(nz/Math.max(1,n));
+}
+let _hbBlips=[],_hbOn=false;
+function aeTick(){
+  if(!AE.analyser)return;
+  const e0=toneEnergy(AE.F0),e1=toneEnergy(AE.F1),eH=toneEnergy(AE.F_HB),t=performance.now();
+  if(eH>9){if(!_hbOn){_hbOn=true;_hbBlips.push(t);}}else _hbOn=false;
+  _hbBlips=_hbBlips.filter(x=>t-x<900);
+  if(_hbBlips.length>=2){const dt=_hbBlips[_hbBlips.length-1]-_hbBlips[0];
+    if(dt>120&&dt<700){_hbBlips=[];if(AE.onHeartbeat)AE.onHeartbeat();}}
+  const r=AE.rx,active=Math.max(e0,e1)>9,bit=e1>e0?1:0;
+  if(r.mode==="idle"){
+    if(active){r.consec++;if(r.consec>=2){r.mode="burst";r.samples=[];r.quiet=0;r.consec=0;}}else r.consec=0;
+  }else{
+    r.samples.push(bit);
+    if(!active){r.quiet++;if(r.quiet>=3)finishBurst();}else r.quiet=0;
+    if(r.samples.length>48)finishBurst();
+  }
+}
+function finishBurst(){
+  const s=AE.rx.samples;AE.rx.mode="idle";AE.rx.samples=[];AE.rx.quiet=0;AE.rx.consec=0;
+  if(!s||s.length<10)return;
+  const per=Math.max(1,Math.round(s.length/8));let bits=[];
+  for(let i=0;i<8;i++){const g=s.slice(i*per,(i+1)*per);if(!g.length)break;
+    bits.push(g.filter(x=>x===1).length>=g.length/2?1:0);}
+  if(bits.length<8)return;
+  const val=bits.reduce((a,b)=>(a<<1)|b,0);
+  if(val===AE.gameId&&AE.onPing)AE.onPing();
+}
+function aeStartLoop(){aeStopLoop();AE.rxTimer=setInterval(aeTick,60);}
+function aeStopLoop(){if(AE.rxTimer){clearInterval(AE.rxTimer);AE.rxTimer=null;}}
+function aeStartHeartbeat(){aeStopHeartbeat();txHeartbeat();AE.hbTimer=setInterval(txHeartbeat,25000);}
+function aeStopHeartbeat(){if(AE.hbTimer){clearInterval(AE.hbTimer);AE.hbTimer=null;}}
+
+/* ================= GAME ================= */
+function gameIdFrom(code){let h=0;for(const c of code)h=(h*31+c.charCodeAt(0))&255;return h||1;}
 function zoneRadiusAt(elapsedMs){
   const g=G.game,steps=Math.floor(elapsedMs/(g.shrinkMin*60000));
   return Math.max(30,g.radius*Math.pow(0.7,steps));
 }
-async function startGame(){
-  G.t0=Date.now();G.tagged=false;
-  AE.gameId=gameIdFrom(G.code||"OUTRUN");
-  const rb=$("g-role");
-  applyRole();
-  go("s-game");
+function beginSharedCountdown(startsAt){
+  G.counting=true;
+  const g=G.game;
+  $("count-role").innerHTML=G.role==="hunter"
+    ?'You are the <b style="color:var(--red)">🔦 HUNTER</b>. Wait for the hide time, then hunt.'
+    :'You are a <b style="color:var(--blue)">🏃 RUNNER</b>. Hide when the clock hits zero!';
+  $("count-info").innerHTML="Zone: <b>"+g.radius+" m</b> · shrinks every <b>"+g.shrinkMin+" min</b><br>Round: <b>"+g.roundMin+" min</b> · hide time <b>"+g.headMin+" min</b>";
+  go("s-count");aeResume();
+  const num=$("count-num");
+  const tick=()=>{
+    const left=startsAt-Date.now();
+    if(left<=0){clearInterval(iv);startGame(startsAt);return;}
+    if(left>15*60000){
+      const dt=new Date(startsAt);let hh=dt.getHours();
+      const ap=hh>=12?"PM":"AM";hh=hh%12||12;
+      num.style.fontSize="54px";
+      num.textContent=hh+":"+String(dt.getMinutes()).padStart(2,"0")+" "+ap;
+    }else{num.style.fontSize="90px";num.textContent=fmtT(left);}
+  };
+  const iv=setInterval(tick,1000);tick();
+}
+async function startGame(startsAt){
+  G.t0=startsAt;G.tagged=false;
+  try{if(FB.isHost)gameRef().update({state:"playing"});}catch(e){}
+  AE.gameId=gameIdFrom(FB.code||"OUTRUN");
+  applyRole();go("s-game");
   try{await aeResume();await aeStartMic();}catch(e){
     alert("Microphone blocked — pings won't work, but GPS zones will. Allow mic access and reload to get pings.");}
   aeStartLoop();
@@ -443,9 +515,11 @@ function applyRole(){
   const hunter=G.role==="hunter",rb=$("g-role");
   rb.textContent=hunter?"🔦 HUNTER":"🏃 RUNNER";
   rb.className="rolebadge "+(hunter?"role-hunter":"role-runner");
-  $("g-title").textContent=hunter?"Find them. Ping when close.":"Stay hidden.";
+  $("g-title").textContent=hunter?"Find them. Ping when close.":"Stay hidden. Watch the zone.";
   $("g-hunter-ui").style.display=hunter?"block":"none";
   $("g-runner-ui").style.display=hunter?"none":"block";
+  $("g-hunters-card").style.display=hunter?"block":"none";
+  $("g-host-end").style.display=FB.isHost?"block":"none";
 }
 function startGps(){
   if(!navigator.geolocation)return;
@@ -460,18 +534,22 @@ function tickGame(){
   $("g-zone").textContent=Math.round(r)+" m";
   const nextShrink=(Math.floor(el/(g.shrinkMin*60000))+1)*g.shrinkMin*60000;
   $("g-shrink").textContent=fmtT(nextShrink-el);
-  // ping cooldown
   const b=$("btn-ping");
   if(G.role==="hunter"){
     if(el<headEnd){b.disabled=true;b.textContent="🔒 Runners hiding… "+fmtT(headEnd-el);}
     else if(Date.now()<G.pingCoolUntil){b.disabled=true;b.textContent="⏳ "+fmtT(G.pingCoolUntil-Date.now());}
     else{b.disabled=false;b.textContent="📡 PING";}
+    // live runners-left from Firebase
+    const ps=(G.net&&G.net.players)||{},hid=G.net&&G.net.hunterId;
+    const left=Object.keys(ps).filter(id=>id!==hid&&!ps[id].tagged).length;
+    $("g-left").textContent=left;
   }
-  // zone status
   const io=$("g-inout");
   if(G.pos){const d=haversine(G.pos.lat,G.pos.lng,g.lat,g.lng);
     if(d<=r){io.textContent="IN ✅";io.className="v zone-ok";}
-    else{io.textContent="OUT! ⚠️";io.className="v zone-bad";}}
+    else{io.textContent="OUT! ⚠️";io.className="v zone-bad";
+      if(Date.now()-G.lastBeep>5000){G.lastBeep=Date.now();outBeep();}}
+  }
   else{io.textContent="no GPS";io.className="v";}
   drawRadar();
   if(el>=roundEnd)endGame("time");
@@ -479,14 +557,12 @@ function tickGame(){
 function drawRadar(){
   const c=$("radar");if(!c)return;const x=c.getContext("2d"),W=300,C=150;
   x.clearRect(0,0,W,W);
-  const g=G.game,el=Date.now()-(G.t0||Date.now()),r=zoneRadiusAt(el);
+  const g=G.game;if(!g||!G.t0)return;
+  const el=Date.now()-G.t0,r=zoneRadiusAt(el);
   const scale=(C-14)/r;
-  // zone circle
   x.beginPath();x.arc(C,C,Math.min(C-14,r*scale),0,7);x.strokeStyle="#a3e635";x.lineWidth=3;x.stroke();
   x.fillStyle="rgba(163,230,53,.07)";x.fill();
-  // center
   x.fillStyle="#8b96b8";x.beginPath();x.arc(C,C,4,0,7);x.fill();
-  // player dot
   if(G.pos){
     const dx=haversine(g.lat,g.lng,g.lat,G.pos.lng)*(G.pos.lng>=g.lng?1:-1);
     const dy=haversine(g.lat,G.pos.lng,G.pos.lat,G.pos.lng)*(G.pos.lat>=g.lat?-1:1);
@@ -499,7 +575,6 @@ function drawRadar(){
     x.strokeStyle="#0b0f1a";x.lineWidth=3;x.stroke();
   }else{x.fillStyle="#8b96b8";x.font="13px system-ui";x.textAlign="center";x.fillText("waiting for GPS…",C,C+4);}
 }
-/* ---- hunter ping ---- */
 function hunterPing(){
   const b=$("btn-ping");if(b.disabled)return;
   b.disabled=true;AE._hbHeard=false;
@@ -518,19 +593,28 @@ function hunterPing(){
     }
   },8000);
 }
-/* ---- runner ---- */
 function showPingAlert(){$("pingalert").classList.add("on");alarm();vibrate([200,100,200,100,300]);}
 function dismissPing(){$("pingalert").classList.remove("on");}
-function gotTagged(){if(confirm("Tagged? No shame — the hunters just got lucky.")){G.tagged=true;aeStopHeartbeat();go("s-tagged");}}
-function becomeHunter(){G.role="hunter";applyRole();go("s-game");tickGame();}
+function gotTagged(){
+  if(!confirm("Tagged? No shame — the hunters just got lucky."))return;
+  G.tagged=true;aeStopHeartbeat();
+  try{gameRef().child("players/"+FB.pid+"/tagged").set(true);}catch(e){}
+  go("s-tagged");
+}
 function endGame(why){
+  if(G.ended)return;G.ended=true;
   clearInterval(G.tick);aeStopLoop();aeStopHeartbeat();
+  try{if(FB.ref)FB.ref.off();}catch(e){}
   $("end-title").textContent=why==="time"?"⏰ Time!":"🏁 Game over!";
-  $("end-sub").textContent=G.role==="hunter"?"Hunters: count your tags. Runners: take the win lap.":"If you're still hidden — legendary.";
+  const ps=(G.net&&G.net.players)||{},hid=G.net&&G.net.hunterId;
+  const caught=Object.keys(ps).filter(id=>id!==hid&&ps[id].tagged).length;
+  const total=Object.keys(ps).filter(id=>id!==hid).length;
+  $("end-sub").textContent=G.role==="hunter"
+    ?"You caught "+caught+" of "+total+" runners."
+    :(G.tagged?"Tagged — but what a run.":"Still hidden. Legendary.");
   go("s-end");
 }
-/* ---- misc ---- */
-document.addEventListener("visibilitychange",()=>{if(document.hidden)aeStopLoop();else if(G.t0&&!$("s-end").classList.contains("on")&&!$("s-tagged").classList.contains("on"))aeStartLoop();});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)aeStopLoop();else if(G.t0&&!G.ended)aeStartLoop();});
 if("serviceWorker"in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
 </script>
 </body>
