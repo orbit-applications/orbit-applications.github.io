@@ -91,7 +91,7 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
     and pings travel by <b>ultrasound</b> — hunters must be <b>close</b> for runners to hear them.
   </div>
   <p class="small">Tip: open this page on wifi first so it saves offline. Do the lobby before you head out.</p>
-  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v11</p>
+  <p class="small" style="text-align:center;opacity:.55;">OUTRUN v12</p>
   <p class="small" style="text-align:center;opacity:.55;" id="bt-check"></p>
 </div>
 
@@ -190,6 +190,8 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   <div id="g-hunter-ui" style="display:none;">
     <button class="btn red big" id="btn-ping" onclick="hunterPing()">📡 PING</button>
     <button class="btn ghost" id="btn-btmode" onclick="toggleBtMode()" style="display:none;">📡 Ping via: ultrasound</button>
+    <button class="btn ghost" id="btn-btscan" onclick="btScan()" style="display:none;">🔵 Scan for Bluetooth devices (real attempt)</button>
+    <p class="small" id="bt-scan-result" style="text-align:center;"></p>
     <p class="small" id="ping-status" style="text-align:center;">Tap PING when you think runners are close.<br>🔊 <b>Volume to MAX</b> — pings are silent ultrasound.<br>If none are in earshot, you'll wait 3 min.</p>
   </div>
   <div id="g-runner-ui">
@@ -246,6 +248,21 @@ function toggleTest(){G.testModeOn=!G.testModeOn;const b=$("btn-testmode");
 function toggleBtMode(){G.btOnly=!G.btOnly;const b=$("btn-btmode");
   b.textContent=G.btOnly?"📡 Ping via: BLUETOOTH ONLY (experimental)":"📡 Ping via: ultrasound";
   b.style.borderColor=G.btOnly?"var(--red)":"var(--line)";vibrate(30);}
+async function btScan(){
+  const out=$("bt-scan-result");
+  if(!navigator.bluetooth){out.textContent="❌ This browser has no Bluetooth at all.";return;}
+  out.textContent="📡 Scanning… pick a nearby phone in the list.";
+  try{
+    const dev=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:["battery_service","device_information"]});
+    out.textContent="Found: "+(dev.name||"unnamed device")+". Connecting…";
+    try{
+      const srv=await dev.gatt.connect();
+      let n=0;try{n=(await srv.getPrimaryServices()).length;}catch(e){}
+      out.innerHTML="Connected to <b>"+(dev.name||"device")+"</b> — but it offers nowhere to send a ping. Phones don't give websites a mailbox ("+n+" services found, none we can write to).";
+      try{dev.gatt.disconnect();}catch(e){}
+    }catch(e){out.textContent="Picked "+(dev.name||"the device")+" but couldn't open a connection.";}
+  }catch(e){out.textContent="Scan closed with no device picked.";}
+}
 /* ================= FIREBASE LOBBY ================= */
 const FB={db:null,code:null,pid:null,ref:null,isHost:false,net:null};
 const G={name:"",role:"runner",game:null,t0:0,tagged:false,pos:null,pingCoolUntil:0,
@@ -598,7 +615,10 @@ function applyRole(){
   $("g-host-end").style.display=FB.isHost?"block":"none";
   const btm=$("btn-btmode");G.btOnly=false;
   btm.textContent="📡 Ping via: ultrasound";btm.style.borderColor="var(--line)";
-  btm.style.display=(G.game&&G.game.testMode&&hunter)?"block":"none";
+  const showExp=G.game&&G.game.testMode&&hunter;
+  btm.style.display=showExp?"block":"none";
+  $("btn-btscan").style.display=showExp?"block":"none";
+  $("bt-scan-result").textContent="";
 }
 function startGps(){
   if(!navigator.geolocation)return;
