@@ -111,6 +111,9 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   <select id="h-head"><option value="5" selected>5 min</option><option value="10">10 min</option><option value="15">15 min</option></select>
   <label>Round length</label>
   <select id="h-round"><option value="20">20 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">60 min</option></select>
+  <label style="display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0;font-size:16px;color:var(--txt);cursor:pointer;">
+    <input type="checkbox" id="h-test" style="width:22px;height:22px;accent-color:var(--amber);"> 🧪 Test mode <span class="small">(15s hide · 30s shrink · 3min round)</span>
+  </label>
   <button class="btn" id="btn-create" onclick="createGame()">Create game →</button>
   <button class="btn ghost" onclick="go('s-home')">← Back</button>
 </div>
@@ -170,6 +173,10 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
   <h2 id="g-title" style="margin-top:2px;">Stay hidden.</h2>
   <div id="gamemap" style="height:320px;border-radius:18px;border:1px solid var(--line);margin:6px 0;display:none;"></div>
   <canvas id="radar" width="300" height="300"></canvas>
+  <div id="strike-banner" class="card" style="display:none;text-align:center;border-color:var(--red);margin:8px 0;">
+    <div style="font-size:18px;font-weight:800;color:var(--red);" id="strike-text">⚠️ OUT OF ZONE</div>
+    <div class="small" id="strike-sub">Get back in!</div>
+  </div>
   <div class="hud">
     <div class="cell"><div class="k">Zone</div><div class="v" id="g-zone">—</div></div>
     <div class="cell"><div class="k">Next shrink</div><div class="v cool" id="g-shrink">—</div></div>
@@ -193,7 +200,7 @@ input[type=range]{width:100%;accent-color:var(--lime);height:34px;}
 <!-- ============ TAGGED ============ -->
 <div class="screen" id="s-tagged">
   <h1 style="text-align:center;margin-top:70px;">😵</h1>
-  <h2 style="text-align:center;">You're tagged!</h2>
+  <h2 style="text-align:center;" id="tagged-title">You're tagged!</h2>
   <p style="text-align:center;">Head to home base.<br>The hunters can see you're out.</p>
   <button class="btn ghost" onclick="go('s-game')">← Spectate</button>
 </div>
@@ -259,7 +266,8 @@ async function createGame(){
     FB.code=code;FB.isHost=true;FB.pid="p_"+Math.random().toString(36).slice(2,10);
     G.name=name;
     G.game={lat:G.zoneLL.lat,lng:G.zoneLL.lng,radius:+$("h-radius").value,
-      shrinkMin:+$("h-shrink").value,roundMin:+$("h-round").value,headMin:+$("h-head").value,hostName:name};
+      shrinkMin:+$("h-shrink").value,roundMin:+$("h-round").value,headMin:+$("h-head").value,hostName:name,
+      testMode:$("h-test").checked};
     await gameRef().set({settings:G.game,state:"lobby",hunterId:null,startsAt:0,createdAt:Date.now(),
       players:{[FB.pid]:{name:name,tagged:false,joinedAt:Date.now()}}});
     gameRef().child("players/"+FB.pid).onDisconnect().remove();
@@ -289,8 +297,8 @@ async function joinGame(){
 }
 function enterLobby(){
   $("lobby-code").textContent=FB.code;
-  $("lobby-title").textContent=FB.isHost?"📤 Lobby (you're hosting)":"📤 Lobby";
-  $("lobby-sub").textContent=FB.isHost?"Read the code out — friends join on their phones and appear below, live.":"You're in! Hang tight for the hunter pick and start.";
+  $("lobby-title").textContent=(FB.isHost?"📤 Lobby (you're hosting)":"📤 Lobby")+(G.game.testMode?" 🧪":"");
+  $("lobby-sub").textContent=(FB.isHost?"Read the code out — friends join on their phones and appear below, live.":"You're in! Hang tight for the hunter pick and start.")+(G.game.testMode?" 🧪 TEST MODE — all timers are short.":"");
   $("lobby-host-ctl").style.display=FB.isHost?"block":"none";
   $("lobby-guest-note").style.display=FB.isHost?"none":"block";
   $("hunter-reveal").style.display="none";
@@ -349,7 +357,7 @@ async function pickHunter(){
 }
 function startCountdown(){
   if(!G.net||!G.net.hunterId){alert("Pick the hunter first!");return;}
-  gameRef().update({state:"countdown",startsAt:Date.now()+8000}).catch(()=>alert("Couldn't reach the server — try again."));
+  gameRef().update({state:"countdown",startsAt:Date.now()+effT().count}).catch(()=>alert("Couldn't reach the server — try again."));
 }
 function scheduleStart(){
   const t=$("sched-time").value;
@@ -523,9 +531,14 @@ function aeStopHeartbeat(){if(AE.hbTimer){clearInterval(AE.hbTimer);AE.hbTimer=n
 
 /* ================= GAME ================= */
 function gameIdFrom(code){let h=0;for(const c of code)h=(h*31+c.charCodeAt(0))&255;return h||1;}
+/* effective timings: test mode uses seconds, real games use the minute settings */
+function effT(){const g=G.game;
+  if(g&&g.testMode)return{head:15000,shrink:30000,round:180000,pingCool:0,count:3000,strike:20000};
+  return g?{head:g.headMin*60000,shrink:g.shrinkMin*60000,round:g.roundMin*60000,pingCool:180000,count:8000,strike:120000}
+          :{head:0,shrink:60000,round:60000,pingCool:180000,count:8000,strike:120000};}
 function zoneRadiusAt(elapsedMs){
-  const g=G.game,steps=Math.floor(elapsedMs/(g.shrinkMin*60000));
-  return Math.max(30,g.radius*Math.pow(0.7,steps));
+  const t=effT(),steps=Math.floor(elapsedMs/t.shrink);
+  return Math.max(30,G.game.radius*Math.pow(0.7,steps));
 }
 function beginSharedCountdown(startsAt){
   G.counting=true;
@@ -533,7 +546,9 @@ function beginSharedCountdown(startsAt){
   $("count-role").innerHTML=G.role==="hunter"
     ?'You are the <b style="color:var(--red)">🔦 HUNTER</b>. Wait for the hide time, then hunt.'
     :'You are a <b style="color:var(--blue)">🏃 RUNNER</b>. Hide when the clock hits zero!';
-  $("count-info").innerHTML="Zone: <b>"+g.radius+" m</b> · shrinks every <b>"+g.shrinkMin+" min</b><br>Round: <b>"+g.roundMin+" min</b> · hide time <b>"+g.headMin+" min</b>";
+  $("count-info").innerHTML=g.testMode
+    ?"🧪 <b>TEST MODE</b><br>Zone: <b>"+g.radius+" m</b> · shrinks every <b>30 sec</b><br>Round: <b>3 min</b> · hide time <b>15 sec</b><br>Out of zone 20s = ⚠️ strike · 3 = out"
+    :"Zone: <b>"+g.radius+" m</b> · shrinks every <b>"+g.shrinkMin+" min</b><br>Round: <b>"+g.roundMin+" min</b> · hide time <b>"+g.headMin+" min</b><br>Out of zone 2 min = ⚠️ strike · 3 = out";
   go("s-count");aeResume();
   const num=$("count-num");
   const tick=()=>{
@@ -549,10 +564,11 @@ function beginSharedCountdown(startsAt){
   const iv=setInterval(tick,1000);tick();
 }
 async function startGame(startsAt){
-  G.t0=startsAt;G.tagged=false;
+  G.t0=startsAt;G.tagged=false;G.strikes=0;G.outSince=null;
   try{if(FB.isHost)gameRef().update({state:"playing"});}catch(e){}
   AE.gameId=gameIdFrom(FB.code||"OUTRUN");
   applyRole();go("s-game");initGameMap();
+  if(G.game.testMode)$("g-title").textContent="🧪 "+$("g-title").textContent;
   try{await aeResume();await aeStartMic();}catch(e){
     alert("Microphone blocked — pings won't work, but GPS zones will. Allow mic access and reload to get pings.");}
   aeStartLoop();
@@ -581,12 +597,12 @@ function startGps(){
 function tickGame(){
   const g=G.game;
   if(!g||!G.t0)return; /* hardened: never a dead screen */
-  const el=Date.now()-G.t0;
-  const roundEnd=g.roundMin*60000,headEnd=g.headMin*60000;
+  const t=effT(),el=Date.now()-G.t0;
+  const roundEnd=t.round,headEnd=t.head;
   $("g-round").textContent=fmtT(roundEnd-el);
   const r=zoneRadiusAt(el);
   $("g-zone").textContent=Math.round(r)+" m";
-  const nextShrink=(Math.floor(el/(g.shrinkMin*60000))+1)*g.shrinkMin*60000;
+  const nextShrink=(Math.floor(el/t.shrink)+1)*t.shrink;
   $("g-shrink").textContent=fmtT(nextShrink-el);
   const b=$("btn-ping");
   if(G.role==="hunter"){
@@ -606,6 +622,30 @@ function tickGame(){
       if(Date.now()-G.lastBeep>5000){G.lastBeep=Date.now();outBeep();}}
   }
   else{io.textContent="no GPS";io.className="v";}
+  /* strikes: out of zone continuously for strikeMs (after hide time) = 1 strike; 3 = out */
+  const sb=$("strike-banner"),tS=effT();
+  if(dist!==null&&el>=headEnd){
+    if(dist>r){
+      if(!G.outSince)G.outSince=Date.now();
+      const outFor=Date.now()-G.outSince;
+      if(outFor>=tS.strike){
+        G.strikes=(G.strikes||0)+1;G.outSince=Date.now();
+        try{gameRef().child("players/"+FB.pid+"/strikes").set(G.strikes);}catch(e){}
+        vibrate([200,100,200,100,400]);outBeep();
+        if(G.strikes>=3){struckOut();return;}
+      }
+      sb.style.display="block";
+      $("strike-text").textContent="⚠️ OUT OF ZONE"+(G.strikes?" — STRIKE "+G.strikes+"/3":"");
+      const toGo=Math.max(0,tS.strike-(Date.now()-G.outSince));
+      $("strike-sub").textContent=(G.strikes>=2?"Next strike knocks you out! ":"Strike "+((G.strikes||0)+1)+" in ")+fmtT(toGo)+" — get back in!";
+    }else{
+      G.outSince=null;
+      if((G.strikes||0)>0){sb.style.display="block";
+        $("strike-text").textContent="⚠️ STRIKES: "+G.strikes+"/3";
+        $("strike-sub").textContent="Back in the zone — don't stray!";}
+      else sb.style.display="none";
+    }
+  }else sb.style.display="none";
   if(G.gmap){
     try{
       G.gzone.setRadius(r);
@@ -648,7 +688,7 @@ function hunterPing(){
       $("ping-status").innerHTML="📡 <b style='color:var(--lime)'>PING SENT!</b> Runners in earshot just got the alert.";
       b.disabled=false;b.textContent="📡 PING";
     }else{
-      G.pingCoolUntil=Date.now()+180000;
+      G.pingCoolUntil=Date.now()+effT().pingCool;
       $("ping-status").innerHTML="😅 <b>sry you're not close to anyone, try again later</b><br>Listen for the next heartbeat…";
       tickGame();
     }
@@ -660,6 +700,16 @@ function gotTagged(){
   if(!confirm("Tagged? No shame — the hunters just got lucky."))return;
   G.tagged=true;aeStopHeartbeat();
   try{gameRef().child("players/"+FB.pid+"/tagged").set(true);}catch(e){}
+  $("tagged-title").textContent="You're tagged!";
+  go("s-tagged");
+}
+function struckOut(){
+  clearInterval(G.tick);aeStopLoop();aeStopHeartbeat();
+  try{if(FB.ref)FB.ref.off();}catch(e){}
+  G.tagged=true;
+  try{gameRef().child("players/"+FB.pid).update({tagged:true,strikes:G.strikes||3});}catch(e){}
+  $("tagged-title").textContent="3 strikes — you're out!";
+  vibrate([300,100,300,100,500]);
   go("s-tagged");
 }
 function endGame(why){
