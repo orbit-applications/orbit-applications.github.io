@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harbour Cut Barber — Kensington, Calgary</title>
+<meta name="description" content="Harbour Cut Barber — cuts for everyone at 231 14 St NW in Calgary's Kensington neighbourhood. Barber cuts, fades, beard trims, salon cuts, styling and more. Call (403) 555-0109.">
+<meta name="theme-color" content="#f5efe3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..600&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --cream:#f5efe3; --cream-2:#ece3d1; --paper:#fbf8f2;
+    --navy:#13284a; --navy-2:#1d3a66; --navy-soft:#3c5276;
+    --signal:#c8452f; --signal-2:#a8361f; --beam:#f2c14e;
+    --ink:#1a2233; --muted:#55607a; --line:rgba(19,40,74,.14); --line-2:rgba(19,40,74,.26);
+    --serif:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,-apple-system,sans-serif;
+    --r:22px; --ease:cubic-bezier(.2,.7,.1,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+  @media (min-width:900px){body{padding-bottom:0}}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--navy);color:var(--cream)}
+  :focus-visible{outline:2.5px solid var(--signal);outline-offset:3px;border-radius:8px}
+
+  .wrap{width:min(1200px,100% - 2.5rem);margin-inline:auto}
+  @media (min-width:700px){.wrap{width:min(1200px,100% - 5rem)}}
+
+  .tag{display:inline-flex;align-items:center;gap:.55rem;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-2)}
+  .tag svg{width:16px;height:16px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacing:-.02em;color:var(--navy);font-variation-settings:"SOFT" 100}
+  h2{font-size:clamp(2.2rem,5.4vw,3.8rem);margin-top:.9rem}
+  h1 em,h2 em{font-style:italic;font-weight:400;color:var(--signal-2)}
+  .lede{color:var(--muted);font-size:clamp(1rem,1.3vw,1.12rem);max-width:34rem}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:0 1.5rem;border-radius:999px;font-weight:700;font-size:.95rem;transition:transform .3s var(--ease),background .3s,color .3s,box-shadow .3s;white-space:nowrap;border:2px solid transparent}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-navy{background:var(--navy);color:var(--cream);box-shadow:0 10px 24px -12px rgba(19,40,74,.6)}
+  .btn-navy:hover{background:var(--navy-2);transform:translateY(-2px)}
+  .btn-out{border-color:var(--navy);color:var(--navy)}
+  .btn-out:hover{background:var(--navy);color:var(--cream)}
+  .btn-light{background:var(--cream);color:var(--navy)}
+  .btn-light:hover{background:#fff}
+  .btn-ghost-light{border-color:rgba(245,239,227,.5);color:var(--cream)}
+  .btn-ghost-light:hover{border-color:var(--cream);background:rgba(245,239,227,.1)}
+
+  /* rope stripe */
+  .stripe{height:10px;background:repeating-linear-gradient(-45deg,var(--navy) 0 10px,var(--cream) 10px 20px)}
+
+  /* header */
+  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s}
+  .header.scrolled{background:rgba(245,239,227,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
+  .logo{display:flex;align-items:center;gap:.7rem;color:var(--navy)}
+  .logo svg{width:34px;height:34px;flex:none}
+  .logo-t{display:flex;flex-direction:column;line-height:1.05}
+  .logo-t b{font-family:var(--serif);font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+  .logo-t span{font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+  .nav{display:none;gap:1.9rem;font-weight:600;font-size:.92rem;color:var(--navy-soft)}
+  .nav a:hover{color:var(--signal-2)}
+  .header .btn{min-height:44px;padding:0 1.1rem;font-size:.85rem}
+  .header .num{display:none}
+  @media (min-width:900px){.nav{display:flex}.header .num{display:inline}.header .lbl{display:none}}
+
+  /* hero */
+  .hero{position:relative;padding:7.2rem 0 4rem;overflow:hidden}
+  .hero::before{content:"";position:absolute;width:900px;height:900px;left:-380px;top:-420px;border-radius:50%;background:radial-gradient(circle,rgba(242,193,78,.28),transparent 62%);pointer-events:none}
+  .hero-grid{display:grid;gap:2.6rem;align-items:center;position:relative}
+  @media (min-width:940px){.hero-grid{grid-template-columns:1.05fr 1fr;gap:4rem}.hero{padding:9rem 0 5.5rem}}
+  .hero h1{font-size:clamp(2.7rem,7.6vw,5.6rem);margin:1.1rem 0 1.3rem}
+  .hero p{font-size:clamp(1.04rem,1.5vw,1.2rem);color:var(--muted);max-width:32rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+  .hero-ctas .btn{flex:1 1 210px}
+  @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
+  .chip{display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .85rem;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.86rem;font-weight:500;color:var(--navy-soft)}
+  .chip svg{width:15px;height:15px;color:var(--signal-2)}
+  .chip a:hover{color:var(--signal-2)}
+  .arch{position:relative;justify-self:center;width:min(100%,500px)}
+  .arch-frame{position:relative;aspect-ratio:4/5;border-radius:999px 999px var(--r) var(--r);overflow:hidden;background:var(--navy);border:8px solid var(--paper);box-shadow:0 0 0 1px var(--line-2),0 40px 70px -35px rgba(19,40,74,.55)}
+  .arch-frame img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:heroIn 2.4s var(--ease) forwards}
+  .arch-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,40,74,0) 55%,rgba(19,40,74,.45))}
+  @keyframes heroIn{to{transform:scale(1)}}
+  .badge{position:absolute;left:-10px;bottom:2.2rem;background:var(--navy);color:var(--cream);border-radius:16px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.7rem;box-shadow:0 18px 30px -16px rgba(19,40,74,.7);max-width:240px}
+  .badge svg{width:30px;height:30px;color:var(--beam);flex:none}
+  .badge b{display:block;font-family:var(--serif);font-size:1.05rem;line-height:1.15}
+  .badge small{font-size:.76rem;opacity:.8}
+  @media (min-width:940px){.badge{left:-36px}}
+
+  /* waves divider */
+  .wave{display:block;width:100%;height:40px;color:var(--navy)}
+
+  section{position:relative}
+  .pad{padding:clamp(4.5rem,10vw,8rem) 0}
+  .head{display:grid;gap:1.2rem;margin-bottom:clamp(2.5rem,5vw,3.8rem)}
+  @media (min-width:900px){.head{grid-template-columns:1.3fr 1fr;align-items:end}}
+
+  /* services */
+  .svc-tabs{display:flex;gap:.5rem;margin-bottom:1.6rem;flex-wrap:wrap}
+  .svc-tabs span{padding:.5rem 1rem;border-radius:999px;font-weight:700;font-size:.85rem;background:var(--navy);color:var(--cream)}
+  .svc-tabs span.alt{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .group+.group{margin-top:3.4rem}
+  .cards{display:grid;gap:1.2rem}
+  @media (min-width:680px){.cards{grid-template-columns:repeat(3,1fr)}}
+  .card{background:var(--paper);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .45s var(--ease),box-shadow .45s}
+  .card:hover{transform:translateY(-5px);box-shadow:0 26px 44px -26px rgba(19,40,74,.45)}
+  .card-img{aspect-ratio:4/3;overflow:hidden;background:var(--cream-2)}
+  .card-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+  .card:hover .card-img img{transform:scale(1.05)}
+  .card-b{padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;flex:1}
+  .card h3{font-size:1.4rem;margin-bottom:.45rem}
+  .card p{color:var(--muted);font-size:.95rem;flex:1}
+  .card a{margin-top:1rem;font-weight:700;font-size:.88rem;color:var(--signal-2);display:inline-flex;align-items:center;gap:.4rem}
+  .card a svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+  .card:hover a svg{transform:translateX(3px)}
+  .also{margin-top:2.6rem;display:flex;flex-wrap:wrap;gap:.55rem;align-items:center}
+  .also b{font-family:var(--serif);font-size:1.1rem;color:var(--navy);margin-right:.4rem}
+  .also span{padding:.45rem .9rem;border-radius:999px;border:1px dashed var(--line-2);font-size:.88rem;color:var(--navy-soft)}
+  .also-note{margin-top:1rem;font-size:.9rem;color:var(--muted)}
+  .also-note a{color:var(--signal-2);font-weight:700}
+
+  /* gallery */
+  .gal-strip{display:grid;grid-auto-flow:column;grid-auto-columns:74%;gap:1rem;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:.8rem;scrollbar-width:thin}
+  @media (min-width:600px){.gal-strip{grid-auto-columns:44%}}
+  @media (min-width:900px){.gal-strip{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;padding-bottom:0}}
+  .gal-item{scroll-snap-align:start;margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+  .gal-item img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--cream-2);transition:transform 1s var(--ease)}
+  .gal-item:hover img{transform:scale(1.04)}
+  .gal-item figcaption{padding:.85rem 1.1rem;font-family:var(--serif);font-weight:600;font-size:1.05rem;color:var(--navy);border-top:1px solid var(--line);position:relative;background:var(--paper)}
+  .gal-note{margin-top:1.4rem;font-size:.9rem;color:var(--muted)}
+  .gal-note a{color:var(--signal-2);font-weight:700}
+
+  /* navy section */
+  .navy{background:var(--navy);color:var(--cream)}
+  .navy h2,.navy h3{color:var(--cream)}
+  .navy h2 em{color:var(--beam)}
+  .navy .tag{color:var(--beam)}
+  .navy .lede{color:rgba(245,239,227,.75)}
+  .steps{display:grid;gap:1.2rem}
+  @media (min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}}
+  .step{padding:1.8rem 1.5rem;border-radius:var(--r);background:rgba(245,239,227,.05);border:1px solid rgba(245,239,227,.14);position:relative}
+  .step-n{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--beam);color:var(--navy);font-family:var(--serif);font-weight:700;font-size:1.2rem;margin-bottom:1.2rem}
+  .step h3{font-size:1.3rem;margin-bottom:.5rem}
+  .step p{color:rgba(245,239,227,.75);font-size:.94rem}
+  .step a{color:var(--beam);font-weight:600}
+
+  /* shop split */
+  .split{display:grid;gap:2.6rem;align-items:center}
+  @media (min-width:900px){.split{grid-template-columns:1fr 1fr;gap:4.5rem}}
+  .split-img{border-radius:var(--r);overflow:hidden;aspect-ratio:5/4;background:var(--cream-2);box-shadow:16px 16px 0 var(--navy)}
+  .split-img img{width:100%;height:100%;object-fit:cover}
+  .split p+p{margin-top:1rem}
+  .ig{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.8rem;padding:.8rem 1.2rem;border-radius:999px;background:var(--paper);border:1px solid var(--line-2);font-weight:700;color:var(--navy)}
+  .ig svg{width:20px;height:20px;color:var(--signal-2)}
+  .ig:hover{border-color:var(--navy)}
+
+  /* faq */
+  .faq-grid{display:grid;gap:2.6rem}
+  @media (min-width:940px){.faq-grid{grid-template-columns:1fr 1.4fr;gap:4.5rem}}
+  .faq-aside .btn{margin-top:1.8rem}
+  .faq-list{display:grid;gap:.7rem}
+  details{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:0 1.3rem;transition:border-color .3s}
+  details[open]{border-color:var(--line-2)}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 0;font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--navy)}
+  summary::-webkit-details-marker{display:none}
+  .pm{width:32px;height:32px;flex:none;border-radius:50%;background:var(--cream-2);position:relative;transition:background .3s,transform .4s var(--ease)}
+  .pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;border-radius:2px;background:var(--navy);transform:translate(-50%,-50%)}
+  .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s var(--ease)}
+  details[open] .pm{background:var(--navy);transform:rotate(180deg)}
+  details[open] .pm::before,details[open] .pm::after{background:var(--cream)}
+  details[open] .pm::after{transform:translate(-50%,-50%) rotate(0)}
+  .answer{color:var(--muted);padding:0 0 1.3rem}
+  .answer a{color:var(--signal-2);font-weight:600}
+  details[open] .answer{animation:drop .4s var(--ease)}
+  @keyframes drop{from{opacity:0;transform:translateY(-5px)}}
+
+  /* contact */
+  .contact-card{position:relative;border-radius:calc(var(--r) + 6px);overflow:hidden;background:var(--navy);color:var(--cream);isolation:isolate}
+  .contact-bg{position:absolute;inset:0;z-index:-2}
+  .contact-bg img{width:100%;height:100%;object-fit:cover;opacity:.35}
+  .contact-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,rgba(19,40,74,.97) 30%,rgba(19,40,74,.78))}
+  .contact-in{display:grid;gap:2.6rem;padding:clamp(2rem,6vw,4.5rem)}
+  @media (min-width:940px){.contact-in{grid-template-columns:1.2fr 1fr;align-items:center}}
+  .contact-card h2{color:var(--cream)}
+  .contact-card h2 em{color:var(--beam)}
+  .contact-card .tag{color:var(--beam)}
+  .big-phone{display:inline-block;font-family:var(--serif);font-weight:700;font-size:clamp(2rem,5.6vw,3.4rem);color:var(--beam);margin:1rem 0 1.6rem}
+  .big-phone:hover{color:#fff}
+  .ctas{display:flex;flex-wrap:wrap;gap:.7rem}
+  .ctas .btn{flex:1 1 190px}
+  @media (min-width:600px){.ctas .btn{flex:0 0 auto}}
+  .info{display:grid;gap:.7rem}
+  .info-row{display:grid;grid-template-columns:auto 1fr;gap:.9rem;padding:1rem 1.1rem;border-radius:16px;background:rgba(245,239,227,.07);border:1px solid rgba(245,239,227,.14);align-items:start}
+  .info-row svg{width:20px;height:20px;color:var(--beam);margin-top:.2rem}
+  .info-row small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,239,227,.65)}
+  .info-row b{font-weight:500}
+  a.info-row:hover{background:rgba(245,239,227,.12)}
+
+  footer{padding:2.8rem 0 2.4rem;font-size:.88rem;color:var(--muted)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
+  footer a:hover{color:var(--signal-2)}
+  .demo{padding:.4rem .85rem;border-radius:999px;border:1px dashed var(--line-2);font-size:.8rem}
+
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(245,239,227,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line-2);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
+  .callbar .btn{min-height:52px;font-size:.88rem;padding:0 .8rem}
+  @media (min-width:900px){.callbar{display:none}}
+
+  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .js .reveal{opacity:1;transform:none}
+    .arch-frame img{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></symbol>
+  <symbol id="i-lh" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 12h8l2 16H10z"/><path d="M11 12l1-4h8l1 4"/><path d="M13 8V6l3-2 3 2v2"/><path d="M11 18.5h10M10.5 23.5h11"/><path d="M4 7l6 2.5M28 7l-6 2.5M4 11.5l6-1M28 11.5l-6-1" opacity=".7"/><path d="M6 28h20"/></symbol>
+</svg>
+
+<header class="header" id="top">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Harbour Cut Barber — home">
+      <svg aria-hidden="true"><use href="#i-lh"/></svg>
+      <span class="logo-t"><b>Harbour Cut</b><span>Barber Shop &amp; Hair Salon</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#shop">The shop</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-navy" href="tel:+15873541141"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0109</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Introduction">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag reveal"><svg><use href="#i-pin"/></svg>Kensington · Calgary</span>
+        <h1 class="reveal" style="--d:.08s">Cuts for everyone, <em>right in the neighbourhood.</em></h1>
+        <p class="reveal" style="--d:.16s">Harbour Cut Barber is a friendly Kensington spot for barber cuts and salon services alike — fades and beard trims, cuts and styling, whoever's in the chair.</p>
+        <div class="hero-ctas reveal" style="--d:.24s">
+          <a class="btn btn-navy" href="tel:+15873541141"><svg><use href="#i-phone"/></svg>Call (403) 555-0109</a>
+          <a class="btn btn-out" href="#services">See services</a>
+        </div>
+        <div class="chips reveal" style="--d:.32s">
+          <span class="chip"><svg><use href="#i-pin"/></svg>231 14 St NW</span>
+          <span class="chip"><svg><use href="#i-clock"/></svg>Call for hours &amp; availability</span>
+          <span class="chip"><svg><use href="#i-ig"/></svg><a href="#" target="_blank" rel="noopener">@harbourcutbarber</a></span>
+        </div>
+      </div>
+      <div class="arch reveal" style="--d:.12s">
+        <div class="arch-frame">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" srcset="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=75 700w, https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80 1200w" sizes="(min-width:940px) 500px, 100vw" alt="A bright, airy hair salon with styling chairs facing mirrors and tall windows" fetchpriority="high">
+        </div>
+        <div class="badge"><svg aria-hidden="true"><use href="#i-lh"/></svg><div><b>Barber + salon</b><small>One chair, any cut</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe" aria-hidden="true"></div>
+
+  <section class="pad" id="services">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag reveal">Services</span>
+          <h2 class="reveal" style="--d:.08s">Barber chair <em>&amp;</em> salon chair.</h2>
+        </div>
+        <p class="lede reveal" style="--d:.14s">Whether it's a quick clean-up or a whole new look, here's the kind of work Harbour Cut does. Call for pricing and to check availability.</p>
+      </div>
+
+      <div class="group">
+        <div class="svc-tabs reveal"><span>Barber</span></div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=75" alt="A barber cutting a client's textured hair with scissors and comb"></div>
+            <div class="card-b"><h3>Haircuts</h3><p>Classic and modern cuts with clippers and scissors — short, long or somewhere in between. Good for a regular clean-up or a change of style, and a photo of the look you want always helps. When you call, mention roughly how long it's been since your last cut and what you'd like done.</p><a href="tel:+15873541141">Call to book <svg><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="card reveal" style="--d:.08s">
+            <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=800&q=75" alt="A barber working on a client's curly hair in a busy barbershop"></div>
+            <div class="card-b"><h3>Fades &amp; Tapers</h3><p>Clean blends, sharp edges and line-ups, for straight, wavy, curly and coily hair. Low, mid or high, down to the skin or longer on the sides — tell the barber how short you like it and where you want the fade to start. Ask about a quick line-up to freshen things between full cuts.</p><a href="tel:+15873541141">Call to book <svg><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="card reveal" style="--d:.16s">
+            <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=800&q=75" alt="A barber trimming a client's beard and hairline with clippers"></div>
+            <div class="card-b"><h3>Beard Trims</h3><p>Shaping, trimming and tidy lines to keep a beard looking intentional. From a short stubble clean-up to shaping a fuller beard, the cheek and neck lines are set to suit your face. Pair it with a haircut so everything blends — just mention both when you book.</p><a href="tel:+15873541141">Call to book <svg><use href="#i-arrow"/></svg></a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="svc-tabs reveal"><span class="alt">Salon</span></div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=75" alt="A stylist blow-drying a client's long hair with a round brush"></div>
+            <div class="card-b"><h3>Cut &amp; Style</h3><p>Salon cuts for any length — trims, layers, bobs and reshapes, finished with a blow-dry. A good fit whether you're growing your hair out, going shorter or just tidying the ends. Let the shop know your current length and what you're after when you call, so the right amount of time is set aside.</p><a href="tel:+15873541141">Call to book <svg><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="card reveal" style="--d:.08s">
+            <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=75" alt="A smiling stylist blow-drying a client's short hair in a bright salon"></div>
+            <div class="card-b"><h3>Blowouts &amp; Styling</h3><p>A polished finish for a night out, an event or just because — smooth, volume or texture. Getting ready for something specific? Mention the date and time when you call. Bring a reference photo if you have a look in mind.</p><a href="tel:+15873541141">Call to book <svg><use href="#i-arrow"/></svg></a></div>
+          </article>
+          <article class="card reveal" style="--d:.16s">
+            <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=75" alt="A stylist washing a client's hair at a salon basin"></div>
+            <div class="card-b"><h3>Wash &amp; Care</h3><p>A relaxing shampoo and condition before your cut or style, so you start fresh in the chair. Mention it when you book if you'd like it added to your appointment. Ask about other salon services when you call.</p><a href="tel:+15873541141">Call to book <svg><use href="#i-arrow"/></svg></a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="also reveal">
+        <b>Ask about</b>
+        <span>Kids' cuts</span><span>Buzz cuts</span><span>Line-ups</span><span>Trims</span><span>Long hair cuts</span><span>Colour</span>
+      </div>
+      <p class="also-note reveal">Availability of any service — call <a href="tel:+15873541141">(403) 555-0109</a> to confirm.</p>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 40V22c120-18 240-18 360 0s240 18 360 0 240-18 360 0 240 18 360 0v18z"/></svg>
+  <section class="navy pad" id="how" style="padding-top:clamp(3.5rem,8vw,6rem)">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag reveal">How it works</span>
+          <h2 class="reveal" style="--d:.08s">Easy to find. <em>Easy to book.</em></h2>
+        </div>
+        <p class="lede reveal" style="--d:.14s">Getting a cut shouldn't be complicated. One call is all it takes.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="step-n">1</span><h3>Call the shop</h3><p>Ring <a href="tel:+15873541141">(403) 555-0109</a> to ask about hours and availability.</p></div>
+        <div class="step reveal" style="--d:.08s"><span class="step-n">2</span><h3>Pick a time</h3><p>Choose a time that works and let the shop know what you're coming in for.</p></div>
+        <div class="step reveal" style="--d:.16s"><span class="step-n">3</span><h3>Come by 14 St NW</h3><p>Find the shop at 231 14 St NW in Kensington. Bring a photo if you have a look in mind.</p></div>
+        <div class="step reveal" style="--d:.24s"><span class="step-n">4</span><h3>Leave fresh</h3><p>Walk out into the neighbourhood with a cut you're happy with.</p></div>
+      </div>
+    </div>
+  </section>
+  <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1)"><path fill="currentColor" d="M0 40V22c120-18 240-18 360 0s240 18 360 0 240-18 360 0 240 18 360 0v18z"/></svg>
+
+  <section class="pad" id="shop">
+    <div class="wrap split">
+      <div class="split-img reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1100&q=75" alt="A modern salon with round mirrors on a dark wall and black styling chairs">
+      </div>
+      <div>
+        <span class="tag reveal">The shop</span>
+        <h2 class="reveal" style="--d:.08s">A guiding light <em>for good hair.</em></h2>
+        <p class="lede reveal" style="--d:.14s">Kensington is a neighbourhood of independent shops, cafés and familiar faces, and Harbour Cut fits right in — a barber shop and hair salon under one roof on 14 Street NW.</p>
+        <p class="lede reveal" style="--d:.2s">Come in for a fade, a beard tidy or a cut and style. Everyone's welcome in the chair.</p>
+        <a class="ig reveal" style="--d:.26s" href="#" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>Follow @harbourcutbarber</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="gallery" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag reveal">Gallery</span>
+          <h2 class="reveal" style="--d:.08s">Fresh cuts, <em>fresh looks.</em></h2>
+        </div>
+        <p class="lede reveal" style="--d:.14s">A feel for the barber-chair and salon-chair work you can ask about at 231 14 St NW in Kensington.</p>
+      </div>
+      <div class="gal-strip reveal" style="--d:.1s" role="list">
+        <figure class="gal-item" role="listitem"><img loading="lazy" src="https://images.unsplash.com/photo-1618049049816-43a00d5b0c3d?auto=format&fit=crop&w=900&q=75" alt="Side profile of a man with a high skin fade, a textured quiff on top and a neatly trimmed beard"><figcaption>Fades &amp; tapers</figcaption></figure>
+        <figure class="gal-item" role="listitem"><img loading="lazy" src="https://images.unsplash.com/photo-1599011176306-4a96f1516d4d?auto=format&fit=crop&w=900&q=75" alt="A barber trimming around the ear of a bearded client in a striped cape with scissors and comb"><figcaption>Scissor work</figcaption></figure>
+        <figure class="gal-item" role="listitem"><img loading="lazy" src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=900&q=75" alt="A barber in a cap cutting a client's hair in a colourful barbershop with a mural on the wall"><figcaption>Barber cuts</figcaption></figure>
+        <figure class="gal-item" role="listitem"><img loading="lazy" src="https://images.unsplash.com/photo-1629881544138-c45fc917eb81?auto=format&fit=crop&w=900&q=75" alt="A vintage red and white barber chair on a patterned tile floor"><figcaption>Take a seat</figcaption></figure>
+        <figure class="gal-item" role="listitem"><img loading="lazy" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=75" alt="Three burgundy salon chairs lined up in front of a long mirror in a bright white salon"><figcaption>The salon chair</figcaption></figure>
+        <figure class="gal-item" role="listitem"><img loading="lazy" src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=900&q=75" alt="A stylist pinning a client's long brown hair into a twisted updo"><figcaption>Styling</figcaption></figure>
+      </div>
+      <p class="gal-note reveal">Have a look in mind? Bring a photo, or describe it when you call <a href="tel:+15873541141">(403) 555-0109</a>.</p>
+    </div>
+  </section>
+
+  <section class="pad" id="faq" style="padding-top:0">
+    <div class="wrap faq-grid">
+      <div class="faq-aside">
+        <span class="tag reveal">FAQ</span>
+        <h2 class="reveal" style="--d:.08s">Quick <em>answers.</em></h2>
+        <p class="lede reveal" style="--d:.14s;margin-top:1rem">For anything specific, the fastest answer is a phone call.</p>
+        <a class="btn btn-navy reveal" style="--d:.2s" href="tel:+15873541141"><svg><use href="#i-phone"/></svg>(403) 555-0109</a>
+      </div>
+      <div class="faq-list reveal" style="--d:.1s">
+        <details>
+          <summary>Do you cut all hair types?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="answer">Harbour Cut is a barber shop and hair salon offering cuts for everyone. Tell the shop about your hair and what you're after when you call <a href="tel:+15873541141">(403) 555-0109</a>.</p>
+        </details>
+        <details>
+          <summary>What are your hours?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="answer">Please call <a href="tel:+15873541141">(403) 555-0109</a> for current hours and availability, or check <a href="#" target="_blank" rel="noopener">@harbourcutbarber</a>.</p>
+        </details>
+        <details>
+          <summary>How much is a cut?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="answer">Pricing depends on the service and your hair. Call <a href="tel:+15873541141">(403) 555-0109</a> for a quote.</p>
+        </details>
+        <details>
+          <summary>Do I need to book ahead?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="answer">Calling ahead is the best way to make sure there's a chair ready for you. The shop can let you know what's open.</p>
+        </details>
+        <details>
+          <summary>Do you do colour or other salon services?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="answer">Ask when you call — the shop can tell you which salon services are available and how to book them.</p>
+        </details>
+        <details>
+          <summary>Do you cut kids' hair?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="answer">Kids' cuts are one of the services to ask about. Call <a href="tel:+15873541141">(403) 555-0109</a> to check availability, and mention your child's age and the cut they'd like.</p>
+        </details>
+        <details>
+          <summary>What should I mention when I call?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="answer">Let the shop know which service you're after — a barber cut, fade, beard trim, salon cut or styling — plus your hair type and roughly how long it is. If you're combining services, like a cut and beard trim, say so up front. A photo of the look you want helps too.</p>
+        </details>
+        <details>
+          <summary>Where are you?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="answer">231 14 St NW, Calgary, AB T2N 1Z6, in Kensington. <a href="https://www.google.com/maps/search/?api=1&query=Harbour%20Cut%20Barber%20231%2014%20St%20NW%20Calgary%20AB%20T2N%201Z6" target="_blank" rel="noopener">Get directions</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-bottom:clamp(3rem,7vw,5rem)">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <div class="contact-bg"><img loading="lazy" src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=1600&q=70" alt=""></div>
+        <div class="contact-in">
+          <div>
+            <span class="tag">Visit or call</span>
+            <h2>Come see us <em>in Kensington.</em></h2>
+            <a class="big-phone" href="tel:+15873541141">(403) 555-0109</a>
+            <div class="ctas">
+              <a class="btn btn-light" href="tel:+15873541141"><svg><use href="#i-phone"/></svg>Call now</a>
+              <a class="btn btn-ghost-light" href="https://www.google.com/maps/search/?api=1&query=Harbour%20Cut%20Barber%20231%2014%20St%20NW%20Calgary%20AB%20T2N%201Z6" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Get directions</a>
+            </div>
+          </div>
+          <div class="info">
+            <a class="info-row" href="https://www.google.com/maps/search/?api=1&query=Harbour%20Cut%20Barber%20231%2014%20St%20NW%20Calgary%20AB%20T2N%201Z6" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><div><small>Address</small><b>231 14 St NW<br>Calgary, AB T2N 1Z6</b></div></a>
+            <a class="info-row" href="tel:+15873541141"><svg><use href="#i-phone"/></svg><div><small>Phone</small><b>(403) 555-0109</b></div></a>
+            <div class="info-row"><svg><use href="#i-clock"/></svg><div><small>Hours</small><b>Call for hours / availability</b></div></div>
+            <a class="info-row" href="#" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><div><small>Instagram</small><b>@harbourcutbarber</b></div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="stripe" aria-hidden="true"></div>
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo"><svg aria-hidden="true"><use href="#i-lh"/></svg><span class="logo-t"><b>Harbour Cut</b><span>Barber Shop &amp; Hair Salon</span></span></a>
+    <span>Harbour Cut Barber · 231 14 St NW, Calgary, AB T2N 1Z6 · <a href="tel:+15873541141">(403) 555-0109</a> · <a href="#" target="_blank" rel="noopener">@harbourcutbarber</a></span>
+    <span class="orbit-credit">Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></span>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-out" href="https://www.google.com/maps/search/?api=1&query=Harbour%20Cut%20Barber%20231%2014%20St%20NW%20Calgary%20AB%20T2N%201Z6" target="_blank" rel="noopener" aria-label="Get directions"><svg><use href="#i-nav"/></svg>Map</a>
+  <a class="btn btn-navy" href="tel:+15873541141"><svg><use href="#i-phone"/></svg>Call (403) 555-0109</a>
+</div>
+
+<script>
+  document.querySelectorAll('img').forEach(function(img){img.addEventListener('error',function(){img.style.visibility='hidden'})});
+  var header=document.querySelector('.header');
+  function onScroll(){header.classList.toggle('scrolled',window.scrollY>30)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+</script>
+
+<style>
+.orbit-credit{opacity:.78}
+.orbit-credit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+#obkFab{position:fixed;right:16px;bottom:86px;z-index:99990;background:#31517d;color:#fff;border:0;border-radius:999px;padding:13px 20px;font:600 15px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer;display:flex;align-items:center;gap:8px}
+#obkFab:active{transform:scale(.97)}
+#obkPanel{position:fixed;right:16px;bottom:148px;z-index:99991;width:min(362px,calc(100vw - 32px));height:min(540px,68vh);background:#fff;color:#1c2430;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.4);display:none;flex-direction:column;overflow:hidden;font:400 15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+#obkPanel.obk-open{display:flex}
+#obkHead{background:#16283f;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+#obkHead .obk-t{flex:1;min-width:0}
+#obkHead .obk-t b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#obkHead .obk-t span{font-size:12.5px;opacity:.85}
+#obkClose{background:rgba(255,255,255,.16);color:#fff;border:0;width:30px;height:30px;border-radius:999px;font-size:16px;cursor:pointer;flex:none}
+#obkMsgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:#f6f7f9}
+.obk-m{max-width:86%;padding:10px 13px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word}
+.obk-bot{background:#fff;border:1px solid #e2e6ec;border-bottom-left-radius:5px;align-self:flex-start}
+.obk-user{background:#31517d;color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.obk-m b{font-weight:700}
+#obkChips{display:flex;flex-wrap:wrap;gap:7px;padding:10px 12px;background:#fff;border-top:1px solid #eceff3}
+.obk-chip{background:#fff;border:1.5px solid #31517d;color:#31517d;border-radius:999px;padding:8px 13px;font:600 14px system-ui,sans-serif;cursor:pointer}
+.obk-chip:active{background:#31517d;color:#fff}
+#obkInputRow{display:none;gap:8px;padding:10px 12px;background:#fff;border-top:1px solid #eceff3}
+#obkInput{flex:1;border:1.5px solid #ccd3dc;border-radius:10px;padding:10px 12px;font:400 15px system-ui,sans-serif;min-width:0}
+#obkSend{background:#31517d;color:#fff;border:0;border-radius:10px;padding:10px 16px;font:600 15px system-ui,sans-serif;cursor:pointer}
+.obk-sms{display:block;text-align:center;background:#31517d;color:#fff;text-decoration:none;border-radius:12px;padding:13px 14px;font-weight:700;margin-top:8px}
+@media(min-width:641px){#obkFab{bottom:24px}#obkPanel{bottom:92px}}
+</style>
+<button id="obkFab" aria-label="Open booking assistant">📅 Book now</button>
+<div id="obkPanel" role="dialog" aria-label="Booking assistant">
+  <div id="obkHead"><div class="obk-t"><b>Harbour Cut Barber</b><span>Booking assistant</span></div><button id="obkClose" aria-label="Close">✕</button></div>
+  <div id="obkMsgs"></div>
+  <div id="obkChips"></div>
+  <div id="obkInputRow"><input id="obkInput" type="text" autocomplete="off"><button id="obkSend">Send</button></div>
+</div>
+<script>
+(function(){
+var CFG={"biz": "Harbour Cut Barber", "phone": "+15873541141", "services": ["Haircuts", "Fades & Tapers", "Beard Trims", "Cut & Style", "Blowouts & Styling", "Wash & Care"], "closed": [], "slots": ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"]};
+var fab=document.getElementById('obkFab'),panel=document.getElementById('obkPanel'),msgs=document.getElementById('obkMsgs'),chips=document.getElementById('obkChips'),row=document.getElementById('obkInputRow'),inp=document.getElementById('obkInput');
+var B={service:null,date:null,time:null,name:null,phone:null},step=0,started=false;
+function scroll(){msgs.scrollTop=msgs.scrollHeight}
+function add(txt,cls){var d=document.createElement('div');d.className='obk-m '+cls;d.textContent=txt;msgs.appendChild(d);scroll()}
+function addHTML(h,cls){var d=document.createElement('div');d.className='obk-m '+cls;d.innerHTML=h;msgs.appendChild(d);scroll()}
+function setChips(list,cb){chips.innerHTML='';list.forEach(function(o){var b=document.createElement('button');b.className='obk-chip';b.textContent=o;b.onclick=function(){cb(o)};chips.appendChild(b)})}
+function askInput(ph,cb){row.style.display='flex';inp.placeholder=ph;inp.value='';inp.focus();row._cb=cb}
+function hideInput(){row.style.display='none';row._cb=null}
+document.getElementById('obkSend').onclick=function(){var v=inp.value.trim();if(!v||!row._cb)return;var cb=row._cb;hideInput();cb(v)};
+inp.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('obkSend').click()});
+function days(){var out=[],d=new Date();while(out.length<6){d.setDate(d.getDate()+1);if(CFG.closed.indexOf(d.getDay())===-1){out.push(d.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'}))}}return out}
+function start(){msgs.innerHTML='';chips.innerHTML='';hideInput();B={service:null,date:null,time:null,name:null,phone:null};started=true;
+ add('Hi! I can book you in at '+CFG.biz+'. What would you like to book?','obk-bot');
+ setChips(CFG.services,function(s){B.service=s;add(s,'obk-user');stepDate()})}
+function stepDate(){add('Great choice. What day works best for you?','obk-bot');setChips(days(),function(s){B.date=s;add(s,'obk-user');stepTime()})}
+function bookedSlots(ds){var b=[];for(var i=0;i<CFG.slots.length;i++){var x=0,str=ds+'|'+CFG.slots[i];for(var j=0;j<str.length;j++){x=(x*31+str.charCodeAt(j))>>>0}if(x%4===0)b.push(CFG.slots[i])}if(b.length>=CFG.slots.length-1)b=b.slice(0,CFG.slots.length-2);return b}
+function stepTime(){add('And what time?','obk-bot');var bk=bookedSlots(B.date);chips.innerHTML='';CFG.slots.forEach(function(s){var btn=document.createElement('button');btn.className='obk-chip';if(bk.indexOf(s)>-1){btn.textContent=s+' \u2715 Booked';btn.disabled=true;btn.style.opacity='.45';btn.style.textDecoration='line-through';btn.style.cursor='not-allowed'}else{btn.textContent=s;btn.onclick=function(){B.time=s;add(s,'obk-user');stepName()}}chips.appendChild(btn)});if(bk.length)add('Times with a line through them are already booked that day.','obk-bot')}
+function stepName(){add('Perfect. What name should I put the booking under?','obk-bot');chips.innerHTML='';askInput('Your name',function(v){B.name=v;add(v,'obk-user');stepPhone()})}
+function stepPhone(){add('Last thing — the best phone number for '+CFG.biz+' to confirm your booking?','obk-bot');askInput('Phone number',function(v){B.phone=v;add(v,'obk-user');stepSummary()})}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function stepSummary(){addHTML('<b>Booking summary</b>\n'+esc(CFG.biz)+'\n'+esc(B.service)+'\n'+esc(B.date)+' at '+esc(B.time)+'\n'+esc(B.name)+' · '+esc(B.phone),'obk-bot');
+ setChips(['Confirm booking','Start over'],function(c){if(c==='Start over'){add(c,'obk-user');start();return}add(c,'obk-user');stepDone()})}
+function stepDone(){chips.innerHTML='';var body='Hi '+CFG.biz+', I would like to book: '+B.service+' on '+B.date+' at '+B.time+'. Name: '+B.name+', Phone: '+B.phone;
+ add('You are all set, '+B.name.split(' ')[0]+'! One tap below texts your booking to the shop — they will confirm by text.','obk-bot');
+ var a=document.createElement('a');a.className='obk-sms';a.textContent='💬 Text this booking to the shop';a.href='sms:'+CFG.phone+'?&body='+encodeURIComponent(body);
+ var wrap=document.createElement('div');wrap.className='obk-m obk-bot';wrap.textContent='Ready when you are:';wrap.appendChild(a);msgs.appendChild(wrap);scroll();
+ setChips(['Book another'],function(){start()})}
+fab.onclick=function(){panel.classList.add('obk-open');if(!started)start()};
+document.getElementById('obkClose').onclick=function(){panel.classList.remove('obk-open')};
+})();
+</script>
+
+</body>
+</html>
