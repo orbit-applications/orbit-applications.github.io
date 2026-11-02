@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Classic Cut — Barber Shop in Downtown Calgary</title>
+<meta name="description" content="The Classic Cut — a classic downtown Calgary barbershop at Elveden House. Haircuts, hot towel shaves, beard trims, head shaves and shoe shines. 717 7 Ave SW.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#14261c;--green2:#1d3828;--cream:#f5efe3;--cream2:#efe6d2;--brass:#c9a35c;--ox:#7a2e2e;--ink:#20241f;--muted:#5c6156}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.55}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.topbar{background:var(--green);color:var(--cream);font-size:13.5px}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
+.topbar a{text-decoration:none;font-weight:600}
+.topbar a:hover{color:var(--brass)}
+header.site{position:sticky;top:0;z-index:50;background:rgba(245,239,227,.94);backdrop-filter:blur(8px);border-bottom:1px solid #ddd2ba}
+header.site .wrap{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:14px}
+.pole{width:16px;height:44px;border-radius:8px;flex:none;background:repeating-linear-gradient(45deg,#a33327 0 7px,#f5efe3 7px 14px,#274b63 14px 21px,#f5efe3 21px 28px);border:2px solid var(--brass);background-size:100% 56px;animation:pole 3.2s linear infinite}
+@keyframes pole{to{background-position:0 56px}}
+.brand{flex:1;min-width:0}
+.brand b{font-family:Fraunces,serif;font-weight:900;font-size:21px;letter-spacing:.2px;display:block;line-height:1.1}
+.brand span{font-size:12.5px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+nav.main{display:flex;gap:20px;font-weight:600;font-size:14.5px}
+nav.main a{text-decoration:none}
+nav.main a:hover{color:var(--ox)}
+.callbtn{background:var(--ox);color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:999px;font-size:14.5px;white-space:nowrap}
+.hero{background:var(--green);color:var(--cream);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;padding-top:54px;padding-bottom:54px;align-items:center;position:relative;z-index:1}
+.hero h1{font-family:Fraunces,serif;font-weight:900;font-size:clamp(38px,5.6vw,62px);line-height:1.04}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.hero p.lede{margin-top:18px;font-size:17.5px;color:#ddd5c0;max-width:34em}
+.hero .cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:14px 24px;border-radius:999px;font-size:15.5px}
+.btn-brass{background:var(--brass);color:#23190a}
+.btn-ghost{border:1.5px solid #8fa294;color:var(--cream)}
+.hero figure{border-radius:18px;overflow:hidden;border:3px solid rgba(201,163,92,.55);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.hero figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3.4}
+.ticks{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}
+.ticks span{border:1px solid #47604f;border-radius:999px;padding:6px 13px;font-size:13px;color:#cfd8c9}
+section{padding:64px 0}
+.kicker{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ox)}
+h2{font-family:Fraunces,serif;font-weight:900;font-size:clamp(28px,3.6vw,40px);line-height:1.12;margin:10px 0 8px}
+.sub{color:var(--muted);max-width:44em}
+.services{background:var(--cream2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:30px}
+.card{background:#fffdf8;border:1px solid #e2d7bd;border-radius:16px;padding:24px 22px;box-shadow:0 4px 14px rgba(60,45,10,.06)}
+.card .ic{font-size:26px}
+.card h3{font-family:Fraunces,serif;font-size:20px;margin:10px 0 6px}
+.card p{font-size:14.5px;color:var(--muted)}
+.about .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:36px;align-items:center}
+.about figure{border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(30,35,20,.25)}
+.about figure img{width:100%;aspect-ratio:4/3.1;object-fit:cover}
+.about p{margin-top:12px;color:#3c4038}
+.about p b{color:var(--green)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px}
+.visit{background:var(--green);color:var(--cream)}
+.visit h2{color:var(--cream)}
+.visit .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:28px}
+.visit .cell{border:1px solid #3c5543;border-radius:16px;padding:22px;background:rgba(255,255,255,.03)}
+.visit .cell h3{font-family:Fraunces,serif;font-size:19px;margin-bottom:8px;color:var(--brass)}
+.visit .cell p{color:#d8d2bf;font-size:15px}
+.visit .cell a{font-weight:700;text-decoration:none}
+.visit .cell a:hover{color:var(--brass)}
+footer{background:#0d1a12;color:#b9beb0;font-size:14px}
+footer .wrap{padding-top:30px;padding-bottom:34px;display:flex;flex-direction:column;gap:7px;align-items:center;text-align:center}
+footer a{text-decoration:none;font-weight:600}
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;background:var(--green);border-top:2px solid var(--brass);padding:10px 14px calc(10px + env(safe-area-inset-bottom));gap:10px}
+.callbar a{flex:1;text-align:center;text-decoration:none;font-weight:700;padding:12px;border-radius:10px;font-size:15px}
+.callbar .c1{background:var(--ox);color:#fff}
+.callbar .c2{background:transparent;color:var(--cream);border:1.5px solid #5c7a64}
+@media(max-width:820px){
+ .hero .wrap{grid-template-columns:1fr;padding-top:36px;padding-bottom:40px}
+ .about .wrap{grid-template-columns:1fr}
+ nav.main{display:none}
+ .callbar{display:flex}
+ body{padding-bottom:64px}
+ .gallery{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body id="top">
+<div class="topbar"><div class="wrap"><span>✂ Elveden House · 717 7 Ave SW, Calgary</span><a href="tel:+14032632598">☎ (403) 555-0110</a></div></div>
+<header class="site"><div class="wrap">
+  <div class="pole" aria-hidden="true"></div>
+  <div class="brand"><b>The Classic Cut</b><span>Barber Shop · Downtown Calgary</span></div>
+  <nav class="main"><a href="#services">Services</a><a href="#story">Our Story</a><a href="#visit">Visit</a></nav>
+  <a class="callbtn" href="tel:+14032632598">Call the shop</a>
+</div></header>
+
+<section class="hero" style="padding:0"><div class="wrap">
+  <div>
+    <h1>Sixty years<br>behind <em>the chair.</em></h1>
+    <p class="lede">A classic barbershop in the heart of downtown Calgary — proper cuts, hot towel shaves, and a chair that has seen six decades of the city's hair. Walk-ins welcome during shop hours.</p>
+    <div class="cta">
+      <a class="btn btn-brass" href="tel:+14032632598">☎ Call (403) 555-0110</a>
+      <a class="btn btn-ghost" href="#services">See services</a>
+    </div>
+    <div class="ticks"><span>✂ Classic &amp; modern cuts</span><span>🪒 Hot towel shaves</span><span>👞 Shoe shine</span></div>
+  </div>
+  <figure><img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?w=1400&q=80" alt="Barber at work in a classic barbershop"></figure>
+</div></section>
+
+<section class="services" id="services"><div class="wrap">
+  <div class="kicker">Services</div>
+  <h2>The full barbershop menu</h2>
+  <p class="sub">The same services this shop has been known for — done properly, without the rush. Call for today's availability.</p>
+  <div class="cards">
+    <div class="card"><div class="ic">✂️</div><h3>Men's Haircut</h3><p>Classic and modern cuts, finished the old-school way. Tell us how you like it, or trust the chair.</p></div>
+    <div class="card"><div class="ic">🪒</div><h3>Hot Towel Shave</h3><p>The traditional straight-razor shave with hot towels — the closest, cleanest shave you can get.</p></div>
+    <div class="card"><div class="ic">🧔</div><h3>Beard Trim</h3><p>Shape, line-up and tidy for beards of every length. Keep the beard, lose the wild.</p></div>
+    <div class="card"><div class="ic">🪑</div><h3>Head Shave</h3><p>A smooth, clean head shave with the same hot-towel care as a full shave.</p></div>
+    <div class="card"><div class="ic">👞</div><h3>Shoe Shine</h3><p>A proper shine while you wait — the finishing touch before the meeting, the wedding, or the day.</p></div>
+  </div>
+</div></section>
+
+<section class="about" id="story"><div class="wrap">
+  <figure><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1400&q=80" alt="Barber giving a haircut"></figure>
+  <div>
+    <div class="kicker">Our Story</div>
+    <h2>One barber. One shop.<br>About sixty years.</h2>
+    <p>Barber <b>Joe Astorino</b> has been cutting hair at Elveden House for roughly <b>sixty years</b> — long enough to have cut the hair of generations of downtown Calgary: the fathers, then the sons, then the grandsons.</p>
+    <p>The shop keeps the traditions that made it a downtown fixture: a real hot towel shave, a shoe shine by the chair, and the kind of conversation you only get in a barbershop that has heard it all.</p>
+    <p>You'll find us inside <b>Elveden House at 717 7 Ave SW</b>, weekdays from 9 to 5.</p>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="kicker">Inside the shop</div>
+  <h2>The chairs are waiting</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=1200&q=80" alt="Classic barbershop interior">
+    <img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?w=1200&q=80" alt="Barber tools of the trade">
+    <img src="https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=1200&q=80" alt="Straight razor shave detail">
+  </div>
+</div></section>
+
+<section class="visit" id="visit"><div class="wrap">
+  <div class="kicker" style="color:var(--brass)">Visit</div>
+  <h2>Find us at Elveden House</h2>
+  <div class="grid">
+    <div class="cell"><h3>📍 Address</h3><p>The Classic Cut<br>717 7 Ave SW<br>Calgary, AB</p><p style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=The+Classic+Cut+717+7+Ave+SW+Calgary" target="_blank" rel="noopener">Get directions →</a></p></div>
+    <div class="cell"><h3>🕘 Hours</h3><p>Monday – Friday<br><b style="color:var(--cream)">9:00 AM – 5:00 PM</b><br>Saturday – Sunday: Closed</p></div>
+    <div class="cell"><h3>☎ Contact</h3><p>Call the shop:<br><a href="tel:+14032632598">(403) 555-0110</a></p><p style="margin-top:8px">Walk-ins welcome during shop hours.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>The Classic Cut · 717 7 Ave SW, Calgary, AB · <a href="tel:+14032632598">(403) 555-0110</a></span>
+  <span class="orbit-credit">Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></span>
+</div></footer>
+
+<div class="callbar">
+  <a class="c1" href="tel:+14032632598">☎ Call the shop</a>
+  <a class="c2" href="https://www.google.com/maps/search/?api=1&query=The+Classic+Cut+717+7+Ave+SW+Calgary" target="_blank" rel="noopener">Directions</a>
+</div>
+
+<style>
+.orbit-credit{opacity:.78}
+.orbit-credit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+#obkFab{position:fixed;right:16px;bottom:86px;z-index:99990;background:#7a2e2e;color:#fff;border:0;border-radius:999px;padding:13px 20px;font:600 15px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer;display:flex;align-items:center;gap:8px}
+#obkFab:active{transform:scale(.97)}
+#obkPanel{position:fixed;right:16px;bottom:148px;z-index:99991;width:min(362px,calc(100vw - 32px));height:min(540px,68vh);background:#fff;color:#1c2430;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.4);display:none;flex-direction:column;overflow:hidden;font:400 15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+#obkPanel.obk-open{display:flex}
+#obkHead{background:#14261c;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+#obkHead .obk-t{flex:1;min-width:0}
+#obkHead .obk-t b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#obkHead .obk-t span{font-size:12.5px;opacity:.85}
+#obkClose{background:rgba(255,255,255,.16);color:#fff;border:0;width:30px;height:30px;border-radius:999px;font-size:16px;cursor:pointer;flex:none}
+#obkMsgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:#f6f7f9}
+.obk-m{max-width:86%;padding:10px 13px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word}
+.obk-bot{background:#fff;border:1px solid #e2e6ec;border-bottom-left-radius:5px;align-self:flex-start}
+.obk-user{background:#7a2e2e;color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.obk-m b{font-weight:700}
+#obkChips{display:flex;flex-wrap:wrap;gap:7px;padding:10px 12px;background:#fff;border-top:1px solid #eceff3}
+.obk-chip{background:#fff;border:1.5px solid #7a2e2e;color:#7a2e2e;border-radius:999px;padding:8px 13px;font:600 14px system-ui,sans-serif;cursor:pointer}
+.obk-chip:active{background:#7a2e2e;color:#fff}
+#obkInputRow{display:none;gap:8px;padding:10px 12px;background:#fff;border-top:1px solid #eceff3}
+#obkInput{flex:1;border:1.5px solid #ccd3dc;border-radius:10px;padding:10px 12px;font:400 15px system-ui,sans-serif;min-width:0}
+#obkSend{background:#7a2e2e;color:#fff;border:0;border-radius:10px;padding:10px 16px;font:600 15px system-ui,sans-serif;cursor:pointer}
+.obk-sms{display:block;text-align:center;background:#7a2e2e;color:#fff;text-decoration:none;border-radius:12px;padding:13px 14px;font-weight:700;margin-top:8px}
+@media(min-width:641px){#obkFab{bottom:24px}#obkPanel{bottom:92px}}
+</style>
+<button id="obkFab" aria-label="Open booking assistant">📅 Book now</button>
+<div id="obkPanel" role="dialog" aria-label="Booking assistant">
+  <div id="obkHead"><div class="obk-t"><b>The Classic Cut</b><span>Booking assistant</span></div><button id="obkClose" aria-label="Close">✕</button></div>
+  <div id="obkMsgs"></div>
+  <div id="obkChips"></div>
+  <div id="obkInputRow"><input id="obkInput" type="text" autocomplete="off"><button id="obkSend">Send</button></div>
+</div>
+<script>
+(function(){
+var CFG={"biz": "The Classic Cut", "phone": "+14032632598", "services": ["Men's Haircut", "Hot Towel Shave", "Beard Trim", "Head Shave", "Shoe Shine"], "closed": [0, 6], "slots": ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"]};
+var fab=document.getElementById('obkFab'),panel=document.getElementById('obkPanel'),msgs=document.getElementById('obkMsgs'),chips=document.getElementById('obkChips'),row=document.getElementById('obkInputRow'),inp=document.getElementById('obkInput');
+var B={service:null,date:null,time:null,name:null,phone:null},step=0,started=false;
+function scroll(){msgs.scrollTop=msgs.scrollHeight}
+function add(txt,cls){var d=document.createElement('div');d.className='obk-m '+cls;d.textContent=txt;msgs.appendChild(d);scroll()}
+function addHTML(h,cls){var d=document.createElement('div');d.className='obk-m '+cls;d.innerHTML=h;msgs.appendChild(d);scroll()}
+function setChips(list,cb){chips.innerHTML='';list.forEach(function(o){var b=document.createElement('button');b.className='obk-chip';b.textContent=o;b.onclick=function(){cb(o)};chips.appendChild(b)})}
+function askInput(ph,cb){row.style.display='flex';inp.placeholder=ph;inp.value='';inp.focus();row._cb=cb}
+function hideInput(){row.style.display='none';row._cb=null}
+document.getElementById('obkSend').onclick=function(){var v=inp.value.trim();if(!v||!row._cb)return;var cb=row._cb;hideInput();cb(v)};
+inp.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('obkSend').click()});
+function days(){var out=[],d=new Date();while(out.length<6){d.setDate(d.getDate()+1);if(CFG.closed.indexOf(d.getDay())===-1){out.push(d.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'}))}}return out}
+function start(){msgs.innerHTML='';chips.innerHTML='';hideInput();B={service:null,date:null,time:null,name:null,phone:null};started=true;
+ add('Hi! I can book you in at '+CFG.biz+'. What would you like to book?','obk-bot');
+ setChips(CFG.services,function(s){B.service=s;add(s,'obk-user');stepDate()})}
+function stepDate(){add('Great choice. What day works best for you?','obk-bot');setChips(days(),function(s){B.date=s;add(s,'obk-user');stepTime()})}
+function bookedSlots(ds){var b=[];for(var i=0;i<CFG.slots.length;i++){var x=0,str=ds+'|'+CFG.slots[i];for(var j=0;j<str.length;j++){x=(x*31+str.charCodeAt(j))>>>0}if(x%4===0)b.push(CFG.slots[i])}if(b.length>=CFG.slots.length-1)b=b.slice(0,CFG.slots.length-2);return b}
+function stepTime(){add('And what time?','obk-bot');var bk=bookedSlots(B.date);chips.innerHTML='';CFG.slots.forEach(function(s){var btn=document.createElement('button');btn.className='obk-chip';if(bk.indexOf(s)>-1){btn.textContent=s+' \u2715 Booked';btn.disabled=true;btn.style.opacity='.45';btn.style.textDecoration='line-through';btn.style.cursor='not-allowed'}else{btn.textContent=s;btn.onclick=function(){B.time=s;add(s,'obk-user');stepName()}}chips.appendChild(btn)});if(bk.length)add('Times with a line through them are already booked that day.','obk-bot')}
+function stepName(){add('Perfect. What name should I put the booking under?','obk-bot');chips.innerHTML='';askInput('Your name',function(v){B.name=v;add(v,'obk-user');stepPhone()})}
+function stepPhone(){add('Last thing — the best phone number for '+CFG.biz+' to confirm your booking?','obk-bot');askInput('Phone number',function(v){B.phone=v;add(v,'obk-user');stepSummary()})}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function stepSummary(){addHTML('<b>Booking summary</b>\n'+esc(CFG.biz)+'\n'+esc(B.service)+'\n'+esc(B.date)+' at '+esc(B.time)+'\n'+esc(B.name)+' · '+esc(B.phone),'obk-bot');
+ setChips(['Confirm booking','Start over'],function(c){if(c==='Start over'){add(c,'obk-user');start();return}add(c,'obk-user');stepDone()})}
+function stepDone(){chips.innerHTML='';var body='Hi '+CFG.biz+', I would like to book: '+B.service+' on '+B.date+' at '+B.time+'. Name: '+B.name+', Phone: '+B.phone;
+ add('You are all set, '+B.name.split(' ')[0]+'! One tap below texts your booking to the shop — they will confirm by text.','obk-bot');
+ var a=document.createElement('a');a.className='obk-sms';a.textContent='💬 Text this booking to the shop';a.href='sms:'+CFG.phone+'?&body='+encodeURIComponent(body);
+ var wrap=document.createElement('div');wrap.className='obk-m obk-bot';wrap.textContent='Ready when you are:';wrap.appendChild(a);msgs.appendChild(wrap);scroll();
+ setChips(['Book another'],function(){start()})}
+fab.onclick=function(){panel.classList.add('obk-open');if(!started)start()};
+document.getElementById('obkClose').onclick=function(){panel.classList.remove('obk-open')};
+})();
+</script>
+
+</body>
+</html>
