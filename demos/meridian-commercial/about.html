@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About &amp; Team — Meridian Commercial Realty</title>
+<meta name="description" content="An independent Calgary commercial brokerage founded in 2011.">
+<meta name="theme-color" content="#101c2e">
+<link rel="preconnect" href="https://images.unsplash.com">
+<style>
+:root{
+  --paper:#faf8f3;--paper-2:#f2eee4;--ink:#101c2e;--ink-2:#2b3647;--muted:#5a6270;
+  --bronze:#a8824f;--bronze-text:#86663b;--bronze-light:#d2b183;--rule:#e1dacb;--rule-dark:rgba(255,255,255,.14);
+  --serif:Georgia,"Times New Roman",Times,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --wrap:1200px;--gutter:20px;--header-h:64px;--callbar-h:60px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--header-h) + 16px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans);padding-bottom:var(--callbar-h);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+p{margin:0 0 1em}
+h1,h2,h3{margin:0;font-weight:400}
+ul,ol{margin:0;padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.ico{width:1.05em;height:1.05em;flex:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+.narrow{max-width:820px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:100}
+.skip:focus{left:8px;top:8px}
+
+/* type */
+.eyebrow{font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-text);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--bronze);flex:none}
+.eyebrow.center{justify-content:center}
+.eyebrow-light{color:var(--bronze-light)}
+.display{font-family:var(--serif);font-size:clamp(2.35rem,8.5vw,4.6rem);line-height:1.04;letter-spacing:-.015em;margin-bottom:22px}
+.display-sm{font-size:clamp(2.1rem,6.5vw,3.6rem)}
+.h2{font-family:var(--serif);font-size:clamp(1.75rem,4.6vw,2.6rem);line-height:1.15;letter-spacing:-.01em}
+.h3{font-family:var(--serif);font-size:1.4rem;line-height:1.25;margin-bottom:10px}
+.lede{font-size:1.125rem;color:var(--ink-2);max-width:36em}
+.muted{color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 22px;border:1px solid transparent;border-radius:2px;font:600 14px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-lg{min-height:54px;padding:15px 28px}
+.btn-block{width:100%}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#1f3149}
+.btn-bronze{background:var(--bronze);color:var(--ink)}
+.btn-bronze:hover{background:var(--bronze-light)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.text-link{display:inline-flex;align-items:center;gap:8px;font:600 13px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--bronze);padding-bottom:6px}
+.text-link:hover{color:var(--bronze-text)}
+
+/* top bar + header */
+.topbar{background:var(--ink);color:#d9dde3;font-size:13px;letter-spacing:.04em}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;min-height:38px;gap:12px}
+.topbar-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar-phone{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#fff;white-space:nowrap}
+.topbar-phone:hover{color:var(--bronze-light)}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(250,248,243,.96);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--rule)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:var(--header-h)}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.logo-mark{width:38px;height:38px;flex:none}
+.logo-text{display:flex;flex-direction:column;line-height:1.05}
+.logo-name{font:400 1.35rem/1 var(--serif);letter-spacing:.02em}
+.logo-sub{font:600 9.5px/1.4 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.logo-light{color:#fff}
+.logo-light .logo-sub{color:#aeb6c2}
+.nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;margin-right:-10px;background:none;border:0;cursor:pointer}
+.bars{display:grid;gap:6px;width:24px}
+.bars span{display:block;height:1.5px;background:var(--ink);transition:transform .25s,opacity .2s}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.site-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--rule);padding:8px var(--gutter) 24px;box-shadow:0 18px 30px -18px rgba(16,28,46,.35)}
+.site-nav.is-open{display:block}
+.site-nav ul{display:flex;flex-direction:column}
+.site-nav li a{display:block;padding:14px 0;border-bottom:1px solid var(--rule);font:400 1.3rem/1.2 var(--serif);text-decoration:none}
+.site-nav li a[aria-current="page"]{color:var(--bronze-text)}
+.nav-call{margin-top:20px;width:100%}
+
+/* hero */
+.hero{padding:44px 0 56px}
+.hero-grid{display:grid;gap:40px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.actions .btn{flex:1 1 220px}
+.hero-media{position:relative;margin:0 14px 14px 0;isolation:isolate}
+.hero-media img{width:100%;aspect-ratio:4/3.4;object-fit:cover}
+.hero-media::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--bronze);z-index:-1}
+.hero-tag{position:absolute;left:0;bottom:24px;background:var(--paper);padding:12px 18px;font:600 12px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--bronze);flex:none;box-shadow:0 0 0 4px rgba(168,130,79,.2)}
+.page-hero{padding:52px 0 40px;border-bottom:1px solid var(--rule)}
+.page-hero .lede{margin:0}
+
+/* stats */
+.stats{background:var(--ink);color:#fff}
+.stats-grid{display:grid}
+.stat{padding:30px 0;border-bottom:1px solid var(--rule-dark);text-align:center}
+.stat:last-child{border-bottom:0}
+.stat-num{font:400 clamp(2.6rem,9vw,3.6rem)/1 var(--serif);margin:0 0 10px;font-variant-numeric:tabular-nums;color:#fff}
+.stat-label{margin:0;font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-light)}
+
+/* sections */
+.section{padding:64px 0}
+.section-tight{padding:40px 0 64px}
+.section-alt{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.section-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px;margin-bottom:34px}
+
+/* listing cards */
+.cards{display:grid;gap:28px}
+.listing{background:#fff;border:1px solid var(--rule);display:flex;flex-direction:column}
+.listing[hidden]{display:none}
+.listing-media{position:relative;overflow:hidden}
+.listing-media img{width:100%;aspect-ratio:10/7;object-fit:cover;transition:transform .6s ease}
+.listing:hover .listing-media img{transform:scale(1.03)}
+.badges{position:absolute;top:14px;left:14px;display:flex;gap:6px;flex-wrap:wrap}
+.badge{display:inline-block;background:var(--ink);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:7px 10px}
+.badge-deal{background:var(--paper);color:var(--ink)}
+.badge-soft{background:transparent;color:var(--bronze-text);border:1px solid var(--bronze);padding:5px 9px}
+.listing-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.listing-area{font:600 12px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-text);margin-bottom:8px}
+.listing-addr{font:400 1.35rem/1.3 var(--serif);margin-bottom:18px}
+.specs{margin:0 0 22px;border-top:1px solid var(--rule);flex:1}
+.specs div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.specs dt{color:var(--muted)}
+.specs dd{margin:0;font-weight:600;text-align:right}
+
+/* services */
+.services{display:grid;border-top:1px solid var(--ink)}
+.service{padding:28px 0;border-bottom:1px solid var(--rule)}
+.service p:last-child{margin:0;color:var(--ink-2)}
+.service-num{font:400 1rem/1 var(--serif);color:var(--bronze-text);margin-bottom:18px}
+
+/* testimonials */
+.testimonials{display:grid;text-align:center}
+.quote{grid-area:1/1;margin:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s}
+.quote.is-active{opacity:1;visibility:visible}
+.quote blockquote{margin:0 0 24px}
+.quote blockquote p{font:italic 400 clamp(1.4rem,4.4vw,2.1rem)/1.4 var(--serif);margin:0}
+.quote blockquote p::before{content:"\201C"}
+.quote blockquote p::after{content:"\201D"}
+.quote figcaption{font:600 13px/1.5 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.quote figcaption span{display:block;font-weight:400;letter-spacing:.04em;text-transform:none;color:var(--muted);font-size:14px;margin-top:2px}
+.dots{grid-area:2/1;display:flex;justify-content:center;gap:4px;margin-top:28px}
+.dots button{width:36px;height:36px;border:0;background:none;cursor:pointer;position:relative;padding:0}
+.dots button::after{content:"";position:absolute;left:8px;right:8px;top:17px;height:2px;background:var(--rule);transition:background .3s}
+.dots button.is-active::after{background:var(--bronze)}
+
+/* CTA band */
+.cta-band{background:var(--ink);color:#fff;padding:64px 0;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:1px solid rgba(168,130,79,.35);border-radius:50%}
+.cta-inner{display:grid;gap:30px;position:relative}
+.cta-title{font:400 clamp(1.9rem,5.4vw,3rem)/1.12 var(--serif);margin-bottom:16px;max-width:18em}
+.cta-copy{color:#c6ccd5;max-width:34em;margin:0}
+
+/* footer */
+.site-footer{background:#0b1422;color:#c6ccd5;padding:56px 0 24px;font-size:15px}
+.footer-grid{display:grid;gap:36px;padding-bottom:36px;border-bottom:1px solid var(--rule-dark)}
+.footer-brand p{margin:18px 0 0;max-width:22em}
+.footer-head{font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-light);margin-bottom:14px}
+.footer-links li{padding:5px 0;overflow-wrap:anywhere}
+.footer-links a{text-decoration:none}
+.footer-links a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.footer-base{padding-top:22px;font-size:13px;color:#8d96a3}
+.footer-base p{margin:0 0 6px}
+
+/* mobile call bar */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;height:var(--callbar-h);display:flex;align-items:center;justify-content:center;gap:10px;background:var(--bronze);color:var(--ink);font:700 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -6px 20px rgba(16,28,46,.18)}
+
+/* listings filters */
+.filters{display:grid;gap:22px;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.filter-label{font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:42px;padding:9px 18px;border:1px solid var(--rule);background:#fff;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--ink)}
+.chip.is-active{background:var(--ink);border-color:var(--ink);color:#fff}
+.filter-meta{display:grid;gap:6px;padding:20px 0 30px}
+.result-count{margin:0;color:var(--muted)}
+.result-count strong{color:var(--ink)}
+.note{margin:0;font-family:var(--serif);font-style:italic;font-size:1.1rem}
+.note a{color:var(--bronze-text);text-underline-offset:3px}
+.empty{padding:40px 0;text-align:center}
+
+/* insights */
+.articles{display:grid;gap:0}
+.article{display:grid;gap:24px;padding:44px 0;border-bottom:1px solid var(--rule)}
+.article:first-child{padding-top:8px}
+.article:last-child{border-bottom:0}
+.article-side img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.article-meta{display:flex;align-items:center;gap:14px;margin:16px 0 0;font-size:14px;color:var(--muted)}
+.article-title{margin-bottom:20px}
+.article-body>p{color:var(--ink-2)}
+.takeaway{margin-top:26px;padding:20px 22px;background:var(--paper-2);border-left:3px solid var(--bronze)}
+.takeaway p{margin:0;font-family:var(--serif);font-size:1.12rem;line-height:1.5}
+.takeaway .takeaway-label{font:600 11px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-text);margin-bottom:8px}
+.table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--rule)}
+.rates{width:100%;min-width:520px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.rates caption{caption-side:top;text-align:left;padding:16px 18px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--rule)}
+.rates th,.rates td{padding:14px 18px;text-align:right;border-bottom:1px solid var(--rule)}
+.rates thead th{font:600 12px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.rates th:first-child{text-align:left}
+.rates tbody th{font:400 1.1rem/1.3 var(--serif)}
+.rates tbody tr:last-child>*{border-bottom:0}
+.table-note{font-size:13px;color:var(--muted);margin:12px 0 0}
+
+/* about */
+.story{display:grid;gap:36px}
+.story-copy p:not(.eyebrow){color:var(--ink-2)}
+.story-copy .h2{margin-bottom:20px}
+.story-media{margin:0}
+.story-media img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.team{display:grid;gap:20px}
+.member{background:#fff;border:1px solid var(--rule);padding:28px 24px}
+.member p:last-child{margin:0;color:var(--ink-2);font-size:15px}
+.monogram{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);font:400 1.55rem/1 var(--serif);letter-spacing:.06em;margin-bottom:20px;box-shadow:0 0 0 1px var(--paper),0 0 0 3px var(--bronze)}
+.member-title{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--bronze-text);margin-bottom:12px}
+.steps{display:grid;counter-reset:none;border-top:1px solid var(--ink)}
+.step{padding:28px 0;border-bottom:1px solid var(--rule)}
+.step p:last-child{margin:0;color:var(--ink-2)}
+.step-num{font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-text);margin-bottom:14px}
+
+/* contact */
+.contact-grid{display:grid;gap:32px}
+.call-card{display:block;background:var(--ink);color:#fff;text-decoration:none;padding:32px 26px;position:relative;overflow:hidden}
+.call-card::after{content:"";position:absolute;right:-60px;bottom:-60px;width:180px;height:180px;border:1px solid rgba(168,130,79,.45);border-radius:50%}
+.call-card-label{display:block;font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-light);margin-bottom:12px}
+.call-card-num{display:block;font:400 clamp(2rem,8vw,2.8rem)/1.1 var(--serif);margin-bottom:12px;white-space:nowrap}
+.call-card-sub{display:block;color:#c6ccd5;font-size:14px}
+.call-card:hover .call-card-num{color:var(--bronze-light)}
+.contact-list{margin-top:22px}
+.contact-list li{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
+.contact-list .ico{color:var(--bronze-text);width:20px;height:20px}
+.contact-list a{text-underline-offset:3px}
+.form-card{background:#fff;border:1px solid var(--rule);padding:28px 22px}
+.form-card .h3{margin-bottom:20px}
+.field{display:grid;gap:7px;margin-bottom:18px}
+.field-row{display:grid;gap:0 16px}
+.field label{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.field input:not([type=range]),.field select,.field textarea{width:100%;min-height:48px;padding:11px 14px;border:1px solid #cfc7b6;border-radius:2px;background:var(--paper);font-size:16px}
+.field textarea{resize:vertical;min-height:110px}
+.field input:not([type=range]):focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(168,130,79,.3)}
+.field [aria-invalid="true"]{border-color:#a3362a!important}
+.form-error{color:#a3362a;font-size:14px;margin:-4px 0 14px}
+.form-success{padding:8px 0}
+.form-success:focus{outline:none}
+.form-success .h3{font-size:1.8rem}
+.form-success a{color:var(--bronze-text)}
+.calc-grid{display:grid;gap:30px}
+.calc-grid .h2{margin-bottom:16px}
+.calc{background:#fff;border:1px solid var(--rule);padding:26px 22px}
+.range-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.range-head output{font:400 1.2rem/1.2 var(--serif)}
+.range-ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+input[type=range]{width:100%;height:32px;margin:4px 0 0;accent-color:var(--bronze);cursor:pointer}
+.calc-out{display:grid;margin:8px 0 0;border-top:1px solid var(--ink)}
+.calc-out div{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)}
+.calc-out dt{font:600 12px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.calc-out dd{margin:0;font:400 1.5rem/1.2 var(--serif);font-variant-numeric:tabular-nums}
+.faq{margin-top:28px;border-top:1px solid var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule)}
+.faq-q{font:inherit;margin:0}
+.faq-q button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;background:none;border:0;text-align:left;cursor:pointer;font:400 1.2rem/1.35 var(--serif)}
+.faq-q button:hover{color:var(--bronze-text)}
+.faq-icon{position:relative;width:16px;height:16px;flex:none}
+.faq-icon::before,.faq-icon::after{content:"";position:absolute;left:0;right:0;top:7.5px;height:1.5px;background:currentColor;transition:transform .25s}
+.faq-icon::after{transform:rotate(90deg)}
+[aria-expanded="true"] .faq-icon::after{transform:rotate(0)}
+.faq-a p{margin:0 0 24px;color:var(--ink-2);max-width:42em}
+
+@media (min-width:640px){
+  :root{--gutter:32px}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .stat{border-bottom:0;border-right:1px solid var(--rule-dark);padding:44px 12px}
+  .stat:last-child{border-right:0}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .team{grid-template-columns:repeat(2,1fr)}
+  .field-row{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1.4fr 1fr 1.4fr}
+  .filters{grid-template-columns:auto auto;justify-content:start;gap:22px 48px}
+  .filter-meta{grid-template-columns:auto 1fr;align-items:baseline;gap:24px}
+  .note{text-align:right}
+  .form-card,.calc{padding:36px 34px}
+  .call-card{padding:40px 36px}
+}
+@media (min-width:768px){
+  .services{grid-template-columns:repeat(3,1fr);gap:40px}
+  .service{border-bottom:0;padding:32px 0 0}
+  .steps{grid-template-columns:repeat(3,1fr);gap:40px}
+  .step{border-bottom:0;padding:32px 0 0}
+  .article{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:start}
+}
+@media (min-width:900px){
+  body{padding-bottom:0}
+  .callbar{display:none}
+  .nav-toggle{display:none}
+  .site-nav{display:flex;position:static;align-items:center;gap:30px;padding:0;background:none;border:0;box-shadow:none}
+  .site-nav ul{flex-direction:row;gap:30px}
+  .site-nav li a{padding:8px 0;border:0;font:600 13px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid transparent}
+  .site-nav li a:hover{border-bottom-color:var(--bronze)}
+  .site-nav li a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--bronze)}
+  .nav-call{margin:0;width:auto;min-height:42px;padding:10px 18px}
+  :root{--header-h:80px}
+  .hero{padding:72px 0 96px}
+  .hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:72px;align-items:center}
+  .actions .btn{flex:0 0 auto}
+  .section{padding:96px 0}
+  .section-tight{padding:56px 0 96px}
+  .page-hero{padding:80px 0 56px}
+  .cta-band{padding:88px 0}
+  .cta-inner{grid-template-columns:1fr auto;align-items:center;gap:56px}
+  .story{grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .contact-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}
+  .calc-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+  .site-footer{padding-top:72px}
+  .footer-base{display:flex;justify-content:space-between;gap:24px}
+}
+@media (min-width:1100px){
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .team{grid-template-columns:repeat(4,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span class="topbar-name">Meridian Commercial Realty</span>
+    <a class="topbar-phone" href="tel:+14035550115"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>(403) 555-0115</span></a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="index.html" aria-label="Meridian Commercial Realty — home"><svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M20 1.5v37" stroke="#a8824f" stroke-width="1.2"/><path d="M9 29V13l11 10 11-10v16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="miter"/></svg><span class="logo-text"><span class="logo-name">Meridian</span><span class="logo-sub">Commercial Realty</span></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="listings.html">Listings</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="btn btn-ink nav-call" href="tel:+14035550115"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Call</span></a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">About Meridian</p>
+    <h1 class="display display-sm">An independent brokerage built on phone calls, not portals</h1>
+    <p class="lede">Four brokers, one office, and a simple rule: every call returned the same day.</p>
+  </div>
+</section>
+<section class="section section-tight">
+  <div class="wrap story">
+    <div class="story-copy">
+      <p class="eyebrow">Our story</p>
+      <h2 class="h2">Founded in Calgary in 2011</h2>
+      <p>Meridian Commercial Realty started in 2011 with two brokers, a borrowed boardroom and a belief that commercial clients deserved the attention usually reserved for the biggest accounts. We have stayed deliberately small and independent, so the person who answers your call is the person who negotiates your deal.</p>
+      <p>Through an oil-price downturn, a pandemic and a reshaped downtown, we have helped tenants, owners and investors make sound decisions with straight market data and a long list of relationships. Much of what we lease and sell never reaches a public site — it moves through people who trust each other.</p>
+    </div>
+    <figure class="story-media"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=70&h=760" alt="Brokers reviewing plans together at a bright office table" width="1000" height="760" loading="lazy"></figure>
+  </div>
+</section>
+<section class="stats" aria-label="Firm track record">
+  <div class="wrap stats-grid">
+    <div class="stat"><p class="stat-num" data-count="240" data-prefix="$" data-suffix="M+">$240M+</p><p class="stat-label">Leased &amp; sold</p></div>
+    <div class="stat"><p class="stat-num" data-count="1.8" data-decimals="1" data-suffix="M">1.8M</p><p class="stat-label">Sq ft listed</p></div>
+    <div class="stat"><p class="stat-num" data-count="120" data-suffix="+">120+</p><p class="stat-label">Deals closed</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">Team</p><h2 class="h2">The people you will talk to</h2></div></div>
+    <div class="team">
+      <article class="member"><div class="monogram" aria-hidden="true">DK</div><h3 class="h3">Dana K.</h3><p class="member-title">Principal &amp; Managing Broker</p><p>Fifteen years of downtown office leasing; has represented tenants in over 40 tower renewals.</p></article>
+      <article class="member"><div class="monogram" aria-hidden="true">MT</div><h3 class="h3">Marcus T.</h3><p class="member-title">Senior Associate, Industrial</p><p>Knows every small-bay building in the Foothills and southeast by ceiling height and dock count.</p></article>
+      <article class="member"><div class="monogram" aria-hidden="true">PS</div><h3 class="h3">Priya S.</h3><p class="member-title">Vice President, Office Leasing</p><p>Former corporate real estate manager who now sits on the tenant's side of the table.</p></article>
+      <article class="member"><div class="monogram" aria-hidden="true">OL</div><h3 class="h3">Owen L.</h3><p class="member-title">Associate, Retail &amp; Investment</p><p>Main-street retail and small investment sales, with a focus on Inglewood and the Beltline.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">How we work</p><h2 class="h2">Three steps, no surprises</h2></div></div>
+    <ol class="steps">
+      <li class="step"><p class="step-num">Step 01</p><h3 class="h3">Call &amp; brief</h3><p>A twenty-minute phone conversation about size, budget, timing and must-haves. No forms, no portals.</p></li>
+      <li class="step"><p class="step-num">Step 02</p><h3 class="h3">Shortlist &amp; tour</h3><p>We send a tight shortlist — public and off-market — and walk the best options with you in person.</p></li>
+      <li class="step"><p class="step-num">Step 03</p><h3 class="h3">Negotiate &amp; close</h3><p>We negotiate rate, inducements and terms, coordinate legal review, and stay with you through possession.</p></li>
+    </ol>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap cta-inner">
+    <div>
+      <p class="eyebrow eyebrow-light">Talk to a broker</p>
+      <h2 class="cta-title">The right space is usually one phone call away.</h2>
+      <p class="cta-copy">Tell us your size, budget and timing. We will come back with options — including the ones that never reach the public sites.</p>
+    </div>
+    <a class="btn btn-bronze btn-lg" href="tel:+14035550115"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Call (403) 555-0115</span></a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="logo logo-light" href="index.html" aria-label="Meridian Commercial Realty — home"><svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M20 1.5v37" stroke="#a8824f" stroke-width="1.2"/><path d="M9 29V13l11 10 11-10v16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="miter"/></svg><span class="logo-text"><span class="logo-name">Meridian</span><span class="logo-sub">Commercial Realty</span></span></a>
+      <p>Office, industrial and retail leasing and sales across Calgary since 2011.</p>
+    </div>
+    <div>
+      <h2 class="footer-head">Pages</h2>
+      <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-head">Contact</h2>
+      <ul class="footer-links">
+        <li><a href="tel:+14035550115">(403) 555-0115</a></li>
+        <li><a href="mailto:leasing@meridiancommercial.example">leasing@meridiancommercial.example</a></li>
+        <li>Calgary, Alberta</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; 2026 Meridian Commercial Realty. All figures in CAD.</p>
+    <p>Demonstration website — the firm, people, listings and market data are fictional.</p>
+  </div>
+</footer>
+<a class="callbar" href="tel:+14035550115"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Call (403) 555-0115</span></a>
+<script>
+(function () {
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Mobile menu */
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("site-nav");
+  if (toggle && nav) {
+    var setMenu = function (open) {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+    toggle.addEventListener("click", function () {
+      setMenu(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setMenu(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); }
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 900) setMenu(false);
+    });
+  }
+
+  /* Count-up stats */
+  var counters = document.querySelectorAll("[data-count]");
+  function render(el, value) {
+    var d = parseInt(el.getAttribute("data-decimals") || "0", 10);
+    el.textContent = (el.getAttribute("data-prefix") || "") + value.toFixed(d) + (el.getAttribute("data-suffix") || "");
+  }
+  function runCount(el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    if (reduceMotion) { render(el, target); return; }
+    var start = null, dur = 1600;
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      render(el, target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
+    counters.forEach(function (el) { render(el, 0); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { runCount(entry.target); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { io.observe(el); });
+  }
+
+  /* Testimonials */
+  var rotator = document.querySelector(".testimonials");
+  if (rotator) {
+    var quotes = rotator.querySelectorAll(".quote");
+    var dots = rotator.querySelectorAll(".dots button");
+    var current = 0, timer = null;
+    var delay = parseInt(rotator.getAttribute("data-rotate"), 10) || 6000;
+    var show = function (i) {
+      current = (i + quotes.length) % quotes.length;
+      quotes.forEach(function (q, n) {
+        q.classList.toggle("is-active", n === current);
+        q.setAttribute("aria-hidden", n === current ? "false" : "true");
+      });
+      dots.forEach(function (b, n) {
+        b.classList.toggle("is-active", n === current);
+        b.setAttribute("aria-pressed", n === current ? "true" : "false");
+      });
+    };
+    var start = function () { clearInterval(timer); timer = setInterval(function () { show(current + 1); }, delay); };
+    dots.forEach(function (b, n) { b.addEventListener("click", function () { show(n); start(); }); });
+    show(0);
+    start();
+  }
+
+  /* Listing filters */
+  var grid = document.getElementById("listing-grid");
+  if (grid) {
+    var state = { type: "all", deal: "all" };
+    var chips = document.querySelectorAll(".chip[data-filter]");
+    var cards = grid.querySelectorAll(".listing");
+    var countEl = document.getElementById("result-num");
+    var empty = document.getElementById("empty-state");
+    var apply = function () {
+      var shown = 0;
+      cards.forEach(function (c) {
+        var ok = (state.type === "all" || c.getAttribute("data-type") === state.type) &&
+                 (state.deal === "all" || c.getAttribute("data-deal") === state.deal);
+        c.hidden = !ok;
+        if (ok) shown++;
+      });
+      countEl.textContent = shown;
+      empty.hidden = shown !== 0;
+    };
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var group = chip.getAttribute("data-filter");
+        state[group] = chip.getAttribute("data-value");
+        chips.forEach(function (c) {
+          if (c.getAttribute("data-filter") !== group) return;
+          var on = c === chip;
+          c.classList.toggle("is-active", on);
+          c.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        apply();
+      });
+    });
+    apply();
+  }
+
+  /* FAQ accordion */
+  document.querySelectorAll(".faq-q button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+      document.getElementById(btn.getAttribute("aria-controls")).hidden = open;
+    });
+  });
+
+  /* Contact form */
+  var form = document.getElementById("contact-form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var required = form.querySelectorAll("[required]");
+      var firstBad = null;
+      required.forEach(function (f) {
+        var bad = !f.value.trim() || !f.checkValidity();
+        f.setAttribute("aria-invalid", bad ? "true" : "false");
+        if (bad && !firstBad) firstBad = f;
+      });
+      var err = document.getElementById("form-error");
+      if (firstBad) { err.hidden = false; firstBad.focus(); return; }
+      err.hidden = true;
+      var name = document.getElementById("f-name").value.trim().split(/\s+/)[0];
+      document.getElementById("success-title").textContent = "Thank you, " + name + ".";
+      form.hidden = true;
+      form.reset();
+      var ok = document.getElementById("form-success");
+      ok.hidden = false;
+      ok.focus();
+    });
+  }
+
+  /* Lease calculator: monthly = sqft x rate / 12 */
+  var calc = document.getElementById("calc");
+  if (calc) {
+    var sqft = document.getElementById("c-sqft"), rate = document.getElementById("c-rate"), term = document.getElementById("c-term");
+    var money = new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", currencyDisplay: "narrowSymbol", maximumFractionDigits: 0 });
+    var rateFmt = new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", currencyDisplay: "narrowSymbol", minimumFractionDigits: 2 });
+    var num = new Intl.NumberFormat("en-CA");
+    var update = function () {
+      var s = parseFloat(sqft.value), r = parseFloat(rate.value), t = parseInt(term.value, 10);
+      var annual = s * r;
+      document.getElementById("c-sqft-out").textContent = num.format(s) + " sq ft";
+      document.getElementById("c-rate-out").textContent = rateFmt.format(r) + " / sq ft / yr";
+      document.getElementById("c-month").textContent = money.format(annual / 12);
+      document.getElementById("c-year").textContent = money.format(annual);
+      document.getElementById("c-total").textContent = money.format(annual * t);
+    };
+    [sqft, rate, term].forEach(function (el) { el.addEventListener("input", update); el.addEventListener("change", update); });
+    update();
+  }
+})();
+</script>
+</body>
+</html>
