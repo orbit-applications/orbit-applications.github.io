@@ -224,75 +224,6 @@
 
 
 
-/* bk:start — booking assistant */
-:root{--bk-bg:#0f231d;--bk-surface:#173a2f;--bk-text:#f1e8d6;--bk-muted:#b9b29f;--bk-line:rgba(201,164,92,.22);--bk-line-2:rgba(201,164,92,.45);--bk-accent:#c9a45c;--bk-on-accent:#1a160c;--bk-me:#6e1f26;--bk-on-me:#f1e8d6;--bk-head-bg:#0b1a15;--bk-head-text:#f1e8d6;--bk-font:var(--sans);--bk-display:var(--serif);--bk-display-w:600;--bk-r:2px;--bk-r-btn:0px;--bk-r-sm:0px;--bk-bubble-r:2px;--bk-err:#f0a39a}
-.bk-lock,.bk-lock body{overflow:hidden}
-.bk-hdr-actions{display:flex;align-items:center;gap:.5rem;flex:none}
-.bk-hdr{background:transparent!important;color:inherit!important;border:1.5px solid currentColor!important;box-shadow:none!important;cursor:pointer}
-.bk-hdr:hover{transform:none!important;opacity:.8}
-@media (max-width:519px){.bk-hdr-actions a[href^="tel:"]{display:none!important}}
-@media (max-width:379px){.bk-hdr svg{display:none!important}}
-:where(button[data-book]){font:inherit;line-height:inherit;color:inherit;background:none;border:0;margin:0;-webkit-appearance:none;appearance:none}
-[data-book]{cursor:pointer}
-.bk-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.bk-fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:var(--bk-fab-b,24px);z-index:70;display:inline-flex;align-items:center;gap:.55rem;min-height:52px;padding:0 1.3rem 0 1.05rem;border:var(--bk-fab-border,0);border-radius:var(--bk-r-btn);background:var(--bk-accent);color:var(--bk-on-accent);font-family:var(--bk-font);font-weight:700;font-size:.95rem;letter-spacing:.02em;line-height:1;box-shadow:var(--bk-fab-shadow,0 14px 34px -12px rgba(0,0,0,.55));cursor:pointer;opacity:0;transform:translateY(18px) scale(.96);pointer-events:none;visibility:hidden;transition:opacity .3s,transform .35s cubic-bezier(.2,.7,.1,1),visibility .3s}
-.bk-fab.show{opacity:1;transform:none;pointer-events:auto;visibility:visible}
-.bk-fab svg{width:20px;height:20px;flex:none}
-.bk-overlay{position:fixed;inset:0;z-index:89;background:rgba(10,10,12,.5);opacity:0;transition:opacity .25s}
-.bk-overlay.on{opacity:1}
-.bk-panel{position:fixed;z-index:90;left:0;right:0;bottom:0;display:flex;flex-direction:column;height:min(88vh,640px);height:min(88dvh,640px);background:var(--bk-bg);color:var(--bk-text);font-family:var(--bk-font);font-size:16px;line-height:1.5;text-align:left;letter-spacing:normal;text-transform:none;border-radius:var(--bk-r) var(--bk-r) 0 0;box-shadow:0 -24px 60px -24px rgba(0,0,0,.55);border:1px solid var(--bk-line);border-bottom:0;transform:translateY(105%);transition:transform .32s cubic-bezier(.2,.7,.1,1);padding-bottom:env(safe-area-inset-bottom);overflow:hidden}
-.bk-panel.on{transform:none}
-.bk-panel[hidden],.bk-overlay[hidden]{display:none}
-@media (min-width:640px){
-  .bk-panel{left:auto;right:24px;bottom:24px;width:410px;height:min(680px,calc(100vh - 48px));height:min(680px,calc(100dvh - 48px));border-radius:var(--bk-r);border-bottom:1px solid var(--bk-line);opacity:0;transform:translateY(24px);transition:transform .32s cubic-bezier(.2,.7,.1,1),opacity .25s}
-  .bk-panel.on{opacity:1;transform:none}
-}
-.bk-head{display:flex;align-items:center;gap:.8rem;padding:.9rem .9rem .9rem 1.1rem;background:var(--bk-head-bg);color:var(--bk-head-text);border-bottom:1px solid var(--bk-line);flex:none}
-.bk-av{width:42px;height:42px;flex:none;border-radius:var(--bk-av-r,50%);display:grid;place-items:center;background:var(--bk-av-bg,var(--bk-accent));color:var(--bk-av-text,var(--bk-on-accent));font-family:var(--bk-display);font-weight:var(--bk-display-w,700);font-size:1rem;letter-spacing:.02em}
-.bk-head-t{flex:1;min-width:0}
-.bk-head-t b{display:block;font-family:var(--bk-display);font-weight:var(--bk-display-w,700);font-size:1.12rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:var(--bk-display-ls,0);text-transform:var(--bk-display-tt,none)}
-.bk-head-t small{display:block;font-size:.8rem;opacity:.78;margin-top:.1rem}
-.bk-close{width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--bk-line-2);background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;padding:0}
-.bk-close:hover{border-color:var(--bk-accent)}
-.bk-close svg{width:18px;height:18px}
-.bk-log{flex:1;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:1.1rem 1rem 1.4rem;display:flex;flex-direction:column;gap:.6rem}
-.bk-msg{max-width:88%;padding:.7rem .95rem;border-radius:var(--bk-bubble-r);font-size:.95rem;overflow-wrap:anywhere;animation:bkIn .3s cubic-bezier(.2,.7,.1,1)}
-.bk-bot{background:var(--bk-surface);color:var(--bk-text);border:1px solid var(--bk-line);border-bottom-left-radius:4px;align-self:flex-start}
-.bk-me{background:var(--bk-me);color:var(--bk-on-me);align-self:flex-end;border-bottom-right-radius:4px;font-weight:600}
-@keyframes bkIn{from{opacity:0;transform:translateY(6px)}}
-.bk-typing{display:inline-flex;gap:4px;padding:.9rem 1rem}
-.bk-typing span{width:6px;height:6px;border-radius:50%;background:var(--bk-muted);animation:bkDot 1s infinite}
-.bk-typing span:nth-child(2){animation-delay:.15s}.bk-typing span:nth-child(3){animation-delay:.3s}
-@keyframes bkDot{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
-.bk-choices{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.15rem;width:100%}
-.bk-choices.bk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
-.bk-chip{min-height:44px;padding:.55rem .95rem;border-radius:var(--bk-r-btn);border:1.5px solid var(--bk-line-2);background:var(--bk-chip-bg,transparent);color:var(--bk-text);font-family:var(--bk-font);font-size:.92rem;font-weight:600;letter-spacing:normal;text-transform:none;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2;transition:border-color .2s,background .2s,color .2s}
-.bk-chip small{font-size:.74rem;font-weight:500;color:var(--bk-muted);margin-top:.15rem}
-.bk-chip:hover{border-color:var(--bk-accent)}
-.bk-chip.bk-pri{background:var(--bk-accent);color:var(--bk-on-accent);border-color:var(--bk-accent)}
-.bk-grid .bk-chip{border-radius:var(--bk-r-sm);padding:.55rem .25rem}
-.bk-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem}
-.bk-form input{min-width:0;width:100%;min-height:50px;padding:0 1rem;border-radius:var(--bk-r-sm);border:1.5px solid var(--bk-line-2);background:var(--bk-surface);color:var(--bk-text);font-family:var(--bk-font);font-size:16px}
-.bk-form input::placeholder{color:var(--bk-muted);opacity:1}
-.bk-form input:focus{outline:2px solid var(--bk-accent);outline-offset:1px;border-color:var(--bk-accent)}
-.bk-send{width:50px;height:50px;border-radius:var(--bk-r-sm);border:0;background:var(--bk-accent);color:var(--bk-on-accent);display:grid;place-items:center;cursor:pointer;padding:0}
-.bk-send svg{width:20px;height:20px}
-.bk-err{grid-column:1/-1;font-size:.84rem;font-weight:600;color:var(--bk-err)}
-.bk-err:empty{display:none}
-.bk-card{width:100%;max-width:100%}
-.bk-card-t{display:block;font-family:var(--bk-display);font-weight:var(--bk-display-w,700);font-size:1.12rem;line-height:1.2;letter-spacing:var(--bk-display-ls,0);text-transform:var(--bk-display-tt,none)}
-.bk-card dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.4rem .9rem;margin:.7rem 0 0}
-.bk-card dt{color:var(--bk-muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;padding-top:.2rem;font-weight:600}
-.bk-card dd{margin:0;font-weight:600}
-.bk-ok{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--bk-accent);color:var(--bk-on-accent);margin-bottom:.6rem}
-.bk-ok svg{width:20px;height:20px}
-.bk-sms{display:flex;align-items:center;justify-content:center;gap:.55rem;min-height:52px;margin-top:1rem;padding:.6rem 1rem;border-radius:var(--bk-r-btn);background:var(--bk-accent);color:var(--bk-on-accent)!important;font-family:var(--bk-font);font-weight:700;font-size:.95rem;text-decoration:none;text-align:center;line-height:1.25}
-.bk-sms svg{width:19px;height:19px;flex:none}
-.bk-note{font-size:.84rem;color:var(--bk-muted);margin-top:.75rem}
-.bk-note a{color:var(--bk-text);text-decoration:underline;text-underline-offset:2px}
-.bk-panel :focus-visible,.bk-fab:focus-visible{outline:2px solid var(--bk-focus,var(--bk-accent));outline-offset:2px}
-@media (prefers-reduced-motion:reduce){.bk-panel,.bk-fab,.bk-overlay,.bk-msg,.bk-typing span{transition:none!important;animation:none!important}}
-/* bk:end */
 .bk-chip[disabled]{opacity:.45;text-decoration:line-through;cursor:not-allowed}
 </style>
 </head>
@@ -318,7 +249,7 @@
       <a href="#hours">Hours</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <div class="bk-hdr-actions"><button type="button" class="btn bk-hdr" data-book><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Book now</span></button><a class="btn btn-brass" href="tel:+14032656260"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0105</span></a></div>
+    <div class="bk-hdr-actions"><a class="btn bk-hdr" href="tel:+14035550105"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg><span>Call now</span></a><a class="btn btn-brass" href="tel:+14035550105"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0105</span></a></div>
   </div>
 </header>
 
@@ -335,8 +266,8 @@
         <div class="ornament reveal" style="--d:.15s" aria-hidden="true"><svg><use href="#i-diamond"/></svg></div>
         <p class="reveal" style="--d:.2s">Sharp haircuts, tidy beards and the unhurried ritual of a proper shave — a refined stop in the middle of the downtown workday.</p>
         <div class="hero-ctas reveal" style="--d:.3s">
-          <a class="btn btn-brass" href="tel:+14032656260"><svg><use href="#i-phone"/></svg>Call (403) 555-0105</a>
-          <button type="button" class="btn btn-line" data-book data-book-hero><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Book now</span></button>
+          <a class="btn btn-brass" href="tel:+14035550105"><svg><use href="#i-phone"/></svg>Call (403) 555-0105</a>
+          <a class="btn btn-line" href="tel:+14035550105"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg><span>Call now</span></a>
           <a class="btn btn-line" href="#services">See services</a>
         </div>
         <div class="hero-meta reveal" style="--d:.4s">
@@ -385,27 +316,27 @@
       <div class="svc-grid">
         <article class="svc reveal">
           <div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=75" alt="Barber tools laid out on slate: clippers, scissors, comb and grooming products"></div>
-          <div class="svc-body"><span class="svc-no">No. I</span><h3>The Classic Cut</h3><p>A traditional men's haircut with clippers and scissors, finished neat at the neckline and styled before you leave.</p><a href="tel:+14032656260">Call to book</a></div>
+          <div class="svc-body"><span class="svc-no">No. I</span><h3>The Classic Cut</h3><p>A traditional men's haircut with clippers and scissors, finished neat at the neckline and styled before you leave.</p><a href="tel:+14035550105">Call to book</a></div>
         </article>
         <article class="svc reveal" style="--d:.08s">
           <div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=75" alt="A man reclined in a barber chair having his face prepared for a shave"></div>
-          <div class="svc-body"><span class="svc-no">No. II</span><h3>Hot Towel Shave</h3><p>The old-school ritual: warm towels, rich lather and a careful straight shave for a smooth, close finish.</p><a href="tel:+14032656260">Call to book</a></div>
+          <div class="svc-body"><span class="svc-no">No. II</span><h3>Hot Towel Shave</h3><p>The old-school ritual: warm towels, rich lather and a careful straight shave for a smooth, close finish.</p><a href="tel:+14035550105">Call to book</a></div>
         </article>
         <article class="svc reveal" style="--d:.16s">
           <div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=900&q=75" alt="Black and white close-up of a barber trimming a beard with scissors and comb"></div>
-          <div class="svc-body"><span class="svc-no">No. III</span><h3>Beard Trim &amp; Shape</h3><p>Length taken down, lines cleaned up and the shape balanced to suit your face — from a light tidy to a full reshape.</p><a href="tel:+14032656260">Call to book</a></div>
+          <div class="svc-body"><span class="svc-no">No. III</span><h3>Beard Trim &amp; Shape</h3><p>Length taken down, lines cleaned up and the shape balanced to suit your face — from a light tidy to a full reshape.</p><a href="tel:+14035550105">Call to book</a></div>
         </article>
         <article class="svc reveal">
           <div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=75" alt="A barber sharpening the hairline and fade on a client with clippers"></div>
-          <div class="svc-body"><span class="svc-no">No. IV</span><h3>Fades &amp; Tapers</h3><p>Smooth blends from skin to length, tapered or faded as high or low as you like, kept crisp around the ears and neck.</p><a href="tel:+14032656260">Call to book</a></div>
+          <div class="svc-body"><span class="svc-no">No. IV</span><h3>Fades &amp; Tapers</h3><p>Smooth blends from skin to length, tapered or faded as high or low as you like, kept crisp around the ears and neck.</p><a href="tel:+14035550105">Call to book</a></div>
         </article>
         <article class="svc reveal" style="--d:.08s">
           <div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=900&q=75" alt="A tufted brown leather vintage barber chair in a dim barbershop"></div>
-          <div class="svc-body"><span class="svc-no">No. V</span><h3>Cut &amp; Beard</h3><p>The full tidy-up in one sitting: haircut and beard trim done together so everything matches.</p><a href="tel:+14032656260">Call to book</a></div>
+          <div class="svc-body"><span class="svc-no">No. V</span><h3>Cut &amp; Beard</h3><p>The full tidy-up in one sitting: haircut and beard trim done together so everything matches.</p><a href="tel:+14035550105">Call to book</a></div>
         </article>
         <article class="svc reveal" style="--d:.16s">
           <div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&w=900&q=75" alt="Black and white photo of a bearded man being lathered with a shaving brush"></div>
-          <div class="svc-body"><span class="svc-no">No. VI</span><h3>Head &amp; Neck Shave</h3><p>Warm lather and a razor finish for a smooth scalp or a clean neckline — the sharpest way to finish a cut.</p><a href="tel:+14032656260">Call to book</a></div>
+          <div class="svc-body"><span class="svc-no">No. VI</span><h3>Head &amp; Neck Shave</h3><p>Warm lather and a razor finish for a smooth scalp or a clean neckline — the sharpest way to finish a cut.</p><a href="tel:+14035550105">Call to book</a></div>
         </article>
       </div>
 
@@ -422,7 +353,7 @@
           <li>Line-up &amp; neck tidy</li>
           <li>Head shave</li>
         </ul>
-        <p class="note">Pricing on request — call <a href="tel:+14032656260">(403) 555-0105</a>.</p>
+        <p class="note">Pricing on request — call <a href="tel:+14035550105">(403) 555-0105</a>.</p>
       </div>
     </div>
   </section>
@@ -434,7 +365,7 @@
         <h2 class="reveal" style="--d:.08s">Four steps <em>to sharp.</em></h2>
       </div>
       <div class="steps">
-        <div class="step reveal"><span class="step-n">i.</span><h3>Call the shop</h3><p>Ring <a href="tel:+14032656260">(403) 555-0105</a> to ask about availability and book a time that fits your day.</p></div>
+        <div class="step reveal"><span class="step-n">i.</span><h3>Call the shop</h3><p>Ring <a href="tel:+14035550105">(403) 555-0105</a> to ask about availability and book a time that fits your day.</p></div>
         <div class="step reveal" style="--d:.08s"><span class="step-n">ii.</span><h3>Take a seat</h3><p>Come to 639 5 Ave SW, settle into the chair and tell your barber what you're after.</p></div>
         <div class="step reveal" style="--d:.16s"><span class="step-n">iii.</span><h3>The cut</h3><p>Clippers, scissors, razor — whatever the style calls for, done with attention to the detail.</p></div>
         <div class="step reveal" style="--d:.24s"><span class="step-n">iv.</span><h3>Back to it</h3><p>Styled, brushed off and ready to walk back into the meeting looking the part.</p></div>
@@ -454,7 +385,7 @@
           <li><b>Monday – Friday</b><span>10 AM – 5 PM</span></li>
           <li><b>Saturday &amp; Sunday</b><span>Call to confirm</span></li>
         </ul>
-        <p class="small">Planning around a lunch break? Call <a href="tel:+14032656260">(403) 555-0105</a> to check availability before you head over.</p>
+        <p class="small">Planning around a lunch break? Call <a href="tel:+14035550105">(403) 555-0105</a> to check availability before you head over.</p>
       </div>
     </div>
   </section>
@@ -468,11 +399,11 @@
       <div class="faq-list reveal">
         <details>
           <summary>How much does a haircut cost?<span class="tick" aria-hidden="true"></span></summary>
-          <p class="answer">Pricing depends on the service — a cut, a shave or the two together. Call <a href="tel:+14032656260">(403) 555-0105</a> and the shop will let you know.</p>
+          <p class="answer">Pricing depends on the service — a cut, a shave or the two together. Call <a href="tel:+14035550105">(403) 555-0105</a> and the shop will let you know.</p>
         </details>
         <details>
           <summary>Do I need an appointment?<span class="tick" aria-hidden="true"></span></summary>
-          <p class="answer">The simplest way to make sure there's a chair ready for you is to call ahead at <a href="tel:+14032656260">(403) 555-0105</a> and ask about availability.</p>
+          <p class="answer">The simplest way to make sure there's a chair ready for you is to call ahead at <a href="tel:+14035550105">(403) 555-0105</a> and ask about availability.</p>
         </details>
         <details>
           <summary>What are your hours?<span class="tick" aria-hidden="true"></span></summary>
@@ -499,9 +430,9 @@
       <div>
         <span class="kicker reveal">Visit the shop</span>
         <h2 class="reveal" style="--d:.08s">Your chair <em>is waiting.</em></h2>
-        <a class="big-phone reveal" style="--d:.14s" href="tel:+14032656260">(403) 555-0105</a>
+        <a class="big-phone reveal" style="--d:.14s" href="tel:+14035550105">(403) 555-0105</a>
         <div class="contact-ctas reveal" style="--d:.2s">
-          <a class="btn btn-brass" href="tel:+14032656260"><svg><use href="#i-phone"/></svg>Call now</a>
+          <a class="btn btn-brass" href="tel:+14035550105"><svg><use href="#i-phone"/></svg>Call now</a>
           <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=The%20Dapper%20Den%20639%205%20Ave%20SW%20Calgary%20AB%20T2P%200M9" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Get directions</a>
         </div>
       </div>
@@ -509,7 +440,7 @@
         <a class="info-row" href="https://www.google.com/maps/search/?api=1&query=The%20Dapper%20Den%20639%205%20Ave%20SW%20Calgary%20AB%20T2P%200M9" target="_blank" rel="noopener">
           <svg><use href="#i-pin"/></svg><div><small>Address</small><b>639 5 Ave SW<br>Calgary, AB T2P 0M9</b></div>
         </a>
-        <a class="info-row" href="tel:+14032656260">
+        <a class="info-row" href="tel:+14035550105">
           <svg><use href="#i-phone"/></svg><div><small>Phone</small><b>(403) 555-0105</b></div>
         </a>
         <div class="info-row">
@@ -523,14 +454,14 @@
 <footer>
   <div class="wrap">
     <a href="#top" class="logo"><span class="mono" aria-hidden="true">GC</span><span class="logo-txt"><b>The Dapper Den</b><span>Barber Shop · Calgary</span></span></a>
-    <p>639 5 Ave SW, Calgary, AB T2P 0M9 · <a href="tel:+14032656260">(403) 555-0105</a> · Mon–Fri 10 AM–5 PM</p>
+    <p>639 5 Ave SW, Calgary, AB T2P 0M9 · <a href="tel:+14035550105">(403) 555-0105</a> · Mon–Fri 10 AM–5 PM</p>
     <p class="credit">Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></p>
   </div>
 </footer>
 
 <div class="callbar">
   <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=The%20Dapper%20Den%20639%205%20Ave%20SW%20Calgary%20AB%20T2P%200M9" target="_blank" rel="noopener" aria-label="Get directions"><svg><use href="#i-nav"/></svg>Map</a>
-  <a class="btn btn-brass" href="tel:+14032656260"><svg><use href="#i-phone"/></svg>Call (403) 555-0105</a>
+  <a class="btn btn-brass" href="tel:+14035550105"><svg><use href="#i-phone"/></svg>Call (403) 555-0105</a>
 </div>
 
 <script>
@@ -546,220 +477,5 @@
     els.forEach(function(el){io.observe(el)});
   }else{els.forEach(function(el){el.classList.add('in')})}
 </script>
-<!-- bk:start — booking assistant -->
-<button type="button" class="bk-fab" id="bk-fab" data-book aria-haspopup="dialog" aria-controls="bk-panel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Book now</span></button>
-<div class="bk-overlay" id="bk-overlay" hidden></div>
-<div class="bk-panel" id="bk-panel" role="dialog" aria-modal="true" aria-labelledby="bk-title" aria-describedby="bk-sub" hidden>
-  <div class="bk-head">
-    <span class="bk-av" aria-hidden="true">GC</span>
-    <div class="bk-head-t"><b id="bk-title">Book with The Dapper Den</b><small id="bk-sub">Booking assistant · takes about a minute</small></div>
-    <button type="button" class="bk-close" id="bk-close" aria-label="Close booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  </div>
-  <div class="bk-log" id="bk-log" role="log" aria-live="polite" aria-relevant="additions"></div>
-</div>
-<script>
-(function(){
-  var C={"tel": "+14032656260", "telL": "(403) 555-0105", "services": ["The Classic Cut", "Hot Towel Shave", "Beard Trim & Shape", "Fades & Tapers", "Cut & Beard", "Head & Neck Shave"], "open": [1, 2, 3, 4, 5], "hours": ["10:00", "17:00"], "step": 30, "lastBefore": 30, "periods": [["Morning", 11], ["Midday", 13], ["Afternoon", 16]], "label": {"service": "Service"}, "q": {"greet": "Hi! I can set up a booking with The Dapper Den in about a minute.", "service": "What would you like to book?", "date": "Which day works for you?", "period": "What time of day suits you? The shop will confirm the exact time.", "name": "Great. What name should the booking be under?", "phone": "And the best phone number to reach you?", "summary": "Here's your booking. Does everything look right?", "done": "Booking ready to send", "note": "Send it to the shop by text and they'll confirm with you."}, "sms": {"intro": "Hi The Dapper Den, I'd like to book an appointment:"}};
-  var doc=document,root=doc.documentElement;
-  var panel=doc.getElementById('bk-panel'),log=doc.getElementById('bk-log'),overlay=doc.getElementById('bk-overlay'),fab=doc.getElementById('bk-fab'),closeBtn=doc.getElementById('bk-close');
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var S={},started=false,lastFocus=null,isOpen=false,heroVisible=true,footVisible=false;
-  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var WD=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-  var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-  var CHAT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.8A8 8 0 1 1 21 12z"/></svg>';
-
-  function el(t,c,x){var e=doc.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
-  function end(){log.scrollTop=log.scrollHeight}
-  function clearChoices(){Array.prototype.forEach.call(log.querySelectorAll('.bk-choices'),function(n){n.parentNode.removeChild(n)})}
-  function focusIn(w){var f=w.querySelector('input,button,a');if(f)setTimeout(function(){try{f.focus({preventScroll:true})}catch(e){f.focus()}end()},40)}
-  function say(content,then){
-    var t=el('div','bk-msg bk-bot bk-typing');t.setAttribute('aria-hidden','true');t.innerHTML='<span></span><span></span><span></span>';
-    log.appendChild(t);end();
-    setTimeout(function(){
-      if(t.parentNode)t.parentNode.removeChild(t);
-      var m=el('div','bk-msg bk-bot');
-      if(typeof content==='string')m.textContent=content;else{m.className+=' bk-card';m.appendChild(content)}
-      log.appendChild(m);end();if(then)then();
-    },reduce?0:450);
-  }
-  function me(x){log.appendChild(el('div','bk-msg bk-me',x));end()}
-  function choices(items,pick,cls){
-    var w=el('div','bk-choices'+(cls?' '+cls:''));w.setAttribute('role','group');
-    items.forEach(function(it){
-      var b=el('button','bk-chip'+(it.pri?' bk-pri':''));b.type='button';
-      b.appendChild(doc.createTextNode(it.label));
-      if(it.off){b.disabled=true;b.setAttribute('aria-disabled','true');b.appendChild(el('small',null,it.off))}
-      if(it.sub)b.appendChild(el('small',null,it.sub));
-      if(it.aria)b.setAttribute('aria-label',it.aria);
-      if(!it.off)b.addEventListener('click',function(){clearChoices();me(it.echo||it.label);pick(it.value,it)});
-      w.appendChild(b);
-    });
-    log.appendChild(w);end();focusIn(w);
-  }
-  function field(o,done){
-    var f=el('form','bk-choices bk-form');f.noValidate=true;
-    var id='bk-in-'+o.key,l=el('label','bk-sr',o.label);l.htmlFor=id;
-    var i=el('input');i.id=id;i.type=o.type;i.name=o.key;i.autocomplete=o.ac;i.placeholder=o.ph;i.required=true;
-    if(o.type==='tel')i.inputMode='tel';
-    if(S[o.key])i.value=S[o.key];
-    var b=el('button','bk-send');b.type='submit';b.setAttribute('aria-label','Send');b.innerHTML=ARROW;
-    var er=el('p','bk-err');er.id=id+'-err';er.setAttribute('role','alert');i.setAttribute('aria-describedby',er.id);
-    f.appendChild(l);f.appendChild(i);f.appendChild(b);f.appendChild(er);
-    f.addEventListener('submit',function(e){
-      e.preventDefault();var r=o.check(i.value);
-      if(r.error){er.textContent=r.error;i.setAttribute('aria-invalid','true');i.focus();return}
-      S[o.key]=r.value;clearChoices();me(r.value);done();
-    });
-    log.appendChild(f);end();focusIn(f);
-  }
-
-  /* dates & times */
-  function mins(hm){var p=hm.split(':');return +p[0]*60+ +p[1]}
-  function fmtT(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'PM':'AM',hh=h%12||12;return hh+':'+(mm<10?'0':'')+mm+' '+ap}
-  function slots(d){
-    var now=new Date(),today=d.toDateString()===now.toDateString(),nowM=now.getHours()*60+now.getMinutes(),out=[];
-    if(C.hours){
-      var o=mins(C.hours[0]),c=mins(C.hours[1]),step=C.step||30;
-      for(var m=o;m<=c-(C.lastBefore||30);m+=step){if(!today||m>nowM+60)out.push({label:fmtT(m),value:fmtT(m)})}
-    }else{
-      C.periods.forEach(function(p){if(!today||nowM<p[1]*60)out.push({label:p[0],value:p[0].toLowerCase(),echo:p[0]})});
-    }
-    out.forEach(function(it){var x=0,str=d.toDateString()+'|'+it.label;for(var j=0;j<str.length;j++){x=(x*31+str.charCodeAt(j))>>>0}if(x%4===0)it.off='Booked'});
-    if(out.length>1&&out.every(function(it){return it.off}))out[out.length-1].off=null;
-    return out;
-  }
-  function days(){
-    var out=[],n=new Date();
-    for(var i=0;i<14;i++){
-      var d=new Date(n.getFullYear(),n.getMonth(),n.getDate()+i);
-      if(C.open&&C.open.indexOf(d.getDay())<0)continue;
-      if(!slots(d).length)continue;
-      out.push({d:d,i:i});
-    }
-    return out;
-  }
-  function longD(d){return WD[d.getDay()]+', '+MON[d.getMonth()]+' '+d.getDate()}
-
-  /* steps */
-  function askService(done){
-    say(C.q.service,function(){choices(C.services.map(function(s){return{label:s,value:s}}),function(v){S.service=v;done()})});
-  }
-  function askDate(done){
-    var list=days();
-    say(C.q.date,function(){
-      choices(list.map(function(x){
-        var d=x.d,top=x.i===0?'Today':x.i===1?'Tomorrow':WD[d.getDay()].slice(0,3);
-        return{label:top,sub:MON[d.getMonth()].slice(0,3)+' '+d.getDate(),value:d,echo:longD(d),aria:longD(d)};
-      }),function(v){S.date=v;S.dateL=longD(v);done()},'bk-grid');
-    });
-  }
-  function askTime(done){
-    say(C.hours?'What time works on '+S.dateL+'? Crossed-out times are already booked.':C.q.period,function(){
-      choices(slots(S.date),function(v,it){S.time=it.echo||it.label;done()},'bk-grid');
-    });
-  }
-  function askName(done){
-    say(C.q.name,function(){field({key:'name',type:'text',ac:'name',ph:'Your name',label:'Your name',check:function(v){v=v.trim().replace(/\s+/g,' ');return v.length<2?{error:'Please enter your name.'}:{value:v}}},done)});
-  }
-  function askPhone(done){
-    say(C.q.phone,function(){field({key:'phone',type:'tel',ac:'tel',ph:'(403) 555-0123',label:'Your phone number',check:function(v){
-      var d=v.replace(/\D/g,'');if(d.length===11&&d[0]==='1')d=d.slice(1);
-      if(d.length!==10)return{error:'Please enter a 10-digit phone number.'};
-      return{value:'('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6)};
-    }},done)});
-  }
-  function rows(){return[[C.label.service,S.service],['Date',S.dateL],['Time',S.time],['Name',S.name],['Phone',S.phone]]}
-  function card(title){
-    var f=doc.createDocumentFragment(),t=el('b','bk-card-t',title),dl=el('dl');
-    rows().forEach(function(r){dl.appendChild(el('dt',null,r[0]));dl.appendChild(el('dd',null,r[1]))});
-    f.appendChild(t);f.appendChild(dl);return f;
-  }
-  function summary(){
-    say(card(C.q.summary),function(){
-      choices([{label:'Edit',value:'edit'},{label:'Confirm',value:'ok',pri:true,echo:'Confirm'}],function(v){v==='ok'?success():edit()});
-    });
-  }
-  function edit(){
-    say('No problem — what would you like to change?',function(){
-      choices([{label:C.label.service,value:'s'},{label:'Date',value:'d'},{label:'Time',value:'t'},{label:'Name',value:'n'},{label:'Phone',value:'p'}],function(v){
-        if(v==='s')askService(summary);
-        else if(v==='d')askDate(function(){askTime(summary)});
-        else if(v==='t')askTime(summary);
-        else if(v==='n')askName(summary);
-        else askPhone(summary);
-      });
-    });
-  }
-  function smsHref(){
-    var body=C.sms.intro+'\n'+C.label.service+': '+S.service+'\nDate: '+S.dateL+'\nTime: '+S.time+'\nName: '+S.name+'\nPhone: '+S.phone;
-    var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-    return 'sms:'+C.tel+(ios?'&':'?')+'body='+encodeURIComponent(body);
-  }
-  function success(){
-    var f=doc.createDocumentFragment(),ok=el('span','bk-ok');ok.innerHTML=CHECK;ok.setAttribute('aria-hidden','true');
-    f.appendChild(ok);f.appendChild(card(C.q.done));
-    var a=el('a','bk-sms');a.href=smsHref();a.innerHTML=CHAT;a.appendChild(el('span',null,'Text this booking to the shop'));f.appendChild(a);
-    var n=el('p','bk-note');n.appendChild(doc.createTextNode(C.q.note+' Prefer to talk? Call '));
-    var t=el('a',null,C.telL);t.href='tel:'+C.tel;n.appendChild(t);n.appendChild(doc.createTextNode('.'));f.appendChild(n);
-    say(f,function(){
-      choices([{label:'Start a new booking',value:1}],function(){S={};start()});
-      setTimeout(function(){a.focus({preventScroll:true})},60);
-    });
-  }
-  function start(){
-    say(C.q.greet,function(){askService(function(){askDate(function(){askTime(function(){askName(function(){askPhone(summary)})})})})});
-  }
-
-  /* open / close */
-  function focusables(){return Array.prototype.filter.call(panel.querySelectorAll('button,a[href],input'),function(e){return !e.disabled&&e.offsetParent!==null})}
-  function onKey(e){
-    if(e.key==='Escape'){e.preventDefault();close();return}
-    if(e.key==='Tab'){var f=focusables();if(!f.length)return;var a=f[0],z=f[f.length-1];
-      if(e.shiftKey&&doc.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&doc.activeElement===z){e.preventDefault();a.focus()}}
-  }
-  function open(trigger){
-    if(isOpen)return;isOpen=true;lastFocus=trigger&&trigger!==fab?trigger:doc.activeElement;
-    panel.hidden=false;overlay.hidden=false;void panel.offsetWidth;
-    panel.classList.add('on');overlay.classList.add('on');root.classList.add('bk-lock');fabState();
-    doc.addEventListener('keydown',onKey);
-    if(!started){started=true;closeBtn.focus();start()}
-    else{var f=log.querySelector('.bk-choices input,.bk-choices button,.bk-sms');(f||closeBtn).focus({preventScroll:true});end()}
-  }
-  function close(){
-    if(!isOpen)return;isOpen=false;
-    panel.classList.remove('on');overlay.classList.remove('on');root.classList.remove('bk-lock');
-    doc.removeEventListener('keydown',onKey);
-    setTimeout(function(){if(!isOpen){panel.hidden=true;overlay.hidden=true}},reduce?0:320);
-    fabState();if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
-  }
-  Array.prototype.forEach.call(doc.querySelectorAll('[data-book]'),function(b){
-    b.setAttribute('aria-haspopup','dialog');b.setAttribute('aria-controls','bk-panel');
-    b.addEventListener('click',function(e){e.preventDefault();open(b)});
-  });
-  closeBtn.addEventListener('click',close);overlay.addEventListener('click',close);
-
-  /* floating button: clear of the mobile call bar, hidden over the hero and footer */
-  function place(){
-    var cb=doc.querySelector('.callbar'),h=0;
-    if(cb&&getComputedStyle(cb).display!=='none'&&getComputedStyle(cb).position==='fixed')h=cb.getBoundingClientRect().height;
-    root.style.setProperty('--bk-fab-b',h?(h+14)+'px':'calc(24px + env(safe-area-inset-bottom))');
-  }
-  function fabState(){fab.classList.toggle('show',!isOpen&&!heroVisible&&!footVisible)}
-  place();window.addEventListener('resize',place);
-  var hb=doc.querySelector('[data-book-hero]'),ft=doc.querySelector('footer'),tick=false;
-  function vis(){
-    var vh=window.innerHeight,r;
-    heroVisible=!!hb&&(r=hb.getBoundingClientRect(),r.bottom>0&&r.top<vh);
-    footVisible=!!ft&&ft.getBoundingClientRect().top<vh-40;
-    fabState();tick=false;
-  }
-  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(vis)}},{passive:true});
-  window.addEventListener('resize',vis);
-  vis();
-})();
-</script>
-<!-- bk:end -->
 </body>
 </html>
