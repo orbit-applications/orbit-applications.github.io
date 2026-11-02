@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Copper Cup Coffee — Coffee Shop, Calgary</title>
+<meta name="description" content="Copper Cup Coffee — cozy coffee shop in Calgary. Lattes $5.25, pour overs $5.75, fresh pastries daily. Call (403) 555-0122.">
+<meta name="theme-color" content="#fff4e6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fff4e6; --paper:#fffaf3; --ink:#3d2b1f; --muted:#8a7360;
+    --copper:#b5651d; --copper-d:#8f4e14; --honey:#e8a94e; --sage:#9aa88a;
+    --line:#ecdcc4;
+    --round:'Fredoka',system-ui,sans-serif;
+    --body:'Nunito',system-ui,sans-serif;
+    --ease:cubic-bezier(.34,1.4,.4,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+  @media (min-width:900px){body{padding-bottom:0}}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--honey);color:var(--ink)}
+  :focus-visible{outline:3px solid var(--copper);outline-offset:3px;border-radius:12px}
+  .wrap{width:min(1140px,100% - 2.5rem);margin-inline:auto}
+  @media (min-width:700px){.wrap{width:min(1140px,100% - 5rem)}}
+  h1,h2,h3{font-family:var(--round);font-weight:600;line-height:1.1}
+  h2{font-size:clamp(2.2rem,5.4vw,3.6rem)}
+  h2 .hl{color:var(--copper)}
+  .kicker{display:inline-block;font-weight:800;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);background:#fbeed9;padding:.45rem 1rem;border-radius:99px}
+  .lede{color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.12rem);max-width:34rem;font-weight:600}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.8rem;border-radius:99px;font-weight:800;font-size:.92rem;transition:transform .3s var(--ease),box-shadow .3s,background .3s;white-space:nowrap}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-copper{background:var(--copper);color:#fff;box-shadow:0 10px 22px rgba(181,101,29,.35)}
+  .btn-copper:hover{transform:translateY(-3px) scale(1.02);background:var(--copper-d)}
+  .btn-line{border:2.5px solid var(--ink);color:var(--ink)}
+  .btn-line:hover{background:var(--ink);color:var(--cream)}
+  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,border-color .35s;border-bottom:2px solid transparent}
+  .header.scrolled{background:rgba(255,244,230,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{font-family:var(--round);font-weight:700;font-size:1.4rem;line-height:1}
+  .logo .cup{color:var(--copper)}
+  .logo small{display:block;font-family:var(--body);font-size:.62rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+  .nav{display:none;gap:2rem;font-weight:700;font-size:.92rem;color:var(--muted)}
+  .nav a:hover{color:var(--copper)}
+  .header .btn{min-height:44px;padding:0 1.1rem;font-size:.8rem}
+  .header .btn .num{display:none}
+  @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
+  .hero{position:relative;padding:9.5rem 0 4rem;overflow:hidden}
+  .hero::before{content:"\2615";position:absolute;left:4%;top:14%;font-size:8rem;opacity:.1;transform:rotate(-12deg)}
+  .hero::after{content:"\2615";position:absolute;right:5%;bottom:8%;font-size:6rem;opacity:.08;transform:rotate(14deg)}
+  .hero-grid{display:grid;gap:2.5rem;align-items:center;position:relative}
+  @media (min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+  .hero h1{font-size:clamp(2.9rem,7.6vw,5.4rem);margin:1.3rem 0 1.2rem}
+  .hero h1 .hl{color:var(--copper)}
+  .hero p{color:var(--muted);font-weight:600;font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:32rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+  .hero-ctas .btn{flex:1 1 220px}
+  @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
+  .hero-perks{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem}
+  .hero-perks span{background:#fff;border:2px solid var(--line);padding:.5rem 1rem;border-radius:99px;font-size:.85rem;font-weight:700}
+  .hero-card{background:#fff;border:3px solid var(--ink);border-radius:26px;padding:2rem;box-shadow:8px 8px 0 var(--honey);transform:rotate(1.5deg)}
+  .hero-card h3{font-size:1.5rem;margin-bottom:1rem}
+  .hours-list{list-style:none;display:grid;gap:.5rem}
+  .hours-list li{display:flex;justify-content:space-between;font-weight:700;font-size:.95rem;border-bottom:2px dashed var(--line);padding-bottom:.5rem}
+  .hours-list li:last-child{border:0}
+  .hours-list .closed{color:var(--muted)}
+  section{position:relative}
+  .pad{padding:clamp(4.5rem,10vw,7.5rem) 0}
+  .s-head{text-align:center;display:grid;justify-items:center;gap:1rem;margin-bottom:clamp(2.5rem,6vw,4rem)}
+  .menu-cat{margin-bottom:3rem}
+  .menu-cat:last-child{margin-bottom:0}
+  .menu-cat h3{font-size:1.9rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
+  .menu-cat h3 .ico{font-size:1.6rem}
+  .drinks{display:grid;gap:.9rem}
+  @media (min-width:700px){.drinks{grid-template-columns:repeat(2,1fr)}}
+  .drink{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:baseline;transition:transform .3s var(--ease),border-color .3s}
+  .drink:hover{transform:translateY(-3px);border-color:var(--copper)}
+  .drink .nm{font-weight:800;font-size:1.08rem}
+  .drink .ds{font-size:.88rem;color:var(--muted);font-weight:600}
+  .drink .pr{margin-left:auto;flex:none;font-family:var(--round);font-weight:700;font-size:1.3rem;color:var(--copper)}
+  .drink .pr small{font-family:var(--body);font-size:.72rem;color:var(--muted);display:block;text-align:right;font-weight:700}
+  .treats{display:grid;gap:1.2rem}
+  @media (min-width:700px){.treats{grid-template-columns:repeat(3,1fr)}}
+  .treat{background:#fff;border:2.5px solid var(--ink);border-radius:20px;padding:1.8rem 1.6rem;text-align:center;box-shadow:5px 5px 0 var(--line);transition:transform .3s var(--ease)}
+  .treat:hover{transform:translateY(-4px) rotate(-1deg)}
+  .treat .ico{font-size:2.8rem;display:block;margin-bottom:.8rem}
+  .treat h3{font-size:1.4rem;margin-bottom:.4rem}
+  .treat p{color:var(--muted);font-size:.92rem;font-weight:600}
+  .treat .pr{font-family:var(--round);font-weight:700;font-size:1.5rem;color:var(--copper);margin-top:.6rem;display:block}
+  .vibe{background:var(--ink);color:var(--cream);border-radius:28px;padding:clamp(2.2rem,6vw,4rem);display:grid;gap:2rem}
+  @media (min-width:900px){.vibe{grid-template-columns:1fr 1fr;align-items:center}}
+  .vibe .kicker{background:rgba(232,169,78,.16);color:var(--honey)}
+  .vibe h3{font-size:clamp(1.8rem,4.4vw,2.7rem);margin:1rem 0 .8rem;color:#fff}
+  .vibe p{color:#c9b8a3;font-weight:600}
+  .vibe ul{list-style:none;margin-top:1.4rem;display:grid;gap:.7rem}
+  .vibe li{display:flex;gap:.7rem;font-weight:700;color:#efe3d0}
+  .vibe li::before{content:"\2713";color:var(--honey);font-weight:800}
+  .vibe .side{display:grid;gap:1rem}
+  .vibe .fact{background:rgba(255,255,255,.07);border-radius:16px;padding:1.4rem;text-align:center}
+  .vibe .fact b{display:block;font-family:var(--round);font-size:2rem;color:var(--honey)}
+  .vibe .fact span{font-size:.85rem;font-weight:700;color:#c9b8a3}
+  .faq-list{max-width:780px;margin:0 auto;border-top:2px solid var(--line)}
+  details{border-bottom:2px solid var(--line)}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.4rem 0;font-weight:800;font-size:1.08rem}
+  summary::-webkit-details-marker{display:none}
+  summary:hover{color:var(--copper)}
+  .pm{font-size:1.6rem;color:var(--copper);font-weight:700}
+  details[open] .pm{transform:rotate(45deg)}
+  .answer{color:var(--muted);padding:0 2rem 1.5rem 0;font-weight:600}
+  .answer a{color:var(--copper);font-weight:800}
+  .contact{background:var(--copper);border-radius:28px;color:#fff;overflow:hidden}
+  .contact-inner{display:grid;gap:2rem;padding:clamp(2.2rem,6vw,4rem)}
+  @media (min-width:960px){.contact-inner{grid-template-columns:1.2fr 1fr;align-items:center}}
+  .contact .kicker{background:rgba(255,255,255,.18);color:#fff}
+  .contact h2{color:#fff;margin:1rem 0}
+  .big-phone{display:inline-block;font-family:var(--round);font-weight:700;font-size:clamp(2.2rem,6.5vw,3.8rem);color:#fff;margin:.4rem 0 1.6rem}
+  .contact-ctas{display:flex;flex-wrap:wrap;gap:.9rem}
+  .contact-ctas .btn{flex:1 1 200px}
+  @media (min-width:600px){.contact-ctas .btn{flex:0 0 auto}}
+  .btn-cream{background:var(--cream);color:var(--copper-d)}
+  .btn-cream:hover{transform:translateY(-2px)}
+  .info{background:rgba(255,255,255,.14);border-radius:18px;padding:1.6rem}
+  .info-row{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.25)}
+  .info-row:last-child{border-bottom:0}
+  .info-row svg{width:22px;height:22px;margin-top:.2rem}
+  .info-row small{display:block;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:.2rem}
+  .info-row b{font-weight:700}
+  footer{padding:2.4rem 0;color:var(--muted);font-size:.86rem;font-weight:600}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center}
+  .demo{font-size:.76rem;border:2px dashed #cbb894;padding:.4rem .8rem;border-radius:10px}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(255,244,230,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:3px solid var(--copper);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
+  .callbar .btn{min-height:52px;font-size:.8rem;padding:0 .8rem}
+  @media (min-width:900px){.callbar{display:none}}
+  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8z"/></symbol>
+</svg>
+<header class="header" id="top">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Copper Cup Coffee — home">Copper <span class="cup">Cup</span><small>Coffee Co.</small></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#menu">Menu</a><a href="#treats">Treats</a><a href="#vibe">Vibe</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-copper" href="tel:+14035550122"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0122</span></a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker reveal">Coffee shop &middot; Calgary</span>
+        <h1 class="reveal" style="--d:.1s">Good mornings<br>start <span class="hl">here.</span></h1>
+        <p class="reveal" style="--d:.2s">Locally roasted beans, oat milk always free, and pastries from the oven next door. The coziest corner in the neighbourhood.</p>
+        <div class="hero-ctas reveal" style="--d:.3s">
+          <a class="btn btn-copper" href="tel:+14035550122"><svg><use href="#i-phone"/></svg>Call (403) 555-0122</a>
+          <a class="btn btn-line" href="#menu">See the menu</a>
+        </div>
+        <div class="hero-perks reveal" style="--d:.4s">
+          <span>&#9733; 4.9 rated</span><span>&#9749; Locally roasted</span><span>&#128054; Dog friendly patio</span>
+        </div>
+      </div>
+      <div class="hero-card reveal" style="--d:.2s">
+        <h3>Open hours</h3>
+        <ul class="hours-list">
+          <li><b>Mon &ndash; Fri</b><span>6:30 AM &ndash; 6 PM</span></li>
+          <li><b>Saturday</b><span>7 AM &ndash; 6 PM</span></li>
+          <li><b>Sunday</b><span>8 AM &ndash; 4 PM</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="pad" id="menu">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker reveal">Drinks menu</span>
+        <h2 class="reveal" style="--d:.08s">Sip <span class="hl">happy.</span></h2>
+        <p class="lede reveal" style="--d:.16s">Every drink made with double shots of our house espresso. Oat, almond and soy milk always free.</p>
+      </div>
+      <div class="menu-cat">
+        <h3 class="reveal"><span class="ico">&#9749;</span>Espresso</h3>
+        <div class="drinks">
+          <div class="drink reveal"><div><div class="nm">Copper Latte</div><div class="ds">Our signature — honey &amp; cinnamon</div></div><span class="pr">$5.25<small>12 / 16 oz</small></span></div>
+          <div class="drink reveal" style="--d:.06s"><div><div class="nm">Cappuccino</div><div class="ds">Classic dry foam, cocoa dust</div></div><span class="pr">$4.75<small>12 / 16 oz</small></span></div>
+          <div class="drink reveal"><div><div class="nm">Flat White</div><div class="ds">Velvety microfoam, double ristretto</div></div><span class="pr">$4.95<small>12 / 16 oz</small></span></div>
+          <div class="drink reveal" style="--d:.06s"><div><div class="nm">Mocha</div><div class="ds">Belgian chocolate &amp; espresso</div></div><span class="pr">$5.50<small>12 / 16 oz</small></span></div>
+        </div>
+      </div>
+      <div class="menu-cat">
+        <h3 class="reveal"><span class="ico">&#129380;</span>Brew bar</h3>
+        <div class="drinks">
+          <div class="drink reveal"><div><div class="nm">Pour Over</div><div class="ds">Single-origin, brewed to order</div></div><span class="pr">$5.75<small>12 oz</small></span></div>
+          <div class="drink reveal" style="--d:.06s"><div><div class="nm">Drip of the Day</div><div class="ds">Rotating house roast, bottomless till 9</div></div><span class="pr">$3.50<small>12 / 16 oz</small></span></div>
+          <div class="drink reveal"><div><div class="nm">Cold Brew</div><div class="ds">18-hour steep, served over ice</div></div><span class="pr">$5.25<small>16 oz</small></span></div>
+          <div class="drink reveal" style="--d:.06s"><div><div class="nm">Chai Latte</div><div class="ds">House-spiced, real tea</div></div><span class="pr">$5.00<small>12 / 16 oz</small></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="pad" id="treats" style="padding-top:0">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker reveal">Fresh daily</span>
+        <h2 class="reveal" style="--d:.08s">Little <span class="hl">treats.</span></h2>
+      </div>
+      <div class="treats">
+        <div class="treat reveal"><span class="ico">&#129366;</span><h3>Butter Croissant</h3><p>Flaky, golden, baked at dawn.</p><span class="pr">$4.25</span></div>
+        <div class="treat reveal" style="--d:.08s"><span class="ico">&#129473;</span><h3>Banana Bread</h3><p>Thick slice, toasted, salted butter.</p><span class="pr">$4.00</span></div>
+        <div class="treat reveal" style="--d:.16s"><span class="ico">&#127850;</span><h3>Choc Chunk Cookie</h3><p>Sea salt on top. Still warm at 9.</p><span class="pr">$3.75</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="pad" id="vibe" style="padding-top:0">
+    <div class="wrap">
+      <div class="vibe reveal">
+        <div>
+          <span class="kicker">The vibe</span>
+          <h3>Your third place.</h3>
+          <p>Not home, not the office — the cozy in-between. Stay for an hour or the whole afternoon.</p>
+          <ul>
+            <li>Fast free wifi &amp; plenty of outlets</li>
+            <li>Dog-friendly patio in summer</li>
+            <li>Local art on the walls, rotating monthly</li>
+          </ul>
+        </div>
+        <div class="side">
+          <div class="fact"><b>4.9&#9733;</b><span>420+ reviews</span></div>
+          <div class="fact"><b>100%</b><span>arabica, roasted local</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="pad" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker reveal">FAQ</span>
+        <h2 class="reveal" style="--d:.08s">Quick <span class="hl">sips.</span></h2>
+      </div>
+      <div class="faq-list reveal" style="--d:.1s">
+        <details><summary>Do you have wifi?<span class="pm">+</span></summary><div class="answer">Yes — fast, free, no password hoops. Plenty of outlets along the window bar for laptops.</div></details>
+        <details><summary>Is there a charge for oat milk?<span class="pm">+</span></summary><div class="answer">Never. Oat, almond and soy are always free here.</div></details>
+        <details><summary>Can I bring my dog?<span class="pm">+</span></summary><div class="answer">Dogs are welcome on the patio, and we keep treats behind the counter. Well-behaved pups only, please.</div></details>
+        <details><summary>Do you sell beans to take home?<span class="pm">+</span></summary><div class="answer">Yes — 340g bags of our house espresso and rotating single-origins, $19. Grind it however you brew.</div></details>
+        <details><summary>Where are you located?<span class="pm">+</span></summary><div class="answer">5520 4 St NW, Calgary — on the corner, look for the copper awning.</div></details>
+        <details><summary>What are your hours?<span class="pm">+</span></summary><div class="answer">Monday to Friday 6:30 AM&ndash;6 PM, Saturday 7 AM&ndash;6 PM, Sunday 8 AM&ndash;4 PM.</div></details>
+      </div>
+    </div>
+  </section>
+  <section class="pad" id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact reveal">
+        <div class="contact-inner">
+          <div>
+            <span class="kicker">Come say hi</span>
+            <h2>The kettle's<br>always on.</h2>
+            <a class="big-phone" href="tel:+14035550122">(403) 555-0122</a>
+            <div class="contact-ctas">
+              <a class="btn btn-cream" href="tel:+14035550122"><svg><use href="#i-phone"/></svg>Call now</a>
+              <a class="btn btn-line" style="border-color:#fff;color:#fff" href="https://www.google.com/maps/search/?api=1&amp;query=Copper+Cup+Coffee%2C+5520+4+St+NW%2C+Calgary" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Get directions</a>
+            </div>
+          </div>
+          <div class="info">
+            <a class="info-row" href="tel:+14035550122"><svg><use href="#i-phone"/></svg><div><small>Phone</small><b>(403) 555-0122</b></div></a>
+            <a class="info-row" href="https://www.google.com/maps/search/?api=1&amp;query=Copper+Cup+Coffee%2C+5520+4+St+NW%2C+Calgary" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><div><small>Address</small><b>5520 4 St NW<br>Calgary, AB</b></div></a>
+            <div class="info-row"><svg><use href="#i-clock"/></svg><div><small>Hours</small><b>Mon&ndash;Fri 6:30&ndash;6 &middot; Sat 7&ndash;6 &middot; Sun 8&ndash;4</b></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>Copper Cup Coffee &middot; 5520 4 St NW, Calgary &middot; <a href="tel:+14035550122">(403) 555-0122</a></span>
+    <span class="demo">Demo site</span>
+  </div>
+</footer>
+<div class="callbar">
+  <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Copper+Cup+Coffee%2C+5520+4+St+NW%2C+Calgary" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Map</a>
+  <a class="btn btn-copper" href="tel:+14035550122"><svg><use href="#i-phone"/></svg>Call (403) 555-0122</a>
+</div>
+<script>
+  document.documentElement.classList.add('js');
+  var header=document.querySelector('.header');
+  function onScroll(){header.classList.toggle('scrolled',window.scrollY>40)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+</script>
+</body>
+</html>
