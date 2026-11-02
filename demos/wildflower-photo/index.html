@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wildflower Photography — Wedding &amp; Family Photographer, Calgary</title>
+<meta name="description" content="Wildflower Photography — soft, romantic wedding and family photography in Calgary. Weddings from $1,800, family sessions $350. Call (403) 555-0134.">
+<meta name="theme-color" content="#f8f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --bg:#f8f1ec; --bg2:#f1e6da; --paper:#fffdf9;
+    --ink:#4c3a30; --muted:#93796a; --rose:#c08a7e; --rose-d:#a06a5f; --sage:#8a9478; --gold:#c9a24b;
+    --line:rgba(160,106,95,.16);
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+    --r:18px; --ease:cubic-bezier(.2,.7,.1,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  @media(min-width:900px){body{padding-bottom:0}}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--rose);color:#fff}
+  :focus-visible{outline:2.5px solid var(--rose-d);outline-offset:3px;border-radius:8px}
+  .wrap{width:min(1140px,100% - 2.5rem);margin-inline:auto}
+  @media(min-width:700px){.wrap{width:min(1140px,100% - 5rem)}}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08}
+  h2{font-size:clamp(2.1rem,5vw,3.4rem);margin:.8rem 0 1rem}
+  h2 em{font-style:italic;color:var(--rose-d)}
+  .eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--rose-d)}
+  .lede{color:var(--muted);max-width:34rem;font-size:1.07rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:0 1.8rem;border-radius:999px;font-weight:400;font-size:.95rem;letter-spacing:.05em;transition:all .3s var(--ease);white-space:nowrap}
+  .btn svg{width:17px;height:17px;flex:none}
+  .btn-rose{background:var(--rose-d);color:#fff;box-shadow:0 12px 26px -12px rgba(160,106,95,.7)}
+  .btn-rose:hover{background:var(--ink);transform:translateY(-2px)}
+  .btn-line{border:1.5px solid var(--rose-d);color:var(--rose-d)}
+  .btn-line:hover{background:var(--rose-d);color:#fff}
+  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s}
+  .header.scrolled{background:rgba(248,241,236,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:var(--serif);font-size:1.6rem;font-weight:600;font-style:italic}
+  .logo span{font-style:normal;font-size:1.1rem;letter-spacing:.14em;text-transform:uppercase;font-family:var(--sans);font-weight:500;color:var(--rose-d);margin-left:.3rem}
+  .nav{display:none;gap:2rem;font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;font-weight:400}
+  .nav a:hover{color:var(--rose-d)}
+  .header .btn{min-height:44px;padding:0 1.15rem;font-size:.85rem}
+  .header .num{display:none}
+  @media(min-width:900px){.nav{display:flex}.header .num{display:inline}.header .lbl{display:none}}
+  .hero{position:relative;min-height:96svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+  .hero-media{position:absolute;inset:0;z-index:-2}
+  .hero-media img{width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(76,58,48,.35),rgba(76,58,48,.05) 45%,rgba(248,241,236,.97) 96%)}
+  .hero-inner{padding:9rem 0 3.5rem;text-align:center;margin-inline:auto;max-width:56rem}
+  .hero .eyebrow{color:#f3ddd2}
+  .hero h1{font-size:clamp(3rem,8.4vw,6rem);margin:1rem 0 1.2rem;color:#fff;text-shadow:0 2px 34px rgba(76,58,48,.55)}
+  .hero h1 em{font-style:italic;color:#f6d9cd}
+  .hero p{color:#f6ece3;max-width:34rem;margin-inline:auto;font-size:1.1rem;text-shadow:0 1px 16px rgba(76,58,48,.55)}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem;justify-content:center}
+  .hero-ctas .btn-line{border-color:#f6ece3;color:#f6ece3}
+  .hero-ctas .btn-line:hover{background:#f6ece3;color:var(--ink)}
+  section{position:relative}
+  .pad{padding:clamp(4rem,9vw,7rem) 0}
+  .center{text-align:center}
+  .center .lede{margin-inline:auto}
+  .gallery{display:grid;gap:1rem;margin-top:2.8rem}
+  @media(min-width:640px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:960px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  .g-item{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;position:relative}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+  .g-item:hover img{transform:scale(1.05)}
+  .g-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1.4rem 1.2rem;background:linear-gradient(transparent,rgba(40,28,22,.75));color:#fff;font-family:var(--serif);font-style:italic;font-size:1.3rem}
+  .pkgs{display:grid;gap:1.2rem;margin-top:2.8rem}
+  @media(min-width:800px){.pkgs{grid-template-columns:repeat(3,1fr)}}
+  .pkg{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:2.2rem 1.9rem;text-align:center;transition:transform .4s var(--ease),box-shadow .4s;display:flex;flex-direction:column;position:relative}
+  .pkg:hover{transform:translateY(-6px);box-shadow:0 28px 50px -28px rgba(160,106,95,.45)}
+  .pkg.featured{border:2px solid var(--rose);background:#fdf6f1}
+  .pkg .flag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--rose-d);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:.35rem 1rem;border-radius:999px;white-space:nowrap}
+  .pkg h3{font-size:1.7rem;font-style:italic}
+  .pkg .amount{font-family:var(--serif);font-size:2.6rem;margin:.8rem 0 .2rem;color:var(--rose-d)}
+  .pkg .amount small{font-family:var(--sans);font-size:.85rem;color:var(--muted)}
+  .pkg ul{list-style:none;margin:1.4rem 0 1.8rem;display:grid;gap:.55rem;color:var(--muted);font-size:.94rem;flex:1}
+  .pkg ul li::before{content:"— ";color:var(--rose)}
+  .pkg .btn{margin-top:auto}
+  .note{margin-top:2rem;color:var(--muted);font-size:.92rem;font-style:italic;font-family:var(--serif);font-size:1.1rem}
+  .split{display:grid;gap:3rem;align-items:center}
+  @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
+  .split-img{border-radius:200px 200px var(--r) var(--r);overflow:hidden;aspect-ratio:4/4.8;border:8px solid var(--paper);box-shadow:0 30px 60px -30px rgba(76,58,48,.4)}
+  .split-img img{width:100%;height:100%;object-fit:cover}
+  .love{margin-top:1.8rem;border-left:2px solid var(--rose);padding-left:1.4rem;font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--ink)}
+  .love small{display:block;font-family:var(--sans);font-style:normal;font-size:.85rem;color:var(--muted);margin-top:.6rem}
+  .faq-grid{display:grid;gap:2.5rem}
+  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:4rem}}
+  details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;padding:0 1.3rem}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font-family:var(--serif);font-size:1.22rem}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.4rem;color:var(--rose-d);transition:transform .3s}
+  details[open] summary::after{transform:rotate(45deg)}
+  .answer{color:var(--muted);padding:0 0 1.2rem;font-size:.97rem}
+  .answer a{color:var(--rose-d);font-weight:500}
+  .contact-card{background:var(--ink);color:#f3e8dc;border-radius:26px;padding:clamp(2rem,5vw,4rem);display:grid;gap:2.4rem;position:relative;overflow:hidden;text-align:center}
+  .contact-card::before{content:"";position:absolute;width:560px;height:560px;left:50%;top:-280px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(192,138,126,.3),transparent 65%)}
+  .contact-card h2{color:#fff}
+  .contact-card h2 em{color:#eec9bc}
+  .big-phone{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,5vw,3.2rem);color:#eec9bc;display:inline-block;margin:1rem 0 1.6rem;position:relative}
+  .big-phone:hover{color:#fff}
+  .contact-card .row{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;position:relative}
+  .contact-card p{color:rgba(243,232,220,.7);position:relative}
+  footer{padding:2.6rem 0 2rem;color:var(--muted);font-size:.88rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
+  .demo{border:1px dashed var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.78rem}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(248,241,236,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
+  .callbar .btn{min-height:52px;font-size:.88rem;padding:0 .8rem}
+  @media(min-width:900px){.callbar{display:none}}
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8z"/></symbol>
+</svg>
+
+<header class="header">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Wildflower Photography — home">Wildflower <span>Photo</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#work">Portfolio</a><a href="#packages">Packages</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-rose" href="tel:+14035550134"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0134</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-media"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=80" alt="Romantic wedding couple at golden hour" fetchpriority="high"></div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow reveal">Wedding &amp; family photographer · Calgary</span>
+      <h1 class="reveal" style="--d:.08s">Love stories,<br><em>softly told.</em></h1>
+      <p class="reveal" style="--d:.16s">Wildflower Photography captures weddings, families and newborns in soft, romantic light — unposed moments, honest emotion, heirloom images.</p>
+      <div class="hero-ctas reveal" style="--d:.24s">
+        <a class="btn btn-rose" href="tel:+14035550134"><svg><use href="#i-phone"/></svg>Call (403) 555-0134</a>
+        <a class="btn btn-line" href="#work">See the work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad center" id="work" style="padding-top:clamp(3rem,7vw,5rem)">
+    <div class="wrap">
+      <span class="eyebrow reveal">Portfolio</span>
+      <h2 class="reveal" style="--d:.08s">Moments that <em>feel like you.</em></h2>
+      <p class="lede reveal" style="--d:.14s">No stiff poses. Just the laughter, the tears and the in-between — preserved in warm, timeless tones.</p>
+      <div class="gallery">
+        <figure class="g-item reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=75" alt="Wedding couple embracing"><figcaption>Weddings</figcaption></figure>
+        <figure class="g-item reveal" style="--d:.08s"><img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=75" alt="Bride and groom holding hands"><figcaption>Elopements</figcaption></figure>
+        <figure class="g-item reveal" style="--d:.16s"><img loading="lazy" src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=800&q=75" alt="Family walking together outdoors"><figcaption>Families</figcaption></figure>
+        <figure class="g-item reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?auto=format&fit=crop&w=800&q=75" alt="Photographer at work during golden hour"><figcaption>Golden hour</figcaption></figure>
+        <figure class="g-item reveal" style="--d:.08s"><img loading="lazy" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=75" alt="Bride in soft light"><figcaption>Bridal portraits</figcaption></figure>
+        <figure class="g-item reveal" style="--d:.16s"><img loading="lazy" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=75" alt="Newborn baby sleeping"><figcaption>Newborns</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="packages" style="background:var(--bg2)">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow reveal">Packages</span>
+        <h2 class="reveal" style="--d:.08s">Honest pricing, <em>no surprises.</em></h2>
+        <p class="lede reveal" style="--d:.14s">Every package includes a planning call, an online gallery and full printing rights. Prices in CAD.</p>
+      </div>
+      <div class="pkgs">
+        <article class="pkg reveal">
+          <h3>Family Session</h3>
+          <div class="amount">$350</div>
+          <ul><li>1-hour outdoor session</li><li>40+ edited images</li><li>Online gallery</li><li>Print release</li></ul>
+          <a class="btn btn-line" href="tel:+14035550134">Call to book</a>
+        </article>
+        <article class="pkg featured reveal" style="--d:.08s">
+          <span class="flag">Most loved</span>
+          <h3>Wedding Day</h3>
+          <div class="amount">$1,800 <small>from</small></div>
+          <ul><li>Up to 8 hours coverage</li><li>400+ edited images</li><li>Engagement session included</li><li>Heirloom album option</li><li>Second shooter available</li></ul>
+          <a class="btn btn-rose" href="tel:+14035550134">Check your date</a>
+        </article>
+        <article class="pkg reveal" style="--d:.16s">
+          <h3>Elopement</h3>
+          <div class="amount">$950</div>
+          <ul><li>3-hour mountain coverage</li><li>150+ edited images</li><li>Location scouting help</li><li>Online gallery</li></ul>
+          <a class="btn btn-line" href="tel:+14035550134">Call to book</a>
+        </article>
+      </div>
+      <p class="note reveal center">Newborn sessions $400 · Maternity $300 · Mini sessions announced seasonally</p>
+    </div>
+  </section>
+
+  <section class="pad">
+    <div class="wrap split">
+      <div class="split-img reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=900&q=75" alt="Photographer with camera in a wildflower field"></div>
+      <div>
+        <span class="eyebrow reveal">Meet your photographer</span>
+        <h2 class="reveal" style="--d:.08s">Hi, I'm <em>Wildflower.</em></h2>
+        <p class="lede reveal" style="--d:.14s">I shoot the way memories feel — warm, a little imperfect, full of light. Ten years behind the lens, hundreds of love stories told, and I still cry at every first dance.</p>
+        <blockquote class="love reveal" style="--d:.2s">"She made us forget the camera was even there. Our gallery feels like reliving the day."<small>— A 2026 Wildflower couple</small></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="faq" style="padding-top:0">
+    <div class="wrap faq-grid">
+      <div>
+        <span class="eyebrow reveal">FAQ</span>
+        <h2 class="reveal" style="--d:.08s">Before you <em>say yes.</em></h2>
+        <p class="lede reveal" style="--d:.14s;margin-top:1rem">Let's talk about your day — I love a good love story.</p>
+        <p class="reveal" style="--d:.2s;margin-top:1.6rem"><a class="btn btn-rose" href="tel:+14035550134"><svg><use href="#i-phone"/></svg>(403) 555-0134</a></p>
+      </div>
+      <div class="reveal" style="--d:.1s">
+        <details open><summary>How far in advance should we book?</summary><p class="answer">Weddings: 6–12 months, especially for summer Saturdays. Family sessions: 2–4 weeks is usually plenty.</p></details>
+        <details><summary>Do you travel?</summary><p class="answer">Happily — the mountains are my second studio. Travel within 100 km is included; beyond that we just talk it through.</p></details>
+        <details><summary>How many photos do we get?</summary><p class="answer">Family: 40+. Elopement: 150+. Wedding: 400+. Every image is hand-edited in my signature warm style.</p></details>
+        <details><summary>What if it rains?</summary><p class="answer">We embrace it — some of my favourite galleries were shot in the rain. We'll also have a backup plan, always.</p></details>
+        <details><summary>Can we meet first?</summary><p class="answer">Please! A coffee or video call before booking is part of the process — we should click before I photograph your biggest day.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-bottom:clamp(3rem,7vw,5rem)">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <div style="position:relative">
+          <span class="eyebrow" style="color:#eec9bc">Let's create together</span>
+          <h2>Tell me your <em>story.</em></h2>
+          <a class="big-phone" href="tel:+14035550134">(403) 555-0134</a>
+          <div class="row">
+            <a class="btn btn-rose" href="tel:+14035550134"><svg><use href="#i-phone"/></svg>Call now</a>
+            <a class="btn btn-line" style="border-color:#eec9bc;color:#eec9bc" href="https://www.google.com/maps/search/?api=1&query=88+Canyon+Meadows+Dr+SE+Calgary+AB" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Directions</a>
+          </div>
+          <p style="margin-top:1.6rem">Based at 88 Canyon Meadows Dr SE, Calgary · Serving Calgary, Banff &amp; Canmore</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Wildflower Photography · Calgary · <a href="tel:+14035550134">(403) 555-0134</a></span>
+    <span class="demo">Demo website</span>
+    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></span>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=88+Canyon+Meadows+Dr+SE+Calgary+AB" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Map</a>
+  <a class="btn btn-rose" href="tel:+14035550134"><svg><use href="#i-phone"/></svg>Call (403) 555-0134</a>
+</div>
+
+<script>
+  document.querySelectorAll('img').forEach(function(img){img.addEventListener('error',function(){img.style.visibility='hidden'})});
+  var h=document.querySelector('.header');
+  function s(){h.classList.toggle('scrolled',window.scrollY>30)}s();window.addEventListener('scroll',s,{passive:true});
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
+  else{els.forEach(function(el){el.classList.add('in')})}
+</script>
+</body>
+</html>
