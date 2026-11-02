@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Summit Handyman — Calgary</title>
+<meta name="description" content="Summit Handyman — repairs, installs and maintenance for Calgary homes. 750 9 St SW, Calgary. Call (403) 555-0101 for availability and a quote.">
+<meta name="theme-color" content="#121314">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --concrete:#ecebe6; --concrete-2:#e0dfd8; --white:#fafaf7;
+    --black:#121314; --black-2:#1c1e20; --steel:#3b4a58; --steel-2:#5d6c79;
+    --yellow:#ffc72c; --yellow-2:#f0b400;
+    --text:#121314; --muted:#4d545a;
+    --rule:#121314; --rule-soft:rgba(18,19,20,.16);
+    --cond:'Barlow Condensed','Arial Narrow',sans-serif;
+    --body:'Barlow',system-ui,-apple-system,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --ease:cubic-bezier(.2,.7,.1,1);
+    --hazard:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,var(--black) 14px 28px);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--concrete);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  @media (min-width:900px){body{padding-bottom:0}}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--yellow);color:var(--black)}
+  :focus-visible{outline:3px solid var(--yellow);outline-offset:2px;box-shadow:0 0 0 6px var(--black)}
+  .wrap{width:min(1240px,100% - 2rem);margin-inline:auto}
+  h1,h2,h3{font-family:var(--cond);font-weight:800;line-height:.95;text-transform:uppercase;letter-spacing:-.005em}
+  h2{font-size:clamp(2.4rem,6.5vw,4.6rem)}
+  .label{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+  .label::before{content:"";width:10px;height:10px;background:var(--yellow);outline:2px solid var(--black)}
+  .on-dark .label::before{outline-color:var(--yellow)}
+  .lede{font-size:clamp(1.03rem,1.5vw,1.15rem);color:var(--muted);max-width:34rem}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.5rem;font-family:var(--cond);font-weight:700;font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase;border:2px solid var(--black);transition:transform .2s,box-shadow .2s,background .2s,color .2s;white-space:nowrap}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn-y{background:var(--yellow);color:var(--black);box-shadow:4px 4px 0 var(--black)}
+  .btn-y:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--black)}
+  .btn-y:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--black)}
+  .btn-k{background:var(--black);color:#fff}
+  .btn-k:hover{background:var(--steel)}
+  .btn-o{background:transparent;color:#fff;border-color:#fff}
+  .btn-o:hover{background:#fff;color:var(--black)}
+
+  /* header */
+  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:2px solid transparent}
+  .header.scrolled{background:rgba(18,19,20,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--yellow)}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1rem}
+  .logo{display:flex;align-items:center;gap:.75rem;color:#fff}
+  .logo-mark{width:44px;height:44px;background:var(--yellow);color:var(--black);display:grid;place-items:center;font-family:var(--cond);font-weight:800;font-size:1.7rem;flex:none}
+  .logo-text{display:flex;flex-direction:column;line-height:1}
+  .logo-text b{font-family:var(--cond);font-weight:800;font-size:1.45rem;letter-spacing:.06em;text-transform:uppercase}
+  .logo-text span{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:#c9cdd1;margin-top:.3rem}
+  .nav{display:none;gap:1.8rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d5d8db}
+  .nav a:hover{color:var(--yellow)}
+  .header .btn{min-height:46px;padding:0 1rem;font-size:1rem;box-shadow:none;border-color:var(--yellow)}
+  .header .btn .num{display:none}
+  @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
+
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;background:var(--black);color:#fff}
+  .hero-media{position:absolute;inset:0;z-index:-2;background:linear-gradient(135deg,#2b3238,#121314)}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;filter:grayscale(.35) contrast(1.05);transform:scale(1.05);animation:heroIn 2s var(--ease) forwards}
+  @keyframes heroIn{to{transform:scale(1)}}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(180deg,rgba(18,19,20,.8) 0%,rgba(18,19,20,.35) 30%,rgba(18,19,20,.55) 55%,rgba(18,19,20,.97) 100%),
+    linear-gradient(90deg,rgba(18,19,20,.85) 0%,rgba(18,19,20,.1) 75%)}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.12;
+    background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);background-size:80px 80px}
+  .hero-inner{padding:8rem 0 0}
+  .hero h1{font-size:clamp(3.1rem,11vw,9.5rem);margin:1.2rem 0 1.4rem;max-width:12ch}
+  .hero h1 span{color:var(--yellow)}
+  .hero p{max-width:32rem;color:#d9dcdf;font-size:clamp(1.05rem,1.6vw,1.2rem)}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+  .hero-ctas .btn{flex:1 1 220px}
+  @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
+  .spec{display:grid;grid-template-columns:1fr;margin-top:3rem;border-top:2px solid var(--yellow);background:rgba(18,19,20,.6)}
+  .spec div{padding:1rem 0;display:flex;gap:.8rem;align-items:center;border-bottom:1px solid rgba(255,255,255,.14);font-size:.95rem;color:#e3e5e7}
+  .spec small{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);min-width:5.5rem}
+  @media (min-width:800px){
+    .spec{grid-template-columns:repeat(3,1fr)}
+    .spec div{border-bottom:0;padding:1.3rem 1.4rem 1.6rem 0;flex-direction:column;align-items:flex-start;gap:.35rem}
+    .spec div+div{padding-left:1.4rem;border-left:1px solid rgba(255,255,255,.18)}
+  }
+  .hazard{height:14px;background:var(--hazard)}
+
+  .pad{padding:clamp(4.5rem,10vw,8rem) 0}
+  .head{display:grid;gap:1.4rem;margin-bottom:clamp(2.4rem,5vw,3.6rem);padding-bottom:1.6rem;border-bottom:2px solid var(--rule)}
+  @media (min-width:900px){.head{grid-template-columns:1.3fr 1fr;align-items:end}}
+  .head h2{margin-top:1rem}
+
+  /* straight talk grid */
+  .facts{display:grid;grid-template-columns:1fr;border:2px solid var(--rule);background:var(--white)}
+  @media (min-width:720px){.facts{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1080px){.facts{grid-template-columns:1.3fr 1fr 1fr 1fr}}
+  .fact{padding:1.8rem 1.6rem;border-bottom:2px solid var(--rule)}
+  @media (min-width:720px){.fact{border-right:2px solid var(--rule)}.fact:nth-child(2n){border-right:0}.fact:nth-last-child(-n+2){border-bottom:0}}
+  @media (min-width:1080px){.fact{border-bottom:0;border-right:2px solid var(--rule)!important}.fact:last-child{border-right:0!important}}
+  .fact.photo{padding:0;min-height:240px;background:#fff}
+  .fact.photo img{width:100%;height:100%;object-fit:contain;padding:1.2rem}
+  .fact .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--steel-2);text-transform:uppercase}
+  .fact h3{font-size:1.9rem;margin:.6rem 0 .5rem}
+  .fact p{color:var(--muted);font-size:.98rem}
+
+  /* services */
+  .services{background:var(--white);border-block:2px solid var(--rule)}
+  .svc-grid{display:grid;grid-template-columns:1fr;border-top:2px solid var(--rule);border-left:2px solid var(--rule)}
+  @media (min-width:680px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1040px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
+  .svc{display:flex;flex-direction:column;border-right:2px solid var(--rule);border-bottom:2px solid var(--rule);background:var(--white);transition:background .25s}
+  .svc:hover{background:#fff8de}
+  .svc-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--concrete-2);border-bottom:2px solid var(--rule)}
+  .svc-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25);transition:transform .7s var(--ease),filter .4s}
+  .svc:hover .svc-media img{transform:scale(1.04);filter:none}
+  .svc-no{position:absolute;top:0;left:0;background:var(--yellow);color:var(--black);font-family:var(--mono);font-weight:600;font-size:.8rem;padding:.4rem .7rem;border-right:2px solid var(--rule);border-bottom:2px solid var(--rule)}
+  .svc-body{padding:1.4rem 1.4rem 1.5rem;display:flex;flex-direction:column;flex:1}
+  .svc h3{font-size:1.85rem;margin-bottom:.55rem}
+  .svc p{color:var(--muted);font-size:.98rem;flex:1}
+  .svc ul{list-style:none;margin-top:1rem;display:grid;gap:.3rem;font-family:var(--mono);font-size:.78rem;color:var(--steel)}
+  .svc li::before{content:"— "}
+  .svc-cta{margin-top:1.3rem;display:flex;justify-content:space-between;align-items:center;font-family:var(--cond);font-weight:700;font-size:1.08rem;text-transform:uppercase;letter-spacing:.04em;padding-top:1rem;border-top:1px dashed var(--rule-soft)}
+  .svc-cta svg{width:20px;height:20px;transition:transform .3s var(--ease)}
+  .svc:hover .svc-cta svg{transform:translateX(4px)}
+  .checklist{margin-top:clamp(2.4rem,5vw,3.4rem);display:grid;gap:1.6rem;background:var(--black);color:#fff;padding:clamp(1.6rem,4vw,2.6rem);border:2px solid var(--rule);position:relative}
+  .checklist::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:var(--hazard)}
+  @media (min-width:900px){.checklist{grid-template-columns:1fr 2fr;gap:3rem;align-items:start}}
+  .checklist h3{font-size:2.1rem;color:var(--yellow);margin-top:.6rem}
+  .checklist ul{list-style:none;display:grid;grid-template-columns:1fr;column-gap:2rem}
+  @media (min-width:560px){.checklist ul{grid-template-columns:1fr 1fr}}
+  .checklist li{display:flex;gap:.7rem;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.14)}
+  .checklist li::before{content:"";width:14px;height:14px;flex:none;border:2px solid var(--yellow);background:linear-gradient(var(--yellow),var(--yellow)) center/6px 6px no-repeat}
+  .checklist .small{grid-column:1/-1;color:#c9cdd1;font-size:.96rem}
+  .checklist .small a{color:var(--yellow);font-weight:600;border-bottom:2px solid currentColor}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:1fr;border:2px solid var(--rule)}
+  @media (min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}}
+  .step{padding:1.8rem 1.5rem 2rem;border-bottom:2px solid var(--rule);background:var(--concrete);position:relative}
+  .step:last-child{border-bottom:0}
+  @media (min-width:860px){.step{border-bottom:0;border-right:2px solid var(--rule)}.step:last-child{border-right:0}}
+  .step .n{font-family:var(--cond);font-weight:800;font-size:4.6rem;line-height:.8;display:block;margin-bottom:1.4rem;color:var(--black)}
+  .step .n span{display:inline-block;background:var(--yellow);padding:.12em .15em 0}
+  .step h3{font-size:1.65rem;margin-bottom:.5rem}
+  .step p{color:var(--muted);font-size:.97rem}
+  .step a{font-weight:600;border-bottom:2px solid var(--yellow)}
+
+  /* gallery */
+  .gallery{display:grid;grid-auto-flow:column;grid-auto-columns:min(80%,330px);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;border:2px solid var(--rule);border-right:0;background:var(--white);-webkit-overflow-scrolling:touch}
+  @media (min-width:900px){.gallery{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-columns:auto;overflow:visible;border-right:2px solid var(--rule);border-bottom:0}}
+  .gallery figure{scroll-snap-align:start;border-right:2px solid var(--rule);display:flex;flex-direction:column;min-width:0;background:var(--white)}
+  @media (min-width:900px){.gallery figure{border-bottom:2px solid var(--rule)}.gallery figure:nth-child(3n){border-right:0}}
+  .gallery .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--concrete-2);border-bottom:2px solid var(--rule)}
+  .gallery img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25);transition:transform .7s var(--ease),filter .4s}
+  .gallery figure:hover img{transform:scale(1.04);filter:none}
+  .gallery figcaption{padding:.9rem 1.1rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+
+  /* residential band */
+  .band{background:var(--steel);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+  .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:grayscale(.4)}
+  .band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(59,74,88,.97) 0%,rgba(59,74,88,.88) 50%,rgba(59,74,88,.55) 100%)}
+  .band .wrap{padding:clamp(4rem,9vw,7rem) 0;display:grid;gap:2rem}
+  @media (min-width:900px){.band .wrap{grid-template-columns:1.4fr 1fr;align-items:end}}
+  .band h2{max-width:14ch}
+  .band h2 span{color:var(--yellow)}
+  .band p{color:#e1e5e9;max-width:30rem;font-size:1.08rem}
+
+  /* faq */
+  .faq-grid{display:grid;gap:2.5rem}
+  @media (min-width:960px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:4rem}}
+  .faq-aside .lede{margin-top:1.2rem}
+  .faq-aside .btn{margin-top:1.8rem}
+  .faq-list{border:2px solid var(--rule);background:var(--white)}
+  details{border-bottom:2px solid var(--rule)}
+  details:last-child{border-bottom:0}
+  summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:1.2rem 1.3rem;font-family:var(--cond);font-weight:700;font-size:1.35rem;text-transform:uppercase;letter-spacing:.01em}
+  summary::-webkit-details-marker{display:none}
+  summary:hover{background:#fff8de}
+  summary .q{font-family:var(--mono);font-size:.75rem;font-weight:600;color:var(--steel-2)}
+  .tog{width:32px;height:32px;border:2px solid var(--rule);position:relative;flex:none;background:var(--white);transition:background .2s}
+  .tog::before,.tog::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:var(--black);transform:translate(-50%,-50%)}
+  .tog::after{transform:translate(-50%,-50%) rotate(90deg)}
+  details[open] .tog{background:var(--yellow)}
+  details[open] .tog::after{transform:translate(-50%,-50%)}
+  details[open] summary{background:var(--concrete)}
+  .answer{padding:1rem 1.3rem 1.4rem 3.6rem;color:var(--muted);max-width:44rem}
+  .answer a{color:var(--black);font-weight:600;border-bottom:2px solid var(--yellow)}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr;border:2px solid var(--rule)}
+  @media (min-width:960px){.contact-grid{grid-template-columns:1.25fr 1fr}}
+  .contact-main{background:var(--yellow);padding:clamp(2rem,5vw,3.6rem);border-bottom:2px solid var(--rule)}
+  @media (min-width:960px){.contact-main{border-bottom:0;border-right:2px solid var(--rule)}}
+  .contact-main .label::before{background:var(--black)}
+  .contact-main h2{margin:1rem 0 1rem}
+  .contact-main p{max-width:30rem;font-size:1.08rem}
+  .big-phone{display:block;font-family:var(--cond);font-weight:800;font-size:clamp(2.6rem,8vw,5rem);line-height:1;margin:1.6rem 0 1.8rem;letter-spacing:-.01em}
+  .big-phone:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:6px}
+  .contact-ctas{display:flex;flex-wrap:wrap;gap:.8rem}
+  .contact-ctas .btn{flex:1 1 200px}
+  @media (min-width:600px){.contact-ctas .btn{flex:0 0 auto}}
+  .contact-main .btn-y{background:var(--white)}
+  .contact-side{position:relative;background:var(--black);color:#fff;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+  .contact-side img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.35;filter:grayscale(.5)}
+  .contact-side::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,19,20,.4),rgba(18,19,20,.95))}
+  .rows{padding:clamp(1.6rem,4vw,2.6rem)}
+  .row{display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;padding:1.05rem 0;border-bottom:1px solid rgba(255,255,255,.18)}
+  .row:last-child{border-bottom:0}
+  .row small{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);padding-top:.25rem}
+  .row b{font-weight:500;font-size:1.04rem}
+  .row a{color:#fff;font-weight:600;border-bottom:2px solid var(--yellow)}
+
+  footer{background:var(--black);color:#b9bec3;font-size:.9rem;margin-top:clamp(4rem,9vw,6rem)}
+  footer .hazard{height:10px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center;padding:2.4rem 0}
+  footer a:hover{color:var(--yellow)}
+  .demo{flex-basis:100%;font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,.14)}
+
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 2fr;gap:.5rem;padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom));background:var(--black);border-top:3px solid var(--yellow)}
+  .callbar .btn{min-height:52px;font-size:1.05rem;padding:0 .6rem;box-shadow:none}
+  @media (min-width:900px){.callbar{display:none}}
+
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .js .reveal{opacity:1;transform:none}
+    .hero-media img{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="miter"><path d="M3 11l19-9-9 19-2-8z"/></symbol>
+</svg>
+
+<header class="header" id="top">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Summit Handyman — home">
+      <span class="logo-mark" aria-hidden="true">M</span>
+      <span class="logo-text"><b>Summit</b><span>General Residential Handyman Service</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-y" href="tel:+14032692801"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0101</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero on-dark">
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=2000&q=80" srcset="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=900&q=75 900w, https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=2000&q=80 2000w" sizes="100vw" alt="Cordless drill lying on a dusty floor during a home repair job" fetchpriority="high">
+    </div>
+    <div class="wrap hero-inner">
+      <span class="label reveal">Residential handyman · Calgary</span>
+      <h1 class="reveal" style="--d:.08s">Fix it. <span>Install it.</span> Done.</h1>
+      <p class="reveal" style="--d:.16s">General repairs, installs and upkeep for Calgary homes. Tell us what's wrong, get a straight quote, and get it fixed.</p>
+      <div class="hero-ctas reveal" style="--d:.24s">
+        <a class="btn btn-y" href="tel:+14032692801"><svg><use href="#i-phone"/></svg>Call (403) 555-0101</a>
+        <a class="btn btn-o" href="#services">See services</a>
+      </div>
+      <div class="spec reveal" style="--d:.32s">
+        <div><small>Scope</small>Residential only — houses, condos, townhomes</div>
+        <div><small>Location</small>750 9 St SW, Calgary, AB</div>
+        <div><small>Hours</small>Call for hours / availability</div>
+      </div>
+    </div>
+  </section>
+  <div class="hazard" aria-hidden="true"></div>
+
+  <section class="pad">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="label reveal">The short version</span>
+          <h2 class="reveal" style="--d:.08s">General handyman work. For homes. That's it.</h2>
+        </div>
+        <p class="lede reveal" style="--d:.16s">No upsell, no fluff. Summit Handyman handles the repairs and installs that keep a house working.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact photo"><img loading="lazy" src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=75" alt="Yellow and black cordless drill with battery pack on a white background"></div>
+        <div class="fact"><span class="k">01 / Scope</span><h3>Residential</h3><p>Houses, condos, townhomes and suites. Home jobs only.</p></div>
+        <div class="fact"><span class="k">02 / Range</span><h3>General work</h3><p>Repairs, installs, assembly and maintenance — one call covers a list.</p></div>
+        <div class="fact"><span class="k">03 / Quotes</span><h3>By phone</h3><p>Describe the job, get a clear answer on what's involved.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services pad" id="services">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="label reveal">Services</span>
+          <h2 class="reveal" style="--d:.08s">What we handle.</h2>
+        </div>
+        <p class="lede reveal" style="--d:.16s">Standard handyman work for your home. Every job is quoted on its own — call with the details.</p>
+      </div>
+      <div class="svc-grid">
+        <a class="svc reveal" href="tel:+14032692801">
+          <div class="svc-media"><span class="svc-no">S-01</span><img loading="lazy" src="https://images.unsplash.com/photo-1534398079543-7ae6d016b86a?auto=format&fit=crop&w=900&q=75" alt="Two pairs of pliers and wire cutters on a wooden surface"></div>
+          <div class="svc-body"><h3>General Repairs</h3><p>The things that break, stick, squeak or leak around the house. Think dented or holed drywall, doors and drawers that won't close properly, and railings or trim that have worked loose. When you call, describe what's wrong, where it is and roughly how big — the more detail, the clearer the quote.</p>
+            <ul><li>Drywall patches</li><li>Sticking doors &amp; drawers</li><li>Loose railings &amp; trim</li></ul>
+            <span class="svc-cta">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="svc reveal" style="--d:.06s" href="tel:+14032692801">
+          <div class="svc-media"><span class="svc-no">S-02</span><img loading="lazy" src="https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&w=900&q=75" alt="Two workers using a mitre saw inside a bright home under renovation"></div>
+          <div class="svc-body"><h3>Carpentry &amp; Trim</h3><p>Cutting, fitting and finishing for the wood parts of your home. That covers replacing or re-securing baseboards and door casing, putting up shelving, and small framing fixes. Mention the room, approximate lengths, and whether you already have the material on hand.</p>
+            <ul><li>Baseboards &amp; casing</li><li>Shelving</li><li>Small framing fixes</li></ul>
+            <span class="svc-cta">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="svc reveal" style="--d:.12s" href="tel:+14032692801">
+          <div class="svc-media"><span class="svc-no">S-03</span><img loading="lazy" src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=900&q=75" alt="Close-up of a chrome bathroom faucet and handheld shower over a tub"></div>
+          <div class="svc-body"><h3>Fixtures</h3><p>Swapping out worn or outdated fixtures around the kitchen and bath. Faucets, shower heads, towel bars and fresh caulking or sealing around tubs and sinks. If you've already bought the replacement, have the make and model handy when you call.</p>
+            <ul><li>Faucets &amp; shower heads</li><li>Towel bars &amp; accessories</li><li>Caulking &amp; sealing</li></ul>
+            <span class="svc-cta">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="svc reveal" href="tel:+14032692801">
+          <div class="svc-media"><span class="svc-no">S-04</span><img loading="lazy" src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=75" alt="Smart lock on a door being controlled from a phone"></div>
+          <div class="svc-body"><h3>Doors &amp; Hardware</h3><p>Getting doors to close right and hardware to work the way it should. Swapping locks and handles, tightening or replacing hinges, and adjusting strikes so the latch catches. Tell us how many doors, whether they're interior or exterior, and what they're doing — sticking, swinging open or not latching.</p>
+            <ul><li>Locks &amp; handles</li><li>Hinges &amp; strikes</li><li>Door adjustments</li></ul>
+            <span class="svc-cta">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="svc reveal" style="--d:.06s" href="tel:+14032692801">
+          <div class="svc-media"><span class="svc-no">S-05</span><img loading="lazy" src="https://images.unsplash.com/photo-1574359411659-15573a27fd0c?auto=format&fit=crop&w=900&q=75" alt="Two painters on ladders working on the siding of a house"></div>
+          <div class="svc-body"><h3>Painting &amp; Exterior</h3><p>Touch-ups and upkeep, inside the house and out. Interior wall and trim touch-ups, plus small fence, deck, siding and trim repairs. Let us know the size of the area and whether you have matching paint or material when you call.</p>
+            <ul><li>Interior touch-ups</li><li>Fence &amp; deck repairs</li><li>Siding &amp; trim fixes</li></ul>
+            <span class="svc-cta">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="svc reveal" style="--d:.12s" href="tel:+14032692801">
+          <div class="svc-media"><span class="svc-no">S-06</span><img loading="lazy" src="https://images.unsplash.com/photo-1607400201889-565b1ee75f8e?auto=format&fit=crop&w=900&q=75" alt="Worker in gloves fitting pink insulation between wall studs"></div>
+          <div class="svc-body"><h3>Seasonal Upkeep</h3><p>Small jobs that help a house handle Calgary winters and chinooks. Weatherstripping doors, sealing drafty gaps, and fixing loose or leaking gutters and downspouts. Mention where you feel the draft or see the water, and call to ask about availability before the season turns.</p>
+            <ul><li>Weatherstripping</li><li>Draft sealing</li><li>Gutter &amp; downspout fixes</li></ul>
+            <span class="svc-cta">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+      </div>
+
+      <div class="checklist on-dark reveal">
+        <div>
+          <span class="label">Also on the list</span>
+          <h3>Common jobs</h3>
+        </div>
+        <ul>
+          <li>Furniture assembly</li>
+          <li>TV &amp; shelf mounting</li>
+          <li>Picture &amp; mirror hanging</li>
+          <li>Blind &amp; curtain rod installs</li>
+          <li>Grout &amp; caulk refresh</li>
+          <li>Minor flooring repairs</li>
+          <li>Closet organizers</li>
+          <li>Childproofing hardware</li>
+        </ul>
+        <p class="small">Got a job that isn't listed? Call <a href="tel:+14032692801">(403) 555-0101</a> and ask.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="process">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="label reveal">Process</span>
+          <h2 class="reveal" style="--d:.08s">Four steps. No surprises.</h2>
+        </div>
+        <p class="lede reveal" style="--d:.16s">It starts with a phone call. Nothing to download, no forms to fill in.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><span class="n"><span>01</span></span><h3>Call</h3><p>Phone <a href="tel:+14032692801">(403) 555-0101</a> and ask about availability.</p></div>
+        <div class="step"><span class="n"><span>02</span></span><h3>Describe</h3><p>Tell us what needs doing. The more detail, the clearer the quote.</p></div>
+        <div class="step"><span class="n"><span>03</span></span><h3>Quote</h3><p>Pricing depends on the job. You'll know what's involved before work starts.</p></div>
+        <div class="step"><span class="n"><span>04</span></span><h3>Done</h3><p>Book a time, the work gets done, and your list gets shorter.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="gallery" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="label reveal">Gallery</span>
+          <h2 class="reveal" style="--d:.08s">Around the house.</h2>
+        </div>
+        <p class="lede reveal" style="--d:.16s">Fixtures, doors, decks, siding — the everyday parts of a home that need a fix or an install now and then.</p>
+      </div>
+      <div class="gallery reveal">
+        <figure><div class="ph"><span class="svc-no">G-01</span><img loading="lazy" src="https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&w=900&q=75" alt="Worker wearing a leather tool belt holding screwdrivers and a tape measure"></div><figcaption>— Tools on the belt</figcaption></figure>
+        <figure><div class="ph"><span class="svc-no">G-02</span><img loading="lazy" src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?auto=format&fit=crop&w=900&q=75" alt="Claw hammer, nails, pliers, screwdriver, paint brush and a paint stir stick laid out on white"></div><figcaption>— Hand tools &amp; hardware</figcaption></figure>
+        <figure><div class="ph"><span class="svc-no">G-03</span><img loading="lazy" src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=75" alt="White kitchen sink and chrome faucet in front of a white subway-tile backsplash"></div><figcaption>— Faucets &amp; caulking</figcaption></figure>
+        <figure><div class="ph"><span class="svc-no">G-04</span><img loading="lazy" src="https://images.unsplash.com/photo-1575908539614-ff89490f4a78?auto=format&fit=crop&w=900&q=75" alt="A small set of house keys lying on a white surface"></div><figcaption>— Locks &amp; door hardware</figcaption></figure>
+        <figure><div class="ph"><span class="svc-no">G-05</span><img loading="lazy" src="https://images.unsplash.com/photo-1617850687395-620757feb1f3?auto=format&fit=crop&w=900&q=75" alt="Overhead view of a grey wooden backyard deck with outdoor chairs and potted plants"></div><figcaption>— Fence &amp; deck repairs</figcaption></figure>
+        <figure><div class="ph"><span class="svc-no">G-06</span><img loading="lazy" src="https://images.unsplash.com/photo-1503594384566-461fe158e797?auto=format&fit=crop&w=900&q=75" alt="White horizontal siding and window trim on the gables of a house under a blue sky"></div><figcaption>— Siding &amp; trim</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band on-dark">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=70" alt="Bright, tidy living room with large windows, a leather sofa and framed pictures on the wall">
+    <div class="wrap">
+      <div>
+        <span class="label reveal">Residential only</span>
+        <h2 class="reveal" style="--d:.08s;margin-top:1rem">Built around <span>your home.</span></h2>
+      </div>
+      <p class="reveal" style="--d:.16s">Summit Handyman works on homes — not offices, not storefronts. If it's part of where you live, call and ask.</p>
+    </div>
+  </section>
+
+  <section class="pad" id="faq">
+    <div class="wrap faq-grid">
+      <div class="faq-aside">
+        <span class="label reveal">FAQ</span>
+        <h2 class="reveal" style="--d:.08s;margin-top:1rem">Straight answers.</h2>
+        <p class="lede reveal" style="--d:.16s">For anything specific to your job, the fastest answer is a phone call.</p>
+        <a class="btn btn-y reveal" style="--d:.22s" href="tel:+14032692801"><svg><use href="#i-phone"/></svg>Call (403) 555-0101</a>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary><span class="q">Q1</span>How much does it cost?<span class="tog" aria-hidden="true"></span></summary>
+          <p class="answer">Pricing depends on the job. Call <a href="tel:+14032692801">(403) 555-0101</a> for a quote.</p>
+        </details>
+        <details>
+          <summary><span class="q">Q2</span>What are your hours?<span class="tog" aria-hidden="true"></span></summary>
+          <p class="answer">Call for hours and availability at <a href="tel:+14032692801">(403) 555-0101</a>.</p>
+        </details>
+        <details>
+          <summary><span class="q">Q3</span>Do you do commercial work?<span class="tog" aria-hidden="true"></span></summary>
+          <p class="answer">No. Summit Handyman is residential — homes only.</p>
+        </details>
+        <details>
+          <summary><span class="q">Q4</span>Can you handle several small jobs at once?<span class="tog" aria-hidden="true"></span></summary>
+          <p class="answer">Bring the whole list when you call. We'll go through it and let you know what we can take on.</p>
+        </details>
+        <details>
+          <summary><span class="q">Q5</span>How soon can you come out?<span class="tog" aria-hidden="true"></span></summary>
+          <p class="answer">It depends on the job and the schedule. Call to ask about availability and turnaround.</p>
+        </details>
+        <details>
+          <summary><span class="q">Q6</span>Do I need to buy the parts?<span class="tog" aria-hidden="true"></span></summary>
+          <p class="answer">That depends on the job. Talk it through on the phone and we'll sort out what makes sense.</p>
+        </details>
+        <details>
+          <summary><span class="q">Q7</span>What should I mention when I call?<span class="tog" aria-hidden="true"></span></summary>
+          <p class="answer">What the job is, where it is in the house, rough sizes or quantities, and whether you already have the parts or materials. If there are several jobs, read off the whole list — it helps with the quote.</p>
+        </details>
+        <details>
+          <summary><span class="q">Q8</span>Where are you based?<span class="tog" aria-hidden="true"></span></summary>
+          <p class="answer">750 9 St SW, Calgary, AB T2P 2B5. The work is residential only — houses, condos, townhomes and suites. Call <a href="tel:+14032692801">(403) 555-0101</a> to ask about availability for your home.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-grid reveal">
+        <div class="contact-main">
+          <span class="label">Contact</span>
+          <h2>Got a list? Call it in.</h2>
+          <p>Quotes, availability and questions — all by phone.</p>
+          <a class="big-phone" href="tel:+14032692801">(403) 555-0101</a>
+          <div class="contact-ctas">
+            <a class="btn btn-k" href="tel:+14032692801"><svg><use href="#i-phone"/></svg>Call now</a>
+            <a class="btn btn-y" href="https://www.google.com/maps/search/?api=1&amp;query=Summit%20Handyman%2C%20750%209%20St%20SW%2C%20Calgary%2C%20AB%20T2P%202B5" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Get directions</a>
+          </div>
+        </div>
+        <div class="contact-side">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=1200&q=70" alt="">
+          <div class="rows">
+            <div class="row"><small>Business</small><b>Summit Handyman</b></div>
+            <div class="row"><small>Address</small><b>750 9 St SW<br>Calgary, AB T2P 2B5</b></div>
+            <div class="row"><small>Phone</small><a href="tel:+14032692801">(403) 555-0101</a></div>
+            <div class="row"><small>Hours</small><b>Call for hours / availability</b></div>
+            <div class="row"><small>Scope</small><b>Residential only</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="hazard" aria-hidden="true"></div>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="logo-mark" aria-hidden="true">M</span><span class="logo-text"><b>Summit</b><span>General Residential Handyman Service</span></span></a>
+    <span>750 9 St SW, Calgary, AB T2P 2B5 · <a href="tel:+14032692801">(403) 555-0101</a></span>
+    <p class="orbit-credit">Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-o" href="https://www.google.com/maps/search/?api=1&amp;query=Summit%20Handyman%2C%20750%209%20St%20SW%2C%20Calgary%2C%20AB%20T2P%202B5" target="_blank" rel="noopener" aria-label="Get directions"><svg><use href="#i-nav"/></svg>Map</a>
+  <a class="btn btn-y" href="tel:+14032692801"><svg><use href="#i-phone"/></svg>Call (403) 555-0101</a>
+</div>
+
+<script>
+  document.querySelectorAll('img').forEach(function(img){
+    img.addEventListener('error',function(){img.style.visibility='hidden'});
+  });
+  var header=document.querySelector('.header');
+  function onScroll(){header.classList.toggle('scrolled',window.scrollY>40)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+</script>
+
+<style>
+.orbit-credit{opacity:.78}
+.orbit-credit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+#obkFab{position:fixed;right:16px;bottom:86px;z-index:99990;background:#5b6b73;color:#fff;border:0;border-radius:999px;padding:13px 20px;font:600 15px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer;display:flex;align-items:center;gap:8px}
+#obkFab:active{transform:scale(.97)}
+#obkPanel{position:fixed;right:16px;bottom:148px;z-index:99991;width:min(362px,calc(100vw - 32px));height:min(540px,68vh);background:#fff;color:#1c2430;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.4);display:none;flex-direction:column;overflow:hidden;font:400 15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+#obkPanel.obk-open{display:flex}
+#obkHead{background:#263238;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+#obkHead .obk-t{flex:1;min-width:0}
+#obkHead .obk-t b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#obkHead .obk-t span{font-size:12.5px;opacity:.85}
+#obkClose{background:rgba(255,255,255,.16);color:#fff;border:0;width:30px;height:30px;border-radius:999px;font-size:16px;cursor:pointer;flex:none}
+#obkMsgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:#f6f7f9}
+.obk-m{max-width:86%;padding:10px 13px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word}
+.obk-bot{background:#fff;border:1px solid #e2e6ec;border-bottom-left-radius:5px;align-self:flex-start}
+.obk-user{background:#5b6b73;color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.obk-m b{font-weight:700}
+#obkChips{display:flex;flex-wrap:wrap;gap:7px;padding:10px 12px;background:#fff;border-top:1px solid #eceff3}
+.obk-chip{background:#fff;border:1.5px solid #5b6b73;color:#5b6b73;border-radius:999px;padding:8px 13px;font:600 14px system-ui,sans-serif;cursor:pointer}
+.obk-chip:active{background:#5b6b73;color:#fff}
+#obkInputRow{display:none;gap:8px;padding:10px 12px;background:#fff;border-top:1px solid #eceff3}
+#obkInput{flex:1;border:1.5px solid #ccd3dc;border-radius:10px;padding:10px 12px;font:400 15px system-ui,sans-serif;min-width:0}
+#obkSend{background:#5b6b73;color:#fff;border:0;border-radius:10px;padding:10px 16px;font:600 15px system-ui,sans-serif;cursor:pointer}
+.obk-sms{display:block;text-align:center;background:#5b6b73;color:#fff;text-decoration:none;border-radius:12px;padding:13px 14px;font-weight:700;margin-top:8px}
+@media(min-width:641px){#obkFab{bottom:24px}#obkPanel{bottom:92px}}
+</style>
+<button id="obkFab" aria-label="Open booking assistant">📅 Book now</button>
+<div id="obkPanel" role="dialog" aria-label="Booking assistant">
+  <div id="obkHead"><div class="obk-t"><b>Summit Handyman</b><span>Booking assistant</span></div><button id="obkClose" aria-label="Close">✕</button></div>
+  <div id="obkMsgs"></div>
+  <div id="obkChips"></div>
+  <div id="obkInputRow"><input id="obkInput" type="text" autocomplete="off"><button id="obkSend">Send</button></div>
+</div>
+<script>
+(function(){
+var CFG={"biz": "Summit Handyman", "phone": "+14032692801", "services": ["General Repairs", "Carpentry & Trim", "Fixtures", "Doors & Hardware", "Painting & Exterior", "Seasonal Upkeep"], "closed": [], "slots": ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"]};
+var fab=document.getElementById('obkFab'),panel=document.getElementById('obkPanel'),msgs=document.getElementById('obkMsgs'),chips=document.getElementById('obkChips'),row=document.getElementById('obkInputRow'),inp=document.getElementById('obkInput');
+var B={service:null,date:null,time:null,name:null,phone:null},step=0,started=false;
+function scroll(){msgs.scrollTop=msgs.scrollHeight}
+function add(txt,cls){var d=document.createElement('div');d.className='obk-m '+cls;d.textContent=txt;msgs.appendChild(d);scroll()}
+function addHTML(h,cls){var d=document.createElement('div');d.className='obk-m '+cls;d.innerHTML=h;msgs.appendChild(d);scroll()}
+function setChips(list,cb){chips.innerHTML='';list.forEach(function(o){var b=document.createElement('button');b.className='obk-chip';b.textContent=o;b.onclick=function(){cb(o)};chips.appendChild(b)})}
+function askInput(ph,cb){row.style.display='flex';inp.placeholder=ph;inp.value='';inp.focus();row._cb=cb}
+function hideInput(){row.style.display='none';row._cb=null}
+document.getElementById('obkSend').onclick=function(){var v=inp.value.trim();if(!v||!row._cb)return;var cb=row._cb;hideInput();cb(v)};
+inp.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('obkSend').click()});
+function days(){var out=[],d=new Date();while(out.length<6){d.setDate(d.getDate()+1);if(CFG.closed.indexOf(d.getDay())===-1){out.push(d.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'}))}}return out}
+function start(){msgs.innerHTML='';chips.innerHTML='';hideInput();B={service:null,date:null,time:null,name:null,phone:null};started=true;
+ add('Hi! I can book you in at '+CFG.biz+'. What would you like to book?','obk-bot');
+ setChips(CFG.services,function(s){B.service=s;add(s,'obk-user');stepDate()})}
+function stepDate(){add('Great choice. What day works best for you?','obk-bot');setChips(days(),function(s){B.date=s;add(s,'obk-user');stepTime()})}
+function bookedSlots(ds){var b=[];for(var i=0;i<CFG.slots.length;i++){var x=0,str=ds+'|'+CFG.slots[i];for(var j=0;j<str.length;j++){x=(x*31+str.charCodeAt(j))>>>0}if(x%4===0)b.push(CFG.slots[i])}if(b.length>=CFG.slots.length-1)b=b.slice(0,CFG.slots.length-2);return b}
+function stepTime(){add('And what time?','obk-bot');var bk=bookedSlots(B.date);chips.innerHTML='';CFG.slots.forEach(function(s){var btn=document.createElement('button');btn.className='obk-chip';if(bk.indexOf(s)>-1){btn.textContent=s+' \u2715 Booked';btn.disabled=true;btn.style.opacity='.45';btn.style.textDecoration='line-through';btn.style.cursor='not-allowed'}else{btn.textContent=s;btn.onclick=function(){B.time=s;add(s,'obk-user');stepName()}}chips.appendChild(btn)});if(bk.length)add('Times with a line through them are already booked that day.','obk-bot')}
+function stepName(){add('Perfect. What name should I put the booking under?','obk-bot');chips.innerHTML='';askInput('Your name',function(v){B.name=v;add(v,'obk-user');stepPhone()})}
+function stepPhone(){add('Last thing — the best phone number for '+CFG.biz+' to confirm your booking?','obk-bot');askInput('Phone number',function(v){B.phone=v;add(v,'obk-user');stepSummary()})}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function stepSummary(){addHTML('<b>Booking summary</b>\n'+esc(CFG.biz)+'\n'+esc(B.service)+'\n'+esc(B.date)+' at '+esc(B.time)+'\n'+esc(B.name)+' · '+esc(B.phone),'obk-bot');
+ setChips(['Confirm booking','Start over'],function(c){if(c==='Start over'){add(c,'obk-user');start();return}add(c,'obk-user');stepDone()})}
+function stepDone(){chips.innerHTML='';var body='Hi '+CFG.biz+', I would like to book: '+B.service+' on '+B.date+' at '+B.time+'. Name: '+B.name+', Phone: '+B.phone;
+ add('You are all set, '+B.name.split(' ')[0]+'! One tap below texts your booking to the shop — they will confirm by text.','obk-bot');
+ var a=document.createElement('a');a.className='obk-sms';a.textContent='💬 Text this booking to the shop';a.href='sms:'+CFG.phone+'?&body='+encodeURIComponent(body);
+ var wrap=document.createElement('div');wrap.className='obk-m obk-bot';wrap.textContent='Ready when you are:';wrap.appendChild(a);msgs.appendChild(wrap);scroll();
+ setChips(['Book another'],function(){start()})}
+fab.onclick=function(){panel.classList.add('obk-open');if(!started)start()};
+document.getElementById('obkClose').onclick=function(){panel.classList.remove('obk-open')};
+})();
+</script>
+
+</body>
+</html>
