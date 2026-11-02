@@ -1,266 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="../../logo.png?v=3">
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ember &amp; Oak Pizza — Wood-Fired Pizza, Calgary</title>
-<meta name="description" content="Ember & Oak Pizza — wood-fired pizza in Calgary. Margherita $18, pepperoni $20, funghi $22. Call (403) 555-0121.">
-<meta name="theme-color" content="#0d0805">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember &amp; Oak Pizza — Wood-Fired Pizza in Calgary</title>
+<meta name="description" content="Ember & Oak Pizza — wood-fired Neapolitan-style pizza from a 900°F oak-burning oven. 318 10 St NW, Calgary. Call (403) 555-0121 for takeout.">
 <style>
-  :root{
-    --bg:#0d0805; --bg-2:#151009; --bg-3:#1e150b;
-    --paper:#f5ead9; --muted:#a8977e; --dim:#6e5f4c;
-    --ember:#ff5c1a; --ember-d:#c93f08; --gold:#f5b942; --leaf:#8aa653;
-    --line:rgba(245,234,217,.12);
-    --display:'Archivo',Impact,sans-serif;
-    --body:'Inter',system-ui,sans-serif;
-    --ease:cubic-bezier(.2,.7,.1,1);
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--bg);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
-  @media (min-width:900px){body{padding-bottom:0}}
-  a{color:inherit;text-decoration:none}
-  ::selection{background:var(--ember);color:#fff}
-  :focus-visible{outline:3px solid var(--ember);outline-offset:3px}
-  .wrap{width:min(1200px,100% - 2.5rem);margin-inline:auto}
-  @media (min-width:700px){.wrap{width:min(1200px,100% - 5rem)}}
-  .tag{display:inline-block;font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);border:1px solid var(--ember);padding:.4rem .85rem}
-  h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.94;letter-spacing:.005em;font-stretch:110%}
-  h2{font-size:clamp(2.8rem,8vw,6rem)}
-  h2 .o{color:transparent;-webkit-text-stroke:2px var(--paper)}
-  h2 .e{color:var(--ember)}
-  .lede{color:var(--muted);font-size:clamp(1rem,1.5vw,1.15rem);max-width:34rem}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.6rem;font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;transition:transform .25s var(--ease),box-shadow .25s,background .25s;white-space:nowrap}
-  .btn svg{width:18px;height:18px;flex:none}
-  .btn-ember{background:var(--ember);color:#fff;box-shadow:5px 5px 0 rgba(245,185,66,.35)}
-  .btn-ember:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(245,185,66,.35);background:var(--ember-d)}
-  .btn-line{border:2px solid var(--paper);color:var(--paper)}
-  .btn-line:hover{background:var(--paper);color:var(--bg)}
-  .header{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
-  .header.scrolled{background:rgba(13,8,5,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
-  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .logo{font-family:var(--display);font-weight:900;font-size:1.45rem;text-transform:uppercase;line-height:1}
-  .logo .amp{color:var(--ember)}
-  .nav{display:none;gap:2rem;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
-  .nav a:hover{color:var(--ember)}
-  .header .btn{min-height:44px;padding:0 1rem;font-size:.78rem}
-  .header .btn .num{display:none}
-  @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
-  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;background:#120b06}
-  .hero-media{position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 65% 30%,#4a2410,#0d0805 70%)}
-  .hero-media::after{content:"\1F525";position:absolute;right:8%;top:20%;font-size:7rem;opacity:.25;animation:flick 2.2s ease-in-out infinite}
-  @keyframes flick{0%,100%{transform:scale(1) rotate(-4deg)}50%{transform:scale(1.08) rotate(4deg)}}
-  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,8,5,.7) 0%,rgba(13,8,5,.15) 35%,rgba(13,8,5,.55) 65%,var(--bg) 100%)}
-  .hero-inner{padding:8rem 0 2.5rem}
-  .hero h1{font-size:clamp(3.8rem,15vw,11.5rem);margin:1.2rem 0 1.3rem}
-  .hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--paper)}
-  .hero h1 .e{color:var(--ember);text-shadow:0 0 44px rgba(255,92,26,.4)}
-  .hero p{max-width:30rem;color:#d8c9ae;font-size:clamp(1.02rem,1.5vw,1.2rem)}
-  .hero-rating{margin-top:1.1rem;font-size:.9rem;font-weight:600;letter-spacing:.06em;color:var(--gold)}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}
-  .hero-ctas .btn{flex:1 1 220px}
-  @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
-  .hero-facts{display:grid;margin-top:2.8rem;border-top:2px solid var(--paper)}
-  .hero-facts div{display:flex;gap:.7rem;align-items:center;padding:1rem 0;font-size:.84rem;font-weight:600;color:#d8c9ae;border-bottom:1px solid var(--line)}
-  .hero-facts svg{width:18px;height:18px;color:var(--ember);flex:none}
-  @media (min-width:760px){.hero-facts{grid-template-columns:repeat(3,1fr)}.hero-facts div{border-bottom:0}.hero-facts div+div{border-left:1px solid var(--line);padding-left:1.2rem}}
-  .tape{background:var(--ember);color:#fff;overflow:hidden;transform:rotate(1.2deg);margin:1.5rem -2rem;padding:.85rem 0}
-  .tape-track{display:flex;width:max-content;animation:run 26s linear infinite}
-  .tape span{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3.2vw,2rem);text-transform:uppercase;white-space:nowrap;padding-right:2rem;display:flex;align-items:center;gap:2rem}
-  .tape span::after{content:"\1F525";font-size:.8em}
-  @keyframes run{to{transform:translateX(-50%)}}
-  main{overflow-x:clip}
-  section{position:relative}
-  .pad{padding:clamp(5rem,12vw,8.5rem) 0}
-  .head{display:grid;gap:1.5rem;margin-bottom:clamp(2.5rem,6vw,4rem)}
-  @media (min-width:900px){.head{grid-template-columns:1.4fr 1fr;align-items:end}}
-  .head h2{margin-top:1.2rem}
-  .menu{display:grid;gap:0;border-top:2px solid var(--paper)}
-  .dish{display:grid;grid-template-columns:1fr auto;gap:.4rem 1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--line);align-items:baseline}
-  .dish h3{font-size:clamp(1.4rem,3vw,2rem)}
-  .dish h3 .veg{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--leaf);border:1px solid var(--leaf);padding:.15rem .5rem;margin-left:.6rem;vertical-align:middle;text-transform:uppercase}
-  .dish .pr{font-family:var(--display);font-weight:800;font-size:1.7rem;color:var(--gold);white-space:nowrap}
-  .dish p{grid-column:1;color:var(--muted);font-size:.94rem;max-width:38rem}
-  .dish .dots{grid-column:1/-1;display:none}
-  .menu-note{margin-top:1.8rem;color:var(--muted);font-size:.92rem}
-  .menu-note a{color:var(--ember);border-bottom:1px solid var(--ember)}
-  .cols{display:grid;gap:1.4rem}
-  @media (min-width:860px){.cols{grid-template-columns:repeat(3,1fr)}}
-  .feat{background:var(--bg-2);border:1px solid var(--line);padding:2rem 1.8rem}
-  .feat .ico{font-size:2.4rem;margin-bottom:1rem;display:block}
-  .feat h3{font-size:1.6rem;margin-bottom:.6rem}
-  .feat h3 .e{color:var(--ember)}
-  .feat p{color:var(--muted);font-size:.95rem}
-  .faq-list{max-width:780px;margin:0 auto;border-top:2px solid var(--paper)}
-  details{border-bottom:1px solid #2b1f12}
-  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.4rem 0;font-weight:700;font-size:1.08rem}
-  summary::-webkit-details-marker{display:none}
-  summary:hover{color:var(--ember)}
-  .pm{font-size:1.5rem;color:var(--ember);font-weight:400}
-  details[open] .pm{transform:rotate(45deg)}
-  .answer{color:var(--muted);padding:0 2rem 1.5rem 0}
-  .answer a{color:var(--ember)}
-  .contact-card{border:2px solid var(--ember);background:#120b06;position:relative;overflow:hidden}
-  .contact-inner{display:grid;gap:2.5rem;padding:clamp(2rem,6vw,4rem)}
-  @media (min-width:960px){.contact-inner{grid-template-columns:1.2fr 1fr;align-items:end}}
-  .contact h2{margin:1.2rem 0 1rem}
-  .big-phone{display:inline-block;font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,7vw,4rem);color:var(--ember);margin:.4rem 0 1.6rem;line-height:1}
-  .contact-ctas{display:flex;flex-wrap:wrap;gap:1rem}
-  .contact-ctas .btn{flex:1 1 200px}
-  @media (min-width:600px){.contact-ctas .btn{flex:0 0 auto}}
-  .info{border-top:2px solid var(--paper)}
-  .info-row{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid #2b1f12}
-  .info-row svg{width:22px;height:22px;color:var(--ember);margin-top:.2rem}
-  .info-row small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
-  .info-row b{font-weight:500}
-  footer{border-top:1px solid var(--line);padding:2.4rem 0;color:var(--muted);font-size:.85rem}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center}
-  .demo{font-size:.76rem;border:1px dashed #555;padding:.4rem .8rem}
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(13,8,5,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:2px solid var(--ember);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
-  .callbar .btn{min-height:52px;font-size:.8rem;padding:0 .8rem}
-  @media (min-width:900px){.callbar{display:none}}
-  .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
-  .js .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+:root{
+  --char:#0d0a07; --char2:#14100b; --panel:#1a140d; --panel2:#20180f;
+  --ember:#ff6b35; --ember-d:#d94f1e; --gold:#ffb347; --cream:#f3e9dc;
+  --mut:#b8a88f; --line:rgba(255,107,53,.16);
+  --wood:linear-gradient(93deg,#2a1d11 0%,#3a2817 12%,#241a0f 24%,#33251596 36%,#2a1d11 48%,#38281399 60%,#241a0f 72%,#322412 84%,#2a1d11 100%);
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--char);color:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:76px}
+@media(min-width:900px){body{padding-bottom:0}}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+.topbar{background:#000;color:var(--mut);font-size:.82rem;letter-spacing:.05em}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:9px;padding-bottom:9px}
+.topbar a{text-decoration:none;color:var(--gold);white-space:nowrap}
+.header{position:sticky;top:0;z-index:50;background:rgba(13,10,7,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:15px;padding-bottom:15px;gap:12px}
+.header .btn{white-space:nowrap;flex:none}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:42px;height:42px;background:radial-gradient(circle at 35% 30%,var(--gold),var(--ember) 55%,var(--ember-d));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.35rem;color:#140a04;font-weight:700}
+.brand b{font-family:var(--serif);font-weight:400;font-size:1.25rem;letter-spacing:.02em;display:block;line-height:1.1}
+.brand small{font-size:.68rem;letter-spacing:.3em;color:var(--mut);text-transform:uppercase}
+.nav{display:none;gap:32px;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--cream)}
+.nav a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ember);color:#140a04;text-decoration:none;padding:14px 26px;font-size:.95rem;font-weight:700;letter-spacing:.05em;border:1px solid var(--ember);transition:.2s}
+.btn:hover{background:var(--gold);border-color:var(--gold)}
+.btn.ghost{background:transparent;color:var(--cream);border-color:var(--cream)}
+.btn.ghost:hover{background:var(--cream);color:var(--char)}
+@media(min-width:900px){.nav{display:flex}}
+.hero{position:relative;overflow:hidden;padding:88px 0 80px;background:
+  radial-gradient(ellipse 700px 340px at 50% -60px,rgba(255,107,53,.22),transparent 70%),
+  radial-gradient(ellipse 500px 300px at 85% 110%,rgba(255,107,53,.10),transparent 70%),
+  var(--char)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(93deg,rgba(255,255,255,.014) 0 3px,transparent 3px 9px,rgba(0,0,0,.14) 9px 12px,transparent 12px 20px);
+  pointer-events:none}
+.hero-grid{display:grid;gap:48px;align-items:center;position:relative}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+.eyebrow{font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,6.4vw,4.8rem);line-height:1.05;margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--ember)}
+.hero p.lead{font-size:1.12rem;color:var(--mut);max-width:34rem;margin-bottom:32px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.hero-img{position:relative}
+.hero-img img{width:100%;height:420px;object-fit:cover;display:block;border:1px solid var(--line)}
+.hero-img::after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,179,71,.5);pointer-events:none}
+.hero-tag{position:absolute;left:28px;bottom:28px;background:rgba(13,10,7,.9);color:var(--cream);padding:12px 20px;font-size:.85rem;letter-spacing:.08em;border:1px solid var(--line)}
+.hero-tag b{color:var(--gold)}
+.flame-bar{height:6px;background:linear-gradient(90deg,var(--ember-d),var(--ember) 30%,var(--gold) 50%,var(--ember) 70%,var(--ember-d))}
+.stats{background:#000;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:36px;padding-bottom:36px;text-align:center}
+.stat b{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.4vw,2.6rem);color:var(--gold);display:block}
+.stat span{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.section{padding:80px 0}
+.sec-head{margin-bottom:40px}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem)}
+.sec-head h2 em{font-style:italic;color:var(--ember)}
+.sec-head p{color:var(--mut);max-width:36rem;margin-top:10px}
+.menu-grid{display:grid;gap:22px}
+@media(min-width:860px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+.pie{background:var(--wood);border:1px solid var(--line);padding:28px;display:flex;gap:20px;transition:.25s}
+.pie:hover{border-color:var(--ember);transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(255,107,53,.35)}
+.pie .flame{flex:none;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--gold),var(--ember) 60%,var(--ember-d));display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.pie h3{font-family:var(--serif);font-weight:400;font-size:1.35rem;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pie h3 .pr{font-family:var(--sans);font-weight:700;font-size:1.05rem;color:var(--gold);white-space:nowrap}
+.pie p{color:var(--mut);font-size:.95rem;margin-top:8px}
+.pie .tagline{display:inline-block;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);margin-top:10px}
+.menu-note{margin-top:28px;color:var(--mut);font-size:.95rem;text-align:center}
+.menu-note a{color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ember)}
+.oven{background:var(--char2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.oven-grid{display:grid;gap:48px;align-items:center}
+@media(min-width:960px){.oven-grid{grid-template-columns:.95fr 1.05fr}}
+.oven-grid img{width:100%;height:440px;object-fit:cover;display:block;border:1px solid var(--line)}
+.oven h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:18px}
+.oven h2 em{font-style:italic;color:var(--ember)}
+.oven p{color:var(--mut);margin-bottom:16px}
+.oven-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.oven-facts div{border:1px solid var(--line);padding:16px 12px;text-align:center;background:var(--panel)}
+.oven-facts b{font-family:var(--serif);font-size:1.5rem;color:var(--gold);display:block}
+.oven-facts span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.quote{padding:90px 0;text-align:center}
+.quote blockquote{font-family:var(--serif);font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.4;max-width:56rem;margin:0 auto 24px;font-style:italic}
+.quote blockquote em{color:var(--ember)}
+.quote cite{font-style:normal;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.cta{text-align:center;padding:90px 0;background:radial-gradient(ellipse 600px 300px at 50% 120%,rgba(255,107,53,.18),transparent 70%)}
+.cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:18px}
+.cta h2 em{font-style:italic;color:var(--ember)}
+.cta p{color:var(--mut);max-width:36rem;margin:0 auto 34px}
+.cta .btn{font-size:1.1rem;padding:18px 40px}
+.contact{border-top:1px solid var(--line);background:var(--char2)}
+.contact .wrap{display:grid;gap:18px;padding-top:44px;padding-bottom:44px}
+@media(min-width:860px){.contact .wrap{grid-template-columns:repeat(3,1fr)}}
+.citem{display:flex;gap:16px;align-items:flex-start}
+.citem .ic{width:46px;height:46px;flex:none;border:1px solid var(--ember);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.citem b{display:block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+.citem a{font-size:1.1rem;text-decoration:none;color:var(--cream);border-bottom:1px solid var(--ember)}
+.citem span{font-size:1.1rem}
+footer{background:#000;color:var(--mut);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:26px;padding-bottom:26px;flex-wrap:wrap;gap:12px}
+footer b{font-family:var(--serif);font-weight:400;color:var(--cream);letter-spacing:.04em}
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(13,10,7,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.callbar a{flex:1;text-align:center;text-decoration:none;padding:14px;font-size:.95rem;letter-spacing:.05em}
+.callbar .call{background:var(--ember);color:#140a04;font-weight:700;white-space:nowrap}
+.callbar .map{background:transparent;color:var(--cream);border:1px solid var(--cream)}
+@media(min-width:900px){.callbar{display:none}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
-  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8z"/></symbol>
-</svg>
-<header class="header" id="top">
-  <div class="wrap">
-    <a href="#top" class="logo" aria-label="Ember and Oak Pizza — home">Ember <span class="amp">&amp;</span> Oak</a>
-    <nav class="nav" aria-label="Main">
-      <a href="#menu">Menu</a><a href="#why">Why us</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
-    </nav>
-    <a class="btn btn-ember" href="tel:+14035550121"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0121</span></a>
-  </div>
-</header>
-<main>
-  <section class="hero">
-    <div class="hero-media"></div>
-    <div class="wrap hero-inner">
-      <span class="tag reveal">Wood-fired pizza &middot; Calgary</span>
-      <h1 class="reveal" style="--d:.1s">Fired by oak.<br><span class="o">Finished in</span><br><span class="e">90 seconds.</span></h1>
-      <p class="reveal" style="--d:.2s">Neapolitan-style pies blistered in a 900&deg;F oak-fired oven. 48-hour dough, San Marzano tomatoes, fior di latte — no shortcuts.</p>
-      <p class="hero-rating reveal" style="--d:.25s">&#9733;&#9733;&#9733;&#9733;&#9733; 4.8 &middot; 1,200+ reviews</p>
-      <div class="hero-ctas reveal" style="--d:.3s">
-        <a class="btn btn-ember" href="tel:+14035550121"><svg><use href="#i-phone"/></svg>Call (403) 555-0121</a>
-        <a class="btn btn-line" href="#menu">See the menu</a>
-      </div>
-      <div class="hero-facts reveal" style="--d:.4s">
-        <div><svg><use href="#i-phone"/></svg>Pickup &amp; delivery &mdash; call ahead</div>
-        <div><svg><use href="#i-pin"/></svg>1732 14 St NW, Calgary</div>
-        <div><svg><use href="#i-clock"/></svg>Tue&ndash;Sun 4&ndash;10 PM</div>
-      </div>
-    </div>
-  </section>
-  <div class="tape" aria-hidden="true">
-    <div class="tape-track">
-      <span>Wood-fired</span><span>48-hour dough</span><span>900&deg;F oven</span><span>San Marzano</span><span>Fior di latte</span>
-      <span>Wood-fired</span><span>48-hour dough</span><span>900&deg;F oven</span><span>San Marzano</span><span>Fior di latte</span>
+
+<div class="topbar"><div class="wrap">
+  <span>Ember &amp; Oak Pizza · 318 10 St NW, Calgary</span>
+  <a href="tel:+14035550121">(403) 555-0121</a>
+</div></div>
+
+<header class="header"><div class="wrap">
+  <a class="brand" href="#top" aria-label="Ember and Oak Pizza — home">
+    <span class="brand-mark">E</span>
+    <span><b>Ember &amp; Oak</b><small>Wood-Fired Pizza</small></span>
+  </a>
+  <nav class="nav">
+    <a href="#menu">Menu</a><a href="#oven">The Oven</a><a href="#visit">Visit</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="btn" href="tel:+14035550121">Order takeout</a>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap hero-grid">
+  <div>
+    <div class="eyebrow">Wood-fired · Calgary</div>
+    <h1>Pizza from <em>real fire.</em></h1>
+    <p class="lead">Neapolitan-style pies blistered in our oak-burning oven at 900°F. Ninety seconds in, and out comes the crust you can hear.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="tel:+14035550121">Call (403) 555-0121</a>
+      <a class="btn ghost" href="#menu">See the menu</a>
     </div>
   </div>
-  <section class="pad" id="menu">
-    <div class="wrap">
-      <div class="head">
-        <div>
-          <span class="tag reveal">The menu</span>
-          <h2 class="reveal" style="--d:.08s">Twelve inches<br><span class="o">of</span> <span class="e">fire.</span></h2>
-        </div>
-        <p class="lede reveal" style="--d:.16s">All pies are 12&quot;, built on 48-hour dough and fired to order. Call ahead — Friday nights sell out.</p>
-      </div>
-      <div class="menu reveal" style="--d:.1s">
-        <div class="dish"><h3>Margherita <span class="veg">Veg</span></h3><span class="pr">$18</span><p>San Marzano tomato, fior di latte, basil, cold-pressed olive oil. The purist's pie.</p></div>
-        <div class="dish"><h3>Pepperoni</h3><span class="pr">$20</span><p>Cup-and-char pepperoni, mozzarella, San Marzano tomato, oregano. A classic done right.</p></div>
-        <div class="dish"><h3>Funghi <span class="veg">Veg</span></h3><span class="pr">$22</span><p>Roasted mushrooms, taleggio, thyme, truffle oil. Earthy and rich.</p></div>
-        <div class="dish"><h3>Diavola</h3><span class="pr">$21</span><p>Spicy salami, hot honey, mozzarella, basil. Sweet heat in every bite.</p></div>
-        <div class="dish"><h3>Ortolana <span class="veg">Veg</span></h3><span class="pr">$21</span><p>Fire-roasted peppers, zucchini, red onion, goat cheese, pesto drizzle.</p></div>
-        <div class="dish"><h3>Quattro Formaggi <span class="veg">Veg</span></h3><span class="pr">$23</span><p>Fior di latte, gorgonzola, fontina, parmigiano. For the cheese-committed.</p></div>
-        <div class="dish"><h3>Prosciutto e Rucola</h3><span class="pr">$24</span><p>Parma prosciutto, wild arugula, shaved parmigiano, lemon oil. Added after the fire.</p></div>
-        <div class="dish"><h3>Calzone Classico</h3><span class="pr">$19</span><p>Folded and fired — ricotta, mozzarella, salami, San Marzano on the side.</p></div>
-      </div>
-      <p class="menu-note reveal">Extras: burrata +$6 &middot; extra pepperoni +$3 &middot; gluten-friendly crust +$4 &middot; Call <a href="tel:+14035550121">(403) 555-0121</a> for tonight's special.</p>
-    </div>
-  </section>
-  <section class="pad" id="why" style="padding-top:0">
-    <div class="wrap">
-      <div class="head">
-        <div>
-          <span class="tag reveal">Why Ember &amp; Oak</span>
-          <h2 class="reveal" style="--d:.08s">No gas.<br><span class="e">No shortcuts.</span></h2>
-        </div>
-      </div>
-      <div class="cols">
-        <div class="feat reveal"><span class="ico">&#129717;</span><h3>Real <span class="e">wood fire</span></h3><p>Oak only, burning at 900&deg;F. That leopard-spotted crust can't be faked.</p></div>
-        <div class="feat reveal" style="--d:.08s"><span class="ico">&#127838;</span><h3>48-hour <span class="e">dough</span></h3><p>Slow-fermented for flavour and digestibility. Light, airy, never heavy.</p></div>
-        <div class="feat reveal" style="--d:.16s"><span class="ico">&#127813;</span><h3>Honest <span class="e">ingredients</span></h3><p>San Marzano DOP tomatoes, fior di latte pulled daily, Alberta-milled flour.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="pad" id="faq" style="padding-top:0">
-    <div class="wrap">
-      <div class="faq-list reveal">
-        <details><summary>Do you deliver?<span class="pm">+</span></summary><div class="answer">Yes — delivery within 8 km, Tuesday to Sunday from 4 PM. Call <a href="tel:+14035550121">(403) 555-0121</a> to order; pies travel in vented boxes so the crust stays crisp.</div></details>
-        <details><summary>Do you have gluten-friendly options?<span class="pm">+</span></summary><div class="answer">Yes — gluten-friendly crust for +$4 on any 12&quot; pie. Note our kitchen handles wheat flour throughout.</div></details>
-        <details><summary>Can I book the room for a party?<span class="pm">+</span></summary><div class="answer">Our back room seats 24. Call ahead for birthdays and team nights — set menus available.</div></details>
-        <details><summary>Do you sell dough to take home?<span class="pm">+</span></summary><div class="answer">Yes — 48-hour dough balls, $5 each, with stretching instructions. A fun Friday night in.</div></details>
-        <details><summary>What are your hours?<span class="pm">+</span></summary><div class="answer">Tuesday to Sunday, 4 PM to 10 PM. Closed Mondays — the oven rests.</div></details>
-        <details><summary>Where are you located?<span class="pm">+</span></summary><div class="answer">1732 14 St NW, Calgary — street parking plus a small lot out back.</div></details>
-      </div>
-    </div>
-  </section>
-  <section class="contact" id="contact">
-    <div class="wrap">
-      <div class="contact-card reveal">
-        <div class="contact-inner">
-          <div>
-            <span class="tag">Order pickup or delivery</span>
-            <h2>Call for<br><span class="e">tonight's pies.</span></h2>
-            <a class="big-phone" href="tel:+14035550121">(403) 555-0121</a>
-            <div class="contact-ctas">
-              <a class="btn btn-ember" href="tel:+14035550121"><svg><use href="#i-phone"/></svg>Call now</a>
-              <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Ember+%26+Oak+Pizza%2C+1732+14+St+NW%2C+Calgary" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Get directions</a>
-            </div>
-          </div>
-          <div class="info">
-            <a class="info-row" href="tel:+14035550121"><svg><use href="#i-phone"/></svg><div><small>Phone</small><b>(403) 555-0121</b></div></a>
-            <a class="info-row" href="https://www.google.com/maps/search/?api=1&amp;query=Ember+%26+Oak+Pizza%2C+1732+14+St+NW%2C+Calgary" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><div><small>Address</small><b>1732 14 St NW<br>Calgary, AB</b></div></a>
-            <div class="info-row"><svg><use href="#i-clock"/></svg><div><small>Hours</small><b>Tue&ndash;Sun 4&ndash;10 PM &middot; Mon closed</b></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-<footer>
-  <div class="wrap">
-    <span>Ember &amp; Oak Pizza &middot; 1732 14 St NW, Calgary &middot; <a href="tel:+14035550121">(403) 555-0121</a></span>
-    <span class="demo">Demo site</span>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=70" alt="Wood-fired pizza with charred crust">
+    <div class="hero-tag">Oak-fired · <b>90 seconds a pie</b></div>
   </div>
-</footer>
+</div></section>
+<div class="flame-bar" aria-hidden="true"></div>
+
+<div class="stats"><div class="wrap">
+  <div class="stat"><b>900°F</b><span>Oak-burning oven</span></div>
+  <div class="stat"><b>48 hrs</b><span>Slow-fermented dough</span></div>
+  <div class="stat"><b>9 pies</b><span>On the menu</span></div>
+</div></div>
+
+<section class="section" id="menu"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">The menu</div>
+    <h2>Fired to order, <em>every time.</em></h2>
+    <p>All pies are 12 inches, made with 48-hour dough and San Marzano tomatoes. Dine in or take out — call ahead and skip the wait.</p>
+  </div>
+  <div class="menu-grid">
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Margherita Classica <span class="pr">$19</span></h3>
+      <p>San Marzano tomato, fior di latte, fresh basil, cold-pressed olive oil.</p>
+      <span class="tagline">The classic</span></div></article>
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Pepperoni &amp; Hot Honey <span class="pr">$23</span></h3>
+      <p>Cup-and-char pepperoni, mozzarella, a drizzle of hot honey, oregano.</p>
+      <span class="tagline">House favourite</span></div></article>
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Funghi <span class="pr">$22</span></h3>
+      <p>Roasted cremini and shiitake, taleggio, thyme, truffle oil finish.</p>
+      <span class="tagline">Earthy &amp; rich</span></div></article>
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Diavola <span class="pr">$22</span></h3>
+      <p>Spicy salami, tomato, mozzarella, pickled chilies, basil.</p>
+      <span class="tagline">Bring the heat</span></div></article>
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Prosciutto e Rucola <span class="pr">$25</span></h3>
+      <p>Parma prosciutto, wild arugula, shaved parmigiano, lemon oil.</p>
+      <span class="tagline">Fresh &amp; salty</span></div></article>
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Quattro Formaggi <span class="pr">$24</span></h3>
+      <p>Mozzarella, gorgonzola, fontina, parmigiano, cracked pepper, honey.</p>
+      <span class="tagline">Cheese lovers</span></div></article>
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Salsiccia <span class="pr">$23</span></h3>
+      <p>House fennel sausage, roasted peppers, red onion, smoked mozzarella.</p>
+      <span class="tagline">Hearty</span></div></article>
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Bianca Verde <span class="pr">$21</span></h3>
+      <p>Garlic cream base, spinach, ricotta dollops, mozzarella, nutmeg.</p>
+      <span class="tagline">No tomato</span></div></article>
+    <article class="pie"><span class="flame" aria-hidden="true">🔥</span><div>
+      <h3>Ortolana <span class="pr">$20</span></h3>
+      <p>Fire-roasted zucchini, eggplant and peppers, tomato, basil, vegan mozzarella on request.</p>
+      <span class="tagline">Garden pie</span></div></article>
+  </div>
+  <p class="menu-note">Add a side of garlic knots ($7) or a wood-oven chocolate cookie ($8). Call <a href="tel:+14035550121">(403) 555-0121</a> for takeout.</p>
+</div></section>
+
+<section class="section oven" id="oven"><div class="wrap oven-grid">
+  <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=70" alt="Pizza baking inside a wood-fired oven">
+  <div>
+    <div class="eyebrow">The oven</div>
+    <h2>Built for <em>fire.</em></h2>
+    <p>Our oven burns Alberta oak and nothing else — no gas, no shortcuts. At 900°F the crust puffs, chars and blisters in about ninety seconds, the way pizza was meant to be made.</p>
+    <p>The dough ferments for 48 hours for flavor and chew. The tomatoes come from San Marzano. The fire does the rest.</p>
+    <div class="oven-facts">
+      <div><b>900°F</b><span>Oven temp</span></div>
+      <div><b>90 sec</b><span>Per pie</span></div>
+      <div><b>100%</b><span>Oak fire</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="quote"><div class="wrap">
+  <blockquote>"The crust alone is worth the trip — <em>charred, chewy, perfect.</em> Best pizza in the northwest, no contest."</blockquote>
+  <cite>— A Calgary regular</cite>
+</div></section>
+
+<section class="cta" id="visit"><div class="wrap">
+  <h2>Hungry? <em>Come get fired up.</em></h2>
+  <p>Dine in, take out, or call ahead and your pie hits the oven when you walk in the door.</p>
+  <a class="btn" href="tel:+14035550121">Call (403) 555-0121</a>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div class="citem"><span class="ic">✆</span><div><b>Phone</b><a href="tel:+14035550121">(403) 555-0121</a></div></div>
+  <div class="citem"><span class="ic">◷</span><div><b>Hours</b><span>Tue–Sun · 12pm–10pm</span></div></div>
+  <div class="citem"><span class="ic">◈</span><div><b>Find us</b><span>318 10 St NW, Calgary, AB</span></div></div>
+</div></section>
+
+<footer><div class="wrap">
+  <b>Ember &amp; Oak Pizza</b>
+  <span>© 2026 · Demo website · (403) 555-0121</span>
+</div></footer>
+
 <div class="callbar">
-  <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Ember+%26+Oak+Pizza%2C+1732+14+St+NW%2C+Calgary" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Map</a>
-  <a class="btn btn-ember" href="tel:+14035550121"><svg><use href="#i-phone"/></svg>Call (403) 555-0121</a>
+  <a class="map" href="https://www.google.com/maps/search/?api=1&query=Ember+%26+Oak+Pizza+Calgary">Map</a>
+  <a class="call" href="tel:+14035550121">Call (403) 555-0121</a>
 </div>
-<script>
-  document.documentElement.classList.add('js');
-  var header=document.querySelector('.header');
-  function onScroll(){header.classList.toggle('scrolled',window.scrollY>40)}
-  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
-  var els=document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-    els.forEach(function(el){io.observe(el)});
-  }else{els.forEach(function(el){el.classList.add('in')})}
-</script>
+
 </body>
 </html>
