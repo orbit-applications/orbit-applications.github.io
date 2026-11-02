@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calm Paws Grooming — Home-Based Dog Grooming in Renfrew, Calgary</title>
+<meta name="description" content="Calm Paws Grooming — a home-based professional dog grooming salon in Renfrew, Calgary. Calm, one-on-one appointments. Now accepting new clients. 514 14 Ave NE. Call (403) 555-0106.">
+<meta name="theme-color" content="#262826">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --char:#262826; --char-2:#30332f; --char-3:#3b3f3a;
+    --bone:#efebe3; --linen:#f7f4ee; --stone:#d9d3c7;
+    --sage:#8d9c84; --sage-d:#5d6b56; --sage-l:#c9d3c1;
+    --ink:#2a2c29; --muted:#5f625c; --on-dark:#e9e6df; --on-dark-2:#b9bab2;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Work Sans',system-ui,-apple-system,sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--linen);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  @media (min-width:900px){body{padding-bottom:0}}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--sage-l);color:var(--char)}
+  :focus-visible{outline:2px solid var(--sage-d);outline-offset:4px;border-radius:4px}
+  .dark :focus-visible,.hero :focus-visible,.callbar :focus-visible{outline-color:var(--sage-l)}
+  .wrap{width:min(1160px,100% - 2.5rem);margin-inline:auto}
+  @media (min-width:700px){.wrap{width:min(1160px,100% - 5rem)}}
+
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.005em}
+  h2{font-size:clamp(2.3rem,5.6vw,3.9rem)}
+  h2 i,h1 i{font-style:italic;color:var(--sage-d)}
+  .kicker{display:inline-flex;align-items:center;gap:.75rem;font-size:.74rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--sage-d)}
+  .kicker svg{width:20px;height:20px}
+  .lede{color:var(--muted);font-size:clamp(1rem,1.4vw,1.1rem);max-width:34rem}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;min-height:54px;padding:0 1.6rem;border-radius:4px;font-family:var(--sans);font-weight:600;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;transition:background .35s,color .35s,border-color .35s,transform .35s var(--ease);white-space:nowrap}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-sage{background:var(--sage-l);color:var(--char)}
+  .btn-sage:hover{background:#dbe3d4;transform:translateY(-2px)}
+  .btn-dark{background:var(--char);color:var(--bone)}
+  .btn-dark:hover{background:var(--sage-d)}
+  .btn-line{border:1px solid rgba(233,230,223,.45);color:var(--on-dark)}
+  .btn-line:hover{border-color:var(--sage-l);color:var(--sage-l)}
+  .btn-line.ink{border-color:rgba(42,44,41,.3);color:var(--ink)}
+  .btn-line.ink:hover{border-color:var(--sage-d);color:var(--sage-d)}
+
+  /* header */
+  .header{position:fixed;inset:0 0 auto;z-index:50;color:var(--on-dark);transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+  .header.scrolled{background:rgba(38,40,38,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:rgba(255,255,255,.07)}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:1rem}
+  .logo{display:flex;align-items:center;gap:.7rem}
+  .logo svg{width:30px;height:30px;color:var(--sage-l);transform:rotate(-28deg)}
+  .logo b{display:block;font-family:var(--serif);font-weight:600;font-size:1.45rem;line-height:1;letter-spacing:.01em}
+  .logo small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--on-dark-2);margin-top:.3rem}
+  .nav{display:none;gap:2.2rem;font-size:.86rem;color:var(--on-dark-2)}
+  .nav a{transition:color .3s}
+  .nav a:hover{color:var(--sage-l)}
+  .header .btn{min-height:44px;padding:0 1.1rem;font-size:.76rem}
+  .header .btn .num{display:none}
+  @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
+
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--on-dark);isolation:isolate;overflow:hidden;background:var(--char)}
+  .hero-media{position:absolute;inset:0;z-index:-2}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;filter:saturate(.7);animation:settle 3s var(--ease) forwards;transform:scale(1.06)}
+  @keyframes settle{to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 55%,rgba(38,40,38,.55) 0%,rgba(38,40,38,.82) 70%),linear-gradient(180deg,rgba(38,40,38,.6) 0%,rgba(38,40,38,.2) 40%,rgba(38,40,38,.95) 100%)}
+  .hero-inner{padding:8rem 0 5rem;max-width:860px}
+  .pill{display:inline-flex;align-items:center;gap:.6rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(201,211,193,.5);background:rgba(38,40,38,.45);backdrop-filter:blur(6px);font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-l)}
+  .dot{width:8px;height:8px;border-radius:50%;background:#a9c79a;box-shadow:0 0 0 0 rgba(169,199,154,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(169,199,154,0)}100%{box-shadow:0 0 0 0 rgba(169,199,154,0)}}
+  .hero h1{font-size:clamp(2.8rem,8.6vw,6.4rem);margin:1.6rem 0 1.4rem}
+  .hero h1 i{color:var(--sage-l)}
+  .hero p{max-width:36rem;margin-inline:auto;color:#d6d4cc;font-size:clamp(1.02rem,1.5vw,1.16rem)}
+  .hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-top:2.3rem}
+  .hero-ctas .btn{flex:1 1 220px}
+  @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
+  .hero-loc{margin-top:2.6rem;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-2);display:flex;justify-content:center;gap:.5rem;align-items:center}
+  .hero-loc svg{width:16px;height:16px}
+  .feather-bg{position:absolute;z-index:-1;width:min(52vw,420px);opacity:.08;color:var(--sage-l);right:-60px;bottom:-40px;transform:rotate(-24deg);pointer-events:none}
+
+  section{position:relative}
+  .pad{padding:clamp(5rem,11vw,8.5rem) 0}
+  .rule{display:flex;align-items:center;gap:1rem;color:var(--sage);margin:0 auto;width:min(320px,70%)}
+  .rule::before,.rule::after{content:"";flex:1;height:1px;background:currentColor;opacity:.5}
+  .rule svg{width:22px;height:22px;transform:rotate(-35deg)}
+
+  /* pillars */
+  .about{display:grid;gap:3rem;align-items:center}
+  @media (min-width:940px){.about{grid-template-columns:1fr 1.05fr;gap:5rem}}
+  .about-photo{position:relative}
+  .about-photo .frame{aspect-ratio:4/5;overflow:hidden;border-radius:200px 200px 6px 6px;background:var(--stone)}
+  .about-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.8)}
+  .about-photo::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--sage);border-radius:200px 200px 6px 6px;z-index:-1}
+  .about h2{margin:1.1rem 0 1.3rem}
+  .pillars{margin-top:2.2rem;display:grid;gap:0;border-top:1px solid var(--stone)}
+  .pillar{display:grid;grid-template-columns:44px 1fr;gap:1.1rem;padding:1.4rem 0;border-bottom:1px solid var(--stone)}
+  .pillar-ico{width:44px;height:44px;border-radius:50%;background:var(--bone);display:grid;place-items:center;color:var(--sage-d)}
+  .pillar-ico svg{width:22px;height:22px}
+  .pillar h3{font-size:1.45rem;font-weight:600;margin-bottom:.15rem}
+  .pillar p{color:var(--muted);font-size:.96rem}
+
+  /* services */
+  .dark{background:var(--char);color:var(--on-dark)}
+  .dark h2 i{color:var(--sage-l)}
+  .dark .kicker{color:var(--sage-l)}
+  .dark .lede{color:var(--on-dark-2)}
+  .s-head{text-align:center;display:grid;justify-items:center;gap:1.1rem;margin-bottom:clamp(3rem,6vw,4.5rem)}
+  .s-head .lede{margin-inline:auto}
+  .svc{display:grid;gap:1.4rem}
+  @media (min-width:700px){.svc{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1060px){.svc{grid-template-columns:repeat(3,1fr)}}
+  .card{display:flex;flex-direction:column;background:var(--char-2);border:1px solid rgba(255,255,255,.06);border-radius:6px;overflow:hidden;transition:transform .5s var(--ease),border-color .4s}
+  .card:hover{transform:translateY(-5px);border-color:rgba(201,211,193,.35)}
+  .card-img{aspect-ratio:3/2;overflow:hidden;background:var(--char-3)}
+  .card-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.75) brightness(.92);transition:transform 1.1s var(--ease),filter .6s}
+  .card:hover .card-img img{transform:scale(1.05);filter:saturate(.95) brightness(1)}
+  .card-body{padding:1.6rem 1.6rem 1.7rem;display:flex;flex-direction:column;flex:1}
+  .card h3{font-size:1.65rem;margin-bottom:.5rem}
+  .card p{color:var(--on-dark-2);font-size:.95rem;flex:1}
+  .card-link{margin-top:1.3rem;font-size:.76rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--sage-l);display:inline-flex;gap:.5rem;align-items:center}
+  .card-link svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+  .card:hover .card-link svg{transform:translateX(4px)}
+  .card.note{background:transparent;border:1px dashed rgba(201,211,193,.35);justify-content:center;padding:2rem}
+  .card.note h3{color:var(--sage-l)}
+  .card.note a{color:var(--sage-l);border-bottom:1px solid rgba(201,211,193,.5)}
+
+  /* gallery */
+  .gallery{display:grid;grid-auto-flow:column;grid-auto-columns:min(76%,300px);gap:1rem;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding-bottom:.8rem;-webkit-overflow-scrolling:touch}
+  @media (min-width:900px){.gallery{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-columns:auto;gap:1.4rem;overflow:visible;padding-bottom:0}}
+  .gallery figure{scroll-snap-align:start;min-width:0}
+  .gallery .ph{aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:var(--stone)}
+  .gallery img{width:100%;height:100%;object-fit:cover;filter:saturate(.8);transition:transform 1.1s var(--ease),filter .6s}
+  .gallery figure:hover img{transform:scale(1.04);filter:saturate(.95)}
+  .gallery figcaption{margin-top:.75rem;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--muted)}
+
+  /* steps */
+  .steps{display:grid;gap:0;margin-top:clamp(2.6rem,5vw,3.6rem);border-top:1px solid var(--stone)}
+  @media (min-width:860px){.steps{grid-template-columns:repeat(3,1fr);border-top:0}}
+  .step{padding:2rem 0;border-bottom:1px solid var(--stone)}
+  @media (min-width:860px){.step{padding:0 2.4rem;border-bottom:0;border-left:1px solid var(--stone)}.step:first-child{border-left:0;padding-left:0}}
+  .step-n{font-family:var(--serif);font-style:italic;font-size:3.6rem;line-height:1;color:var(--sage);display:block;margin-bottom:1rem}
+  .step h3{font-size:1.6rem;font-weight:600;margin-bottom:.5rem}
+  .step p{color:var(--muted);font-size:.97rem}
+  .step a{color:var(--sage-d);border-bottom:1px solid var(--sage)}
+
+  /* faq */
+  .faq{max-width:820px;margin-inline:auto}
+  .faq .s-head{margin-bottom:2.6rem}
+  details{border-bottom:1px solid var(--stone)}
+  details:first-of-type{border-top:1px solid var(--stone)}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.5rem 0;font-family:var(--serif);font-weight:600;font-size:clamp(1.3rem,2.4vw,1.55rem);transition:color .3s}
+  summary::-webkit-details-marker{display:none}
+  summary:hover{color:var(--sage-d)}
+  .chev{width:22px;height:22px;flex:none;color:var(--sage-d);transition:transform .45s var(--ease)}
+  details[open] .chev{transform:rotate(180deg)}
+  .answer{color:var(--muted);padding:0 2.5rem 1.6rem 0}
+  .answer a{color:var(--sage-d);border-bottom:1px solid var(--sage)}
+  details[open] .answer{animation:fade .5s var(--ease)}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}}
+  .faq-cta{text-align:center;margin-top:2.6rem}
+
+  /* contact */
+  .contact{position:relative;overflow:hidden;isolation:isolate}
+  .contact-bg{position:absolute;inset:0;z-index:-2}
+  .contact-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) brightness(.7)}
+  .contact::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(38,40,38,.97) 20%,rgba(38,40,38,.86) 55%,rgba(38,40,38,.6))}
+  .contact-grid{display:grid;gap:3rem}
+  @media (min-width:960px){.contact-grid{grid-template-columns:1.15fr 1fr;align-items:center;gap:4rem}}
+  .contact h2{margin:1.1rem 0 1rem}
+  .big-phone{display:inline-block;font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,6vw,3.6rem);color:var(--sage-l);margin:.3rem 0 1.8rem;border-bottom:1px solid transparent;transition:border-color .3s}
+  .big-phone:hover{border-color:var(--sage-l)}
+  .contact-ctas{display:flex;flex-wrap:wrap;gap:.8rem}
+  .contact-ctas .btn{flex:1 1 200px}
+  @media (min-width:600px){.contact-ctas .btn{flex:0 0 auto}}
+  .info{background:rgba(48,51,47,.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:.6rem 1.8rem}
+  .info-row{display:grid;grid-template-columns:24px 1fr;gap:1.1rem;padding:1.3rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .info-row:last-child{border-bottom:0}
+  .info-row svg{width:22px;height:22px;color:var(--sage-l);margin-top:.15rem}
+  .info-row small{display:block;font-size:.68rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark-2);margin-bottom:.2rem}
+  .info-row b{font-weight:500;font-size:1.04rem}
+  a.info-row:hover b{color:var(--sage-l)}
+
+  footer{background:#1e201e;color:var(--on-dark-2);padding:2.8rem 0 2.6rem;font-size:.86rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center}
+  footer .logo{color:var(--on-dark)}
+  footer a:hover{color:var(--sage-l)}
+  .demo{width:100%;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.08);font-size:.8rem}
+
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(38,40,38,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
+  .callbar .btn{min-height:52px;font-size:.8rem;padding:0 1rem}
+  @media (min-width:900px){.callbar{display:none}}
+
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .js .reveal{opacity:1;transform:none}
+    .hero-media img{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-feather" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V5"/><path d="M12 5c3.2 1.6 5.4 4.8 5.2 9.2-.1 2.7-1.6 5-5.2 6.3"/><path d="M12 5C8.8 6.6 6.6 9.8 6.8 14.2c.1 2.7 1.6 5 5.2 6.3"/><path d="M12 9.5l3.4-1.9M12 13l4.3-2.2M12 16.5l3.8-1.8M12 11.2l-3.6-2M12 14.8l-4.4-2.2M12 18.2l-3.4-1.6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-one" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 21v-1.5A5.5 5.5 0 0 1 10.5 14h3a5.5 5.5 0 0 1 5.5 5.5V21"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v17h14V8"/><path d="M15 3l4 5M11 12.5v.5"/><path d="M3 21h18"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol>
+</svg>
+
+<header class="header" id="top">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Calm Paws Grooming — home">
+      <svg><use href="#i-feather"/></svg>
+      <span><b>Calm Paws</b><small>Pet Grooming · Renfrew</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#about">The salon</a>
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-sage" href="tel:+15878374032"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0106</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=2000&q=80" srcset="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=900&q=75 900w, https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1600&q=80 1600w, https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=2400&q=80 2400w" sizes="100vw" alt="A golden retriever being gently bathed by hand in a bright, homey bathroom" fetchpriority="high">
+    </div>
+    <svg class="feather-bg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-feather"/></svg>
+    <div class="wrap hero-inner">
+      <span class="pill reveal"><span class="dot" aria-hidden="true"></span>Now accepting new clients</span>
+      <h1 class="reveal" style="--d:.1s">A quiet, <i>one-on-one</i> groom — close to home.</h1>
+      <p class="reveal" style="--d:.2s">Calm Paws is a home-based professional grooming salon in Renfrew, Calgary. Calm, unhurried appointments with your dog as the only guest in the room.</p>
+      <div class="hero-ctas reveal" style="--d:.3s">
+        <a class="btn btn-sage" href="tel:+15878374032"><svg><use href="#i-phone"/></svg>Call (403) 555-0106</a>
+        <a class="btn btn-line" href="#services">View services</a>
+      </div>
+      <p class="hero-loc reveal" style="--d:.4s"><svg><use href="#i-pin"/></svg>514 14 Ave NE · Renfrew, Calgary</p>
+    </div>
+  </section>
+
+  <section class="pad" id="about">
+    <div class="wrap about">
+      <div class="about-photo reveal">
+        <div class="frame"><img loading="lazy" src="https://images.unsplash.com/photo-1604848698030-c434ba08ece1?auto=format&fit=crop&w=900&q=75" alt="Hands gently stroking a relaxed black dog lying on a cozy couch"></div>
+      </div>
+      <div>
+        <span class="kicker reveal"><svg><use href="#i-feather"/></svg>The salon</span>
+        <h2 class="reveal" style="--d:.08s">Small, calm &amp; <i>personal</i> by design.</h2>
+        <p class="lede reveal" style="--d:.16s">Not every dog loves a busy salon. Here, grooming happens in a home-based setting, one dog at a time — fewer distractions, less noise, and full attention on yours.</p>
+        <div class="pillars">
+          <div class="pillar reveal" style="--d:.1s"><span class="pillar-ico"><svg><use href="#i-home"/></svg></span><div><h3>Home-based salon</h3><p>A professional grooming salon run from a home in Renfrew — a quieter, cozier alternative to a busy storefront.</p></div></div>
+          <div class="pillar reveal" style="--d:.18s"><span class="pillar-ico"><svg><use href="#i-one"/></svg></span><div><h3>One-on-one appointments</h3><p>Your dog is the only one being groomed during their appointment, so things stay calm from start to finish.</p></div></div>
+          <div class="pillar reveal" style="--d:.26s"><span class="pillar-ico"><svg><use href="#i-door"/></svg></span><div><h3>Now accepting new clients</h3><p>New to Calm Paws? There's room for new faces — call <a href="tel:+15878374032" style="color:var(--sage-d);border-bottom:1px solid var(--sage)">(403) 555-0106</a> to introduce your dog.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark pad" id="services">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker reveal"><svg><use href="#i-feather"/></svg>Services</span>
+        <h2 class="reveal" style="--d:.08s">Gentle care, <i>coat to claw.</i></h2>
+        <p class="lede reveal" style="--d:.16s">Every dog is groomed according to its coat, its comfort and what you'd like done. Call to talk through what your dog needs.</p>
+      </div>
+      <div class="svc">
+        <a class="card reveal" href="tel:+15878374032">
+          <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1630438994394-3deff7a591bf?auto=format&fit=crop&w=800&q=75" alt="A French bulldog in a patterned bandana standing calmly on a grooming table"></div>
+          <div class="card-body"><h3>Full Groom</h3><p>Bath, blow-dry, brush-out and haircut or trim, finished with a tidy of nails, ears and paws. Suited to poodles, doodles, shih tzus and other dogs whose coats keep growing and need regular cutting. When you call, mention your dog's breed, any matting, and the length or style you'd like.</p><span class="card-link">Call to book <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="card reveal" style="--d:.08s" href="tel:+15878374032">
+          <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&w=800&q=75" alt="A clean, content dog resting in a soft grey bed in a bright living room"></div>
+          <div class="card-body"><h3>Bath &amp; Brush</h3><p>A thorough wash and dry with a careful brush-out — ideal between haircuts or for short-coated dogs. It's a good fit for dogs who don't need a haircut but could use a proper clean. Let us know about sensitive skin or any shampoo your vet has recommended, and if your dog is a heavy shedder, ask what the brush-out can cover.</p><span class="card-link">Call to book <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="card reveal" style="--d:.16s" href="tel:+15878374032">
+          <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab3?auto=format&fit=crop&w=800&q=75" alt="A neatly trimmed miniature Schnauzer sitting against a white background"></div>
+          <div class="card-body"><h3>Trims &amp; Tidy-Ups</h3><p>Face, feet and sanitary trims to keep your dog neat and comfortable between full grooms. Handy when hair is growing into the eyes or collecting snow and grit between the paw pads. Tell us which areas you'd like done when you call.</p><span class="card-link">Call to book <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="card reveal" href="tel:+15878374032">
+          <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=800&q=75" alt="A Cavalier King Charles Spaniel resting its chin on a cushion"></div>
+          <div class="card-body"><h3>Nails &amp; Paw Care</h3><p>Nails trimmed and paw pads tidied, done slowly and patiently for dogs who aren't fans of having their feet handled. Overgrown nails can change how a dog stands and walks, so regular trims help keep them comfortable. Mention if your dog has dark nails or gets nervous about paw handling.</p><span class="card-link">Call to book <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="card reveal" style="--d:.08s" href="tel:+15878374032">
+          <div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1625794084867-8ddd239946b1?auto=format&fit=crop&w=800&q=75" alt="A golden retriever puppy lying down and resting peacefully"></div>
+          <div class="card-body"><h3>Puppy Introductions</h3><p>Short, low-pressure visits that let young dogs get used to water, brushes and clippers in a quiet space. Early, positive experiences can make future grooms easier for everyone. Tell us your puppy's age when you call, and ask what a first visit looks like.</p><span class="card-link">Call to book <svg><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <div class="card note reveal" style="--d:.16s">
+          <h3>Not sure what to book?</h3>
+          <p>Pricing depends on your dog's size, coat and the service. Call <a href="tel:+15878374032">(403) 555-0106</a> and we'll talk it through.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="gallery" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker reveal"><svg><use href="#i-feather"/></svg>Gallery</span>
+        <h2 class="reveal" style="--d:.08s">Every coat, <i>every character.</i></h2>
+        <p class="lede reveal" style="--d:.16s">Fluffy, wiry, short or still growing in — each dog's coat and temperament shape how their groom is approached.</p>
+      </div>
+      <div class="gallery reveal" style="--d:.1s">
+        <figure><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=900&q=75" alt="A fluffy white Samoyed with a thick double coat sitting and smiling against a pink backdrop"></div><figcaption>Thick double coats</figcaption></figure>
+        <figure><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=900&q=75" alt="A small fluffy tan-and-white dog standing against a green backdrop"></div><figcaption>Little dogs, soft coats</figcaption></figure>
+        <figure><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=900&q=75" alt="A happy red-coated retriever with feathered ears standing in tall grass"></div><figcaption>Feathered ears &amp; legs</figcaption></figure>
+        <figure><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1597633425046-08f5110420b5?auto=format&fit=crop&w=900&q=75" alt="A Pembroke Welsh Corgi lying down and panting happily on a white background"></div><figcaption>Shedders, brushed out</figcaption></figure>
+        <figure><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1611003228941-98852ba62227?auto=format&fit=crop&w=900&q=75" alt="A fluffy cream golden retriever puppy lying calmly on a dark tiled floor"></div><figcaption>First-time puppies</figcaption></figure>
+        <figure><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1600369671236-e74521d4b6ad?auto=format&fit=crop&w=900&q=75" alt="A short-coated tan puppy sitting quietly in a woven basket dog bed"></div><figcaption>Calm, quiet moments</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="how">
+    <div class="wrap">
+      <div class="s-head" style="margin-bottom:0">
+        <span class="kicker reveal"><svg><use href="#i-feather"/></svg>How it works</span>
+        <h2 class="reveal" style="--d:.08s">Three <i>easy</i> steps.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="step-n">i.</span><h3>Call to introduce your dog</h3><p>Ring <a href="tel:+15878374032">(403) 555-0106</a>. Tell us about your dog's breed, coat, temperament and anything we should know.</p></div>
+        <div class="step reveal" style="--d:.1s"><span class="step-n">ii.</span><h3>Choose a time</h3><p>We'll find a one-on-one appointment that suits you. Call for hours and availability.</p></div>
+        <div class="step reveal" style="--d:.2s"><span class="step-n">iii.</span><h3>A calm, quiet groom</h3><p>Your dog is groomed in our home-based salon in Renfrew, without the bustle of a busy shop.</p></div>
+      </div>
+      <div class="rule reveal" style="margin-top:clamp(3rem,6vw,4.5rem)"><svg><use href="#i-feather"/></svg></div>
+    </div>
+  </section>
+
+  <section class="pad" id="faq" style="padding-top:0">
+    <div class="wrap faq">
+      <div class="s-head">
+        <span class="kicker reveal"><svg><use href="#i-feather"/></svg>Questions</span>
+        <h2 class="reveal" style="--d:.08s">Good to <i>know.</i></h2>
+      </div>
+      <div class="reveal" style="--d:.1s">
+        <details><summary>Are you taking new clients?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></summary><p class="answer">Yes — Calm Paws is now accepting new clients. Call <a href="tel:+15878374032">(403) 555-0106</a> to introduce your dog and find a time.</p></details>
+        <details><summary>What does "one-on-one" mean?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></summary><p class="answer">Appointments are one-on-one, so your dog gets the groomer's full attention in a calm, quiet space rather than sharing a busy salon with other dogs.</p></details>
+        <details><summary>Where are you located?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></summary><p class="answer">We're a home-based salon at 514 14 Ave NE in Renfrew, Calgary. You'll get the details you need when you book.</p></details>
+        <details><summary>How much does a groom cost?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></summary><p class="answer">Pricing depends on your dog's size, coat and the service — call <a href="tel:+15878374032">(403) 555-0106</a> for a quote.</p></details>
+        <details><summary>What should I tell you when I call?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></summary><p class="answer">Your dog's breed, age and size, the condition of their coat (including any matting), how they've done with grooming before, and any health, skin or behaviour concerns. That helps us talk through the right service and a quote.</p></details>
+        <details><summary>How should I prepare my dog for the appointment?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></summary><p class="answer">A short walk beforehand so they've had a chance to go to the bathroom is a good idea, and let us know about anything that's changed since you booked — a new skin issue, sore ears or a recent vet visit. For anything specific to your dog, ask when you call <a href="tel:+15878374032">(403) 555-0106</a>.</p></details>
+        <details><summary>What are your hours?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></summary><p class="answer">Grooming is by appointment. Call for hours and availability.</p></details>
+        <details><summary>My dog is anxious. Is this a good fit?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></summary><p class="answer">Many owners look for a quieter, one-on-one setting for exactly this reason. Let us know about your dog's needs when you call so we can talk about how best to approach their groom.</p></details>
+      </div>
+      <div class="faq-cta reveal"><a class="btn btn-dark" href="tel:+15878374032"><svg><use href="#i-phone"/></svg>Call (403) 555-0106</a></div>
+    </div>
+  </section>
+
+  <section class="contact dark pad" id="contact">
+    <div class="contact-bg"><img loading="lazy" src="https://images.unsplash.com/photo-1585071550721-fdb362ae2b8d?auto=format&fit=crop&w=1600&q=70" alt=""></div>
+    <div class="wrap contact-grid">
+      <div>
+        <span class="kicker reveal"><svg><use href="#i-feather"/></svg>Get in touch</span>
+        <h2 class="reveal" style="--d:.08s">Book a calm <i>groom.</i></h2>
+        <a class="big-phone reveal" style="--d:.14s" href="tel:+15878374032">(403) 555-0106</a>
+        <div class="contact-ctas reveal" style="--d:.2s">
+          <a class="btn btn-sage" href="tel:+15878374032"><svg><use href="#i-phone"/></svg>Call now</a>
+          <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Calm%20Paws%20Grooming%20514%2014%20Ave%20NE%2C%20Calgary%2C%20AB%20T2E%201E7" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Get directions</a>
+        </div>
+      </div>
+      <div class="info reveal" style="--d:.15s">
+        <a class="info-row" href="https://www.google.com/maps/search/?api=1&amp;query=Calm%20Paws%20Grooming%20514%2014%20Ave%20NE%2C%20Calgary%2C%20AB%20T2E%201E7" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><div><small>Address</small><b>514 14 Ave NE<br>Calgary, AB T2E 1E7</b></div></a>
+        <a class="info-row" href="tel:+15878374032"><svg><use href="#i-phone"/></svg><div><small>Phone</small><b>(403) 555-0106</b></div></a>
+        <div class="info-row"><svg><use href="#i-clock"/></svg><div><small>Hours</small><b>Call for hours / availability</b></div></div>
+        <div class="info-row"><svg><use href="#i-door"/></svg><div><small>New clients</small><b>Now accepting new clients</b></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo"><svg><use href="#i-feather"/></svg><span><b>Calm Paws</b><small>Pet Grooming · Renfrew</small></span></a>
+    <span>Calm Paws Grooming · 514 14 Ave NE, Calgary, AB T2E 1E7 · <a href="tel:+15878374032">(403) 555-0106</a></span>
+    <p class="orbit-credit">Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Calm%20Paws%20Grooming%20514%2014%20Ave%20NE%2C%20Calgary%2C%20AB%20T2E%201E7" target="_blank" rel="noopener" aria-label="Get directions"><svg><use href="#i-nav"/></svg>Map</a>
+  <a class="btn btn-sage" href="tel:+15878374032"><svg><use href="#i-phone"/></svg>Call (403) 555-0106</a>
+</div>
+
+<script>
+  document.querySelectorAll('img').forEach(function(img){img.addEventListener('error',function(){img.style.visibility='hidden'})});
+  var header=document.querySelector('.header');
+  function onScroll(){header.classList.toggle('scrolled',window.scrollY>40)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+</script>
+
+<style>
+.orbit-credit{opacity:.78}
+.orbit-credit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+#obkFab{position:fixed;right:16px;bottom:86px;z-index:99990;background:#6b7f5e;color:#fff;border:0;border-radius:999px;padding:13px 20px;font:600 15px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer;display:flex;align-items:center;gap:8px}
+#obkFab:active{transform:scale(.97)}
+#obkPanel{position:fixed;right:16px;bottom:148px;z-index:99991;width:min(362px,calc(100vw - 32px));height:min(540px,68vh);background:#fff;color:#1c2430;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.4);display:none;flex-direction:column;overflow:hidden;font:400 15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+#obkPanel.obk-open{display:flex}
+#obkHead{background:#2f3a2e;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+#obkHead .obk-t{flex:1;min-width:0}
+#obkHead .obk-t b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#obkHead .obk-t span{font-size:12.5px;opacity:.85}
+#obkClose{background:rgba(255,255,255,.16);color:#fff;border:0;width:30px;height:30px;border-radius:999px;font-size:16px;cursor:pointer;flex:none}
+#obkMsgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:#f6f7f9}
+.obk-m{max-width:86%;padding:10px 13px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word}
+.obk-bot{background:#fff;border:1px solid #e2e6ec;border-bottom-left-radius:5px;align-self:flex-start}
+.obk-user{background:#6b7f5e;color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.obk-m b{font-weight:700}
+#obkChips{display:flex;flex-wrap:wrap;gap:7px;padding:10px 12px;background:#fff;border-top:1px solid #eceff3}
+.obk-chip{background:#fff;border:1.5px solid #6b7f5e;color:#6b7f5e;border-radius:999px;padding:8px 13px;font:600 14px system-ui,sans-serif;cursor:pointer}
+.obk-chip:active{background:#6b7f5e;color:#fff}
+#obkInputRow{display:none;gap:8px;padding:10px 12px;background:#fff;border-top:1px solid #eceff3}
+#obkInput{flex:1;border:1.5px solid #ccd3dc;border-radius:10px;padding:10px 12px;font:400 15px system-ui,sans-serif;min-width:0}
+#obkSend{background:#6b7f5e;color:#fff;border:0;border-radius:10px;padding:10px 16px;font:600 15px system-ui,sans-serif;cursor:pointer}
+.obk-sms{display:block;text-align:center;background:#6b7f5e;color:#fff;text-decoration:none;border-radius:12px;padding:13px 14px;font-weight:700;margin-top:8px}
+@media(min-width:641px){#obkFab{bottom:24px}#obkPanel{bottom:92px}}
+</style>
+<button id="obkFab" aria-label="Open booking assistant">📅 Book now</button>
+<div id="obkPanel" role="dialog" aria-label="Booking assistant">
+  <div id="obkHead"><div class="obk-t"><b>Calm Paws Grooming</b><span>Booking assistant</span></div><button id="obkClose" aria-label="Close">✕</button></div>
+  <div id="obkMsgs"></div>
+  <div id="obkChips"></div>
+  <div id="obkInputRow"><input id="obkInput" type="text" autocomplete="off"><button id="obkSend">Send</button></div>
+</div>
+<script>
+(function(){
+var CFG={"biz": "Calm Paws Grooming", "phone": "+15878374032", "services": ["Full Groom", "Bath & Brush", "Trims & Tidy-Ups", "Nails & Paw Care", "Puppy Introductions"], "closed": [], "slots": ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"]};
+var fab=document.getElementById('obkFab'),panel=document.getElementById('obkPanel'),msgs=document.getElementById('obkMsgs'),chips=document.getElementById('obkChips'),row=document.getElementById('obkInputRow'),inp=document.getElementById('obkInput');
+var B={service:null,date:null,time:null,name:null,phone:null},step=0,started=false;
+function scroll(){msgs.scrollTop=msgs.scrollHeight}
+function add(txt,cls){var d=document.createElement('div');d.className='obk-m '+cls;d.textContent=txt;msgs.appendChild(d);scroll()}
+function addHTML(h,cls){var d=document.createElement('div');d.className='obk-m '+cls;d.innerHTML=h;msgs.appendChild(d);scroll()}
+function setChips(list,cb){chips.innerHTML='';list.forEach(function(o){var b=document.createElement('button');b.className='obk-chip';b.textContent=o;b.onclick=function(){cb(o)};chips.appendChild(b)})}
+function askInput(ph,cb){row.style.display='flex';inp.placeholder=ph;inp.value='';inp.focus();row._cb=cb}
+function hideInput(){row.style.display='none';row._cb=null}
+document.getElementById('obkSend').onclick=function(){var v=inp.value.trim();if(!v||!row._cb)return;var cb=row._cb;hideInput();cb(v)};
+inp.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('obkSend').click()});
+function days(){var out=[],d=new Date();while(out.length<6){d.setDate(d.getDate()+1);if(CFG.closed.indexOf(d.getDay())===-1){out.push(d.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'}))}}return out}
+function start(){msgs.innerHTML='';chips.innerHTML='';hideInput();B={service:null,date:null,time:null,name:null,phone:null};started=true;
+ add('Hi! I can book you in at '+CFG.biz+'. What would you like to book?','obk-bot');
+ setChips(CFG.services,function(s){B.service=s;add(s,'obk-user');stepDate()})}
+function stepDate(){add('Great choice. What day works best for you?','obk-bot');setChips(days(),function(s){B.date=s;add(s,'obk-user');stepTime()})}
+function bookedSlots(ds){var b=[];for(var i=0;i<CFG.slots.length;i++){var x=0,str=ds+'|'+CFG.slots[i];for(var j=0;j<str.length;j++){x=(x*31+str.charCodeAt(j))>>>0}if(x%4===0)b.push(CFG.slots[i])}if(b.length>=CFG.slots.length-1)b=b.slice(0,CFG.slots.length-2);return b}
+function stepTime(){add('And what time?','obk-bot');var bk=bookedSlots(B.date);chips.innerHTML='';CFG.slots.forEach(function(s){var btn=document.createElement('button');btn.className='obk-chip';if(bk.indexOf(s)>-1){btn.textContent=s+' \u2715 Booked';btn.disabled=true;btn.style.opacity='.45';btn.style.textDecoration='line-through';btn.style.cursor='not-allowed'}else{btn.textContent=s;btn.onclick=function(){B.time=s;add(s,'obk-user');stepName()}}chips.appendChild(btn)});if(bk.length)add('Times with a line through them are already booked that day.','obk-bot')}
+function stepName(){add('Perfect. What name should I put the booking under?','obk-bot');chips.innerHTML='';askInput('Your name',function(v){B.name=v;add(v,'obk-user');stepPhone()})}
+function stepPhone(){add('Last thing — the best phone number for '+CFG.biz+' to confirm your booking?','obk-bot');askInput('Phone number',function(v){B.phone=v;add(v,'obk-user');stepSummary()})}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function stepSummary(){addHTML('<b>Booking summary</b>\n'+esc(CFG.biz)+'\n'+esc(B.service)+'\n'+esc(B.date)+' at '+esc(B.time)+'\n'+esc(B.name)+' · '+esc(B.phone),'obk-bot');
+ setChips(['Confirm booking','Start over'],function(c){if(c==='Start over'){add(c,'obk-user');start();return}add(c,'obk-user');stepDone()})}
+function stepDone(){chips.innerHTML='';var body='Hi '+CFG.biz+', I would like to book: '+B.service+' on '+B.date+' at '+B.time+'. Name: '+B.name+', Phone: '+B.phone;
+ add('You are all set, '+B.name.split(' ')[0]+'! One tap below texts your booking to the shop — they will confirm by text.','obk-bot');
+ var a=document.createElement('a');a.className='obk-sms';a.textContent='💬 Text this booking to the shop';a.href='sms:'+CFG.phone+'?&body='+encodeURIComponent(body);
+ var wrap=document.createElement('div');wrap.className='obk-m obk-bot';wrap.textContent='Ready when you are:';wrap.appendChild(a);msgs.appendChild(wrap);scroll();
+ setChips(['Book another'],function(){start()})}
+fab.onclick=function(){panel.classList.add('obk-open');if(!started)start()};
+document.getElementById('obkClose').onclick=function(){panel.classList.remove('obk-open')};
+})();
+</script>
+
+</body>
+</html>
