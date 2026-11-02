@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wild Rose Blooms — Bold Calgary Florist &amp; Wedding Flowers</title>
+<meta name="description" content="Wild Rose Blooms — bold, modern florist in Calgary. Statement bouquets, wedding florals and event flowers. 918 8 Ave SW. Tue–Sat 9 AM–6 PM. Call (403) 555-0139.">
+<meta name="theme-color" content="#100b0e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --ink:#100b0e; --ink-2:#181114; --ink-3:#231820;
+    --paper:#f6efe9; --muted:#a89a94; --dim:#7a6d68;
+    --magenta:#ff2e88; --magenta-d:#d11668; --lime:#c6ff3d; --violet:#8b5cf6;
+    --line:rgba(255,255,255,.12);
+    --display:'Anton',Impact,'Arial Narrow',sans-serif;
+    --body:'Space Grotesk',system-ui,sans-serif;
+    --mono:'Space Mono',ui-monospace,monospace;
+    --ease:cubic-bezier(.2,.7,.1,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+  @media (min-width:900px){body{padding-bottom:0}}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--magenta);color:#fff}
+  :focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+  .wrap{width:min(1280px,100% - 2.5rem);margin-inline:auto}
+  @media (min-width:700px){.wrap{width:min(1280px,100% - 5rem)}}
+
+  .tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--lime);padding:.35rem .7rem}
+  .tag.dark{background:var(--ink);color:var(--lime);border:1px solid var(--lime)}
+  h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+  h2{font-size:clamp(3rem,9vw,7rem)}
+  h2 .o{color:transparent;-webkit-text-stroke:2px var(--paper)}
+  h2 .m{color:var(--magenta)}
+  .lede{color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:34rem}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.5rem;font-family:var(--mono);font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--paper);transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s;white-space:nowrap}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-mag{background:var(--magenta);color:#fff;border-color:var(--magenta);box-shadow:5px 5px 0 var(--paper)}
+  .btn-mag:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--paper);background:var(--magenta-d)}
+  .btn-line{background:transparent;color:var(--paper)}
+  .btn-line:hover{background:var(--paper);color:var(--ink)}
+
+  /* header */
+  .header{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+  .header.scrolled{background:rgba(16,11,14,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-size:1.6rem;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+  @media (max-width:600px){.logo{font-size:1.02rem;gap:.4rem;white-space:nowrap}.logo .box{flex:none}}
+  .logo .box{background:var(--magenta);color:#fff;padding:.15rem .4rem .05rem;transform:rotate(-3deg);display:inline-block}
+  .nav{display:none;gap:2rem;font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .nav a:hover{color:var(--magenta)}
+  .header .btn{min-height:44px;padding:0 1rem;font-size:.78rem;box-shadow:3px 3px 0 var(--paper)}
+  .header .btn .num{display:none}
+  @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
+
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;background:#14090f}
+  .hero-media{position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 70% 40%,#331420,#100b0e 70%)}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform:scale(1.06);animation:zoom 2.2s var(--ease) forwards}
+  @keyframes zoom{to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(180deg,rgba(16,11,14,.7) 0%,rgba(16,11,14,.1) 30%,rgba(16,11,14,.45) 60%,var(--ink) 100%),
+    linear-gradient(90deg,rgba(16,11,14,.85) 0%,rgba(16,11,14,0) 65%)}
+  .hero-inner{padding:8rem 0 2.5rem;position:relative}
+  .hero h1{font-size:clamp(4rem,17vw,13rem);line-height:.84;margin:1.2rem 0 1.4rem}
+  .hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--paper)}
+  .hero h1 .m{color:var(--magenta);text-shadow:0 0 40px rgba(255,46,136,.4)}
+  .hero p{max-width:30rem;color:#d4c9c4;font-size:clamp(1.02rem,1.5vw,1.2rem)}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}
+  .hero-ctas .btn{flex:1 1 220px}
+  @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
+  .sticker{position:absolute;right:0;top:7rem;width:136px;height:136px;border-radius:50%;background:var(--lime);color:var(--ink);display:none;place-items:center;text-align:center;font-family:var(--display);font-size:1.2rem;line-height:1;text-transform:uppercase;transform:rotate(12deg);box-shadow:6px 6px 0 var(--ink)}
+  @media (min-width:760px){.sticker{display:grid}}
+  .hero-facts{display:grid;gap:0;margin-top:2.8rem;border-top:2px solid var(--paper)}
+  .hero-facts div{display:flex;gap:.7rem;align-items:center;padding:1rem 0;font-family:var(--mono);font-size:.82rem;color:#d4c9c4;border-bottom:1px solid var(--line)}
+  .hero-facts svg{width:18px;height:18px;color:var(--magenta);flex:none}
+  @media (min-width:760px){.hero-facts{grid-template-columns:repeat(3,1fr)}.hero-facts div{border-bottom:0}.hero-facts div+div{border-left:1px solid var(--line);padding-left:1.2rem}}
+
+  /* tape marquee */
+  main{overflow-x:clip}
+  .tape{background:var(--magenta);color:#fff;overflow:hidden;transform:rotate(-1.5deg);margin:1.5rem -2rem;padding:.9rem 0;border-block:3px solid var(--ink)}
+  .tape-track{display:flex;width:max-content;animation:run 30s linear infinite}
+  .tape span{font-family:var(--display);font-size:clamp(1.5rem,3.6vw,2.4rem);text-transform:uppercase;white-space:nowrap;padding-right:2rem;display:flex;align-items:center;gap:2rem}
+  .tape span::after{content:"\2715";font-size:.7em}
+  @keyframes run{to{transform:translateX(-50%)}}
+
+  section{position:relative}
+  .pad{padding:clamp(5rem,12vw,9rem) 0}
+  .head{display:grid;gap:1.5rem;margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+  @media (min-width:900px){.head{grid-template-columns:1.4fr 1fr;align-items:end}}
+  .head h2{margin-top:1.2rem}
+
+  /* services */
+  .grid{display:grid;gap:1.4rem}
+  @media (min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1060px){.grid{grid-template-columns:repeat(3,1fr)}}
+  .card{position:relative;display:flex;flex-direction:column;background:var(--ink-2);border:2px solid var(--ink-3);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+  .card:hover{transform:translate(-4px,-4px);border-color:var(--magenta);box-shadow:8px 8px 0 var(--magenta)}
+  .card-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#241720}
+  .card-media img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.1);transition:transform .8s var(--ease)}
+  .card:hover .card-media img{transform:scale(1.05)}
+  .sku{position:absolute;top:0;left:0;z-index:1;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.1em;background:var(--ink);color:var(--magenta);padding:.4rem .65rem}
+  .card-body{padding:1.4rem 1.4rem 1.6rem;display:flex;flex-direction:column;flex:1}
+  .card h3{font-size:2rem;margin-bottom:.7rem}
+  .card p{color:var(--muted);font-size:.96rem;flex:1}
+  .card-cta{margin-top:1.3rem;padding-top:1rem;border-top:1px dashed #3a2a34;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--magenta)}
+  .card-cta svg{width:18px;height:18px;transition:transform .3s var(--ease)}
+  .card:hover .card-cta svg{transform:translateX(4px)}
+
+  /* wedding block */
+  .wed{background:var(--paper);color:var(--ink);border-block:3px solid var(--magenta)}
+  .wed h2{color:var(--ink)}
+  .wed h2 .m{color:var(--magenta)}
+  .wed .lede{color:#5d4f4a}
+  .wed-grid{display:grid;gap:2.5rem;align-items:center}
+  @media (min-width:960px){.wed-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+  .wed-img{border:2px solid var(--ink);box-shadow:10px 10px 0 var(--magenta);transform:rotate(-1deg)}
+  .wed-img img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  .wed-list{list-style:none;display:grid;gap:1.1rem;margin:1.8rem 0 2.2rem}
+  .wed-list li{display:flex;gap:1rem;align-items:flex-start}
+  .wed-list .tick{width:34px;height:34px;flex:none;border-radius:50%;background:var(--magenta);color:#fff;display:grid;place-items:center;font-weight:700}
+  .wed-list b{font-family:var(--display);font-size:1.1rem;text-transform:uppercase;letter-spacing:.03em}
+  .wed-list p{color:#5d4f4a;font-size:.95rem}
+  .wed .price-note{font-family:var(--mono);font-size:.85rem;color:#5d4f4a;border:2px dashed var(--ink);padding:1rem 1.2rem;margin-top:1.6rem}
+
+  /* reviews */
+  .rev{display:grid;gap:1.4rem}
+  @media (min-width:900px){.rev{grid-template-columns:repeat(3,1fr)}}
+  .quote{background:var(--ink-2);border:2px solid var(--ink-3);padding:1.8rem 1.6rem}
+  .quote .stars{color:var(--lime);letter-spacing:.15em;font-size:1.05rem;margin-bottom:.8rem}
+  .quote p{color:#d4c9c4;font-size:.96rem}
+  .quote footer{margin-top:1.1rem;font-family:var(--mono);font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+  /* contact */
+  .contact{display:grid;gap:2rem}
+  @media (min-width:960px){.contact{grid-template-columns:1fr 1fr;gap:3rem}}
+  .cbox{background:var(--ink-2);border:2px solid var(--ink-3);padding:1.8rem}
+  .cbox h3{font-size:1.8rem;margin-bottom:1rem}
+  .cbox ul{list-style:none;display:grid;gap:1rem}
+  .cbox li{display:flex;gap:.9rem;align-items:flex-start}
+  .cbox svg{width:20px;height:20px;color:var(--magenta);flex:none;margin-top:.2rem}
+  .cbox b{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.1rem}
+  .cta-band{border:2px solid var(--paper);padding:clamp(2.6rem,7vw,4.5rem);text-align:center;margin-top:clamp(3rem,8vw,5rem)}
+  .cta-band h2{margin:.8rem 0 1rem}
+  .cta-band .hero-ctas{justify-content:center}
+
+  footer.site{border-top:3px solid var(--magenta);padding:3rem 0 2rem;margin-top:clamp(3rem,8vw,5rem);color:var(--muted)}
+  footer.site .wrap{display:grid;gap:1.5rem}
+  @media (min-width:800px){footer.site .wrap{grid-template-columns:1.4fr 1fr 1fr}}
+  footer.site h3{color:var(--paper);font-size:1.1rem;margin-bottom:.7rem}
+  footer.site p,footer.site a{font-size:.92rem}
+  footer.site a:hover{color:var(--magenta)}
+  .legal{border-top:1px solid var(--line);margin-top:2rem;padding-top:1.4rem;font-size:.82rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-family:var(--mono)}
+
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(16,11,14,.97)}
+  @media (min-width:900px){.callbar{display:none}}
+  .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;font-family:var(--mono);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em}
+  .callbar a svg{width:19px;height:19px}
+  .callbar .call{background:var(--magenta);color:#fff}
+  .callbar .sms{border:2px solid var(--paper);color:var(--paper)}
+</style>
+</head>
+<body>
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Wild Rose Blooms home"><span class="box">WR</span><span>Wild Rose</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#florals">Florals</a><a href="#weddings">Weddings</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-mag" href="tel:+14035550139"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0139</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-media"><img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=1600&q=80&auto=format&fit=crop" alt="Bold colourful flower arrangement" fetchpriority="high"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <span class="tag">Calgary Florist · Est. 2019</span>
+        <h1>FLOWERS <span class="m">LOUDER</span><br><span class="o">THAN WORDS</span></h1>
+        <p>Wild Rose Blooms does flowers with attitude — statement bouquets, wedding takeovers and event installs that people photograph before they even say hello.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-mag" href="tel:+14035550139"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Call (403) 555-0139</a>
+          <a class="btn btn-line" href="#florals">Shop Florals</a>
+        </div>
+        <div class="sticker">Wedding<br>season<br>open</div>
+      </div>
+      <div class="hero-facts">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Same-day delivery in Calgary</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>40+ weddings a year</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Custom designs welcome</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"><div class="tape-track">
+    <span>Statement bouquets</span><span>Wedding florals</span><span>Event installs</span><span>Weekly subscriptions</span>
+    <span>Statement bouquets</span><span>Wedding florals</span><span>Event installs</span><span>Weekly subscriptions</span>
+  </div></div>
+
+  <section class="pad" id="florals"><div class="wrap">
+    <div class="head">
+      <div><span class="tag">The lineup</span><h2>Pick your <span class="m">statement</span></h2></div>
+      <p class="lede">Six signature designs, made to order. Want something wilder? Call us — custom is our favourite word.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&q=80&auto=format&fit=crop" alt="Red rose statement bouquet" loading="lazy"><span class="sku">WR-01</span></div><div class="card-body"><h3>Red Riot</h3><p>18 premium red roses with black wrap. Zero subtlety, all impact.</p><div class="card-cta"><span>C$75</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
+      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80&auto=format&fit=crop" alt="Neon pastel bouquet" loading="lazy"><span class="sku">WR-02</span></div><div class="card-body"><h3>Neon Garden</h3><p>Hot pink, orange and lime — the bouquet that walks into the room first.</p><div class="card-cta"><span>C$58</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
+      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=800&q=80&auto=format&fit=crop" alt="Moody wild bouquet" loading="lazy"><span class="sku">WR-03</span></div><div class="card-body"><h3>Midnight Wild</h3><p>Deep burgundy, plum and dark foliage. Moody, dramatic, unforgettable.</p><div class="card-cta"><span>C$62</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
+      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=80&auto=format&fit=crop" alt="Luxury white bouquet" loading="lazy"><span class="sku">WR-04</span></div><div class="card-body"><h3>White Noise</h3><p>All-white luxury: roses, ranunculus, orchids. Minimal, expensive-looking.</p><div class="card-cta"><span>C$95</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
+      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80&auto=format&fit=crop" alt="Tropical bouquet" loading="lazy"><span class="sku">WR-05</span></div><div class="card-body"><h3>Tropical Punch</h3><p>Bird of paradise, anthurium, monstera. Vacation energy, Calgary address.</p><div class="card-cta"><span>C$70</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
+      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=800&q=80&auto=format&fit=crop" alt="Mega bouquet" loading="lazy"><span class="sku">WR-06</span></div><div class="card-body"><h3>The Mega</h3><p>36+ stems of pure chaos in our signature wrap. For grand gestures only.</p><div class="card-cta"><span>C$140</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
+    </div>
+  </div></section>
+
+  <section class="wed pad" id="weddings"><div class="wrap">
+    <div class="head">
+      <div><span class="tag">Weddings</span><h2>Your wedding, <span class="m">but make it art</span></h2></div>
+      <p class="lede">Full-service wedding florals: bouquets, boutonnieres, ceremony arches, tablescapes and teardown. We book 40+ weddings a year across Alberta.</p>
+    </div>
+    <div class="wed-grid">
+      <div class="wed-img"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80&auto=format&fit=crop" alt="Wedding ceremony flowers" loading="lazy"></div>
+      <div>
+        <ul class="wed-list">
+          <li><span class="tick">✓</span><div><b>Bridal party</b><p>Bouquets from C$95, boutonnieres C$18, corsages C$28.</p></div></li>
+          <li><span class="tick">✓</span><div><b>Ceremony</b><p>Arches from C$450, aisle markers, statement urns.</p></div></li>
+          <li><span class="tick">✓</span><div><b>Reception</b><p>Centrepieces from C$65/table, head table garlands, cake florals.</p></div></li>
+          <li><span class="tick">✓</span><div><b>Full service</b><p>Delivery, setup and next-day teardown included in every package.</p></div></li>
+        </ul>
+        <div class="hero-ctas"><a class="btn btn-mag" href="tel:+14035550139">Book a Consult</a></div>
+        <p class="price-note">WEDDING MINIMUM: C$1,200. Peak months (June–Sept) book 6+ months out. Consults are free.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="pad" id="reviews"><div class="wrap">
+    <div class="head">
+      <div><span class="tag">Reviews</span><h2>Word on <span class="o">the street</span></h2></div>
+      <p class="lede">Unfiltered. Like our bouquets.</p>
+    </div>
+    <div class="rev">
+      <blockquote class="quote"><div class="stars">★★★★★</div><p>"Our wedding arch was the most photographed thing at the venue. The florist cried. We cried. 10/10."</p><footer>— Amara &amp; Josh · Canmore wedding</footer></blockquote>
+      <blockquote class="quote"><div class="stars">★★★★★</div><p>"Asked for 'loud'. Got LOUD. My desk arrangement stops people mid-sentence. Worth every dollar."</p><footer>— Renee D. · Downtown office</footer></blockquote>
+      <blockquote class="quote"><div class="stars">★★★★★</div><p>"The Mega bouquet for my wife's 40th. She screamed. The neighbours came out. Legendary."</p><footer>— Tom W. · Aspen Woods</footer></blockquote>
+    </div>
+  </div></section>
+
+  <section class="pad" id="contact"><div class="wrap">
+    <div class="head">
+      <div><span class="tag">Find us</span><h2>Come <span class="m">say hi</span></h2></div>
+    </div>
+    <div class="contact">
+      <div class="cbox">
+        <h3>The Studio</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Address</b>918 8 Ave SW, Calgary, AB</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b>Hours</b>Tue–Sat · 9 AM – 6 PM<br>Sun &amp; Mon: by appointment</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><div><b>Phone</b><a href="tel:+14035550139">(403) 555-0139</a></div></li>
+        </ul>
+        <div class="hero-ctas" style="margin-top:1.6rem"><a class="btn btn-mag" href="tel:+14035550139">Call Now</a><a class="btn btn-line" href="sms:+14035550139">Text Us</a></div>
+      </div>
+      <div class="cbox">
+        <h3>Good to know</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div><b>Delivery</b>Same-day in Calgary when you order by 1 PM. C$12 flat, free over C$75.</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div><b>Subscriptions</b>Weekly office or home flowers from C$40/week. Pause anytime.</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div><b>Events</b>Corporate and party installs quoted free within 48 hours.</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta-band">
+      <span class="tag">Free Consults</span>
+      <h2>Ready to go <span class="m">big?</span></h2>
+      <div class="hero-ctas"><a class="btn btn-mag" href="tel:+14035550139">Call (403) 555-0139</a></div>
+    </div>
+  </div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <div><h3>Wild Rose Blooms</h3><p>Bold, modern florist in downtown Calgary. Statement bouquets, weddings and events.</p><p style="margin-top:.8rem"><a href="tel:+14035550139">(403) 555-0139</a></p></div>
+  <div><h3>Explore</h3><p><a href="#florals">Florals</a><br><a href="#weddings">Weddings</a><br><a href="#reviews">Reviews</a></p></div>
+  <div><h3>Studio</h3><p>918 8 Ave SW<br>Calgary, AB<br>Tue–Sat: 9 AM – 6 PM</p></div>
+</div><div class="wrap legal"><span>© 2026 Wild Rose Blooms. All rights reserved.</span><span>Demo site — prices illustrative.</span></div></footer>
+
+<div class="callbar"><a class="call" href="tel:+14035550139"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Call Now</a><a class="sms" href="sms:+14035550139">Text Us</a></div>
+
+<script>
+  const h = document.getElementById('header');
+  addEventListener('scroll', () => h.classList.toggle('scrolled', scrollY > 40), {passive:true});
+</script>
+</body>
+</html>
