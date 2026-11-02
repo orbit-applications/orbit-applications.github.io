@@ -1,1 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Commercial Realty — Commercial Real Estate, Calgary</title>
+<meta name="description" content="Meridian Commercial Realty — office, industrial and retail space for lease and sale in Calgary. Call (403) 555-0115.">
+<style>
+:root{
+  --ink:#101c2e; --ink2:#1b2c46; --paper:#faf8f3; --card:#ffffff;
+  --bronze:#a8824f; --bronze-d:#8a6a3d; --line:#e7ddcb; --mut:#5d6b82;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+/* topbar */
+.topbar{background:var(--ink);color:#d8dee9;font-size:.82rem;letter-spacing:.04em}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:9px;padding-bottom:9px}
+.topbar a{text-decoration:none;border-bottom:1px solid var(--bronze);white-space:nowrap}
+/* header */
+.header{position:sticky;top:0;z-index:50;background:rgba(250,248,243,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;gap:12px}
+.header .btn{white-space:nowrap;flex:none}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:42px;height:42px;background:var(--ink);color:var(--bronze);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.35rem;border:1px solid var(--bronze)}
+.brand b{font-family:var(--serif);font-weight:400;font-size:1.25rem;letter-spacing:.02em;display:block;line-height:1.1}
+.brand small{font-size:.68rem;letter-spacing:.28em;color:var(--mut);text-transform:uppercase}
+.nav{display:none;gap:34px;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--ink2)}
+.nav a:hover{color:var(--bronze-d)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;padding:14px 26px;font-size:.95rem;letter-spacing:.05em;border:1px solid var(--ink);transition:.2s}
+.btn:hover{background:var(--bronze-d);border-color:var(--bronze-d)}
+.btn.bronze{background:var(--bronze);border-color:var(--bronze)}
+.btn.bronze:hover{background:var(--bronze-d)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+@media(min-width:900px){.nav{display:flex}}
+/* hero */
+.hero{padding:72px 0 64px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;gap:48px;align-items:center}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+.eyebrow{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze-d);margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.08;margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--bronze-d)}
+.hero p.lead{font-size:1.12rem;color:var(--mut);max-width:34rem;margin-bottom:32px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.hero-img{position:relative}
+.hero-img img{width:100%;height:420px;object-fit:cover;display:block}
+.hero-img::after{content:"";position:absolute;inset:14px;border:1px solid rgba(250,248,243,.7);pointer-events:none}
+.hero-tag{position:absolute;left:28px;bottom:28px;background:var(--ink);color:#fff;padding:12px 20px;font-size:.85rem;letter-spacing:.08em}
+.hero-tag b{color:var(--bronze)}
+/* stats */
+.stats{background:var(--ink);color:#eef1f6}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:38px;padding-bottom:38px;text-align:center}
+.stat b{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.4vw,2.6rem);color:var(--bronze);display:block}
+.stat span{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:#aeb8c9}
+/* listings */
+.section{padding:80px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem)}
+.sec-head p{color:var(--mut);max-width:32rem}
+.cards{display:grid;gap:28px}
+@media(min-width:860px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -20px rgba(16,28,46,.25)}
+.card img{width:100%;height:220px;object-fit:cover;display:block}
+.card-body{padding:26px}
+.card-k{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze-d);margin-bottom:10px}
+.card h3{font-family:var(--serif);font-weight:400;font-size:1.35rem;margin-bottom:6px}
+.card .addr{color:var(--mut);font-size:.92rem;margin-bottom:16px}
+.specs{display:flex;gap:18px;border-top:1px solid var(--line);padding-top:16px;margin-bottom:18px;flex-wrap:wrap}
+.specs div b{display:block;font-size:1.05rem}
+.specs div span{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.card .btn{width:100%;justify-content:center;padding:13px}
+/* services */
+.services{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.svc-grid{display:grid;gap:0;margin-top:8px}
+@media(min-width:860px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
+.svc{padding:40px 34px;border-top:1px solid var(--line)}
+@media(min-width:860px){.svc{border-top:0;border-left:1px solid var(--line)}.svc:first-child{border-left:0}}
+.svc .num{font-family:var(--serif);font-size:1rem;color:var(--bronze-d);letter-spacing:.2em;margin-bottom:14px}
+.svc h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:12px}
+.svc p{color:var(--mut);font-size:.98rem}
+/* quote */
+.quote{padding:90px 0;text-align:center}
+.quote blockquote{font-family:var(--serif);font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.4;max-width:56rem;margin:0 auto 24px;font-style:italic}
+.quote cite{font-style:normal;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+/* cta */
+.cta{background:var(--ink);color:#eef1f6;text-align:center;padding:90px 0}
+.cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:18px}
+.cta h2 em{font-style:italic;color:var(--bronze)}
+.cta p{color:#aeb8c9;max-width:36rem;margin:0 auto 34px}
+.cta .btn{font-size:1.1rem;padding:18px 40px}
+/* contact strip */
+.contact{background:var(--paper);border-top:1px solid var(--line)}
+.contact .wrap{display:grid;gap:18px;padding-top:44px;padding-bottom:44px}
+@media(min-width:860px){.contact .wrap{grid-template-columns:repeat(3,1fr);text-align:left}}
+.citem{display:flex;gap:16px;align-items:flex-start}
+.citem .ic{width:46px;height:46px;flex:none;border:1px solid var(--bronze);color:var(--bronze-d);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.citem b{display:block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+.citem a{font-size:1.1rem;text-decoration:none;border-bottom:1px solid var(--bronze)}
+.citem span{font-size:1.1rem}
+/* footer */
+footer{background:#0b1424;color:#8b96ab;font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:26px;padding-bottom:26px;flex-wrap:wrap;gap:12px}
+footer b{font-family:var(--serif);font-weight:400;color:#d8dee9;letter-spacing:.04em}
+/* mobile call bar */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(250,248,243,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.callbar a{flex:1;text-align:center;text-decoration:none;padding:14px;font-size:.95rem;letter-spacing:.05em}
+.callbar .call{background:var(--ink);color:#fff;white-space:nowrap}
+.callbar .map{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+@media(min-width:900px){.callbar{display:none}body{padding-bottom:0}}
+body{padding-bottom:76px}
+</style>
+</head>
+<body>
 
+<div class="topbar"><div class="wrap">
+  <span>Meridian Commercial Realty · Calgary, Alberta</span>
+  <a href="tel:+14035550115">(403) 555-0115</a>
+</div></div>
+
+<header class="header"><div class="wrap">
+  <a class="brand" href="#top" aria-label="Meridian Commercial Realty — home">
+    <span class="brand-mark">M</span>
+    <span><b>Meridian Commercial</b><small>Realty · Calgary</small></span>
+  </a>
+  <nav class="nav">
+    <a href="#listings">Listings</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="btn" href="tel:+14035550115">Call now</a>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap hero-grid">
+  <div>
+    <div class="eyebrow">Commercial real estate · Calgary</div>
+    <h1>Space for business that <em>means business.</em></h1>
+    <p class="lead">Office, industrial and retail space for lease and sale across Calgary. We know every block, every landlord, and what space is actually worth.</p>
+    <div class="hero-ctas">
+      <a class="btn bronze" href="tel:+14035550115">Call (403) 555-0115</a>
+      <a class="btn ghost" href="#listings">View listings</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=70" alt="Downtown Calgary office tower">
+    <div class="hero-tag">Downtown · Beltline · <b>Now leasing</b></div>
+  </div>
+</div></section>
+
+<div class="stats"><div class="wrap">
+  <div class="stat"><b>$240M+</b><span>Leased &amp; sold</span></div>
+  <div class="stat"><b>1.8M sq ft</b><span>Currently listed</span></div>
+  <div class="stat"><b>120+</b><span>Deals closed</span></div>
+</div></div>
+
+<section class="section" id="listings"><div class="wrap">
+  <div class="sec-head">
+    <div><div class="eyebrow">Featured listings</div><h2>On the market now.</h2></div>
+    <p>A few of our current availabilities. Call for the full list — most of our deals never hit the public sites.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=70" alt="Modern office space">
+      <div class="card-body">
+        <div class="card-k">Office · For lease</div>
+        <h3>1200 5 Ave SW, Suite 400</h3>
+        <div class="addr">Downtown Calgary</div>
+        <div class="specs">
+          <div><b>8,400</b><span>sq ft</span></div>
+          <div><b>$18</b><span>per sq ft / yr</span></div>
+          <div><b>Q3</b><span>possession</span></div>
+        </div>
+        <a class="btn" href="tel:+14035550115">Call about this space</a>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=70" alt="Industrial warehouse space">
+      <div class="card-body">
+        <div class="card-k">Industrial · For lease</div>
+        <h3>Bay 4, 7220 Fisher St SE</h3>
+        <div class="addr">Foothills Industrial</div>
+        <div class="specs">
+          <div><b>12,000</b><span>sq ft</span></div>
+          <div><b>$12</b><span>per sq ft / yr</span></div>
+          <div><b>28'</b><span>ceiling</span></div>
+        </div>
+        <a class="btn" href="tel:+14035550115">Call about this space</a>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=70" alt="Retail storefront">
+      <div class="card-body">
+        <div class="card-k">Retail · For sale</div>
+        <h3>Suite 200, 999 8 St SW</h3>
+        <div class="addr">Beltline, Calgary</div>
+        <div class="specs">
+          <div><b>3,200</b><span>sq ft</span></div>
+          <div><b>$1.1M</b><span>asking</span></div>
+          <div><b>High</b><span>foot traffic</span></div>
+        </div>
+        <a class="btn" href="tel:+14035550115">Call about this space</a>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="section services" id="services"><div class="wrap">
+  <div class="eyebrow">What we do</div>
+  <h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:8px">Three ways we earn our keep.</h2>
+  <div class="svc-grid">
+    <div class="svc"><div class="num">01</div><h3>Leasing</h3><p>Tenant representation and landlord leasing for office, industrial and retail. We negotiate like it's our own money on the line.</p></div>
+    <div class="svc"><div class="num">02</div><h3>Sales &amp; acquisitions</h3><p>Buying or selling commercial property in Calgary. Off-market deal flow, honest valuations, no pressure.</p></div>
+    <div class="svc"><div class="num">03</div><h3>Advisory</h3><p>Site selection, lease renewals, expansion planning. One call gets you a straight answer on what your space move should cost.</p></div>
+  </div>
+</div></section>
+
+<section class="quote" id="about"><div class="wrap">
+  <blockquote>"They found us 6,000 square feet in six weeks and talked the landlord down 15%. I stopped shopping brokers after that."</blockquote>
+  <cite>— A Calgary business owner</cite>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>Let's find your <em>next space.</em></h2>
+  <p>One call. Tell us what you need — square footage, area, budget — and we'll send you what actually fits.</p>
+  <a class="btn bronze" href="tel:+14035550115">Call (403) 555-0115</a>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div class="citem"><span class="ic">✆</span><div><b>Phone</b><a href="tel:+14035550115">(403) 555-0115</a></div></div>
+  <div class="citem"><span class="ic">✉</span><div><b>Email</b><a href="mailto:hello@meridiancommercial.example">(email on request)</a></div></div>
+  <div class="citem"><span class="ic">◈</span><div><b>Office</b><span>Calgary, Alberta</span></div></div>
+</div></section>
+
+<footer><div class="wrap">
+  <b>Meridian Commercial Realty</b>
+  <span>© 2026 · Demo website · (403) 555-0115</span>
+</div></div></footer>
+
+<div class="callbar">
+  <a class="map" href="https://www.google.com/maps/search/?api=1&query=Meridian+Commercial+Realty+Calgary">Map</a>
+  <a class="call" href="tel:+14035550115">Call (403) 555-0115</a>
+</div>
+
+</body>
+</html>
