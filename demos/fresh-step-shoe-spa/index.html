@@ -53,6 +53,7 @@
   .header.scrolled{background:rgba(10,10,10,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
   .header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-size:1.6rem;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+  @media (max-width:600px){.logo{font-size:1.02rem;gap:.4rem;white-space:nowrap}.logo .box{flex:none}}
   .logo .box{background:var(--volt);color:var(--ink);padding:.15rem .4rem .05rem;transform:rotate(-3deg);display:inline-block}
   .nav{display:none;gap:2rem;font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
   .nav a:hover{color:var(--volt)}
