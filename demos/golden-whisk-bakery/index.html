@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Golden Whisk Bakery — Fresh Bread, Pastries &amp; Custom Cakes, Calgary</title>
+<meta name="description" content="Golden Whisk Bakery — warm neighbourhood bakery in Calgary. Sourdough $8, croissants $4.50, custom cakes from $65. Call (403) 555-0132.">
+<meta name="theme-color" content="#faf3e6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --bg:#faf3e6; --bg2:#f3e8d2; --paper:#fffdf8;
+    --ink:#4a3222; --muted:#8a7057; --honey:#c07f2a; --honey-d:#9c6420; --berry:#a8433c; --sage:#7d8b5f;
+    --line:rgba(156,100,32,.18);
+    --serif:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+    --r:18px; --ease:cubic-bezier(.2,.7,.1,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  @media(min-width:900px){body{padding-bottom:0}}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--honey);color:#fff}
+  :focus-visible{outline:2.5px solid var(--honey-d);outline-offset:3px;border-radius:8px}
+  .wrap{width:min(1140px,100% - 2.5rem);margin-inline:auto}
+  @media(min-width:700px){.wrap{width:min(1140px,100% - 5rem)}}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+  h2{font-size:clamp(2.1rem,5vw,3.4rem);margin:.8rem 0 1rem}
+  h2 em{font-style:italic;color:var(--honey-d);font-weight:500}
+  .eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--honey-d)}
+  .lede{color:var(--muted);max-width:34rem;font-size:1.06rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:0 1.7rem;border-radius:999px;font-weight:500;font-size:.95rem;transition:all .3s var(--ease);white-space:nowrap}
+  .btn svg{width:17px;height:17px;flex:none}
+  .btn-honey{background:var(--honey-d);color:#fff;box-shadow:0 12px 26px -12px rgba(156,100,32,.7)}
+  .btn-honey:hover{background:var(--ink);transform:translateY(-2px)}
+  .btn-line{border:1.5px solid var(--honey-d);color:var(--honey-d)}
+  .btn-line:hover{background:var(--honey-d);color:#fff}
+  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s}
+  .header.scrolled{background:rgba(250,243,230,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:var(--serif);font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:.6rem}
+  .logo i{width:32px;height:32px;border-radius:50%;background:var(--honey);display:grid;place-items:center;color:#fff;font-style:normal;font-size:1.1rem}
+  .nav{display:none;gap:2rem;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+  .nav a:hover{color:var(--honey-d)}
+  .header .btn{min-height:44px;padding:0 1.15rem;font-size:.85rem}
+  .header .num{display:none}
+  @media(min-width:900px){.nav{display:flex}.header .num{display:inline}.header .lbl{display:none}}
+  .hero{position:relative;padding:8rem 0 4.5rem;overflow:hidden}
+  .hero::before{content:"";position:absolute;width:640px;height:640px;right:-240px;top:-240px;border-radius:50%;background:radial-gradient(circle,rgba(192,127,42,.16),transparent 65%);pointer-events:none}
+  .hero-grid{display:grid;gap:3rem;align-items:center}
+  @media(min-width:940px){.hero-grid{grid-template-columns:1.05fr .95fr}.hero{padding:10rem 0 6rem}}
+  .hero h1{font-size:clamp(2.8rem,7vw,5.1rem);margin:1rem 0 1.2rem}
+  .hero h1 em{font-style:italic;color:var(--honey-d);font-weight:500}
+  .hero p{color:var(--muted);font-size:1.08rem;max-width:30rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+  .fresh-note{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.6rem;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:.6rem 1.2rem;font-size:.9rem;color:var(--honey-d);font-weight:500}
+  .fresh-note i{width:10px;height:10px;border-radius:50%;background:var(--sage);animation:pulse 2s infinite}
+  @keyframes pulse{50%{opacity:.4}}
+  .hero-img .frame{border-radius:220px 220px var(--r) var(--r);overflow:hidden;aspect-ratio:4/4.8;box-shadow:0 40px 70px -35px rgba(74,50,34,.45);border:10px solid var(--paper)}
+  .hero-img img{width:100%;height:100%;object-fit:cover}
+  section{position:relative}
+  .pad{padding:clamp(4rem,9vw,7rem) 0}
+  .head{display:grid;gap:1rem;margin-bottom:2.8rem}
+  @media(min-width:900px){.head{grid-template-columns:1.2fr 1fr;align-items:end}}
+  .shelves{display:grid;gap:1.1rem}
+  @media(min-width:680px){.shelves{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1020px){.shelves{grid-template-columns:repeat(3,1fr)}}
+  .good{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s;display:flex;flex-direction:column}
+  .good:hover{transform:translateY(-5px);box-shadow:0 26px 44px -26px rgba(156,100,32,.4)}
+  .good-img{aspect-ratio:16/10;overflow:hidden}
+  .good-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+  .good:hover .good-img img{transform:scale(1.06)}
+  .good-b{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;flex:1}
+  .good-b h3{font-size:1.45rem;margin-bottom:.35rem}
+  .good-b p{color:var(--muted);font-size:.94rem;flex:1}
+  .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--line)}
+  .price{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--honey-d)}
+  .cake-banner{margin-top:3rem;background:var(--ink);color:#f3e9d6;border-radius:24px;padding:clamp(2rem,5vw,3.6rem);display:grid;gap:2.2rem;position:relative;overflow:hidden}
+  .cake-banner::before{content:"";position:absolute;width:480px;height:480px;right:-160px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(192,127,42,.35),transparent 65%)}
+  @media(min-width:900px){.cake-banner{grid-template-columns:1fr 1fr;align-items:center}}
+  .cake-banner h2{color:#fff}
+  .cake-banner h2 em{color:#e8bd7a}
+  .cake-banner p{color:rgba(243,233,214,.78)}
+  .cake-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 50px -20px rgba(0,0,0,.5);position:relative}
+  .cake-img img{width:100%;height:100%;object-fit:cover}
+  .cake-tiers{list-style:none;margin-top:1.4rem;display:grid;gap:.7rem;position:relative}
+  .cake-tiers li{display:flex;justify-content:space-between;gap:1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:.9rem 1.2rem}
+  .cake-tiers b{font-weight:500}
+  .cake-tiers span{font-family:var(--serif);font-size:1.2rem;color:#e8bd7a}
+  .split{display:grid;gap:3rem;align-items:center}
+  @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
+  .split-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3.6;box-shadow:0 30px 60px -30px rgba(74,50,34,.4)}
+  .split-img img{width:100%;height:100%;object-fit:cover}
+  .values{list-style:none;margin-top:1.6rem;display:grid;gap:.9rem}
+  .values li{display:flex;gap:.9rem;color:var(--muted)}
+  .values li::before{content:"🥐";flex:none}
+  .values b{color:var(--ink);font-weight:500}
+  .faq-grid{display:grid;gap:2.5rem}
+  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:4rem}}
+  details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;padding:0 1.3rem}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font-family:var(--serif);font-size:1.2rem;font-weight:600}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.4rem;color:var(--honey-d);transition:transform .3s}
+  details[open] summary::after{transform:rotate(45deg)}
+  .answer{color:var(--muted);padding:0 0 1.2rem;font-size:.97rem}
+  .answer a{color:var(--honey-d);font-weight:500}
+  .contact-card{background:var(--honey-d);color:#fff8ec;border-radius:24px;padding:clamp(2rem,5vw,4rem);display:grid;gap:2.4rem}
+  @media(min-width:940px){.contact-card{grid-template-columns:1.2fr 1fr;align-items:center}}
+  .contact-card h2{color:#fff}
+  .contact-card h2 em{color:#ffe1a8}
+  .big-phone{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);color:#ffe1a8;display:inline-block;margin:1rem 0 1.6rem}
+  .big-phone:hover{color:#fff}
+  .info{display:grid;gap:.8rem}
+  .info-row{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+  .info-row svg{width:19px;height:19px;color:#ffe1a8;margin-top:.2rem}
+  .info-row small{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,248,236,.65);font-weight:600}
+  footer{padding:2.6rem 0 2rem;color:var(--muted);font-size:.88rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
+  .demo{border:1px dashed var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.78rem}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(250,243,230,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
+  .callbar .btn{min-height:52px;font-size:.88rem;padding:0 .8rem}
+  @media(min-width:900px){.callbar{display:none}}
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}.fresh-note i{animation:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8z"/></symbol>
+</svg>
+
+<header class="header">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Golden Whisk Bakery — home"><i>◍</i>Golden Whisk</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#goods">Daily goods</a><a href="#cakes">Custom cakes</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-honey" href="tel:+14035550132"><svg><use href="#i-phone"/></svg><span class="lbl">Call</span><span class="num">(403) 555-0132</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow reveal">Neighbourhood bakery · Calgary</span>
+        <h1 class="reveal" style="--d:.08s">Baked at dawn,<br><em>gone by noon.</em></h1>
+        <p class="reveal" style="--d:.16s">Golden Whisk is a warm little bakery for slow-fermented sourdough, flaky croissants and celebration cakes — everything from scratch, every single morning.</p>
+        <div class="hero-ctas reveal" style="--d:.24s">
+          <a class="btn btn-honey" href="tel:+14035550132"><svg><use href="#i-phone"/></svg>Call (403) 555-0132</a>
+          <a class="btn btn-line" href="#goods">Today's shelf</a>
+        </div>
+        <span class="fresh-note reveal" style="--d:.3s"><i></i>Oven's on — sourdough out at 8 AM daily</span>
+      </div>
+      <div class="hero-img reveal" style="--d:.14s">
+        <div class="frame"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80" alt="Fresh artisan bread loaves on a bakery shelf" fetchpriority="high"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="goods" style="padding-top:1rem">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow reveal">Daily goods</span><h2 class="reveal" style="--d:.08s">From the <em>oven shelf.</em></h2></div>
+        <p class="lede reveal" style="--d:.14s">Baked fresh every morning. When it's gone, it's gone — call ahead to reserve. Prices in CAD.</p>
+      </div>
+      <div class="shelves">
+        <article class="good reveal"><div class="good-img"><img loading="lazy" src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=800&q=75" alt="Crusty sourdough loaf"></div><div class="good-b"><h3>Country Sourdough</h3><p>48-hour ferment, stone-milled flour, crackling crust.</p><div class="price-row"><span class="price">$8</span></div></div></article>
+        <article class="good reveal" style="--d:.08s"><div class="good-img"><img loading="lazy" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=75" alt="Flaky butter croissants"></div><div class="good-b"><h3>Butter Croissant</h3><p>Laminated over three days. Shatteringly flaky.</p><div class="price-row"><span class="price">$4.50</span></div></div></article>
+        <article class="good reveal" style="--d:.16s"><div class="good-img"><img loading="lazy" src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=800&q=75" alt="Cinnamon buns with glaze"></div><div class="good-b"><h3>Cinnamon Bun</h3><p>Brioche, brown-butter glaze, Saturday-only batches.</p><div class="price-row"><span class="price">$5</span></div></div></article>
+        <article class="good reveal"><div class="good-img"><img loading="lazy" src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=800&q=75" alt="Assorted pastries and danishes"></div><div class="good-b"><h3>Morning Pastry Box</h3><p>Six pastries — baker's choice of the day's best.</p><div class="price-row"><span class="price">$22</span></div></div></article>
+        <article class="good reveal" style="--d:.08s"><div class="good-img"><img loading="lazy" src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=800&q=75" alt="Chocolate chip cookies"></div><div class="good-b"><h3>Brown-Butter Cookies</h3><p>Box of six — crisp edges, molten middles.</p><div class="price-row"><span class="price">$16</span></div></div></article>
+        <article class="good reveal" style="--d:.16s"><div class="good-img"><img loading="lazy" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=75" alt="Celebration cake with berries"></div><div class="good-b"><h3>Daily Cake Slice</h3><p>Whatever's in the case — always worth it.</p><div class="price-row"><span class="price">$7</span></div></div></article>
+      </div>
+
+      <div class="cake-banner reveal" id="cakes">
+        <div>
+          <span class="eyebrow" style="color:#e8bd7a">Custom cakes</span>
+          <h2>Cakes for <em>big days.</em></h2>
+          <p>Birthdays, weddings, "just because" — designed with you, baked from scratch. Book 1–2 weeks ahead (4+ for weddings).</p>
+          <ul class="cake-tiers">
+            <li><b>6" celebration cake · serves 8–10</b><span>$65+</span></li>
+            <li><b>8" celebration cake · serves 14–18</b><span>$95+</span></li>
+            <li><b>Two-tier · serves 25–30</b><span>$160+</span></li>
+            <li><b>Wedding cakes</b><span>from $350</span></li>
+          </ul>
+          <p style="margin-top:1.4rem"><a class="btn btn-honey" style="background:#fff8ec;color:var(--honey-d)" href="tel:+14035550132"><svg><use href="#i-phone"/></svg>Start your cake order</a></p>
+        </div>
+        <div class="cake-img"><img loading="lazy" src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1000&q=75" alt="Elegant custom celebration cake"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" style="background:var(--bg2)">
+    <div class="wrap split">
+      <div class="split-img reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1000&q=75" alt="Baker arranging fresh pastries"></div>
+      <div>
+        <span class="eyebrow reveal">Our promise</span>
+        <h2 class="reveal" style="--d:.08s">Real baking, <em>no shortcuts.</em></h2>
+        <ul class="values reveal" style="--d:.16s">
+          <li><span><b>Slow fermentation</b> — sourdough rests 48 hours for flavour and digestibility.</span></li>
+          <li><span><b>Real butter, always</b> — no margarine, no mixes, no frozen dough.</span></li>
+          <li><span><b>Baked at dawn</b> — the ovens fire at 4 AM so the shelf is full by 8.</span></li>
+          <li><span><b>Day-old discount</b> — yesterday's loaves half price after 4 PM. Nothing wasted.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="faq">
+    <div class="wrap faq-grid">
+      <div>
+        <span class="eyebrow reveal">FAQ</span>
+        <h2 class="reveal" style="--d:.08s">Fresh <em>answers.</em></h2>
+        <p class="lede reveal" style="--d:.14s;margin-top:1rem">Craving something specific? Call and ask.</p>
+        <p class="reveal" style="--d:.2s;margin-top:1.6rem"><a class="btn btn-honey" href="tel:+14035550132"><svg><use href="#i-phone"/></svg>(403) 555-0132</a></p>
+      </div>
+      <div class="reveal" style="--d:.1s">
+        <details open><summary>Can I reserve bread ahead?</summary><p class="answer">Yes — call <a href="tel:+14035550132">(403) 555-0132</a> by 6 PM the day before and we'll set loaves aside with your name on them.</p></details>
+        <details><summary>How far ahead for custom cakes?</summary><p class="answer">1–2 weeks for celebration cakes, 4+ weeks for weddings. Last-minute? Call — we sometimes have case cakes ready to customize.</p></details>
+        <details><summary>Do you do gluten-free or vegan?</summary><p class="answer">We bake a small daily selection of both — call in the morning to hear what's on the shelf today.</p></details>
+        <details><summary>Do you wholesale to cafés?</summary><p class="answer">Yes! We supply several local cafés with daily bread and pastries. Call to talk wholesale.</p></details>
+        <details><summary>Where are you?</summary><p class="answer">2904 26 Ave SE, Calgary, AB. <a href="https://www.google.com/maps/search/?api=1&query=2904+26+Ave+SE+Calgary+AB" target="_blank" rel="noopener">Get directions</a>.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-bottom:clamp(3rem,7vw,5rem)">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <div>
+          <span class="eyebrow" style="color:#ffe1a8">Visit the bakery</span>
+          <h2>Smell the <em>fresh bread.</em></h2>
+          <a class="big-phone" href="tel:+14035550132">(403) 555-0132</a>
+          <div style="display:flex;flex-wrap:wrap;gap:.8rem">
+            <a class="btn" style="background:#fff8ec;color:var(--honey-d)" href="tel:+14035550132"><svg><use href="#i-phone"/></svg>Call now</a>
+            <a class="btn btn-line" style="border-color:#ffe1a8;color:#ffe1a8" href="https://www.google.com/maps/search/?api=1&query=2904+26+Ave+SE+Calgary+AB" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Directions</a>
+          </div>
+        </div>
+        <div class="info">
+          <a class="info-row" href="tel:+14035550132"><svg><use href="#i-phone"/></svg><div><small>Phone</small>(403) 555-0132</div></a>
+          <a class="info-row" href="https://www.google.com/maps/search/?api=1&query=2904+26+Ave+SE+Calgary+AB" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><div><small>Address</small>2904 26 Ave SE<br>Calgary, AB</div></a>
+          <div class="info-row"><svg><use href="#i-clock"/></svg><div><small>Hours</small>Tue–Sun 8–4 · Closed Mon</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Golden Whisk Bakery · 2904 26 Ave SE, Calgary · <a href="tel:+14035550132">(403) 555-0132</a></span>
+    <span class="demo">Demo website</span>
+    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></span>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=2904+26+Ave+SE+Calgary+AB" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Map</a>
+  <a class="btn btn-honey" href="tel:+14035550132"><svg><use href="#i-phone"/></svg>Call (403) 555-0132</a>
+</div>
+
+<script>
+  document.querySelectorAll('img').forEach(function(img){img.addEventListener('error',function(){img.style.visibility='hidden'})});
+  var h=document.querySelector('.header');
+  function s(){h.classList.toggle('scrolled',window.scrollY>30)}s();window.addEventListener('scroll',s,{passive:true});
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
+  else{els.forEach(function(el){el.classList.add('in')})}
+</script>
+</body>
+</html>
