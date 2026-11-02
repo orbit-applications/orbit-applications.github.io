@@ -84,6 +84,7 @@ h1 span{background:linear-gradient(92deg,var(--fish),var(--dojo) 55%,var(--quest
 .btn svg{width:18px;height:18px}
 .btn.soon{cursor:default;opacity:.85}
 .btn.soon:hover{transform:none}
+
 /* app cards */
 section.app{padding:34px 0}
 .card{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;border:1px solid var(--line);border-radius:34px;padding:58px;position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s}
@@ -230,6 +231,28 @@ section[id]{scroll-margin-top:74px}
 @media (max-width:860px){
   .card,.card.dojo,.card.web{grid-template-columns:1fr;padding:36px 24px;border-radius:26px}
   .reach{padding:22px 18px}}
+
+/* website order form */
+.order{margin-top:56px;border:1px solid var(--line);background:var(--card);border-radius:26px;padding:36px 30px;text-align:left}
+.order h4{font-family:Fraunces,serif;font-size:clamp(26px,3.6vw,34px);letter-spacing:-.01em;margin-bottom:8px;text-align:center}
+.order>p{color:var(--muted);text-align:center;max-width:520px;margin:0 auto 26px}
+.pickgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.pickgrid label{position:relative;cursor:pointer}
+.pickgrid input{position:absolute;opacity:0;pointer-events:none}
+.pickgrid span{display:block;text-align:center;padding:13px 8px;border:1px solid var(--line);border-radius:14px;font-size:14px;font-weight:600;background:rgba(255,255,255,.03);transition:border-color .2s,background .2s}
+.pickgrid input:checked+span{border-color:var(--dojo);background:rgba(143,209,79,.13)}
+.pickgrid input:focus-visible+span{outline:2px solid var(--dojo);outline-offset:2px}
+.pickgrid span small{display:block;font-weight:500;color:var(--muted);font-size:12px;margin-top:2px}
+.order input[type=text],.order input[type=tel],.order input[type=email],.order textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:var(--text);font:inherit;font-size:15px;margin-bottom:12px}
+.order input::placeholder,.order textarea::placeholder{color:#6b7690}
+.order textarea{min-height:96px;resize:vertical}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.order .btn{width:100%;justify-content:center;margin-top:4px}
+.order .btn:disabled{opacity:.6;cursor:wait;transform:none}
+.formnote{text-align:center;color:var(--muted);font-size:14.5px;margin-top:14px;min-height:22px}
+.formnote.ok{color:var(--dojo);font-weight:600}
+.formnote.err{color:#ff8a8a}
+@media (max-width:640px){.pickgrid{grid-template-columns:repeat(2,1fr)}.frow{grid-template-columns:1fr}.order{padding:28px 20px}}
 </style>
 </head>
 <body>
@@ -370,6 +393,7 @@ section[id]{scroll-margin-top:74px}
           <li><span class="dot">✓</span><strong>Template — C$600:</strong>&nbsp;choose one of our pre-made designs below, customized with your branding, photos and info</li>
           <li><span class="dot">✓</span><strong>From scratch — C$800:</strong>&nbsp;a fully custom one-page site, designed, written and launched for you</li>
           <li><span class="dot">✓</span>Tap-to-call and tap-to-text buttons everywhere, because most customers find you on their phone</li>
+          <li><span class="dot">✓</span>Add-ons available: booking portals, photo galleries, contact forms, menus and more</li>
           <li><span class="dot">✓</span>You approve everything before it goes live, and changes are welcome anytime</li>
         </ul>
         <p class="price">C$600 <small>template</small> · C$800 <small>from scratch</small></p>
@@ -399,6 +423,35 @@ section[id]{scroll-margin-top:74px}
         <a class="tile" href="/demos/showroom-shine-detailing/"><span class="em">🚗</span><b>Auto detailing template</b><p>Dark teal design</p></a>
         <a class="tile" href="/demos/meridian-commercial/"><span class="em">🏢</span><b>Real estate template</b><p>Full 5-page site</p></a>
       </div>
+    </div>
+    <div class="order reveal" id="order">
+      <h4>Want a website?</h4>
+      <p>Pick a template or go custom — send this form and we'll get back to you within a day.</p>
+      <form id="orderForm" novalidate>
+        <div class="pickgrid">
+          <label><input type="radio" name="template" value="Handyman template" checked><span>Handyman<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Florist template"><span>Florist<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Pet grooming template"><span>Pet grooming<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Dog grooming template"><span>Dog grooming<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Barber template"><span>Barber<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Classic barbershop template"><span>Classic barbershop<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Premium barbershop template"><span>Premium barbershop<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Nail salon template"><span>Nail salon<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Shoe care template"><span>Shoe care<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Tailoring template"><span>Tailoring<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Auto detailing template"><span>Auto detailing<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Real estate template"><span>Real estate<small>C$600</small></span></label>
+          <label><input type="radio" name="template" value="Custom design (from scratch)"><span>Custom design<small>C$800</small></span></label>
+        </div>
+        <div class="frow">
+          <input type="text" name="name" placeholder="Your name" required autocomplete="name">
+          <input type="text" name="contact" placeholder="Phone or email" required autocomplete="tel">
+        </div>
+        <input type="text" name="business" placeholder="Business name" autocomplete="organization">
+        <textarea name="details" placeholder="Anything else? (colors you like, pages you need, booking portal, etc.)"></textarea>
+        <button type="submit" class="btn primary">Send request</button>
+        <p class="formnote" id="formNote" role="status"></p>
+      </form>
     </div>
   </section>
 
@@ -430,6 +483,24 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 if(Date.now()>Date.parse('2026-11-01T07:00:00Z')){const b=document.getElementById('fqbar');if(b)b.remove();const d=document.querySelector('.fqdeadline');if(d)d.remove();}
 const mbtn=document.querySelector('.mnav-btn'),mnav=document.querySelector('.mnav');
 if(mbtn&&mnav){const setMnav=o=>{mnav.classList.toggle('open',o);mbtn.classList.toggle('open',o);mbtn.setAttribute('aria-expanded',o)};mbtn.addEventListener('click',e=>{e.stopPropagation();setMnav(!mnav.classList.contains('open'))});mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMnav(false)));document.addEventListener('click',e=>{if(mnav.classList.contains('open')&&!e.target.closest('.mnav')&&!e.target.closest('.mnav-btn'))setMnav(false)});document.addEventListener('keydown',e=>{if(e.key==='Escape')setMnav(false)})}
+/* website order form -> email via FormSubmit (no mail app) */
+const orderForm=document.getElementById('orderForm');
+if(orderForm){orderForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const note=document.getElementById('formNote'),btn=orderForm.querySelector('button[type=submit]');
+  const fd=new FormData(orderForm),data=Object.fromEntries(fd.entries());
+  if(!data.name.trim()||!data.contact.trim()){note.className='formnote err';note.textContent='Please add your name and a phone number or email so we can reach you.';return;}
+  data._subject='New website order: '+(data.business.trim()||data.name.trim())+' — '+data.template;
+  data._template='table';
+  btn.disabled=true;const oldBtn=btn.textContent;btn.textContent='Sending…';note.className='formnote';note.textContent='';
+  try{
+    const r=await fetch('https://formsubmit.co/ajax/support.orbitapplications@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+    const j=await r.json();
+    if(j&&String(j.success)==='true'){const first=data.name.trim().split(' ')[0];note.className='formnote ok';note.textContent='Thanks '+first+'! Your request is on its way — we\'ll reply within a day.';orderForm.reset();}
+    else{note.className='formnote err';note.textContent='Hmm, that didn\'t send. Please text us at 403-899-1550 instead.';}
+  }catch(err){note.className='formnote err';note.textContent='Hmm, that didn\'t send. Please text us at 403-899-1550 instead.';}
+  btn.disabled=false;btn.textContent=oldBtn;
+});}
 </script>
 </body>
 </html>
