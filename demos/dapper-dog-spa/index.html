@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dapper Dog Spa — Premium Dog Grooming, Calgary</title>
+<meta name="description" content="Dapper Dog Spa — upscale dog grooming in Calgary. Signature grooming packages, breed cuts and spa treatments. 110 5 Ave SW. Mon–Fri 9 AM–6 PM, Sat 9–4. Call (403) 555-0141.">
+<meta name="theme-color" content="#101f1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..800;1,6..96,500..700&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --green:#101f1a; --green-3:#16291f; --forest:#1d352a;
+    --ox:#7a2a30; --ox-2:#9a3640;
+    --brass:#c9a45c; --brass-2:#e2c27f; --brass-dim:rgba(201,164,92,.35);
+    --cream:#f1e8d6; --cream-2:#e2d5ba; --muted:#b3ac98; --dim:#8a8676;
+    --line:rgba(201,164,92,.22); --line-2:rgba(201,164,92,.4);
+    --serif:'Bodoni Moda',Didot,Georgia,serif;
+    --sans:'Libre Franklin',system-ui,-apple-system,sans-serif;
+    --ease:cubic-bezier(.2,.7,.1,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--green);color:var(--cream);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+  @media (min-width:900px){body{padding-bottom:0}}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--brass);color:var(--green)}
+  :focus-visible{outline:2px solid var(--brass-2);outline-offset:3px}
+  .wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+  @media (min-width:700px){.wrap{width:min(1180px,100% - 5rem)}}
+
+  .kicker{display:inline-flex;align-items:center;gap:.9rem;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--brass)}
+  .kicker::before,.kicker::after{content:"";width:22px;height:1px;background:currentColor}
+  .center{text-align:center}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.01em}
+  h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+  h2 em{font-style:italic;color:var(--brass-2)}
+  .lede{color:var(--muted);font-size:clamp(1rem,1.4vw,1.12rem);max-width:34rem}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.7rem;font-weight:600;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--brass);transition:transform .3s var(--ease),background .3s,color .3s;white-space:nowrap}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-brass{background:var(--brass);color:var(--green)}
+  .btn-brass:hover{background:var(--brass-2);transform:translateY(-2px)}
+  .btn-line{background:transparent;color:var(--brass-2)}
+  .btn-line:hover{background:rgba(201,164,92,.12)}
+
+  /* header */
+  .header{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent;transition:background .35s,border-color .35s}
+  .header.scrolled{background:rgba(16,31,26,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
+  .logo{display:flex;align-items:center;gap:.75rem}
+  .logo-mark{width:46px;height:46px;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;color:var(--brass);flex:none;font-family:var(--serif);font-size:1.3rem;font-weight:700}
+  .logo b{display:block;font-family:var(--serif);font-weight:700;font-size:1.35rem;line-height:1.1}
+  .logo small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+  .nav{display:none;gap:2rem;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .nav a{position:relative;padding:.25rem 0;transition:color .3s}
+  .nav a:hover{color:var(--brass-2)}
+  .header .btn{min-height:46px;padding:0 1.2rem;font-size:.82rem}
+  .header .btn .num{display:none}
+  @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
+
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;background:var(--green-3)}
+  .hero-media{position:absolute;inset:0;z-index:-2;background:linear-gradient(135deg,#1d352a,#101f1a)}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;opacity:.75;filter:sepia(.25) contrast(1.05);transform:scale(1.06);animation:heroIn 2.4s var(--ease) forwards}
+  @keyframes heroIn{to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(180deg,rgba(16,31,26,.7) 0%,rgba(16,31,26,.2) 30%,rgba(16,31,26,.5) 60%,var(--green) 100%),
+    linear-gradient(90deg,rgba(16,31,26,.85),rgba(16,31,26,0) 70%)}
+  .hero-inner{padding:8.5rem 0 3.5rem;position:relative;max-width:44rem}
+  .hero h1{font-size:clamp(3rem,9vw,7rem);margin:1.2rem 0 1.4rem}
+  .hero h1 em{color:var(--brass-2)}
+  .hero p{color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.18rem);max-width:32rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
+  .hero-ctas .btn{flex:1 1 220px}
+  @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
+  .hero-stats{display:flex;gap:2.5rem;margin-top:2.6rem;border-top:1px solid var(--line);padding-top:1.6rem;flex-wrap:wrap}
+  .hero-stats div b{display:block;font-family:var(--serif);font-size:1.9rem;color:var(--brass-2);font-weight:700}
+  .hero-stats div span{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  .pad{padding:clamp(4.5rem,10vw,8rem) 0}
+  .head{display:grid;gap:1.3rem;margin-bottom:clamp(2.6rem,5vw,4rem);text-align:center;justify-items:center;max-width:48rem;margin-inline:auto}
+  .head h2{margin-top:1rem}
+
+  /* packages */
+  .pkgs{display:grid;gap:1.5rem}
+  @media (min-width:960px){.pkgs{grid-template-columns:repeat(3,1fr)}}
+  .pkg{border:1.5px solid var(--line);background:var(--green-3);padding:2.4rem 2rem;position:relative;display:flex;flex-direction:column;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+  .pkg:hover{transform:translateY(-6px);border-color:var(--line-2);box-shadow:0 26px 50px -24px rgba(0,0,0,.6)}
+  .pkg.signature{border-color:var(--brass);background:linear-gradient(180deg,#1d2f24,#16291f)}
+  .pkg .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brass);color:var(--green);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.35rem 1rem;white-space:nowrap}
+  .pkg h3{font-size:1.9rem;margin-bottom:.3rem}
+  .pkg .sub{font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+  .pkg ul{list-style:none;display:grid;gap:.65rem;margin-bottom:1.8rem;flex:1}
+  .pkg li{display:flex;gap:.7rem;align-items:flex-start;font-size:.94rem;color:var(--cream-2)}
+  .pkg li svg{width:17px;height:17px;color:var(--brass);flex:none;margin-top:.25rem}
+  .pkg .price{border-top:1px solid var(--line);padding-top:1.2rem}
+  .pkg .price b{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--brass-2)}
+  .pkg .price span{display:block;font-size:.82rem;color:var(--muted);margin-top:.15rem}
+  .pkg .btn{margin-top:1.2rem}
+
+  /* craft section */
+  .craft{display:grid;gap:2.5rem;align-items:center}
+  @media (min-width:960px){.craft{grid-template-columns:1fr 1fr;gap:4rem}}
+  .craft-img{border:1.5px solid var(--line);padding:12px;background:var(--green-3)}
+  .craft-img img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:sepia(.2) contrast(1.05)}
+  .craft-list{list-style:none;display:grid;gap:1.4rem;margin-top:2rem}
+  .craft-list li{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start}
+  .craft-list .ico{width:48px;height:48px;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;color:var(--brass);flex:none}
+  .craft-list .ico svg{width:22px;height:22px}
+  .craft-list h3{font-size:1.35rem;margin-bottom:.3rem}
+  .craft-list p{color:var(--muted);font-size:.95rem}
+
+  /* reviews */
+  .rev{display:grid;gap:1.4rem}
+  @media (min-width:900px){.rev{grid-template-columns:repeat(3,1fr)}}
+  .quote{border:1.5px solid var(--line);padding:2rem 1.8rem;background:var(--green-3)}
+  .quote .stars{color:var(--brass);letter-spacing:.2em;font-size:1.05rem;margin-bottom:1rem}
+  .quote p{font-family:var(--serif);font-size:1.3rem;font-style:italic;line-height:1.5}
+  .quote footer{margin-top:1.2rem;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+  /* contact */
+  .contact{border:1.5px solid var(--line-2);padding:clamp(2.4rem,6vw,4rem);display:grid;gap:2.4rem;text-align:center}
+  @media (min-width:960px){.contact{grid-template-columns:1fr 1fr;text-align:left;align-items:center;gap:3.5rem}}
+  .contact h2{margin:1rem 0}
+  .contact-list{list-style:none;display:grid;gap:1.1rem}
+  .contact-list li{display:flex;gap:1rem;align-items:flex-start;justify-content:center}
+  @media (min-width:960px){.contact-list li{justify-content:flex-start}}
+  .contact-list svg{width:22px;height:22px;color:var(--brass);flex:none;margin-top:.2rem}
+  .contact-list b{display:block;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brass);margin-bottom:.15rem;font-weight:600}
+  .cta-band{background:var(--ox);padding:clamp(2.6rem,7vw,4.5rem);text-align:center;margin-top:clamp(3rem,8vw,5rem);border:1.5px solid var(--ox-2)}
+  .cta-band h2{color:#fff;margin:.8rem 0 1rem}
+  .cta-band .kicker{color:var(--brass-2)}
+  .cta-band .hero-ctas{justify-content:center}
+
+  footer.site{border-top:1px solid var(--line);padding:3rem 0 2rem;margin-top:clamp(3rem,8vw,5rem);color:var(--dim)}
+  footer.site .wrap{display:grid;gap:1.5rem}
+  @media (min-width:800px){footer.site .wrap{grid-template-columns:1.4fr 1fr 1fr}}
+  footer.site h3{color:var(--cream);font-size:1.15rem;margin-bottom:.7rem}
+  footer.site p,footer.site a{font-size:.92rem}
+  footer.site a:hover{color:var(--brass-2)}
+  .legal{border-top:1px solid var(--line);margin-top:2rem;padding-top:1.4rem;font-size:.82rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(16,31,26,.96);backdrop-filter:blur(10px)}
+  @media (min-width:900px){.callbar{display:none}}
+  .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;font-weight:600;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase}
+  .callbar a svg{width:19px;height:19px}
+  .callbar .call{background:var(--brass);color:var(--green)}
+  .callbar .sms{border:1.5px solid var(--brass);color:var(--brass-2)}
+</style>
+</head>
+<body>
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Dapper Dog Spa home"><span class="logo-mark">D</span><span><b>Dapper Dog Spa</b><small>Fine Grooming</small></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#packages">Packages</a><a href="#craft">The Craft</a><a href="#reviews">Reviews</a><a href="#contact">Visit</a>
+    </nav>
+    <a class="btn btn-brass" href="tel:+14035550141"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><span class="lbl">Book</span><span class="num">(403) 555-0141</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-media"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&q=80&auto=format&fit=crop" alt="Handsome dog with a sharp haircut" fetchpriority="high"></div>
+    <div class="wrap"><div class="hero-inner">
+      <span class="kicker">Est. 2021 · Downtown Calgary</span>
+      <h1>Sharp dogs,<br><em>dapper</em> owners.</h1>
+      <p>A grooming lounge with old-school polish: hot-towel finishes, precision scissor work and a proper appointment — no cages, no chaos.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-brass" href="tel:+14035550141">Book an Appointment</a>
+        <a class="btn btn-line" href="#packages">View Packages</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>4.9 ★</b><span>310 reviews</span></div>
+        <div><b>12k+</b><span>grooms done</span></div>
+        <div><b>1:1</b><span>private appointments</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="pad" id="packages"><div class="wrap">
+    <div class="head">
+      <span class="kicker">Grooming Packages</span>
+      <h2>Choose your <em>finish.</em></h2>
+      <p class="lede">Three signature packages. Every dog leaves with a hot-towel finish and a bow tie or bandana — his choice.</p>
+    </div>
+    <div class="pkgs">
+      <article class="pkg">
+        <h3>The Tidy-Up</h3><p class="sub">Maintenance between cuts</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Warm bath &amp; hand fluff-dry</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Face, feet &amp; sanitary trim</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Nail trim &amp; ear clean</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Finishing cologne spritz</li>
+        </ul>
+        <div class="price"><b>C$55</b><span>small · C$70 medium · C$85 large</span></div>
+        <a class="btn btn-line" href="tel:+14035550141">Book Tidy-Up</a>
+      </article>
+      <article class="pkg signature">
+        <span class="flag">Signature</span>
+        <h3>The Full Dapper</h3><p class="sub">Our namesake groom</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Deep-cleanse bath, two shampoos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Precision scissor cut or breed clip</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>De-shedding undercoat treatment</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Hot-towel finish &amp; paw balm</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Bow tie or bandana, his pick</li>
+        </ul>
+        <div class="price"><b>C$95</b><span>small · C$120 medium · C$145 large</span></div>
+        <a class="btn btn-brass" href="tel:+14035550141">Book Full Dapper</a>
+      </article>
+      <article class="pkg">
+        <h3>The Gentleman</h3><p class="sub">The works, spa-grade</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Everything in The Full Dapper</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Oatmeal mud mask &amp; coat oil</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Teeth brushing &amp; breath treat</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Nose &amp; paw deep conditioning</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Portrait photo for the wall</li>
+        </ul>
+        <div class="price"><b>C$150</b><span>small · C$175 medium · C$200 large</span></div>
+        <a class="btn btn-line" href="tel:+14035550141">Book Gentleman</a>
+      </article>
+    </div>
+  </div></section>
+
+  <section class="pad" id="craft" style="padding-top:0"><div class="wrap">
+    <div class="head">
+      <span class="kicker">The Craft</span>
+      <h2>Grooming, <em>done properly.</em></h2>
+    </div>
+    <div class="craft">
+      <div class="craft-img"><img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=900&q=80&auto=format&fit=crop" alt="Groomer trimming a pug" loading="lazy"></div>
+      <div>
+        <ul class="craft-list">
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h3>Unhurried appointments</h3><p>90 minutes minimum per dog. We never double-book the table — your dog has our full attention.</p></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7Z"/></svg></span><div><h3>Master groomers</h3><p>Every groomer is certified with 5+ years on the table. Breed-standard cuts done by the book.</p></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.4-9.5 9-9.5 9Z"/></svg></span><div><h3>Stress-free promise</h3><p>No cages, no dryers-on-blast, no rushing. Nervous dogs get patience, praise and plenty of breaks.</p></div></li>
+        </ul>
+        <div class="hero-ctas" style="margin-top:2.2rem"><a class="btn btn-brass" href="tel:+14035550141">Call (403) 555-0141</a></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="pad" id="reviews" style="padding-top:0"><div class="wrap">
+    <div class="head">
+      <span class="kicker">Word of Mouth</span>
+      <h2>Distinguished <em>clientele.</em></h2>
+    </div>
+    <div class="rev">
+      <blockquote class="quote"><div class="stars">★★★★★</div><p>"My schnauzer has never looked sharper. The hot-towel finish is such a nice touch — he struts out of there."</p><footer>— Marcus V. &amp; Winston</footer></blockquote>
+      <blockquote class="quote"><div class="stars">★★★★★</div><p>"Booked The Gentleman for my lab before family photos. He looked like a show dog. The portrait was a lovely surprise."</p><footer>— Derek H. &amp; Cooper</footer></blockquote>
+      <blockquote class="quote"><div class="stars">★★★★★</div><p>"Finally a groomer that takes doodle coats seriously. No shave-downs, no uneven patches — just a perfect cut."</p><footer>— James L. &amp; Archie</footer></blockquote>
+    </div>
+  </div></section>
+
+  <section class="pad" id="contact" style="padding-top:0"><div class="wrap">
+    <div class="contact">
+      <div>
+        <span class="kicker">Visit the Lounge</span>
+        <h2>Your dog's chair <em>is waiting.</em></h2>
+        <p class="lede">Walk-ins for nail trims only — all grooms by appointment. We book about a week out.</p>
+        <div class="hero-ctas" style="margin-top:1.8rem;justify-content:center">
+          <a class="btn btn-brass" href="tel:+14035550141">Call (403) 555-0141</a>
+          <a class="btn btn-line" href="sms:+14035550141">Text Us</a>
+        </div>
+      </div>
+      <ul class="contact-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><div><b>Phone</b><a href="tel:+14035550141">(403) 555-0141</a></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b>Hours</b>Mon–Fri · 9 AM – 6 PM<br>Sat · 9 AM – 4 PM · Sun closed</div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Lounge</b>110 5 Ave SW, Calgary, AB</div></li>
+      </ul>
+    </div>
+    <div class="cta-band">
+      <span class="kicker">Complimentary Consults</span>
+      <h2>First visit? The tidy-up's on us*.</h2>
+      <p class="lede" style="color:#f3ddd2;max-width:30rem;margin:0 auto 1.8rem">*New clients: book any full groom and get a complimentary face/feet tidy-up between visits.</p>
+      <div class="hero-ctas"><a class="btn btn-brass" href="tel:+14035550141">Call (403) 555-0141</a></div>
+    </div>
+  </div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <div><h3>Dapper Dog Spa</h3><p>Upscale grooming lounge in downtown Calgary. Precision cuts, spa finishes, zero cages.</p><p style="margin-top:.8rem"><a href="tel:+14035550141">(403) 555-0141</a></p></div>
+  <div><h3>Packages</h3><p><a href="#packages">The Tidy-Up</a><br><a href="#packages">The Full Dapper</a><br><a href="#packages">The Gentleman</a></p></div>
+  <div><h3>Lounge</h3><p>110 5 Ave SW<br>Calgary, AB<br>Mon–Fri: 9 AM – 6 PM</p></div>
+</div><div class="wrap legal"><span>© 2026 Dapper Dog Spa. All rights reserved.</span><span>Demo site — prices illustrative.</span></div></footer>
+
+<div class="callbar"><a class="call" href="tel:+14035550141"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Book Now</a><a class="sms" href="sms:+14035550141">Text Us</a></div>
+
+<script>
+  const h = document.getElementById('header');
+  addEventListener('scroll', () => h.classList.toggle('scrolled', scrollY > 40), {passive:true});
+</script>
+</body>
+</html>
