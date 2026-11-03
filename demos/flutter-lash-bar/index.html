@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="../../logo.png?v=3">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Flutter Lash Bar — Lash Extensions, Lifts &amp; Tints, Calgary</title>
@@ -63,7 +64,8 @@
   .hero-img img{width:100%;height:100%;object-fit:cover}
   .float-card{position:absolute;right:-8px;bottom:2.6rem;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.15rem;box-shadow:0 18px 34px -18px rgba(77,52,66,.4);font-size:.88rem}
   .float-card b{font-family:var(--serif);font-size:1.15rem;display:block}
-  .stars{color:var(--gold);letter-spacing:.1em}
+  .stars{color:var(--gold);letter-spacing:.06em}
+  .stars svg{width:15px;height:15px;vertical-align:-2px;margin-right:.1em}
   section{position:relative}
   .pad{padding:clamp(4rem,9vw,7rem) 0}
   .head{display:grid;gap:1rem;margin-bottom:2.8rem}
@@ -95,7 +97,6 @@
   .split-img img{width:100%;height:100%;object-fit:cover}
   .check{list-style:none;margin-top:1.6rem;display:grid;gap:.9rem}
   .check li{display:flex;gap:.8rem;color:var(--muted)}
-  .check li::before{content:"✦";color:var(--plum);flex:none}
   .check b{color:var(--ink);font-weight:500}
   .faq-grid{display:grid;gap:2.5rem}
   @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:4rem}}
@@ -139,7 +140,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Flutter Lash Bar — home">Flutter <em>Lash Bar</em></a>
+    <a href="#top" class="logo" aria-label="Flutter Lash Bar — home"><img src="../logos/flutter-lash-bar.png" alt="Flutter Lash Bar logo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;flex:none">Flutter <em>Lash Bar</em></a>
     <nav class="nav" aria-label="Main">
       <a href="#services">Lashes</a><a href="#why">Why us</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
     </nav>
@@ -161,7 +162,7 @@
       </div>
       <div class="hero-img reveal" style="--d:.14s">
         <div class="frame"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1000&q=80" alt="Close-up of beautiful long eyelashes and soft makeup" fetchpriority="high"></div>
-        <div class="float-card"><span class="stars">★★★★★</span><b>Certified artists</b>2,000+ sets and counting</div>
+        <div class="float-card"><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg></span><b>Certified artists</b>2,000+ sets and counting</div>
       </div>
     </div>
   </section>
@@ -268,5 +269,9 @@
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
   else{els.forEach(function(el){el.classList.add('in')})}
 </script>
+
+<div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:14px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif">
+  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+</div>
 </body>
 </html>
