@@ -153,7 +153,7 @@
 <body>
 <header class="header" id="header">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="True North Repairs home"><span class="logo-mark">N</span><span><b>True North Repairs</b><small>Built Tough in Calgary</small></span></a>
+    <a class="logo" href="#" aria-label="True North Repairs home"><img src="../logos/true-north-repairs.png" alt="True North Repairs logo" loading="lazy" style="height:42px;width:42px;border-radius:10px;object-fit:cover;flex:none"><span><b>True North Repairs</b><small>Built Tough in Calgary</small></span></a>
     <nav class="nav" aria-label="Primary">
       <a href="#services">Services</a><a href="#rates">Rates</a><a href="#contact">Contact</a>
     </nav>
@@ -262,5 +262,9 @@
   const h = document.getElementById('header');
   addEventListener('scroll', () => h.classList.toggle('scrolled', scrollY > 40), {passive:true});
 </script>
+
+<div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:14px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif">
+  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+</div>
 </body>
 </html>
