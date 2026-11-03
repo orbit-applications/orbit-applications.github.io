@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="../../logo.png?v=3">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Frosty Fox Creamery — Small-Batch Ice Cream, Calgary</title>
@@ -81,7 +82,7 @@
   .flav p{color:var(--muted);font-size:.88rem;font-weight:500}
   .flav .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg);background:var(--sun);border:2px solid var(--ink);font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px;white-space:nowrap}
   .menu-board{background:var(--ink);color:#fff8ef;border-radius:28px;padding:clamp(2rem,5vw,3.6rem);margin-top:3rem;display:grid;gap:2rem;position:relative;overflow:hidden}
-  .menu-board::before{content:"🍨";position:absolute;font-size:10rem;opacity:.07;right:1rem;top:0}
+  .menu-board::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=70') center/cover;opacity:.08}
   @media(min-width:900px){.menu-board{grid-template-columns:1fr 1fr;align-items:start}}
   .menu-board h2{color:#fff}
   .menu-board h2 em{color:var(--sun)}
@@ -147,7 +148,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Frosty Fox Creamery — home"><i>🦊</i>Frosty <span>Fox</span></a>
+    <a href="#top" class="logo" aria-label="Frosty Fox Creamery — home"><img src="../logos/frosty-fox-creamery.png" alt="Frosty Fox Creamery logo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;flex:none"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=100&q=70" alt="Frosty Fox" loading="lazy" style="width:30px;height:30px;border-radius:50%;object-fit:cover;vertical-align:-7px;margin-right:6px">Frosty <span>Fox</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#flavors">Flavors</a><a href="#menu">Menu</a><a href="#faq">FAQ</a><a href="#contact">Visit</a>
     </nav>
@@ -157,14 +158,14 @@
 
 <main id="top">
   <section class="hero">
-    <span class="sprinkle" style="top:18%;left:8%">🍦</span>
-    <span class="sprinkle" style="top:32%;right:10%;animation-delay:1.2s">🍒</span>
-    <span class="sprinkle" style="top:64%;left:4%;animation-delay:2.4s">🧁</span>
-    <span class="sprinkle" style="top:74%;right:6%;animation-delay:3.6s">🍓</span>
+    <span class="sprinkle" style="top:18%;left:8%"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=100&q=70" alt="Ice cream cone" loading="lazy" style="width:46px;height:46px;border-radius:50%;object-fit:cover"></span>
+    <span class="sprinkle" style="top:32%;right:10%;animation-delay:1.2s"><img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?auto=format&fit=crop&w=100&q=70" alt="Cherry ice cream" loading="lazy" style="width:46px;height:46px;border-radius:50%;object-fit:cover"></span>
+    <span class="sprinkle" style="top:64%;left:4%;animation-delay:2.4s"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=100&q=70" alt="Ice cream sundae" loading="lazy" style="width:46px;height:46px;border-radius:50%;object-fit:cover"></span>
+    <span class="sprinkle" style="top:74%;right:6%;animation-delay:3.6s"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=100&q=70" alt="Strawberry ice cream" loading="lazy" style="width:46px;height:46px;border-radius:50%;object-fit:cover"></span>
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow reveal">Small-batch ice cream · Calgary</span>
-        <h1 class="reveal" style="--d:.08s">Scoops of<br><em>pure joy.</em> <span class="t">🦊</span></h1>
+        <h1 class="reveal" style="--d:.08s">Scoops of<br><em>pure joy.</em></h1>
         <p class="reveal" style="--d:.16s">Frosty Fox churns small batches daily — wild flavors, waffle cones made in-house, and a toppings bar that dreams are made of.</p>
         <div class="hero-ctas reveal" style="--d:.24s">
           <a class="btn btn-coral" href="tel:+14035550135"><svg><use href="#i-phone"/></svg>Call (403) 555-0135</a>
@@ -182,14 +183,14 @@
     <div class="wrap">
       <div class="head">
         <div><span class="eyebrow reveal">This week's churn</span><h2 class="reveal" style="--d:.08s">Flavors that <em>pop.</em></h2></div>
-        <p class="lede reveal" style="--d:.14s">Twelve flavors on rotation, always — plus one wild experimental flavor every Friday. Dairy-free options marked 🌱.</p>
+        <p class="lede reveal" style="--d:.14s">Twelve flavors on rotation, always — plus one wild experimental flavor every Friday. Dairy-free options marked "Vegan".</p>
       </div>
       <div class="flavors">
         <article class="flav reveal"><span class="tag">Fox fave</span><div class="dot" style="background:linear-gradient(135deg,#ff9a9e,#fecfef)"></div><h3>Strawberry Cloud</h3><p>Real Alberta strawberries, whipped cream base</p></article>
         <article class="flav reveal" style="--d:.06s"><div class="dot" style="background:linear-gradient(135deg,#6b4226,#a06a35)"></div><h3>Midnight Fudge Fox</h3><p>Triple chocolate with brownie chunks</p></article>
         <article class="flav reveal" style="--d:.12s"><div class="dot" style="background:linear-gradient(135deg,#b8e986,#7bc47f)"></div><h3>Mint Chip Mischief</h3><p>Fresh mint, dark chocolate shards</p></article>
         <article class="flav reveal" style="--d:.18s"><div class="dot" style="background:linear-gradient(135deg,#ffe29f,#ffa99f)"></div><h3>Salted Caramel Den</h3><p>Burnt caramel, flaky sea salt</p></article>
-        <article class="flav reveal"><span class="tag">🌱 Vegan</span><div class="dot" style="background:linear-gradient(135deg,#f6d365,#fda085)"></div><h3>Mango Tango 🌱</h3><p>Alphonso mango sorbet, coconut splash</p></article>
+        <article class="flav reveal"><span class="tag">Vegan</span><div class="dot" style="background:linear-gradient(135deg,#f6d365,#fda085)"></div><h3>Mango Tango</h3><p>Alphonso mango sorbet, coconut splash</p></article>
         <article class="flav reveal" style="--d:.06s"><div class="dot" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb)"></div><h3>Grape Soda Pop</h3><p>Fizzy grape, popping candy surprise</p></article>
         <article class="flav reveal" style="--d:.12s"><div class="dot" style="background:linear-gradient(135deg,#fddb92,#d1fdff)"></div><h3>Vanilla Bean Classic</h3><p>Madagascar vanilla, simple perfection</p></article>
         <article class="flav reveal" style="--d:.18s"><span class="tag">Friday drop</span><div class="dot" style="background:linear-gradient(135deg,#ff5a5f,#8b5fbf)"></div><h3>Fox's Mystery Mix</h3><p>New experimental flavor every Friday!</p></article>
@@ -203,7 +204,7 @@
         </div>
         <div style="display:grid;gap:2rem">
           <div class="board-col">
-            <h3>🍦 Cones &amp; Cups</h3>
+            <h3>Cones &amp; Cups</h3>
             <ul>
               <li><div>Kid scoop<small>One small scoop, cake cone</small></div><span>$4.25</span></li>
               <li><div>Single scoop<small>Cake cone or cup</small></div><span>$5.50</span></li>
@@ -212,7 +213,7 @@
             </ul>
           </div>
           <div class="board-col">
-            <h3>🍨 Sundaes &amp; More</h3>
+            <h3>Sundaes &amp; More</h3>
             <ul>
               <li><div>Classic sundae<small>2 scoops, sauce, sprinkles, cherry</small></div><span>$8.50</span></li>
               <li><div>Fox's Den Sundae<small>3 scoops, brownie, everything</small></div><span>$11.50</span></li>
@@ -224,9 +225,9 @@
       </div>
 
       <div class="fun">
-        <div class="fun-card reveal"><h3>🎉 Birthday Parties</h3><p>Sundae bar + private room for up to 20 kids. The fox makes an appearance.</p><span class="big">$199</span></div>
-        <div class="fun-card reveal" style="--d:.08s"><h3>🛻 Fox Truck</h3><p>Our ice cream truck for weddings, school events &amp; block parties.</p><span class="big">Book it</span></div>
-        <div class="fun-card reveal" style="--d:.16s"><h3>🏆 Flavor Contest</h3><p>Suggest a flavor — if we churn it, you get free pints for a year.</p><span class="big">Enter</span></div>
+        <div class="fun-card reveal"><h3>Birthday Parties</h3><p>Sundae bar + private room for up to 20 kids. The fox makes an appearance.</p><span class="big">$199</span></div>
+        <div class="fun-card reveal" style="--d:.08s"><h3>Fox Truck</h3><p>Our ice cream truck for weddings, school events &amp; block parties.</p><span class="big">Book it</span></div>
+        <div class="fun-card reveal" style="--d:.16s"><h3>Flavor Contest</h3><p>Suggest a flavor — if we churn it, you get free pints for a year.</p><span class="big">Enter</span></div>
       </div>
     </div>
   </section>
@@ -238,10 +239,10 @@
         <span class="eyebrow reveal">Why Frosty Fox</span>
         <h2 class="reveal" style="--d:.08s">Churned daily, <em>gone nightly.</em></h2>
         <ul class="why-list reveal" style="--d:.16s">
-          <li><i>🐄</i>Alberta dairy from a family farm 40 minutes away</li>
-          <li><i>🌱</i>Always 3+ dairy-free options churning</li>
-          <li><i>🧇</i>Waffle cones pressed fresh every single hour</li>
-          <li><i>🎨</i>Kids eat free on their birthday (with a grown-up scoop)</li>
+          <li><img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=100&q=70" alt="Dairy farm" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Alberta dairy from a family farm 40 minutes away</li>
+          <li><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=100&q=70" alt="Plant based" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Always 3+ dairy-free options churning</li>
+          <li><img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=100&q=70" alt="Fresh waffles" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Waffle cones pressed fresh every single hour</li>
+          <li><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=100&q=70" alt="Birthday celebration" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Kids eat free on their birthday (with a grown-up scoop)</li>
         </ul>
       </div>
     </div>
@@ -308,5 +309,9 @@
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
   else{els.forEach(function(el){el.classList.add('in')})}
 </script>
+
+<div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:14px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif">
+  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+</div>
 </body>
 </html>
