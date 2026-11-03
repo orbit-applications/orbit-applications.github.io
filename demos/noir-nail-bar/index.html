@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="../../logo.png?v=3">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Noir Nail Bar — Luxury Nail Salon, Calgary</title>
@@ -61,10 +62,11 @@
   .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
   .hero-facts{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted);letter-spacing:.04em}
   .hero-facts b{color:var(--gold-2);font-weight:500}
+  .hero-facts svg{width:14px;height:14px;fill:var(--gold-2);vertical-align:-2px}
   .tape{background:var(--gold);color:var(--bg);overflow:hidden;padding:.85rem 0;margin:0;transform:rotate(-.6deg)}
   .tape-track{display:flex;width:max-content;animation:run 28s linear infinite;font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
   .tape-track span{white-space:nowrap;padding-right:2.4rem}
-  .tape-track span::after{content:"◆";font-size:.6em;padding-left:2.4rem}
+  .tape-track span::after{content:"";display:inline-block;width:.5em;height:.5em;background:currentColor;transform:rotate(45deg);margin-left:2.4rem;font-size:.6em;vertical-align:.05em}
   @keyframes run{to{transform:translateX(-50%)}}
   section{position:relative}
   .pad{padding:clamp(4.5rem,10vw,7.5rem) 0}
@@ -131,7 +133,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Noir Nail Bar — home">NOIR <span>Nail Bar</span></a>
+    <a href="#top" class="logo" aria-label="Noir Nail Bar — home"><img src="../logos/noir-nail-bar.png" alt="Noir Nail Bar logo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;flex:none">NOIR <span>Nail Bar</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#services">Services</a><a href="#house">The house</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
     </nav>
@@ -153,7 +155,7 @@
       <div class="hero-facts reveal" style="--d:.32s">
         <span><b>Open late</b> · Tue–Sat till 9 PM</span>
         <span><b>812 1 St SE</b> · Calgary</span>
-        <span><b>5.0 ★</b> · 400+ reviews</span>
+        <span><b>5.0</b> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg> · 400+ reviews</span>
       </div>
     </div>
   </section>
@@ -255,5 +257,9 @@
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
   else{els.forEach(function(el){el.classList.add('in')})}
 </script>
+
+<div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:14px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif">
+  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+</div>
 </body>
 </html>
