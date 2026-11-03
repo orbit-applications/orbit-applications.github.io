@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="../../logo.png?v=3">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Classic Cut — Barber Shop in Downtown Calgary</title>
@@ -52,6 +53,8 @@ h2{font-family:Fraunces,serif;font-weight:900;font-size:clamp(28px,3.6vw,40px);l
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:30px}
 .card{background:#fffdf8;border:1px solid #e2d7bd;border-radius:16px;padding:24px 22px;box-shadow:0 4px 14px rgba(60,45,10,.06)}
 .card .ic{font-size:26px}
+.card .ic img{width:56px;height:56px;object-fit:cover;border-radius:12px}
+.ico{width:1.05em;height:1.05em;vertical-align:-.18em;flex:none}
 .card h3{font-family:Fraunces,serif;font-size:20px;margin:10px 0 6px}
 .card p{font-size:14.5px;color:var(--muted)}
 .about .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:36px;align-items:center}
@@ -87,10 +90,18 @@ footer a{text-decoration:none;font-weight:600}
 </style>
 </head>
 <body id="top">
-<div class="topbar"><div class="wrap"><span>✂ Elveden House · 717 7 Ave SW, Calgary</span><a href="tel:+14035550110">☎ (403) 555-0110</a></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+</svg>
+
+<div class="topbar"><div class="wrap"><span><svg class="ico" aria-hidden="true"><use href="#i-scissors"/></svg> Elveden House · 717 7 Ave SW, Calgary</span><a href="tel:+14035550110"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> (403) 555-0110</a></div></div>
 <header class="site"><div class="wrap">
   <div class="pole" aria-hidden="true"></div>
-  <div class="brand"><b>The Classic Cut</b><span>Barber Shop · Downtown Calgary</span></div>
+  <div class="brand"><img src="../logos/the-classic-cut.png" alt="The Classic Cut logo" loading="lazy" style="height:42px;width:42px;border-radius:10px;object-fit:cover;flex:none"><b>The Classic Cut</b><span>Barber Shop · Downtown Calgary</span></div>
   <nav class="main"><a href="#services">Services</a><a href="#story">Our Story</a><a href="#visit">Visit</a></nav>
   <a class="callbtn" href="tel:+14035550110">Call the shop</a>
 </div></header>
@@ -100,12 +111,12 @@ footer a{text-decoration:none;font-weight:600}
     <h1>Sixty years<br>behind <em>the chair.</em></h1>
     <p class="lede">A classic barbershop in the heart of downtown Calgary — proper cuts, hot towel shaves, and a chair that has seen six decades of the city's hair. Walk-ins welcome during shop hours.</p>
     <div class="cta">
-      <a class="btn btn-brass" href="tel:+14035550110">☎ Call (403) 555-0110</a>
+      <a class="btn btn-brass" href="tel:+14035550110"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Call (403) 555-0110</a>
       <a class="btn btn-ghost" href="#services">See services</a>
     </div>
-    <div class="ticks"><span>✂ Classic &amp; modern cuts</span><span>🪒 Hot towel shaves</span><span>👞 Shoe shine</span></div>
+    <div class="ticks"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg> Classic &amp; modern cuts</span><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg> Hot towel shaves</span><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg> Shoe shine</span></div>
   </div>
-  <figure><img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?w=1400&q=80" alt="Barber at work in a classic barbershop"></figure>
+  <figure><img loading="lazy" src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?w=1400&q=80" alt="Barber at work in a classic barbershop"></figure>
 </div></section>
 
 <section class="services" id="services"><div class="wrap">
@@ -113,16 +124,16 @@ footer a{text-decoration:none;font-weight:600}
   <h2>The full barbershop menu</h2>
   <p class="sub">The same services this shop has been known for — done properly, without the rush. Call for today's availability.</p>
   <div class="cards">
-    <div class="card"><div class="ic">✂️</div><h3>Men's Haircut</h3><p>Classic and modern cuts, finished the old-school way. Tell us how you like it, or trust the chair.</p></div>
-    <div class="card"><div class="ic">🪒</div><h3>Hot Towel Shave</h3><p>The traditional straight-razor shave with hot towels — the closest, cleanest shave you can get.</p></div>
-    <div class="card"><div class="ic">🧔</div><h3>Beard Trim</h3><p>Shape, line-up and tidy for beards of every length. Keep the beard, lose the wild.</p></div>
-    <div class="card"><div class="ic">🪑</div><h3>Head Shave</h3><p>A smooth, clean head shave with the same hot-towel care as a full shave.</p></div>
-    <div class="card"><div class="ic">👞</div><h3>Shoe Shine</h3><p>A proper shine while you wait — the finishing touch before the meeting, the wedding, or the day.</p></div>
+    <div class="card"><div class="ic"><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=400&q=70" alt="Barber cutting hair with scissors and comb"></div><h3>Men's Haircut</h3><p>Classic and modern cuts, finished the old-school way. Tell us how you like it, or trust the chair.</p></div>
+    <div class="card"><div class="ic"><img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=400&q=70" alt="Client reclined in a barber chair with hot lather before a shave"></div><h3>Hot Towel Shave</h3><p>The traditional straight-razor shave with hot towels — the closest, cleanest shave you can get.</p></div>
+    <div class="card"><div class="ic"><img loading="lazy" src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=400&q=70" alt="Barber trimming a client’s beard"></div><h3>Beard Trim</h3><p>Shape, line-up and tidy for beards of every length. Keep the beard, lose the wild.</p></div>
+    <div class="card"><div class="ic"><img loading="lazy" src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=400&q=70" alt="Vintage leather barber chair"></div><h3>Head Shave</h3><p>A smooth, clean head shave with the same hot-towel care as a full shave.</p></div>
+    <div class="card"><div class="ic"><img loading="lazy" src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=400&q=70" alt="Polished leather shoe close-up"></div><h3>Shoe Shine</h3><p>A proper shine while you wait — the finishing touch before the meeting, the wedding, or the day.</p></div>
   </div>
 </div></section>
 
 <section class="about" id="story"><div class="wrap">
-  <figure><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1400&q=80" alt="Barber giving a haircut"></figure>
+  <figure><img loading="lazy" src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1400&q=80" alt="Barber giving a haircut"></figure>
   <div>
     <div class="kicker">Our Story</div>
     <h2>One barber. One shop.<br>About sixty years.</h2>
@@ -136,9 +147,9 @@ footer a{text-decoration:none;font-weight:600}
   <div class="kicker">Inside the shop</div>
   <h2>The chairs are waiting</h2>
   <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=1200&q=80" alt="Classic barbershop interior">
-    <img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?w=1200&q=80" alt="Barber tools of the trade">
-    <img src="https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=1200&q=80" alt="Straight razor shave detail">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=1200&q=80" alt="Classic barbershop interior">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?w=1200&q=80" alt="Barber tools of the trade">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=1200&q=80" alt="Straight razor shave detail">
   </div>
 </div></section>
 
@@ -146,9 +157,9 @@ footer a{text-decoration:none;font-weight:600}
   <div class="kicker" style="color:var(--brass)">Visit</div>
   <h2>Find us at Elveden House</h2>
   <div class="grid">
-    <div class="cell"><h3>📍 Address</h3><p>The Classic Cut<br>717 7 Ave SW<br>Calgary, AB</p><p style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=The+Classic+Cut+717+7+Ave+SW+Calgary" target="_blank" rel="noopener">Get directions →</a></p></div>
-    <div class="cell"><h3>🕘 Hours</h3><p>Monday – Friday<br><b style="color:var(--cream)">9:00 AM – 5:00 PM</b><br>Saturday – Sunday: Closed</p></div>
-    <div class="cell"><h3>☎ Contact</h3><p>Call the shop:<br><a href="tel:+14035550110">(403) 555-0110</a></p><p style="margin-top:8px">Walk-ins welcome during shop hours.</p></div>
+    <div class="cell"><h3><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg> Address</h3><p>The Classic Cut<br>717 7 Ave SW<br>Calgary, AB</p><p style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=The+Classic+Cut+717+7+Ave+SW+Calgary" target="_blank" rel="noopener">Get directions →</a></p></div>
+    <div class="cell"><h3><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> Hours</h3><p>Monday – Friday<br><b style="color:var(--cream)">9:00 AM – 5:00 PM</b><br>Saturday – Sunday: Closed</p></div>
+    <div class="cell"><h3><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Contact</h3><p>Call the shop:<br><a href="tel:+14035550110">(403) 555-0110</a></p><p style="margin-top:8px">Walk-ins welcome during shop hours.</p></div>
   </div>
 </div></section>
 
@@ -158,7 +169,7 @@ footer a{text-decoration:none;font-weight:600}
 </div></footer>
 
 <div class="callbar">
-  <a class="c1" href="tel:+14035550110">☎ Call the shop</a>
+  <a class="c1" href="tel:+14035550110"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Call the shop</a>
   <a class="c2" href="https://www.google.com/maps/search/?api=1&query=The+Classic+Cut+717+7+Ave+SW+Calgary" target="_blank" rel="noopener">Directions</a>
 </div>
 
@@ -169,5 +180,9 @@ footer a{text-decoration:none;font-weight:600}
 </style>
 
 
+
+<div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:14px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif">
+  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+</div>
 </body>
 </html>
