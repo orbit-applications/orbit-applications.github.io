@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="../../logo.png?v=3">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Crust Culture Pizza — Wood-Fired Pizza, Calgary</title>
@@ -59,11 +60,13 @@
   .hero h1 em{font-style:normal;color:var(--tomato-2)}
   .hero p{color:#e3d6bf;max-width:32rem;font-size:1.06rem}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.2rem}
+  .fb{display:inline-flex;align-items:center;gap:.55rem}
+  .fb img{width:38px;height:38px;object-fit:cover;border-radius:9px}
   .flame-strip{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:2.4rem;padding-top:1.6rem;border-top:2px solid var(--tomato);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--wheat)}
   .tape{background:var(--tomato);color:#fff;overflow:hidden;padding:.8rem 0;transform:rotate(1deg);margin:1rem -1rem}
   .tape-track{display:flex;width:max-content;animation:run 26s linear infinite;font-family:var(--disp);font-size:1.25rem;text-transform:uppercase}
   .tape-track span{white-space:nowrap;padding-right:2rem}
-  .tape-track span::after{content:"🔥";padding-left:2rem}
+  .tape-track span::after{content:"";display:inline-block;width:.5em;height:.5em;background:currentColor;transform:rotate(45deg);margin-left:2rem;vertical-align:middle}
   @keyframes run{to{transform:translateX(-50%)}}
   section{position:relative}
   .pad{padding:clamp(4.5rem,10vw,7.5rem) 0}
@@ -123,7 +126,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Crust Culture Pizza — home">Crust<span>Culture</span></a>
+    <a href="#top" class="logo" aria-label="Crust Culture Pizza — home"><img src="../logos/crust-culture.png" alt="Crust Culture Pizza logo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;flex:none">Crust<span>Culture</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#menu">Menu</a><a href="#story">Our fire</a><a href="#visit">Hours</a>
     </nav>
@@ -143,7 +146,7 @@
         <a class="btn btn-line" href="#menu">See the menu</a>
       </div>
       <div class="flame-strip reveal" style="--d:.32s">
-        <span>🔥 900°F wood oven</span><span>🍕 90-second bake</span><span>🌾 48-hr dough</span>
+        <span class="fb"><img loading="lazy" src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=200&q=70" alt="Pizza baking inside a wood-fired oven">900°F wood oven</span><span class="fb"><img loading="lazy" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=200&q=70" alt="Wood-fired pizza with charred crust">90-second bake</span><span class="fb"><img loading="lazy" src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=200&q=70" alt="Fresh-baked sourdough loaf">48-hr dough</span>
       </div>
     </div>
   </section>
@@ -240,5 +243,9 @@
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
   else{els.forEach(function(el){el.classList.add('in')})}
 </script>
+
+<div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:14px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif">
+  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+</div>
 </body>
 </html>
