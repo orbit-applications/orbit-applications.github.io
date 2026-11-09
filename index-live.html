@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Str8Tech · Apps, websites, and videos</title>
+<meta name="description" content="Str8Tech builds apps, websites, and videos. Clean, fast one page websites for local businesses from C$1,000, with booking, online payments, and promo video add-ons.">
+<link rel="canonical" href="https://str8tech.ca/">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Str8Tech">
+<meta property="og:title" content="Str8Tech · Apps, websites, and videos">
+<meta property="og:description" content="Apps, websites, and videos. One company. Websites for local businesses from C$1,000.">
+<meta property="og:url" content="https://str8tech.ca/">
+<meta property="og:image" content="https://str8tech.ca/images/str8tech-logo-new.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@orbitapps32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+/* Tokens. Accent sampled from str8tech-logo.png */
+:root{
+  --bg:#000000;--s1:#181818;--s2:#1F1F1F;--s3:#272727;--s4:#313131;
+  --text:#FFFFFF;--text2:#B4B4B4;--text3:#8C8C8C;--line:#313131;
+  --accent:#A6E546;--on-accent:#000000;--err:#FF8A80;
+  --ease:cubic-bezier(0.22,1,0.36,1);--dur:500ms;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
+body{font-family:"Manrope",system-ui,sans-serif;font-size:16px;line-height:24px;font-weight:400;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4{text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+.icon{width:20px;height:20px;flex:none;fill:currentColor}
+.icon-sm{width:16px;height:16px}
+.icon-lg{width:24px;height:24px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:16px;top:16px;z-index:100;background:var(--accent);color:var(--on-accent);padding:8px 12px;border-radius:12px;font-weight:600;transform:translateY(-200%)}
+.skip:focus{transform:none}
+
+/* Text styles (Tailwind scale only) */
+.heading-1{font-size:60px;line-height:60px;font-weight:600;letter-spacing:-0.02em}
+.heading-2{font-size:48px;line-height:48px;font-weight:600;letter-spacing:-0.02em}
+.heading-3{font-size:36px;line-height:40px;font-weight:600;letter-spacing:-0.01em}
+.heading-5{font-size:24px;line-height:32px;font-weight:600}
+.heading-6{font-size:20px;line-height:28px;font-weight:600}
+.title-1{font-size:20px;line-height:28px;font-weight:500}
+.title-2{font-size:18px;line-height:28px;font-weight:500}
+.title-3{font-size:16px;line-height:24px;font-weight:500}
+.title-4{font-size:14px;line-height:20px;font-weight:500}
+.body-1{font-size:16px;line-height:24px;font-weight:600}
+.body-3{font-size:16px;line-height:24px;font-weight:400}
+.body-lead{font-size:18px;line-height:28px;font-weight:400}
+.body-4{font-size:14px;line-height:20px;font-weight:600}
+.body-6{font-size:14px;line-height:20px;font-weight:400}
+.caption-3{font-size:12px;line-height:16px;font-weight:600}
+.caption-5{font-size:12px;line-height:16px;font-weight:400}
+.button-md{font-size:16px;line-height:24px;font-weight:600}
+.button-sm{font-size:14px;line-height:20px;font-weight:600}
+.muted{color:var(--text2)}
+.dim{color:var(--text3)}
+.accent{color:var(--accent)}
+
+/* Layout */
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.sec-head{max-width:680px;margin:0 0 48px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head .heading-2{margin-bottom:16px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);margin-bottom:16px;text-transform:none}
+.sub-head{margin:80px 0 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.sub-head p{max-width:520px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;border-radius:12px;border:0;cursor:pointer;text-align:center;transition:transform var(--dur) var(--ease),opacity 300ms var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(0.98)}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-secondary{background:var(--s3);color:var(--text)}
+.btn-wide{width:100%}
+.link{display:inline-flex;align-items:center;gap:8px;color:var(--accent);transition:opacity 300ms var(--ease)}
+.link:hover{opacity:.8}
+.link .icon{transition:transform var(--dur) var(--ease)}
+.link:hover .icon{transform:translateX(4px)}
+
+/* Nav: floating pill */
+.nav{position:fixed;top:16px;left:0;right:0;z-index:60;display:flex;justify-content:center;padding:0 16px;pointer-events:none}
+.nav-pill{pointer-events:auto;display:flex;align-items:center;gap:24px;padding:8px 8px 8px 16px;border-radius:9999px;background:rgba(24,24,24,0.72);border:1px solid rgba(255,255,255,0.08);backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px)}
+.brand{display:flex;align-items:center;gap:8px}
+.brand img{width:28px;height:28px}
+.nav-links{display:flex;gap:4px}
+.nav-links a{position:relative;padding:8px 12px;border-radius:9999px;color:var(--text2);transition:opacity 300ms var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{content:"";position:absolute;left:50%;bottom:2px;width:4px;height:4px;margin-left:-2px;border-radius:9999px;background:var(--accent);opacity:0;transform:scale(0);transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+.nav-links a[aria-current="true"]{color:var(--text)}
+.nav-links a[aria-current="true"]::after{opacity:1;transform:scale(1)}
+.nav-cta{border-radius:9999px;padding:8px 16px}
+.menu-btn{display:none;position:relative;width:40px;height:40px;border-radius:9999px;border:0;background:var(--s3);cursor:pointer}
+.menu-btn span{position:absolute;left:12px;width:16px;height:2px;border-radius:2px;background:var(--text);transition:transform var(--dur) var(--ease)}
+.menu-btn span:nth-child(1){top:15px}
+.menu-btn span:nth-child(2){top:23px}
+.menu-open .menu-btn span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.menu-open .menu-btn span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+.mpanel{position:fixed;inset:0;z-index:55;background:rgba(0,0,0,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:96px 24px 32px;display:flex;flex-direction:column;gap:8px;opacity:0;pointer-events:none;transition:opacity var(--dur) var(--ease)}
+.menu-open .mpanel{opacity:1;pointer-events:auto}
+.mpanel a{display:block;padding:12px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(24px);transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+.mpanel a.btn{border-bottom:0;margin-top:24px;padding:8px 12px}
+.menu-open .mpanel a{opacity:1;transform:none}
+.menu-open .mpanel a:nth-child(2){transition-delay:60ms}
+.menu-open .mpanel a:nth-child(3){transition-delay:120ms}
+.menu-open .mpanel a:nth-child(4){transition-delay:180ms}
+.menu-open .mpanel a:nth-child(5){transition-delay:240ms}
+.menu-open .mpanel a:nth-child(6){transition-delay:300ms}
+
+/* Hero */
+.hero{padding:96px 0;text-align:center}
+.hero-logo{width:360px;max-width:100%;height:auto;margin:32px auto 40px}
+.hero h1{max-width:680px;margin:0 auto 16px;padding-bottom:8px;background:linear-gradient(90deg,#FFFFFF,#9B9B9B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{max-width:680px;margin:0 auto 32px}
+.hero-cta{display:flex;justify-content:center;margin-bottom:32px}
+.proof{display:inline-flex;align-items:center;gap:12px;padding:8px 16px 8px 8px;border-radius:9999px;background:var(--s1);border:1px solid var(--line);text-align:left}
+.proof-icons{display:flex;flex:none}
+.proof-icons img{width:32px;height:32px;border-radius:8px;border:2px solid var(--s1)}
+.proof-icons img+img{margin-left:-8px}
+
+/* Cards */
+.card{background:var(--s1);border:1px solid var(--line);border-radius:24px;padding:32px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+
+/* Apps */
+.app{display:flex;flex-direction:column;gap:16px}
+.app-icon{width:64px;height:64px;border-radius:16px}
+.app p{flex:1}
+.app .meta{display:flex;align-items:center;gap:8px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:9999px;background:rgba(166,229,70,0.12);color:var(--accent)}
+.badge.soon{background:var(--s3);color:var(--text2)}
+.famquest{margin-top:16px;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+.famquest .text{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.shots img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}
+
+/* Tagline reveal */
+.tagline{padding:96px 0}
+.tagline p{max-width:880px;margin:0 auto;text-align:center}
+.tagline .w{opacity:0.3;transition:opacity var(--dur) var(--ease)}
+.tagline .w.on{opacity:1}
+.tagline .accent .w.on{opacity:1}
+
+/* Websites */
+.bsec{background:var(--s1)}
+.bsec .card{background:var(--s2)}
+.benefit{display:flex;flex-direction:column;gap:12px}
+.ibox{width:48px;height:48px;border-radius:12px;background:rgba(166,229,70,0.12);color:var(--accent);display:flex;align-items:center;justify-content:center}
+.step{display:flex;flex-direction:column;gap:12px}
+.step .n{width:32px;height:32px;border-radius:9999px;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center}
+.tier{display:flex;flex-direction:column;gap:16px}
+.tier .price{display:flex;align-items:baseline;gap:8px}
+.tier ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.tier li{display:flex;gap:12px;align-items:flex-start}
+.tier li .icon{color:var(--accent);margin-top:2px}
+.tier.feature{border-color:var(--accent)}
+.addon{display:flex;flex-direction:column;gap:12px}
+.addon .icon-lg{color:var(--accent)}
+.addon .ap{margin-top:auto;padding-top:8px}
+.note{margin-top:24px;display:flex;align-items:center;gap:8px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat{display:flex;flex-direction:column;background:var(--s2);border:1px solid var(--line);border-radius:16px;padding:8px;transition:transform var(--dur) var(--ease)}
+.cat:hover{transform:translateY(-4px)}
+.cat:active{transform:scale(0.98)}
+.cat img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px}
+.cat .cb{padding:12px 8px 8px;display:flex;flex-direction:column;gap:4px}
+.cat .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cat .go{color:var(--text3);transition:transform var(--dur) var(--ease)}
+.cat:hover .go{transform:translateX(4px)}
+.cat .badge{align-self:flex-start;margin-top:4px}
+
+/* Order form */
+.order{max-width:720px;margin:80px auto 0;background:var(--s2);border:1px solid var(--line);border-radius:24px;padding:48px}
+.order .heading-3{text-align:center;margin-bottom:8px}
+.order>p{text-align:center;margin-bottom:32px}
+.field{display:block;margin-bottom:16px}
+.field>span{display:block;margin-bottom:8px;color:var(--text2)}
+.fin{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--s4);background:var(--s1);font-size:16px;line-height:24px;transition:opacity 300ms var(--ease)}
+.fin::placeholder{color:var(--text3)}
+.fin:disabled{opacity:.5;cursor:not-allowed}
+select.fin{appearance:none;-webkit-appearance:none;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23B4B4B4'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:16px}
+textarea.fin{min-height:96px;resize:vertical}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.addon-picks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.addon-picks[hidden]{display:none}
+.pick{position:relative;cursor:pointer}
+.pick input{position:absolute;opacity:0;width:1px;height:1px}
+.pick>span{display:flex;flex-direction:column;align-items:flex-start;gap:4px;height:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--s4);background:var(--s1)}
+.pick .ck{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:6px;border:1px solid var(--s4);display:flex;align-items:center;justify-content:center;color:var(--on-accent)}
+.pick .ck::before{content:"";position:absolute;inset:-1px;border-radius:6px;background:var(--accent);opacity:0;transition:opacity 300ms var(--ease)}
+.pick .ck svg{position:relative;width:14px;height:14px;fill:currentColor;opacity:0;transform:scale(0.6);transition:opacity 300ms var(--ease),transform var(--dur) var(--ease)}
+.pick input:checked+span{border-color:var(--accent)}
+.pick input:checked+span .ck::before,.pick input:checked+span .ck svg{opacity:1;transform:none}
+.pick input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.formnote{margin-top:16px;text-align:center;min-height:24px;color:var(--text2)}
+.formnote.ok{color:var(--accent)}
+.formnote.err{color:var(--err)}
+.fin[aria-invalid="true"]{border-color:var(--err)}
+
+/* Videos */
+.vgrid{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:auto auto;gap:16px}
+.vshot{position:relative;margin:0;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
+.vshot img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9}
+.vshot:not(.big) img{height:auto}
+.vshot.big{grid-row:span 2}
+.vshot.big img{aspect-ratio:auto;min-height:100%}
+.vshot figcaption{position:absolute;left:16px;bottom:16px;padding:4px 12px;border-radius:9999px;background:rgba(0,0,0,0.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.vside{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.vprice{display:flex;flex-direction:column;gap:12px;justify-content:center}
+
+/* Proof */
+.stat{display:flex;flex-direction:column;gap:8px}
+.stat .heading-2{color:var(--accent)}
+
+/* FAQ */
+.faq{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq details{background:var(--s1);border:1px solid var(--line);border-radius:16px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .icon{color:var(--text2);transition:transform var(--dur) var(--ease)}
+.faq details[open] summary .icon{transform:rotate(45deg)}
+.faq .a{padding:0 24px 24px}
+
+/* Final CTA + contact */
+.final{text-align:center}
+.final .heading-2{max-width:680px;margin:0 auto 16px}
+.final p{max-width:680px;margin:0 auto 32px}
+.contact-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact-row .btn{max-width:100%;overflow-wrap:anywhere}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:48px 0 40px}
+.foot{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap}
+.foot-brand{display:flex;flex-direction:column;gap:12px}
+.foot-brand img{width:160px;height:auto}
+.socials{display:flex;flex-wrap:wrap;gap:8px}
+.socials a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:var(--s1);border:1px solid var(--line);color:var(--text2);transition:transform var(--dur) var(--ease)}
+.socials a:hover{transform:translateY(-2px);color:var(--text)}
+.foot-links{display:flex;gap:16px;flex-wrap:wrap}
+.foot-links a{color:var(--text2)}
+.foot-links a:hover{color:var(--text)}
+.foot-base{margin-top:40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* Scroll reveal */
+.js .reveal{opacity:0;transform:translateY(32px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .g4,.cats{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:1fr}
+  .famquest{grid-template-columns:1fr}
+  .vgrid{grid-template-columns:1fr}
+  .vshot.big{grid-row:auto}
+  .vshot.big img{aspect-ratio:16/9}
+  .addon-picks{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .nav-links,.nav-cta{display:none}
+  .menu-btn{display:block}
+  .nav{justify-content:stretch}
+  .nav-pill{width:100%;justify-content:space-between}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  section,.tagline{padding:64px 0}
+  .hero{padding:96px 0 64px}
+  .hero-logo{width:280px;margin:0 auto 24px}
+  .heading-1{font-size:36px;line-height:40px}
+  .heading-2{font-size:30px;line-height:36px}
+  .heading-3{font-size:30px;line-height:36px}
+  .tagline .heading-1{font-size:36px;line-height:40px}
+  .body-lead{font-size:16px;line-height:24px}
+  .g2,.g4,.vside{grid-template-columns:1fr}
+  .cats{grid-template-columns:repeat(2,1fr);gap:12px}
+  .cat{padding:4px;border-radius:12px}
+  .cat img{border-radius:8px}
+  .cat .cb{padding:8px 4px 4px}
+  .card{padding:24px}
+  .order{padding:32px 16px;margin-top:64px}
+  .frow{grid-template-columns:1fr;gap:0}
+  .sub-head{margin-top:64px}
+  .proof{border-radius:16px}
+  .faq summary{padding:16px}
+  .faq .a{padding:0 16px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:300ms!important;transition-delay:0ms!important;transition-property:opacity!important}
+  .js .reveal{transform:none}
+  .mpanel a{transform:none}
+  .tagline .w{opacity:1}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-app-store-logo" viewBox="0 0 256 256"><path d="M64.34,196.07l-9.45,16a8,8,0,1,1-13.78-8.14l9.46-16a8,8,0,1,1,13.77,8.14ZM232,152H184.2l-30.73-52a8,8,0,1,0-13.77,8.14l61.41,103.93a8,8,0,0,0,13.78-8.14L193.66,168H232a8,8,0,0,0,0-16Zm-89.53,0H90.38L158.89,36.07a8,8,0,0,0-13.78-8.14L128,56.89l-17.11-29a8,8,0,1,0-13.78,8.14l21.6,36.55L71.8,152H24a8,8,0,0,0,0,16H142.47a8,8,0,1,0,0-16Z"/></symbol><symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol><symbol id="i-calendar-check" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></symbol><symbol id="i-chat-circle-text" viewBox="0 0 256 256"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></symbol><symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol><symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol><symbol id="i-credit-card" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"/></symbol><symbol id="i-device-tablet" viewBox="0 0 256 256"><path d="M192,24H64A24,24,0,0,0,40,48V208a24,24,0,0,0,24,24H192a24,24,0,0,0,24-24V48A24,24,0,0,0,192,24ZM56,72H200V184H56Zm8-32H192a8,8,0,0,1,8,8v8H56V48A8,8,0,0,1,64,40ZM192,216H64a8,8,0,0,1-8-8v-8H200v8A8,8,0,0,1,192,216Z"/></symbol><symbol id="i-envelope-simple" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol><symbol id="i-instagram-logo" viewBox="0 0 256 256"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></symbol><symbol id="i-list" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></symbol><symbol id="i-phone-call" viewBox="0 0 256 256"><path d="M144.27,45.93a8,8,0,0,1,9.8-5.66,86.22,86.22,0,0,1,61.66,61.66,8,8,0,0,1-5.66,9.8A8.23,8.23,0,0,1,208,112a8,8,0,0,1-7.73-5.94,70.35,70.35,0,0,0-50.33-50.33A8,8,0,0,1,144.27,45.93Zm-2.33,41.8c13.79,3.68,22.65,12.54,26.33,26.33A8,8,0,0,0,176,120a8.23,8.23,0,0,0,2.07-.27,8,8,0,0,0,5.66-9.8c-5.12-19.16-18.5-32.54-37.66-37.66a8,8,0,1,0-4.13,15.46Zm81.94,95.35A56.26,56.26,0,0,1,168,232C88.6,232,24,167.4,24,88A56.26,56.26,0,0,1,72.92,32.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,109.39,104c-.18.27-.37.52-.57.77L88,129.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,223.88,183.08Zm-15.88-2s-.07,0-.11,0h0l-47-21.05-24.35,20.71a8.44,8.44,0,0,1-.74.56,16,16,0,0,1-15.75,1.14c-18.73-9.05-37.4-27.58-46.46-46.11a16,16,0,0,1,1-15.7,6.13,6.13,0,0,1,.57-.77L96,95.15l-21-47a.61.61,0,0,1,0-.12A40.2,40.2,0,0,0,40,88,128.14,128.14,0,0,0,168,216,40.21,40.21,0,0,0,208,181.07Z"/></symbol><symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol><symbol id="i-seal-check" viewBox="0 0 256 256"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-11.55,39.29c-4.79,5-9.75,10.17-12.38,16.52-2.52,6.1-2.63,13.07-2.73,19.82-.1,7-.21,14.33-3.32,17.43s-10.39,3.22-17.43,3.32c-6.75.1-13.72.21-19.82,2.73-6.35,2.63-11.52,7.59-16.52,12.38S132,224,128,224s-9.15-4.92-14.11-9.69-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82-2.63-6.35-7.59-11.52-12.38-16.52S32,132,32,128s4.92-9.15,9.69-14.11,9.75-10.17,12.38-16.52c2.52-6.1,2.63-13.07,2.73-19.82.1-7,.21-14.33,3.32-17.43S70.51,56.9,77.55,56.8c6.75-.1,13.72-.21,19.82-2.73,6.35-2.63,11.52-7.59,16.52-12.38S124,32,128,32s9.15,4.92,14.11,9.69,10.17,9.75,16.52,12.38c6.1,2.52,13.07,2.63,19.82,2.73,7,.1,14.33.21,17.43,3.32s3.22,10.39,3.32,17.43c.1,6.75.21,13.72,2.73,19.82,2.63,6.35,7.59,11.52,12.38,16.52S224,124,224,128,219.08,137.15,214.31,142.11ZM173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"/></symbol><symbol id="i-storefront" viewBox="0 0 256 256"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></symbol><symbol id="i-tiktok-logo" viewBox="0 0 256 256"><path d="M224,72a48.05,48.05,0,0,1-48-48,8,8,0,0,0-8-8H128a8,8,0,0,0-8,8V156a20,20,0,1,1-28.57-18.08A8,8,0,0,0,96,130.69V88a8,8,0,0,0-9.4-7.88C50.91,86.48,24,119.1,24,156a76,76,0,0,0,152,0V116.29A103.25,103.25,0,0,0,224,128a8,8,0,0,0,8-8V80A8,8,0,0,0,224,72Zm-8,39.64a87.19,87.19,0,0,1-43.33-16.15A8,8,0,0,0,160,102v54a60,60,0,0,1-120,0c0-25.9,16.64-49.13,40-57.6v27.67A36,36,0,1,0,136,156V32h24.5A64.14,64.14,0,0,0,216,87.5Z"/></symbol><symbol id="i-video-camera" viewBox="0 0 256 256"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"/></symbol><symbol id="i-x-logo" viewBox="0 0 256 256"><path d="M214.75,211.71l-62.6-98.38,61.77-67.95a8,8,0,0,0-11.84-10.76L143.24,99.34,102.75,35.71A8,8,0,0,0,96,32H48a8,8,0,0,0-6.75,12.3l62.6,98.37-61.77,68a8,8,0,1,0,11.84,10.76l58.84-64.72,40.49,63.63A8,8,0,0,0,160,224h48a8,8,0,0,0,6.75-12.29ZM164.39,208,62.57,48h29L193.43,208Z"/></symbol><symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol><symbol id="i-youtube-logo" viewBox="0 0 256 256"><path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"/></symbol></svg>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <nav class="nav-pill" aria-label="Main">
+    <a class="brand heading-6" href="#top" aria-label="Str8Tech home"><img src="images/str8tech-mark-8.png" alt="" width="28" height="28">Str8Tech</a>
+    <div class="nav-links title-4">
+      <a href="#apps">Apps</a><a href="#websites">Websites</a><a href="#videos">Videos</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </div>
+    <a class="btn btn-primary button-sm nav-cta" href="#order">Order your website</a>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mpanel"><span></span><span></span></button>
+  </nav>
+</header>
+<div class="mpanel heading-5" id="mpanel" aria-label="Menu">
+  <a href="#apps">Apps</a><a href="#websites">Websites</a><a href="#videos">Videos</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  <a class="btn btn-primary button-md" href="#order">Order your website</a>
+</div>
+
+<main id="main">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <img class="hero-logo" src="images/str8tech-logo-hero.png" alt="Str8Tech logo: the word str8 in white italic with a lime green circuit figure 8, and the word tech below" width="360" height="166">
+    <h1 class="heading-1">A website that gets<br>your phone ringing.</h1>
+    <p class="lead body-lead muted">Str8Tech builds apps, websites, and videos. Pick a finished design, we make it yours, and you approve everything before it goes live.</p>
+    <div class="hero-cta"><a class="btn btn-primary button-md" href="#order">Order your website<svg class="icon"><use href="#i-arrow-right"/></svg></a></div>
+    <a class="proof" href="#apps">
+      <span class="proof-icons"><img src="images/cookingdojo-icon.jpg" alt="" width="32" height="32"><img src="images/catchpoint-icon.jpg" alt="" width="32" height="32"></span>
+      <span class="body-6 muted">Makers of <span style="color:var(--text)">Cooking Dojo</span> and <span style="color:var(--text)">CatchPoint</span>, both on the App Store</span>
+    </a>
+  </div>
+</section>
+
+<!-- Apps -->
+<section id="apps">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow caption-3">Str8Tech apps</div>
+      <h2 class="heading-2">Apps we build and ship ourselves.</h2>
+      <p class="body-lead muted">Real apps on real phones. Download them and see the quality you get from us.</p>
+    </div>
+    <div class="grid g2">
+      <article class="card app reveal">
+        <img class="app-icon" src="images/cookingdojo-icon.jpg" alt="Cooking Dojo app icon" width="64" height="64">
+        <div class="meta"><h3 class="heading-5">Cooking Dojo: Learn to Cook</h3></div>
+        <p class="body-3 muted">Learn to cook with Matcha, your AI cooking sensei. 750+ recipes, bite size lessons, streaks and belt aprons. Kid safe, with no ads and no tracking, ever.</p>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <a class="link button-md" href="https://apps.apple.com/app/id6815918055" target="_blank" rel="noopener">Download free on the App Store<svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          <a class="link button-md" href="https://orbit-applications.github.io/cooking-dojo/">Tour Cooking Dojo<svg class="icon"><use href="#i-arrow-right"/></svg></a>
+        </div>
+      </article>
+      <article class="card app reveal">
+        <img class="app-icon" src="images/catchpoint-icon.jpg" alt="CatchPoint app icon" width="64" height="64">
+        <div class="meta"><h3 class="heading-5">CatchPoint</h3></div>
+        <p class="body-3 muted">The fishing app. Log catches with photos, pin your spots on a map with GPS, and track your stats.</p>
+        <div><a class="link button-md" href="https://apps.apple.com/us/app/catchpoint/id6808400630" target="_blank" rel="noopener">Download on the App Store<svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
+      </article>
+    </div>
+    <article class="card famquest reveal">
+      <div class="text">
+        <span class="badge soon caption-3">Coming soon</span>
+        <img class="app-icon" src="images/famquest-icon.jpg" alt="FamQuest app icon" width="64" height="64">
+        <h3 class="heading-5">FamQuest</h3>
+        <p class="body-3 muted">The family management app. Turn chores into coins. Kids earn stars, climb leaderboards, and spend coins on a prize shelf stocked by parents.</p>
+        <a class="btn btn-secondary button-md" href="https://orbit-applications.github.io/famquest">Join the waitlist<svg class="icon"><use href="#i-arrow-right"/></svg></a>
+      </div>
+      <div class="shots">
+        <img src="images/famquest-1.jpg" alt="FamQuest screen: pick who is questing" width="293" height="570" loading="lazy">
+        <img src="images/famquest-2.jpg" alt="FamQuest screen: today's quests and stars" width="293" height="570" loading="lazy">
+        <img src="images/famquest-3.jpg" alt="FamQuest screen: the prize shelf" width="293" height="570" loading="lazy">
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Tagline reveal -->
+<section class="tagline" aria-label="Tagline">
+  <div class="wrap">
+    <p class="sr">Apps, websites, and videos. One company, start to finish.</p>
+    <p class="heading-1" id="taglineText" aria-hidden="true">Apps, websites, and videos.<br><span class="accent">One company,</span> start to finish.</p>
+  </div>
+</section>
+
+<!-- Websites -->
+<section id="websites" class="bsec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow caption-3">Str8Tech websites</div>
+      <h2 class="heading-2">Clean, fast one page sites for local businesses.</h2>
+      <p class="body-lead muted">Your name, photos, colors and services on a finished design. You approve everything before it goes live.</p>
+      <div style="margin-top:16px"><a class="btn btn-secondary button-md" href="/call"><svg class="icon"><use href="#i-phone-call"/></svg>Call us — no app needed</a></div>
+    </div>
+
+    <div class="grid g4">
+      <div class="card benefit reveal"><span class="ibox"><svg class="icon icon-lg"><use href="#i-phone-call"/></svg></span><h3 class="title-1">Customers reach you in one tap</h3><p class="body-6 muted">Tap to call buttons sit throughout the page, so a visitor on a phone can call you straight away.</p></div>
+      <div class="card benefit reveal"><span class="ibox"><svg class="icon icon-lg"><use href="#i-calendar-check"/></svg></span><h3 class="title-1">Bookings come in while you work</h3><p class="body-6 muted">Add a booking portal to bookable designs and custom sites, plus a tablet that keeps every booking in one place.</p></div>
+      <div class="card benefit reveal"><span class="ibox"><svg class="icon icon-lg"><use href="#i-credit-card"/></svg></span><h3 class="title-1">Get paid right on your site</h3><p class="body-6 muted">We hook your site up to your Square or Stripe account so customers can pay online.</p></div>
+      <div class="card benefit reveal"><span class="ibox"><svg class="icon icon-lg"><use href="#i-video-camera"/></svg></span><h3 class="title-1">Show your business on video</h3><p class="body-6 muted">Add a promo video, filmed and edited by Barclay at StraightShooter, right at the top of your site.</p></div>
+    </div>
+
+    <div class="sub-head reveal"><div><h3 class="heading-3">How it works</h3></div><p class="body-3 muted">Three steps from first message to a live website.</p></div>
+    <div class="grid g3">
+      <div class="card step reveal"><span class="n body-4">1</span><h4 class="title-1">Pick a design</h4><p class="body-6 muted">Choose one of the finished templates below or go fully custom.</p></div>
+      <div class="card step reveal"><span class="n body-4">2</span><h4 class="title-1">We make it yours</h4><p class="body-6 muted">Your name, photos, colors and services, written into the design for you.</p></div>
+      <div class="card step reveal"><span class="n body-4">3</span><h4 class="title-1">You approve, we launch</h4><p class="body-6 muted">Live in days, with tap to call built in. Nothing goes live until you say so.</p></div>
+    </div>
+
+    <div class="sub-head reveal"><div><h3 class="heading-3">Pricing</h3></div><p class="body-3 muted">One time build price, in Canadian dollars.</p></div>
+    <div class="grid g2">
+      <div class="card tier reveal">
+        <h4 class="title-1">Template</h4>
+        <div class="price"><span class="heading-3">C$1,000</span><span class="body-6 muted">one time</span></div>
+        <ul class="body-3 muted">
+          <li><svg class="icon"><use href="#i-check"/></svg>Pick a finished design below</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Customized with your branding and photos</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Tap to call buttons throughout</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Online payments available (Square or Stripe)</li>
+        </ul>
+      </div>
+      <div class="card tier feature reveal">
+        <h4 class="title-1">Custom, from scratch</h4>
+        <div class="price"><span class="heading-3">C$1,200</span><span class="body-6 muted">one time</span></div>
+        <ul class="body-3 muted">
+          <li><svg class="icon"><use href="#i-check"/></svg>Fully custom one page design</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Written, designed and launched for you</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Add booking portals, online payments, galleries, menus</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-head reveal"><div><h3 class="heading-5">Extras</h3></div><p class="body-6 muted">Booking extras work on bookable templates and custom designs. Look for the booking ready badge.</p></div>
+    <div class="grid g4">
+      <div class="card addon reveal"><svg class="icon icon-lg"><use href="#i-calendar-check"/></svg><h4 class="title-2">Booking portal</h4><p class="body-6 muted">Take bookings right on the site.</p><p class="ap body-4">Bookable designs</p></div>
+      <div class="card addon reveal"><svg class="icon icon-lg"><use href="#i-device-tablet"/></svg><h4 class="title-2">Booking tablet</h4><p class="body-6 muted">A tablet with your booking app installed, so all your bookings are in one place.</p><p class="ap body-4">C$500 per tablet</p></div>
+      <div class="card addon reveal"><svg class="icon icon-lg"><use href="#i-credit-card"/></svg><h4 class="title-2">Online payments</h4><p class="body-6 muted">Take payments right on your site through your Square or Stripe account.</p><p class="ap body-4">Square or Stripe</p></div>
+      <div class="card addon reveal"><svg class="icon icon-lg"><use href="#i-video-camera"/></svg><h4 class="title-2">Promo video</h4><p class="body-6 muted">Filmed and edited by Barclay at StraightShooter.</p><p class="ap body-4">C$2,000 to C$3,000</p></div>
+    </div>
+    <p class="note body-6 muted reveal"><svg class="icon icon-sm accent"><use href="#i-clock"/></svg>All prices are in Canadian dollars.</p>
+
+    <div class="sub-head reveal" id="templates"><div><h3 class="heading-3">Pick from 43 finished designs</h3></div><p class="body-3 muted">Every template is a real, finished website. Tap a category to explore its designs live.</p></div>
+    <div class="cats">
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/pizza/"><img src="images/cat-pizza.jpg" alt="Ember and Oak Pizza design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Pizza</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">2 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/bakery/"><img src="images/cat-bakery.jpg" alt="Crumb and Craft Bakery design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Bakery</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">2 designs</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/coffee/"><img src="images/cat-coffee.jpg" alt="Copper Cup Coffee design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Coffee shop</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">2 designs</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/ice-cream/"><img src="images/cat-ice-cream.jpg" alt="Scoops and Smiles design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Ice cream</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">2 designs</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/nails/"><img src="images/cat-nails.jpg" alt="Crown Nail Studio design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Nail salon</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/lash/"><img src="images/cat-lash.jpg" alt="Velvet Lash Studio design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Lash studio</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/barber/"><img src="images/cat-barber.jpg" alt="Harbour Cut Barber design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Barbershop</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/cleaning/"><img src="images/cat-cleaning.jpg" alt="Sparkle Home Cleaning design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">House cleaning</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">2 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/photography/"><img src="images/cat-photography.jpg" alt="Golden Hour Photo design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Photography</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">2 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/handyman/"><img src="images/cat-handyman.jpg" alt="Summit Handyman design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Handyman</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/florist/"><img src="images/cat-florist.jpg" alt="Bloom and Co florist design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Florist</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/pet-grooming/"><img src="images/cat-pet-grooming.jpg" alt="Calm Paws Grooming design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Pet grooming</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">4 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/shoe-care/"><img src="images/cat-shoe-care.jpg" alt="Fresh Step Shoe Spa design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Shoe care</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/tailoring/"><img src="images/cat-tailoring.jpg" alt="Golden Needle Tailoring design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Tailoring</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/auto-detailing/"><img src="images/cat-auto-detailing.jpg" alt="Showroom Shine Detailing design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Auto detailing</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span><span class="badge caption-3"><svg class="icon icon-sm"><use href="#i-calendar-check"/></svg>Booking ready</span></span></a>
+      <a class="cat reveal" href="https://orbit-applications.github.io/categories/real-estate/"><img src="images/cat-real-estate.jpg" alt="Prairie Peak Realty design preview" width="640" height="400" loading="lazy"><span class="cb"><span class="row"><span class="title-3">Real estate</span><svg class="icon icon-sm go"><use href="#i-arrow-right"/></svg></span><span class="caption-5 dim">3 designs</span></span></a>
+    </div>
+
+    <div class="order reveal" id="order">
+      <h3 class="heading-3">Order your website</h3>
+      <p class="body-3 muted">Pick a template or go custom. We reply within a day.</p>
+      <form id="orderForm" novalidate>
+        <div class="frow">
+          <label class="field"><span class="title-4">Business type</span>
+            <select id="catSelect" class="fin" aria-describedby="formNote"><option value="">Choose a business type</option></select>
+          </label>
+          <label class="field"><span class="title-4">Design</span>
+            <select id="tplSelect" name="template" class="fin" disabled><option value="">Choose a business type first</option></select>
+          </label>
+        </div>
+        <div class="addon-picks" id="addonPicks" hidden>
+          <label class="pick"><input type="checkbox" name="addon_booking_portal" value="yes"><span><b class="title-4">Add booking portal</b><small class="caption-5 dim">Bookings on your site</small><i class="ck"><svg><use href="#i-check"/></svg></i></span></label>
+          <label class="pick"><input type="checkbox" name="addon_tablet" value="yes"><span><b class="title-4">Add booking tablet</b><small class="caption-5 dim">C$500 per tablet</small><i class="ck"><svg><use href="#i-check"/></svg></i></span></label>
+          <label class="pick"><input type="checkbox" name="addon_payments" value="yes"><span><b class="title-4">Add online payments</b><small class="caption-5 dim">Square or Stripe</small><i class="ck"><svg><use href="#i-check"/></svg></i></span></label>
+        </div>
+        <label class="field" id="customWrap" hidden><span class="title-4">Your custom design</span>
+          <textarea name="custom_brief" id="customBrief" class="fin" placeholder="Describe what you want: pages, style, features, anything."></textarea>
+        </label>
+        <div class="frow">
+          <label class="field"><span class="title-4">Your name</span><input class="fin" type="text" name="name" placeholder="Your name" autocomplete="name"></label>
+          <label class="field"><span class="title-4">Phone or email</span><input class="fin" type="text" name="contact" placeholder="Phone or email" autocomplete="tel"></label>
+        </div>
+        <label class="field"><span class="title-4">Business name</span><input class="fin" type="text" name="business" placeholder="Business name" autocomplete="organization"></label>
+        <label class="field"><span class="title-4">Anything else?</span><textarea class="fin" name="details" placeholder="Colors, pages, timeline"></textarea></label>
+        <button class="btn btn-primary button-md btn-wide" type="submit">Send request</button>
+        <p class="formnote body-6" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Videos -->
+<section id="videos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow caption-3">Str8Tech videos</div>
+      <h2 class="heading-2">Video that shows your business in action.</h2>
+      <p class="body-lead muted">Our video work comes from StraightShooter New Media Productions. Products in the wild, places, and people, filmed and edited by Barclay and cut for how people watch.</p>
+    </div>
+    <div class="vgrid">
+      <figure class="vshot big reveal"><img src="images/video-pitw-first.jpg" alt="Still from a StraightShooter video: a boat and wakeboarder on a mountain lake" width="1280" height="666" loading="lazy"><figcaption class="caption-3">Product in the wild</figcaption></figure>
+      <figure class="vshot reveal"><img src="images/video-currie-place-still.jpg" alt="Still from a StraightShooter video: a historic building with gardens on a sunny day" width="1280" height="720" loading="lazy"><figcaption class="caption-3">Places</figcaption></figure>
+      <figure class="vshot reveal"><img src="images/video-tile-market.jpg" alt="Still from a StraightShooter video: people at an outdoor market tent" width="1280" height="675" loading="lazy"><figcaption class="caption-3">People</figcaption></figure>
+    </div>
+    <div class="vside">
+      <figure class="vshot reveal"><img src="images/video-tile-product.jpg" alt="Still from a StraightShooter video: close up of industrial machinery" width="1214" height="684" loading="lazy"><figcaption class="caption-3">Product</figcaption></figure>
+      <div class="card vprice reveal">
+        <h3 class="title-1">Add a promo video</h3>
+        <p class="heading-3">C$2,000 to C$3,000</p>
+        <p class="body-6 muted">Filmed and edited by Barclay at StraightShooter. Add it to your website order, or mention it in the notes.</p>
+        <a class="link button-md" href="https://straightshootervideo.ca" target="_blank" rel="noopener">See more StraightShooter work<svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Proof -->
+<section class="bsec" aria-labelledby="proofHead">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <h2 class="heading-2" id="proofHead">Proof you can check yourself.</h2>
+      <p class="body-lead muted">No made up reviews. Just real work you can download, click through, and watch.</p>
+    </div>
+    <div class="grid g3">
+      <a class="card stat reveal" href="#apps"><span class="heading-2">2 apps</span><span class="title-2">Live on the App Store</span><span class="body-6 muted">Cooking Dojo and CatchPoint, built and shipped by Str8Tech.</span></a>
+      <a class="card stat reveal" href="#templates"><span class="heading-2">43 designs</span><span class="title-2">Live right now</span><span class="body-6 muted">Finished websites across 16 kinds of local business. Open any of them.</span></a>
+      <a class="card stat reveal" href="https://straightshootervideo.ca" target="_blank" rel="noopener"><span class="heading-2">Real footage</span><span class="title-2">Videos by StraightShooter</span><span class="body-6 muted">Watch Barclay's shoots at straightshootervideo.ca before you add a promo video.</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal"><h2 class="heading-2">Questions, answered.</h2></div>
+    <div class="faq">
+      <details class="reveal"><summary class="title-2">How much does a website cost?<svg class="icon"><use href="#i-plus"/></svg></summary><p class="a body-3 muted">A template site is C$1,000 and a custom site built from scratch is C$1,200. Every price is in Canadian dollars.</p></details>
+      <details class="reveal"><summary class="title-2">Do I see the site before it goes live?<svg class="icon"><use href="#i-plus"/></svg></summary><p class="a body-3 muted">Yes. You approve everything before it goes live. Nothing is published until you say so.</p></details>
+      <details class="reveal"><summary class="title-2">How fast will I hear back?<svg class="icon"><use href="#i-plus"/></svg></summary><p class="a body-3 muted">We reply within a day. Once you approve the design, your site can be live in days.</p></details>
+      <details class="reveal"><summary class="title-2">Can customers book appointments on my site?<svg class="icon"><use href="#i-plus"/></svg></summary><p class="a body-3 muted">Yes, on any design with the booking ready badge and on custom sites. Add a booking portal, and a booking tablet for C$500 per tablet so all your bookings are in one place.</p></details>
+      <details class="reveal"><summary class="title-2">Can I take payments online?<svg class="icon"><use href="#i-plus"/></svg></summary><p class="a body-3 muted">Yes. We hook your site up to your Square or Stripe account so customers can pay right on your site.</p></details>
+      <details class="reveal"><summary class="title-2">Can you make a video for my business?<svg class="icon"><use href="#i-plus"/></svg></summary><p class="a body-3 muted">Yes. A promo video is C$2,000 to C$3,000, filmed and edited by Barclay at StraightShooter.</p></details>
+      <details class="reveal"><summary class="title-2">How do I get started?<svg class="icon"><use href="#i-plus"/></svg></summary><p class="a body-3 muted">Pick your business type and a design in the <a class="accent" href="#order">order form</a>, add your name and a phone number or email, and send it. You can also text 403-899-1550.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final bsec">
+  <div class="wrap reveal">
+    <h2 class="heading-2">A website that gets your phone ringing.</h2>
+    <p class="body-lead muted">Pick a design, send the form, and we reply within a day. You approve everything before it goes live.</p>
+    <a class="btn btn-primary button-md" href="#order">Order your website<svg class="icon"><use href="#i-arrow-right"/></svg></a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="final">
+  <div class="wrap reveal">
+    <h2 class="heading-2">Questions? Call, text or email.</h2>
+    <p class="body-lead muted">Ask about an app, a website, or a video. A real person replies.</p>
+    <div class="contact-row">
+      <a class="btn btn-secondary button-md" href="/call"><svg class="icon"><use href="#i-phone-call"/></svg>Call us — no app needed</a>
+      <a class="btn btn-secondary button-md" href="sms:+14038991550"><svg class="icon"><use href="#i-chat-circle-text"/></svg>Text me 403-899-1550</a>
+      <a class="btn btn-secondary button-md" href="mailto:support@str8tech.ca"><svg class="icon"><use href="#i-envelope-simple"/></svg>Email support@str8tech.ca</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <img src="images/str8tech-logo-hero.png" alt="Str8Tech" width="160" height="74" loading="lazy">
+        <p class="body-4">Made by Str8Tech</p>
+        <p class="body-6 dim">Apps, websites, and videos. One company.</p>
+      </div>
+      <div class="socials body-6" aria-label="Social media">
+        <a href="https://youtube.com/@orbitapplications" target="_blank" rel="noopener"><svg class="icon"><use href="#i-youtube-logo"/></svg>@orbitapplications</a>
+        <a href="https://x.com/orbitapps32" target="_blank" rel="noopener"><svg class="icon"><use href="#i-x-logo"/></svg>@orbitapps32</a>
+        <a href="https://www.tiktok.com/@orbit.apps" target="_blank" rel="noopener"><svg class="icon"><use href="#i-tiktok-logo"/></svg>@orbit.apps</a>
+        <a href="https://www.instagram.com/orbit.applications/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-instagram-logo"/></svg>@orbit.applications</a>
+      </div>
+    </div>
+    <div class="foot-base body-6 dim">
+      <span>© <span id="yr">2026</span> Str8Tech</span>
+      <nav class="foot-links" aria-label="Footer"><a href="#apps">Apps</a><a href="#websites">Websites</a><a href="#videos">Videos</a><a href="#contact">Contact</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Mobile menu */
+var mbtn=document.querySelector('.menu-btn'),mpanel=document.getElementById('mpanel');
+function setMenu(open){document.body.classList.toggle('menu-open',open);mbtn.setAttribute('aria-expanded',open);mbtn.setAttribute('aria-label',open?'Close menu':'Open menu');document.body.style.overflow=open?'hidden':'';}
+mbtn.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'))});
+mpanel.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+
+/* Scroll reveals, once each */
+var reveals=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+  reveals.forEach(function(el){ro.observe(el)});
+}else{reveals.forEach(function(el){el.classList.add('in')})}
+
+/* Current section in nav */
+var navLinks=document.querySelectorAll('.nav-links a');
+if('IntersectionObserver' in window){
+  var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){navLinks.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id?'true':'false')})}})},{rootMargin:'-45% 0px -50% 0px'});
+  ['apps','websites','videos','faq','contact'].forEach(function(id){so.observe(document.getElementById(id))});
+}
+
+/* Tagline reveal: words light up one at a time as they cross the trigger line */
+(function(){
+  var el=document.getElementById('taglineText');
+  function wrap(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(part){
+          if(!part)return;
+          if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(part))}
+          else{var s=document.createElement('span');s.className='w';s.textContent=part;frag.appendChild(s)}
+        });
+        n.parentNode.replaceChild(frag,n);
+      }else if(n.nodeType===1&&n.tagName!=='BR'){wrap(n)}
+    });
+  }
+  wrap(el);
+  var words=el.querySelectorAll('.w');
+  if(reduce){words.forEach(function(w){w.classList.add('on')});return}
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var line=window.innerHeight*0.7;
+    var r=el.getBoundingClientRect();
+    if(r.top>window.innerHeight||r.bottom<0)return;
+    var total=words.length,progress=(line-r.top)/(r.height+window.innerHeight*0.2);
+    var lit=Math.max(0,Math.min(total,Math.round(progress*total*1.6)));
+    for(var i=0;i<total;i++)words[i].classList.toggle('on',i<lit);
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
+  update();
+})();
+</script>
+<script>
+/* Order form. Category picks the design list; the submitted fields and email match the live Orbit form. */
+var DESIGNS=[
+ ['pizza','Pizza',[['Ember & Oak Pizza','Dark wood-fired','ember-oak-pizza',1],['Crust Culture','Artisan modern','crust-culture',1]]],
+ ['bakery','Bakery',[['Crumb & Craft Bakery','Rustic artisan','crumb-craft-bakery',0],['Golden Whisk Bakery','Elegant patisserie','golden-whisk-bakery',0]]],
+ ['coffee','Coffee shop',[['Copper Cup Coffee','Industrial warm','copper-cup-coffee',0],['Juniper Coffee','Minimalist Scandinavian','juniper-coffee',0]]],
+ ['ice-cream','Ice cream',[['Scoops & Smiles','Playful family','scoops-smiles',0],['Frosty Fox Creamery','Modern craft','frosty-fox-creamery',0]]],
+ ['nails','Nail salon',[['Crown Nail Studio','Luxury gold','crown-nail-studio',1],['Blush Nail Studio','Soft feminine','blush-nail-studio',1],['Noir Nail Bar','Dark edgy','noir-nail-bar',1]]],
+ ['lash','Lash studio',[['Velvet Lash Studio','Plush elegant','velvet-lash-studio',1],['Flutter Lash Bar','Bright cheerful','flutter-lash-bar',1],['Luxe Lash Lounge','Premium dark','luxe-lash-lounge',1]]],
+ ['barber','Barbershop',[['Harbour Cut Barber','Classic nautical','harbour-cut-barber',1],['The Classic Cut','Vintage traditional','the-classic-cut',1],['The Dapper Den','Modern masculine','the-dapper-den',1]]],
+ ['cleaning','House cleaning',[['Sparkle Home Cleaning','Fresh bright','sparkle-home-cleaning',1],['Pristine Clean Co.','Professional blue','pristine-clean-co',1]]],
+ ['photography','Photography',[['Golden Hour Photo','Warm portfolio','golden-hour-photo',1],['Wildflower Photo','Bohemian light','wildflower-photo',1]]],
+ ['handyman','Handyman',[['Summit Handyman','Trustworthy pro','summit-handyman',1],['Apex Handyman','Bold reliable','apex-handyman',1],['True North Repairs','Rugged local','true-north-repairs',1]]],
+ ['florist','Florist',[['Bloom & Co','Elegant botanical','bloom-and-co',0],['Petal Pushers','Cheerful bright','petal-pushers',0],['Wild Rose Blooms','Modern romantic','wild-rose-blooms',0]]],
+ ['pet-grooming','Pet grooming',[['Calm Paws Grooming','Soothing spa','calm-paws-grooming',1],['Wag & Wash Grooming','Fun playful','wag-and-wash-grooming',1],['Pampered Paws Grooming','Soft premium','pampered-paws',1],['Dapper Dog Spa','Upscale boutique','dapper-dog-spa',1]]],
+ ['shoe-care','Shoe care',[['Fresh Step Shoe Spa','Clean modern','fresh-step-shoe-spa',0],['Sole Shine Co.','Sneakerhead fresh','sole-shine-co',0],['Kick Renew','Streetwear bold','kick-renew',0]]],
+ ['tailoring','Tailoring',[['Golden Needle Tailoring','Classic refined','golden-needle-tailoring',0],['Sharp Stitch Tailoring','Editorial sharp','sharp-stitch',0],['HemMasters','Modern minimal','hemmasters',0]]],
+ ['auto-detailing','Auto detailing',[['Showroom Shine Detailing','Sleek dark','showroom-shine-detailing',1],['Gleam Auto Spa','Premium light','gleam-auto-spa',1],['Showroom Elite Detailing','Luxury black','showroom-elite',1]]],
+ ['real-estate','Real estate',[['Meridian Commercial','Corporate pro','meridian-commercial',0],['Prairie Peak Realty','Mountain modern','prairie-peak-realty',0],['Foothills Homes','Warm residential','foothills-homes',0]]],
+ ['custom','Custom design',[['Custom design','from scratch','custom',1]]]
+];
+var orderForm=document.getElementById('orderForm');
+if(orderForm){
+var catSel=document.getElementById('catSelect');
+var tplSel=document.getElementById('tplSelect');
+var addonPicks=document.getElementById('addonPicks');
+var customWrap=document.getElementById('customWrap');
+var note=document.getElementById('formNote');
+DESIGNS.forEach(function(c){var o=document.createElement('option');o.value=c[0];o.textContent=c[0]==='custom'?'Custom design, from scratch (C$1,200)':c[1];catSel.appendChild(o)});
+function findCat(k){for(var i=0;i<DESIGNS.length;i++)if(DESIGNS[i][0]===k)return DESIGNS[i];return null}
+function fillDesigns(){
+  var c=findCat(catSel.value);
+  tplSel.innerHTML='';
+  if(!c){tplSel.disabled=true;tplSel.add(new Option('Choose a business type first',''));refreshForm();return}
+  tplSel.disabled=false;
+  if(c[2].length>1)tplSel.add(new Option('Choose a design',''));
+  c[2].forEach(function(d){
+    var o=new Option(c[0]==='custom'?'Custom design, C$1,200':d[0]+' · '+d[1].replace(/-/g,' '),d[0]+' ('+d[1]+')');
+    o.setAttribute('data-slug',d[2]);o.setAttribute('data-bookable',String(d[3]));tplSel.add(o);
+  });
+  refreshForm();
+}
+function refreshForm(){
+  var sel=tplSel.options[tplSel.selectedIndex];
+  var v=tplSel.value;
+  var isCustom=v.indexOf('Custom design')===0;
+  customWrap.hidden=!isCustom;
+  var bookable=!!v&&sel&&sel.getAttribute('data-bookable')==='1';
+  addonPicks.hidden=!bookable;
+  if(!bookable){var cbs=addonPicks.querySelectorAll('input[type=checkbox]');for(var i=0;i<cbs.length;i++)cbs[i].checked=false;}
+}
+catSel.addEventListener('change',fillDesigns);
+tplSel.addEventListener('change',refreshForm);
+tplSel.addEventListener('input',refreshForm);
+fillDesigns();
+/* Category pages link here as ?t=<slug>#order */
+try{var qp=new URLSearchParams(location.search).get('t');
+if(qp){DESIGNS.forEach(function(c){c[2].forEach(function(d){if(d[2]===qp){catSel.value=c[0];fillDesigns();tplSel.value=d[0]+' ('+d[1]+')';refreshForm();document.getElementById('order').scrollIntoView();}})})}}catch(e){}
+function fail(msg,field){note.className='formnote body-6 err';note.textContent=msg;if(field){field.setAttribute('aria-invalid','true');field.focus()}}
+orderForm.addEventListener('input',function(e){if(e.target.removeAttribute)e.target.removeAttribute('aria-invalid');if(note.classList.contains('err')){note.className='formnote body-6';note.textContent=''}});
+orderForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var btn=orderForm.querySelector('button[type=submit]');
+  var fd=new FormData(orderForm),data={};
+  fd.forEach(function(v,k){data[k]=v});
+  if(!catSel.value){fail('Choose your business type first.',catSel);return;}
+  if(!tplSel.value){fail('Choose a design to continue.',tplSel);return;}
+  if(!data.name.trim()){fail('Add your name so we know who to reply to.',orderForm.elements.name);return;}
+  var ct=data.contact.trim();
+  if(!ct){fail('Add a phone number or email so we can reach you.',orderForm.elements.contact);return;}
+  if(ct.indexOf('@')>-1?!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ct):ct.replace(/\D/g,'').length<7){fail('That phone number or email looks incomplete. Check it and try again.',orderForm.elements.contact);return;}
+  data._subject='New website order: '+(data.business.trim()||data.name.trim())+' — '+data.template;
+  data._template='table';
+  var addons=[];
+  if(data.addon_booking_portal)addons.push('Booking portal');
+  if(data.addon_tablet)addons.push('Booking tablet (C$500/tablet)');
+  if(data.addon_payments)addons.push('Online payments (Square/Stripe)');
+  if(data.custom_brief&&data.custom_brief.trim())addons.push('Custom brief: '+data.custom_brief.trim());
+  var aq='key='+encodeURIComponent('orbit-approve-2026')
+    +'&name='+encodeURIComponent(data.name.trim())
+    +'&contact='+encodeURIComponent(data.contact.trim())
+    +'&business='+encodeURIComponent((data.business||'').trim())
+    +'&template='+encodeURIComponent(data.template)
+    +'&details='+encodeURIComponent((data.details||'').trim()+((addons.length)?' | Add-ons: '+addons.join(', '):''));
+  data['Approve this order (adds it to your Google Sheet)']='https://script.google.com/macros/s/AKfycbw5epBjP7ueNaJfwckAtP6SpwWoCyzgTb1kK4oC_xzgrl3yY-DrQvLUS5XLcjx0DjWq/exec?'+aq;
+  btn.disabled=true;var oldBtn=btn.textContent;btn.textContent='Sending';note.className='formnote body-6';note.textContent='';
+  /* Abort after 20s so the button never sticks on Sending; the abort lands in .catch and shows the usual error. */
+  var ctl=window.AbortController?new AbortController():null;
+  var timer=ctl?setTimeout(function(){ctl.abort()},20000):0;
+  function done(){clearTimeout(timer);btn.disabled=false;btn.textContent=oldBtn;}
+  fetch('https://formsubmit.co/ajax/support@str8tech.ca',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
+    .then(function(r){return r.json()})
+    .then(function(j){
+      if(j&&String(j.success)==='true'){var first=data.name.trim().split(' ')[0];note.className='formnote body-6 ok';note.textContent='Thanks '+first+'. Your request is on its way and we will reply within a day.';orderForm.reset();fillDesigns();}
+      else{fail('That did not send. Please text 403-899-1550 instead.');}
+      done();
+    })
+    .catch(function(){fail('That did not send. Please text 403-899-1550 instead.');done();});
+});}
+</script>
+</body>
+</html>
