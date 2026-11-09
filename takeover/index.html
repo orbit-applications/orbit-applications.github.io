@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Take over call · Str8Tech</title>
+<style>
+  :root { --lime: #A6CE39; --bg: #000; --fg: #fff; --dim: #9a9a9a; --card: #111; --line: #262626; --red: #ff5a5a; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 18px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 18px 20px 32px; }
+  .logo { font-weight: 800; font-size: 22px; }
+  .logo span { color: var(--lime); }
+  h1 { font-size: clamp(26px, 6.5vw, 36px); margin: 14px 0 4px; line-height: 1.15; }
+  .state { display: inline-block; padding: 6px 14px; border-radius: 999px; font-weight: 800; font-size: 16px; background: #222; margin: 6px 0 14px; }
+  .state.hold { background: var(--lime); color: #000; animation: blink 1.2s infinite; }
+  .state.human { background: var(--lime); color: #000; }
+  .state.ended { background: #333; color: var(--dim); }
+  @keyframes blink { 50% { opacity: .55; } }
+  .btn { display: block; width: 100%; min-height: 72px; border-radius: 18px; border: 0; font-size: 24px; font-weight: 800; cursor: pointer; margin: 10px 0; }
+  .btn.lime { background: var(--lime); color: #000; }
+  .btn.end { background: var(--red); color: #fff; min-height: 60px; font-size: 20px; }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .note { color: var(--dim); font-size: 15px; margin: 4px 0 12px; min-height: 1.4em; }
+  .transcript { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px; max-height: 50vh; overflow-y: auto; }
+  .msg { margin: 8px 0; padding: 10px 14px; border-radius: 14px; max-width: 90%; overflow-wrap: anywhere; background: #1d1d1d; }
+  .msg.visitor { background: #2a3a10; margin-left: auto; }
+  .msg.nash { border-left: 4px solid var(--lime); }
+  .who { display: block; font-size: 13px; color: var(--dim); margin-bottom: 2px; }
+  .sys { text-align: center; color: var(--dim); font-size: 14px; margin: 8px 0; }
+  .pin { display: flex; gap: 10px; margin-top: 16px; }
+  .pin input { flex: 1; min-width: 0; min-height: 60px; font-size: 24px; border-radius: 14px; border: 2px solid #333; background: #0c0c0c; color: #fff; padding: 0 14px; letter-spacing: 4px; }
+  .pin .btn { width: 110px; margin: 0; min-height: 60px; font-size: 20px; }
+  .names .btn { background: #1d1d1d; color: #fff; border: 2px solid #333; }
+  .names .btn:hover, .names .btn:focus-visible { border-color: var(--lime); }
+  .locked { background: #1d1d1d; border: 2px solid var(--lime); border-radius: 18px; padding: 18px; font-size: 22px; font-weight: 800; text-align: center; margin: 10px 0; }
+  .controls { margin: 4px 0 6px; }
+  .btn.hold { background: #1d1d1d; color: #fff; border: 2px solid var(--lime); }
+  .btn.hold.on { background: var(--lime); color: #000; }
+  .xfer { display: flex; gap: 10px; }
+  .xfer .btn { flex: 1; min-width: 0; min-height: 60px; font-size: 19px; background: #1d1d1d; color: #fff; border: 2px solid #333; }
+  .controls .btn:disabled { opacity: .4; }
+  .link { background: none; border: 0; color: var(--dim); font-size: 15px; text-decoration: underline; padding: 6px 0; cursor: pointer; }
+  .list a { display: block; padding: 16px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); color: #fff; text-decoration: none; margin: 10px 0; font-weight: 700; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">Str8<span>Tech</span></div>
+
+  <section id="pinView" class="hidden">
+    <h1>Enter your staff PIN</h1>
+    <p class="note">You only need to do this once on this phone.</p>
+    <div class="pin">
+      <input id="pinIn" type="password" inputmode="numeric" autocomplete="one-time-code" aria-label="Staff PIN">
+      <button class="btn lime" id="pinGo">Go</button>
+    </div>
+    <p class="note" id="pinMsg"></p>
+  </section>
+
+  <section id="nameView" class="hidden">
+    <h1>Who's taking calls?</h1>
+    <p class="note">Tap your name. The others will see it when you take a call.</p>
+    <div class="names">
+      <button class="btn" data-name="Nash">Nash</button>
+      <button class="btn" data-name="Dad">Dad</button>
+      <button class="btn" data-name="Cole">Cole</button>
+    </div>
+  </section>
+
+  <section id="listView" class="hidden">
+    <h1>Live calls</h1>
+    <div class="list" id="list"></div>
+    <p class="note" id="listNote"></p>
+  </section>
+
+  <section id="callView" class="hidden">
+    <h1 id="title">Someone's on the line</h1>
+    <div class="state" id="state">Connecting…</div>
+    <button class="btn lime" id="takeBtn" disabled>Take over</button>
+    <div class="locked hidden" id="locked" role="status"></div>
+    <button class="link" id="changeName">Not you? Change name</button>
+    <p class="note" id="note"></p>
+    <div class="controls hidden" id="controls">
+      <button class="btn hold" id="holdBtn">Hold</button>
+      <div class="xfer" id="xfer"></div>
+    </div>
+    <button class="btn lime hidden" id="tapAudio">Tap to hear the caller</button>
+    <button class="btn end hidden" id="hangBtn">Hang up</button>
+    <div class="transcript" id="transcript" aria-live="polite"></div>
+  </section>
+</div>
+<audio id="remote" playsinline></audio>
+
+<script src="../call/config.js"></script>
+<script src="../call/relay.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var callId = new URLSearchParams(location.search).get('call');
+  var ws = null, relay = null, live = false, ended = false;
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition, rec = null, wantListen = false;
+  var mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  var T = window.__takeover = { state: '', tookOver: false, takenBy: null, relay: null, onHold: false, transferTo: null, transferredTo: null, offered: false };
+  var LABEL = { ai: 'Talking to the AI', order: 'AI is taking a website order', holding: 'Waiting for you — take over now!', human: "You're live with the caller", wrapup: 'AI is wrapping up', ended: 'Call ended' };
+  var last = {}; // the latest status from the server
+
+  function show(id) { ['pinView', 'nameView', 'listView', 'callView'].forEach(function (v) { $(v).classList.toggle('hidden', v !== id); }); }
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  var NAMES = ['Nash', 'Dad', 'Cole'];
+  function me() { var n = localStorage.getItem('str8tech-rep'); return NAMES.indexOf(n) >= 0 ? n : ''; }
+
+  function addLine(l) {
+    var d = document.createElement('div');
+    if (l.speaker === 'system') { d.className = 'sys'; d.textContent = l.text; }
+    else {
+      d.className = 'msg ' + l.speaker;
+      var w = document.createElement('span'); w.className = 'who';
+      w.textContent = (l.speaker === 'visitor' ? 'Caller' : l.speaker === 'nash' ? (T.tookOver ? 'You' : l.name || 'Team') : 'AI') + ' · ' + new Date(l.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      d.appendChild(w); d.appendChild(document.createTextNode(l.text));
+    }
+    $('transcript').appendChild(d);
+    $('transcript').scrollTop = $('transcript').scrollHeight;
+  }
+  function setState(s) {
+    T.state = s;
+    var label = LABEL[s] || s, cls = s === 'holding' ? 'hold' : s;
+    if (s === 'human' && T.tookOver) {
+      if (last.transferTo) { label = 'Transferring to ' + last.transferTo + '…'; cls = 'hold'; }
+      else if (last.onHold) { label = 'Caller on hold'; cls = 'hold'; }
+    } else if (s === 'human' && T.offered) { label = 'Transfer for you — join now!'; cls = 'hold'; }
+    else if (s === 'human' && T.takenBy) label = (last.transferTo ? 'Transferring to ' + last.transferTo : 'Taken by ' + T.takenBy);
+    $('state').textContent = label;
+    $('state').className = 'state ' + cls;
+    $('takeBtn').disabled = s === 'ended' || (!T.offered && (s === 'human' || !!T.takenBy));
+    if (s === 'ended') { ended = true; $('title').textContent = 'Call ended'; $('takeBtn').classList.add('hidden'); $('hangBtn').classList.add('hidden'); $('controls').classList.add('hidden'); stopAll(); }
+  }
+
+  // Who may join, from the server's status. During a transfer only the named person can.
+  function onStatus(m) {
+    last = m;
+    show('callView');
+    T.transferTo = m.transferTo || null;
+    T.onHold = !!m.onHold;
+    if (T.tookOver) renderControls();
+    else if (m.transferTo && m.transferTo === me()) offer(m.transferFrom);
+    else if (m.transferTo) lock('This call was transferred to ' + m.transferTo, m.takenBy);
+    else if (m.takenBy) lock(T.transferredTo === m.takenBy ? 'You transferred the call to ' + m.takenBy : 'Already taken over by ' + m.takenBy, m.takenBy);
+    else unlock();
+    setState(m.state);
+    if (m.brain === 'mock' && !m.takenBy) $('note').textContent = 'Test mode (mock AI).';
+  }
+
+  function connect() {
+    ws = new WebSocket(STR8TECH_CALL.wsUrl());
+    ws.binaryType = 'arraybuffer';
+    relay = T.relay = AudioRelay(ws, $('remote'), function () { $('tapAudio').classList.remove('hidden'); });
+    ws.onopen = function () { ws.send(JSON.stringify({ type: 'staff-hello', pin: pin(), call: callId })); };
+    ws.onclose = function () { if (!ended && callId) { $('note').textContent = 'Connection lost.'; } };
+    ws.onmessage = function (e) {
+      if (e.data instanceof ArrayBuffer) return relay.receive(e.data);
+      var m; try { m = JSON.parse(e.data); } catch (x) { return; }
+      if (m.type === 'bad-pin') { localStorage.removeItem('str8tech-pin'); show('pinView'); $('pinMsg').textContent = 'That PIN did not work.'; }
+      else if (m.type === 'live-calls') renderList(m.calls);
+      else if (m.type === 'no-call') { show('callView'); $('title').textContent = 'This call has ended'; setState('ended'); }
+      else if (m.type === 'status') onStatus(m);
+      else if (m.type === 'taken') lock(m.transferTo ? 'This call was transferred to ' + m.transferTo : 'Already taken over by ' + m.by, m.by);
+      else if (m.type === 'transcript') { $('transcript').innerHTML = ''; m.lines.forEach(addLine); }
+      else if (m.type === 'line') addLine(m);
+      else if (m.type === 'took-over') tookOver(m.by);
+      else if (m.type === 'transferred') transferredAway(m.to, m.text);
+      else if (m.type === 'transfer-failed') transferFailed(m.text);
+      else if (m.type === 'audio-start') { if (T.tookOver && !T.onHold) relay.startReceiving(m.mime); }
+      else if (m.type === 'error') { $('note').textContent = m.text; if (T.tookOver) renderControls(); }
+      else if (m.type === 'end') setState('ended');
+    };
+  }
+
+  function renderList(calls) {
+    show('listView');
+    $('list').innerHTML = '';
+    $('listNote').textContent = calls.length ? '' : 'No one is on the line right now.';
+    calls.forEach(function (c) {
+      var a = document.createElement('a');
+      a.href = '?call=' + encodeURIComponent(c.id) + (location.search.match(/[?&]server=[^&]+/) ? '&' + location.search.match(/server=[^&]+/)[0] : '');
+      a.textContent = 'Call started ' + new Date(c.startedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) + ' — ' + (c.takenBy ? 'Taken by ' + c.takenBy : LABEL[c.state] || c.state);
+      $('list').appendChild(a);
+    });
+  }
+
+  // Someone else has the call (or it is being transferred to someone else): no button, no audio, just who has it.
+  function lock(text, by) {
+    if (T.tookOver) return;
+    T.offered = false;
+    T.takenBy = by || 'someone else';
+    $('takeBtn').disabled = true;
+    $('takeBtn').classList.add('hidden');
+    $('changeName').classList.add('hidden');
+    $('locked').textContent = text;
+    $('locked').classList.remove('hidden');
+    $('title').textContent = T.transferredTo ? 'Call transferred' : 'This call is taken';
+    $('note').textContent = 'You can close this page.';
+  }
+  // Nobody has the call yet.
+  function unlock() {
+    T.offered = false; T.takenBy = null;
+    $('locked').classList.add('hidden');
+    $('takeBtn').classList.remove('hidden');
+    $('changeName').classList.remove('hidden');
+    nameLabel();
+    $('title').textContent = "Someone's on the line";
+  }
+  // A call transferred to me: only I can join.
+  function offer(from) {
+    T.offered = true; T.takenBy = null;
+    $('locked').classList.add('hidden');
+    $('changeName').classList.add('hidden');
+    $('takeBtn').classList.remove('hidden');
+    $('takeBtn').textContent = 'Join the call as ' + me();
+    $('title').textContent = (from || 'Someone') + ' transferred this call to you';
+    $('note').textContent = 'The caller is on hold. Join within 30 seconds.';
+  }
+
+  function tookOver(by) {
+    T.tookOver = true; T.offered = false; T.transferredTo = null;
+    T.takenBy = by || me();
+    $('locked').classList.add('hidden');
+    $('changeName').classList.add('hidden');
+    $('title').textContent = "You're on the call";
+    $('takeBtn').classList.add('hidden');
+    $('hangBtn').classList.remove('hidden');
+    $('note').textContent = 'The AI stepped aside. Just talk.';
+    buildTransfers();
+    $('controls').classList.remove('hidden');
+    renderControls();
+    micOn();
+  }
+
+  // ---------- advisor controls: Hold / Resume and Transfer ----------
+  function micOn() {
+    relay.restartSending().then(function () {
+      if (SR && !mobile) listen();
+    }).catch(function () { $('note').textContent = 'Please allow the microphone so the caller can hear you.'; });
+  }
+  function micOff() {
+    stopListen();
+    relay.stopSending(); relay.stopReceiving();
+    $('tapAudio').classList.add('hidden');
+  }
+  function buildTransfers() {
+    $('xfer').innerHTML = '';
+    NAMES.filter(function (n) { return n !== T.takenBy; }).forEach(function (n) { // only the other two, never yourself
+      var b = document.createElement('button');
+      b.className = 'btn'; b.textContent = 'Transfer to ' + n; b.setAttribute('data-to', n);
+      b.onclick = function () {
+        micOff(); // the server puts the caller on hold
+        ws.send(JSON.stringify({ type: 'transfer', to: n }));
+        T.transferTo = n; renderControls();
+      };
+      $('xfer').appendChild(b);
+    });
+  }
+  function renderControls() {
+    var busy = !!T.transferTo;
+    $('holdBtn').textContent = T.onHold && !busy ? 'Resume' : 'Hold';
+    $('holdBtn').classList.toggle('on', T.onHold && !busy);
+    $('holdBtn').disabled = busy;
+    Array.prototype.forEach.call($('xfer').children, function (b) { b.disabled = busy; });
+    if (busy) $('note').textContent = 'Transferring to ' + T.transferTo + '. The caller is on hold. Waiting up to 30 seconds…';
+    else if (T.onHold) $('note').textContent = 'The caller is on hold and hears music. Your mic is off. Tap Resume to talk again.';
+    else if (/^Transferring|on hold/.test($('note').textContent)) $('note').textContent = 'Just talk.';
+  }
+  $('holdBtn').onclick = function () {
+    var on = !T.onHold;
+    T.onHold = on;
+    ws.send(JSON.stringify({ type: 'hold', on: on }));
+    if (on) micOff(); else micOn(); // a fresh stream after the hold message, so it starts on the caller's side too
+    renderControls();
+  };
+  function transferredAway(to, text) {
+    T.tookOver = false; T.transferredTo = to; T.transferTo = null;
+    micOff();
+    $('controls').classList.add('hidden');
+    $('hangBtn').classList.add('hidden');
+    lock(text || 'You transferred the call to ' + to, to);
+  }
+  function transferFailed(text) {
+    T.transferTo = null; T.onHold = false;
+    renderControls();
+    $('note').textContent = text;
+    micOn();
+  }
+
+  // Optional: transcribe Nash's side where the browser allows two mic users.
+  function stopListen() {
+    wantListen = false;
+    if (rec) try { rec.abort(); } catch (e) {}
+  }
+  function listen() {
+    if (wantListen) return;
+    wantListen = true;
+    rec = new SR(); rec.lang = 'en-US'; rec.interimResults = false;
+    rec.onresult = function (e) { var t = e.results[0][0].transcript.trim(); if (t && ws.readyState === 1) ws.send(JSON.stringify({ type: 'heard', text: t })); };
+    rec.onerror = function (e) { if (/not-allowed|audio-capture|network/.test(e.error)) wantListen = false; };
+    rec.onend = function () { if (wantListen && !ended) setTimeout(function () { wantListen = false; listen(); }, 200); };
+    try { rec.start(); } catch (e) {}
+  }
+  function stopAll() {
+    wantListen = false;
+    if (rec) try { rec.abort(); } catch (e) {}
+    if (relay) relay.stop();
+  }
+
+  $('takeBtn').onclick = function () {
+    unlockAudio($('remote'));
+    $('note').textContent = '';
+    $('takeBtn').disabled = true;
+    ws.send(JSON.stringify({ type: 'takeover', name: me() }));
+  };
+  $('hangBtn').onclick = function () {
+    if (ws.readyState === 1) ws.send(JSON.stringify({ type: 'hang-up' }));
+    setState('ended');
+  };
+  $('tapAudio').onclick = function () { $('remote').play(); $('tapAudio').classList.add('hidden'); };
+  $('pinGo').onclick = function () {
+    var v = $('pinIn').value.trim();
+    if (!v) return;
+    localStorage.setItem('str8tech-pin', v);
+    $('pinMsg').textContent = '';
+    if (me()) connect(); else show('nameView');
+  };
+  // Pick your name (after the PIN, before joining). Saved on this phone; "Not you?" changes it.
+  function nameLabel() { $('takeBtn').textContent = 'Take over as ' + me(); $('changeName').textContent = 'Not ' + me() + '? Change name'; }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-name]'), function (b) {
+    b.onclick = function () {
+      localStorage.setItem('str8tech-rep', b.getAttribute('data-name'));
+      nameLabel();
+      if (ws && ws.readyState === 1) show(callId ? 'callView' : 'listView'); else connect();
+    };
+  });
+  $('changeName').onclick = function () { show('nameView'); };
+  $('pinIn').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('pinGo').click(); });
+
+  if (me()) nameLabel();
+  if (!pin()) show('pinView'); else if (!me()) show('nameView'); else connect();
+})();
+</script>
+</body>
+</html>
