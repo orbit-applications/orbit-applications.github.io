@@ -747,8 +747,11 @@ orderForm.addEventListener('submit',function(e){
     +'&details='+encodeURIComponent((data.details||'').trim()+((addons.length)?' | Add-ons: '+addons.join(', '):''));
   data['Approve this order (adds it to your Google Sheet)']='https://script.google.com/macros/s/AKfycbw5epBjP7ueNaJfwckAtP6SpwWoCyzgTb1kK4oC_xzgrl3yY-DrQvLUS5XLcjx0DjWq/exec?'+aq;
   btn.disabled=true;var oldBtn=btn.textContent;btn.textContent='Sending';note.className='formnote body-6';note.textContent='';
-  function done(){btn.disabled=false;btn.textContent=oldBtn;}
-  fetch('https://formsubmit.co/ajax/support@str8tech.ca',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+  /* Abort after 20s so the button never sticks on Sending; the abort lands in .catch and shows the usual error. */
+  var ctl=window.AbortController?new AbortController():null;
+  var timer=ctl?setTimeout(function(){ctl.abort()},20000):0;
+  function done(){clearTimeout(timer);btn.disabled=false;btn.textContent=oldBtn;}
+  fetch('https://formsubmit.co/ajax/support@str8tech.ca',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
     .then(function(r){return r.json()})
     .then(function(j){
       if(j&&String(j.success)==='true'){var first=data.name.trim().split(' ')[0];note.className='formnote body-6 ok';note.textContent='Thanks '+first+'. Your request is on its way and we will reply within a day.';orderForm.reset();fillDesigns();}
