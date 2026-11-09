@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Call log · Str8Tech</title>
+<style>
+  :root { --lime: #A6CE39; --bg: #000; --fg: #fff; --dim: #9a9a9a; --card: #111; --line: #262626; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 18px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 18px 20px 40px; }
+  .logo { font-weight: 800; font-size: 22px; }
+  .logo span { color: var(--lime); }
+  h1 { font-size: clamp(26px, 6.5vw, 36px); margin: 14px 0 6px; }
+  .note { color: var(--dim); font-size: 15px; margin: 0 0 14px; }
+  .btn { min-height: 56px; padding: 0 20px; border-radius: 14px; border: 0; font-size: 18px; font-weight: 800; cursor: pointer; background: var(--lime); color: #000; }
+  .btn.ghost { background: transparent; color: #fff; border: 2px solid #444; }
+  .btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .pin { display: flex; gap: 10px; }
+  .pin input { flex: 1; min-width: 0; min-height: 56px; font-size: 22px; border-radius: 14px; border: 2px solid #333; background: #0c0c0c; color: #fff; padding: 0 14px; letter-spacing: 4px; }
+  .call { background: var(--card); border: 1px solid var(--line); border-radius: 16px; margin: 12px 0; overflow: hidden; }
+  .call summary { list-style: none; cursor: pointer; padding: 16px; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .call summary::-webkit-details-marker { display: none; }
+  .when { font-weight: 800; }
+  .len { color: var(--dim); text-align: right; }
+  .contact { grid-column: 1 / -1; overflow-wrap: anywhere; }
+  .contact b { color: var(--lime); }
+  .tag { display: inline-block; font-size: 13px; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: #222; }
+  .tag.taken-over { background: var(--lime); color: #000; }
+  .tag.no-answer { background: #5a2a2a; }
+  .lines { border-top: 1px solid var(--line); padding: 8px 16px 16px; }
+  .msg { margin: 8px 0; padding: 10px 14px; border-radius: 14px; max-width: 92%; overflow-wrap: anywhere; background: #1d1d1d; }
+  .msg.visitor { background: #2a3a10; margin-left: auto; }
+  .msg.nash { border-left: 4px solid var(--lime); }
+  .who { display: block; font-size: 13px; color: var(--dim); margin-bottom: 2px; }
+  .tag.order { background: var(--lime); color: #000; margin-left: 6px; }
+  .tag.order.warn { background: #5a2a2a; color: #fff; }
+  .orderbox { border-top: 1px solid var(--line); padding: 12px 16px; display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; font-size: 15px; }
+  .orderbox dt { color: var(--dim); }
+  .orderbox dd { margin: 0; overflow-wrap: anywhere; }
+  .sys { text-align: center; color: var(--dim); font-size: 14px; margin: 8px 0; }
+  .bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">Str8<span>Tech</span></div>
+  <div class="bar">
+    <h1>Calls</h1>
+    <button class="btn ghost hidden" id="refresh">Refresh</button>
+  </div>
+
+  <section id="pinView" class="hidden">
+    <p class="note">Enter your staff PIN to see calls.</p>
+    <div class="pin">
+      <input id="pinIn" type="password" inputmode="numeric" aria-label="Staff PIN">
+      <button class="btn" id="pinGo">Go</button>
+    </div>
+    <p class="note" id="pinMsg"></p>
+  </section>
+
+  <p class="note" id="summary"></p>
+  <div id="list"></div>
+</div>
+
+<script src="../call/config.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var OUT = { 'ai-only': 'AI only', 'taken-over': 'Taken over', 'no-answer': 'No answer' };
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  function fmtLen(s) { var m = Math.floor(s / 60); return (m ? m + 'm ' : '') + (s % 60) + 's'; }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+  var ORDER = { sent: 'Order emailed', 'send-failed': 'Order NOT emailed', incomplete: 'Order unfinished', cancelled: 'Order cancelled', 'in-progress': 'Order unfinished' };
+  function orderBox(o) {
+    var box = el('dl', 'orderbox');
+    [['Order', ORDER[o.status] || o.status], ['Website', o.type], ['Name', o.name], ['Business', o.business], ['What they do', o.what],
+     ['Design', o.design], ['Phone', o.phone || (o.phone === null ? 'Not given' : '')], ['Email', o.email ? o.email + (o.emailConfirmed ? ' (confirmed)' : '') : ''],
+     ['Booking tablet', o.takesBookings ? (o.tablet ? 'Yes' : 'No') : (o.takesBookings === false ? 'No bookings' : '')],
+     ['Email to support', o.emailSend ? (o.emailSend.ok ? 'Sent' : 'Failed: ' + o.emailSend.detail) : '']
+    ].forEach(function (r) {
+      if (!r[1]) return;
+      box.appendChild(el('dt', null, r[0])); box.appendChild(el('dd', null, String(r[1])));
+    });
+    return box;
+  }
+
+  function load() {
+    $('summary').textContent = 'Loading…';
+    fetch(STR8TECH_CALL.base() + '/calls.json', { headers: { 'X-Staff-Pin': pin() }, cache: 'no-store' })
+      .then(function (r) {
+        if (r.status === 401) throw new Error('pin');
+        if (!r.ok) throw new Error('http');
+        return r.json();
+      })
+      .then(render)
+      .catch(function (e) {
+        if (e.message === 'pin') { localStorage.removeItem('str8tech-pin'); $('pinView').classList.remove('hidden'); $('pinMsg').textContent = pin() ? '' : 'That PIN did not work.'; $('summary').textContent = ''; }
+        else $('summary').textContent = "Couldn't load calls. Is the call server running?";
+      });
+  }
+
+  function render(calls) {
+    $('pinView').classList.add('hidden');
+    $('refresh').classList.remove('hidden');
+    var list = $('list'); list.innerHTML = '';
+    calls = calls.slice().reverse();
+    var withContact = calls.filter(function (c) { return c.contact; }).length;
+    var orders = calls.filter(function (c) { return c.order && (c.order.status === 'sent' || c.order.status === 'send-failed'); }).length;
+    $('summary').textContent = calls.length + ' call' + (calls.length === 1 ? '' : 's') + ' · ' + withContact + ' left contact info · ' + orders + ' website order' + (orders === 1 ? '' : 's');
+    calls.forEach(function (c) {
+      var d = el('details', 'call');
+      var s = el('summary');
+      s.appendChild(el('div', 'when', new Date(c.time).toLocaleString([], { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })));
+      s.appendChild(el('div', 'len', fmtLen(c.durationSec || 0)));
+      // "Taken over by Nash → Cole" after a transfer.
+      var who = [c.takenBy || 'Nash'].concat((c.transfers || []).filter(function (x) { return x.outcome === 'joined'; }).map(function (x) { return x.to; }));
+      var t = el('div'); t.appendChild(el('span', 'tag ' + c.outcome, c.outcome === 'taken-over' ? 'Taken over by ' + who.join(' → ') : OUT[c.outcome] || c.outcome));
+      if (c.order) t.appendChild(el('span', 'tag order' + (c.order.status === 'sent' ? '' : ' warn'), ORDER[c.order.status] || 'Order'));
+      s.appendChild(t);
+      var contact = el('div', 'contact');
+      if (c.contact) {
+        contact.appendChild(el('b', null, c.contact.name || 'No name'));
+        contact.appendChild(document.createTextNode(' · ' + (c.contact.phone || c.contact.email || c.contact.note || '')));
+      } else contact.appendChild(el('span', 'note', 'No contact info'));
+      s.appendChild(contact);
+      d.appendChild(s);
+      if (c.order) d.appendChild(orderBox(c.order));
+      var lines = el('div', 'lines');
+      (c.transcript || []).forEach(function (l) {
+        if (l.speaker === 'system') return lines.appendChild(el('div', 'sys', l.text));
+        var m = el('div', 'msg ' + l.speaker);
+        m.appendChild(el('span', 'who', (l.speaker === 'visitor' ? 'Caller' : l.speaker === 'nash' ? (l.name || c.takenBy || 'Nash') : 'AI') + ' · ' + new Date(l.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', second: '2-digit' })));
+        m.appendChild(document.createTextNode(l.text));
+        lines.appendChild(m);
+      });
+      d.appendChild(lines);
+      list.appendChild(d);
+    });
+  }
+
+  $('pinGo').onclick = function () {
+    var v = $('pinIn').value.trim(); if (!v) return;
+    localStorage.setItem('str8tech-pin', v); load();
+  };
+  $('pinIn').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('pinGo').click(); });
+  $('refresh').onclick = load;
+  if (pin()) load(); else $('pinView').classList.remove('hidden');
+})();
+</script>
+</body>
+</html>
