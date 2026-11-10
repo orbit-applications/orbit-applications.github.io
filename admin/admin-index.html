@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin · Str8Tech</title>
+<style>
+  :root { --lime: #A6CE39; --bg: #000; --fg: #fff; --dim: #9a9a9a; --card: #111; --line: #262626; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 18px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 18px 20px 32px; }
+  .logo { font-weight: 800; font-size: 22px; }
+  .logo span { color: var(--lime); }
+  h1 { font-size: clamp(26px, 6.5vw, 36px); margin: 14px 0 4px; line-height: 1.15; }
+  .note { color: var(--dim); font-size: 15px; margin: 4px 0 12px; }
+  .pin { display: flex; gap: 10px; margin-top: 16px; }
+  .pin input { flex: 1; min-width: 0; min-height: 60px; font-size: 24px; border-radius: 14px; border: 2px solid #333; background: #0c0c0c; color: #fff; padding: 0 14px; letter-spacing: 4px; }
+  .btn { display: block; width: 100%; min-height: 72px; border-radius: 18px; border: 0; font-size: 24px; font-weight: 800; cursor: pointer; margin: 10px 0; }
+  .btn.lime { background: var(--lime); color: #000; }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .tile { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 16px; color: #fff; text-decoration: none; }
+  .tile b { display: block; font-size: 22px; margin-bottom: 4px; }
+  .tile span { color: var(--dim); font-size: 15px; }
+  .tile:active { border-color: var(--lime); }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">Str8<span>Tech</span></div>
+
+  <section id="pinView" class="hidden">
+    <h1>Enter your staff PIN</h1>
+    <p class="note">You only need to do this once on this phone.</p>
+    <div class="pin">
+      <input id="pinIn" type="password" inputmode="numeric" autocomplete="one-time-code" aria-label="Staff PIN">
+      <button class="btn lime" id="pinGo" style="width:110px;min-height:60px;font-size:20px;margin:0;">Go</button>
+    </div>
+    <p class="note" id="pinMsg"></p>
+  </section>
+
+  <section id="adminView" class="hidden">
+    <h1>Business suite</h1>
+    <p class="note">Everything for running Str8Tech, in one place.</p>
+    <div class="tiles">
+      <a class="tile" href="calendar.html"><b>Calendar</b><span>Team dates and events</span></a>
+      <a class="tile" href="../meet/"><b>Meetings</b><span>Make a meeting, send a link</span></a>
+      <a class="tile" href="https://mail.hostinger.com/" target="_blank" rel="noopener"><b>Email</b><span>Open the inbox</span></a>
+      <a class="tile" href="../calls/"><b>Call log</b><span>Past calls and transcripts</span></a>
+      <a class="tile" href="https://docs.google.com/spreadsheets/d/1EWlBls49AJtu-qSTorRnXpkou19q3cOPDobzkjMH3v0/edit" target="_blank" rel="noopener"><b>Expenses</b><span>Business spending sheet</span></a>
+      <a class="tile" href="https://str8tech.ca/"><b>Website</b><span>Back to str8tech.ca</span></a>
+    </div>
+    <p class="note" style="margin-top:18px;">Meetings are coming next — the calendar is live now.</p>
+  </section>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function show(id) { ['pinView', 'adminView'].forEach(function (v) { $(v).classList.toggle('hidden', v !== id); }); }
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  // The PIN is checked by the server on the first API call; a wrong PIN just shows the
+  // PIN screen again when the calendar (or any API) says no. There is no separate check here.
+  $('pinGo').onclick = function () {
+    var v = $('pinIn').value.trim();
+    if (!v) return;
+    localStorage.setItem('str8tech-pin', v);
+    $('pinMsg').textContent = '';
+    show('adminView');
+  };
+  $('pinIn').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('pinGo').click(); });
+  if (!pin()) show('pinView'); else show('adminView');
+})();
+</script>
+</body>
+</html>
