@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Calendar · Str8Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --lime: #A6CE39; --lime-soft: rgba(166, 206, 57, .14); --bg: #0B0B0C; --fg: #F5F5F2; --dim: #9A9A94; --card: #17181A; --card2: #1E1F22; --line: #26272B; --red: #FF6B6B; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 16px/1.5 Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 20px 20px 40px; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+  .logo span { color: var(--lime); }
+  a.back { color: var(--dim); font-size: 15px; font-weight: 600; text-decoration: none; }
+  a.back:hover { color: var(--fg); }
+  h1 { font-size: clamp(30px, 7vw, 40px); font-weight: 800; letter-spacing: -1px; margin: 16px 0 2px; line-height: 1.1; }
+  .note { color: var(--dim); font-size: 15px; margin: 4px 0 12px; }
+  .sub { display: inline-block; margin: 10px 0 4px; padding: 10px 16px; border-radius: 999px; background: var(--lime-soft); color: var(--lime); font-size: 15px; font-weight: 700; text-decoration: none; border: 1px solid rgba(166, 206, 57, .35); }
+  .nav { display: flex; align-items: center; gap: 12px; margin: 18px 0 12px; }
+  .nav b { flex: 1; text-align: center; font-size: 21px; font-weight: 800; letter-spacing: -0.3px; }
+  .nav button { width: 48px; height: 48px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); color: var(--fg); font-size: 22px; font-weight: 700; cursor: pointer; }
+  .nav button:active { background: var(--card2); }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .dow { text-align: center; color: var(--dim); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 6px 0 2px; }
+  .day { min-height: 56px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); color: var(--fg); font: 700 16px Manrope, sans-serif; cursor: pointer; position: relative; padding-top: 8px; }
+  .day.other { opacity: .28; }
+  .day.today { border-color: var(--lime); box-shadow: 0 0 0 1px var(--lime); }
+  .day.sel { background: var(--lime); color: #000; border-color: var(--lime); }
+  .day .dot { position: absolute; left: 50%; bottom: 7px; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
+  .day.sel .dot { background: #000; }
+  .day .count { position: absolute; right: 6px; top: 5px; font-size: 10px; font-weight: 800; background: var(--lime); color: #000; border-radius: 999px; min-width: 18px; height: 18px; line-height: 18px; text-align: center; padding: 0 4px; }
+  .day.sel .count { background: #000; color: var(--lime); }
+  h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; margin: 22px 0 4px; }
+  .ev { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px; margin: 10px 0; }
+  .ev .time { flex: 0 0 auto; background: var(--lime-soft); color: var(--lime); font-weight: 800; font-size: 14px; border-radius: 12px; padding: 8px 10px; text-align: center; min-width: 86px; border: 1px solid rgba(166, 206, 57, .3); }
+  .ev .body { flex: 1; min-width: 0; }
+  .ev b { font-size: 18px; font-weight: 800; letter-spacing: -0.2px; display: block; }
+  .ev .meta { color: var(--dim); font-size: 14px; margin-top: 2px; }
+  .ev .del { flex: 0 0 auto; background: none; border: 0; color: var(--red); font-size: 14px; font-weight: 700; cursor: pointer; padding: 4px 0 0; }
+  .ev.meeting { border-color: rgba(166, 206, 57, .45); }
+  .ev .tag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--lime); margin-top: 4px; }
+  form.add { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-top: 20px; }
+  form.add b { font-size: 19px; font-weight: 800; }
+  form.add input, form.add textarea { width: 100%; min-height: 54px; border-radius: 14px; border: 1px solid var(--line); background: #0E0F10; color: var(--fg); font: 600 16px Manrope, sans-serif; padding: 0 14px; margin: 8px 0; }
+  form.add input:focus, form.add textarea:focus { outline: none; border-color: var(--lime); }
+  form.add textarea { min-height: 76px; padding: 12px 14px; resize: vertical; }
+  form.add .row { display: flex; gap: 10px; }
+  form.add .row input { flex: 1; min-width: 0; }
+  .btn { display: block; width: 100%; min-height: 58px; border-radius: 16px; border: 0; font-size: 18px; font-weight: 800; cursor: pointer; background: var(--lime); color: #000; margin-top: 10px; font-family: Manrope, sans-serif; }
+  .btn:active { transform: scale(.99); }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="logo">Str8<span>Tech</span></div>
+    <a class="back" href="./">← Suite</a>
+  </div>
+  <h1>Calendar</h1>
+  <p class="note" id="note">Team dates, shared with Nash, Barclay and Cole.</p>
+  <a class="sub" id="subLink" href="#">Add to iPhone Calendar</a>
+
+  <div class="nav">
+    <button id="prev" aria-label="Previous month">‹</button>
+    <b id="monthLabel"></b>
+    <button id="next" aria-label="Next month">›</button>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <h2 id="dayLabel"></h2>
+  <div id="events"></div>
+
+  <form class="add" id="addForm">
+    <b>Add an event</b>
+    <input id="fTitle" type="text" placeholder="Title (e.g. Walk-in at Vivid Nails)" maxlength="120" required>
+    <div class="row">
+      <input id="fDate" type="date" required>
+      <input id="fStart" type="time" aria-label="Start time">
+      <input id="fEnd" type="time" aria-label="End time">
+    </div>
+    <textarea id="fNotes" placeholder="Notes (optional)" maxlength="500"></textarea>
+    <button class="btn" type="submit">Add event</button>
+  </form>
+</div>
+<script src="../call/config.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var base = (window.STR8TECH_CALL ? STR8TECH_CALL.base() : location.origin).replace(/\/$/, '');
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'X-Staff-Pin': pin(), 'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch(base + path, opts);
+  }
+  // 24-hour "14:30" -> 12-hour "2:30 PM".
+  function fmt12(t) {
+    if (!t) return '';
+    var p = t.split(':');
+    var h = parseInt(p[0], 10);
+    var m = p[1] || '00';
+    var ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if (h === 0) h = 12;
+    return h + ':' + m + ' ' + ap;
+  }
+  function fmtRange(e) {
+    if (!e.start) return 'All day';
+    return fmt12(e.start) + (e.end ? ' – ' + fmt12(e.end) : '');
+  }
+  $('subLink').href = 'webcal://' + base.replace(/^https?:\/\//, '') + '/calendar.ics';
+  var today = new Date();
+  var view = new Date(today.getFullYear(), today.getMonth(), 1);
+  var sel = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  var events = [];
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  function iso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function load() {
+    return api('/api/events').then(function (r) {
+      if (r.status === 401) { $('note').textContent = 'That PIN did not work. Go back and re-enter it.'; throw new Error('bad pin'); }
+      return r.json();
+    }).then(function (list) { events = list || []; render(); }).catch(function () {});
+  }
+  function render() {
+    $('monthLabel').textContent = MONTHS[view.getMonth()] + ' ' + view.getFullYear();
+    var g = $('grid');
+    g.innerHTML = '';
+    ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].forEach(function (d) { var s = document.createElement('div'); s.className = 'dow'; s.textContent = d; g.appendChild(s); });
+    var first = new Date(view.getFullYear(), view.getMonth(), 1);
+    var start = new Date(first); start.setDate(1 - first.getDay());
+    for (var i = 0; i < 42; i++) {
+      var d = new Date(start); d.setDate(start.getDate() + i);
+      var dayEvents = events.filter(function (e) { return e.date === iso(d); });
+      var b = document.createElement('button');
+      b.className = 'day' + (d.getMonth() !== view.getMonth() ? ' other' : '') + (iso(d) === iso(today) ? ' today' : '') + (iso(d) === iso(sel) ? ' sel' : '');
+      b.textContent = d.getDate();
+      if (dayEvents.length === 1) { var dot = document.createElement('span'); dot.className = 'dot'; b.appendChild(dot); }
+      else if (dayEvents.length > 1) { var c = document.createElement('span'); c.className = 'count'; c.textContent = dayEvents.length; b.appendChild(c); }
+      (function (dd) { b.onclick = function () { sel = dd; if (dd.getMonth() !== view.getMonth()) view = new Date(dd.getFullYear(), dd.getMonth(), 1); render(); }; })(d);
+      g.appendChild(b);
+    }
+    var label = sel.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
+    $('dayLabel').textContent = label;
+    var list = events.filter(function (e) { return e.date === iso(sel); }).sort(function (a, b) { return (a.start || '') < (b.start || '') ? -1 : 1; });
+    var box = $('events');
+    box.innerHTML = '';
+    if (!list.length) { box.innerHTML = '<p class="note">Nothing on this day.</p>'; }
+    list.forEach(function (e) {
+      var d = document.createElement('div'); d.className = 'ev' + (e.meetingId ? ' meeting' : '');
+      var t = document.createElement('div'); t.className = 'time'; t.textContent = fmtRange(e); d.appendChild(t);
+      var body = document.createElement('div'); body.className = 'body';
+      var b = document.createElement('b'); b.textContent = e.title; body.appendChild(b);
+      if (e.notes) { var m = document.createElement('div'); m.className = 'meta'; m.textContent = e.notes; body.appendChild(m); }
+      if (e.meetingId) { var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = 'Meeting'; body.appendChild(tag); }
+      d.appendChild(body);
+      var del = document.createElement('button'); del.className = 'del'; del.textContent = 'Delete';
+      del.onclick = function () { if (confirm('Delete "' + e.title + '"?')) api('/api/events/' + encodeURIComponent(e.id), { method: 'DELETE' }).then(load); };
+      d.appendChild(del);
+      box.appendChild(d);
+    });
+    $('fDate').value = iso(sel);
+  }
+  $('prev').onclick = function () { view = new Date(view.getFullYear(), view.getMonth() - 1, 1); render(); };
+  $('next').onclick = function () { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); render(); };
+  $('addForm').onsubmit = function (e) {
+    e.preventDefault();
+    var ev = { title: $('fTitle').value.trim(), date: $('fDate').value, start: $('fStart').value, end: $('fEnd').value, notes: $('fNotes').value.trim() };
+    if (!ev.title || !ev.date) return;
+    api('/api/events', { method: 'POST', body: JSON.stringify(ev) }).then(function (r) {
+      if (!r.ok) throw new Error('save failed');
+      $('fTitle').value = ''; $('fNotes').value = ''; $('fStart').value = ''; $('fEnd').value = '';
+      sel = new Date(ev.date + 'T12:00:00');
+      return load();
+    }).catch(function () { $('note').textContent = 'Could not save that event. Check the PIN and try again.'; });
+  };
+  if (!pin()) { $('note').textContent = 'Enter your staff PIN on the suite page first.'; }
+  else load();
+})();
+</script>
+</body>
+</html>
