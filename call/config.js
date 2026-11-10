@@ -1,6 +1,6 @@
 // Where the call server lives (Tailscale Funnel URL). Change only this line if it moves.
 window.STR8TECH_CALL = {
-  server: 'https://nashs-macbook.tailb88b1c.ts.net:10000',
+  server: 'https://crewbot.tailb88b1c.ts.net',
 };
 
 // Shared helper: ?server=http://localhost:3000 overrides the URL (for testing).
