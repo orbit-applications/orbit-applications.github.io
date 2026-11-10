@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Meetings · Str8Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --lime: #A6CE39; --lime-soft: rgba(166, 206, 57, .14); --bg: #0B0B0C; --fg: #F5F5F2; --dim: #9A9A94; --card: #17181A; --card2: #1E1F22; --line: #26272B; --red: #FF6B6B; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 16px/1.5 Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 20px 20px 40px; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+  .logo span { color: var(--lime); }
+  a.back { color: var(--dim); font-size: 15px; font-weight: 600; text-decoration: none; }
+  a.back:hover { color: var(--fg); }
+  h1 { font-size: clamp(30px, 7vw, 40px); font-weight: 800; letter-spacing: -1px; margin: 16px 0 2px; line-height: 1.1; }
+  .note { color: var(--dim); font-size: 15px; margin: 4px 0 12px; }
+  .mtg { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin: 12px 0; }
+  .mtg .when { display: inline-block; background: var(--lime-soft); color: var(--lime); font-weight: 800; font-size: 13px; border-radius: 999px; padding: 6px 12px; border: 1px solid rgba(166, 206, 57, .3); margin-bottom: 8px; }
+  .mtg b { font-size: 20px; font-weight: 800; letter-spacing: -0.2px; display: block; }
+  .mtg .meta { color: var(--dim); font-size: 14px; margin: 4px 0 12px; }
+  .mtg .row { display: flex; gap: 10px; }
+  .mtg .row a, .mtg .row button { flex: 1; text-align: center; min-height: 52px; border-radius: 14px; font: 800 16px Manrope, sans-serif; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+  .mtg .row a { background: var(--lime); color: #000; }
+  .mtg .row button { background: var(--card2); color: var(--fg); border: 1px solid var(--line); }
+  .mtg .row button.del { color: var(--red); flex: 0 0 84px; }
+  form.add { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-top: 20px; }
+  form.add b { font-size: 19px; font-weight: 800; }
+  .fld { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin: 14px 0 0; }
+  form.add input, form.add textarea { width: 100%; min-height: 54px; border-radius: 14px; border: 1px solid var(--line); background: #0E0F10; color: var(--fg); font: 600 16px Manrope, sans-serif; padding: 0 14px; margin: 6px 0; }
+  form.add input:focus, form.add textarea:focus { outline: none; border-color: var(--lime); }
+  form.add textarea { min-height: 68px; padding: 12px 14px; resize: vertical; }
+  form.add .row { display: flex; gap: 10px; }
+  form.add .row .col { flex: 1; min-width: 0; }
+  form.add .row .col input { width: 100%; }
+  .btn { display: block; width: 100%; min-height: 58px; border-radius: 16px; border: 0; font-size: 18px; font-weight: 800; cursor: pointer; background: var(--lime); color: #000; margin-top: 10px; font-family: Manrope, sans-serif; }
+  .btn:active { transform: scale(.99); }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="logo">Str8<span>Tech</span></div>
+    <a class="back" href="../admin/">← Suite</a>
+  </div>
+  <h1>Meetings</h1>
+  <p class="note" id="note">Make a meeting, send the link, meet on video. Anyone with the link can join. Every meeting also shows up on the calendar.</p>
+  <div id="list"></div>
+  <form class="add" id="addForm">
+    <b>Make a meeting</b>
+    <label class="fld" for="fTitle">Title</label>
+    <input id="fTitle" type="text" placeholder="Call with Vivid Nails" maxlength="120" required>
+    <div class="row">
+      <div class="col">
+        <label class="fld" for="fDate">Date</label>
+        <input id="fDate" type="date" required>
+      </div>
+      <div class="col">
+        <label class="fld" for="fStart">Starts</label>
+        <input id="fStart" type="time" aria-label="Start time">
+      </div>
+    </div>
+    <label class="fld" for="fNotes">Notes</label>
+    <textarea id="fNotes" placeholder="Notes (optional)" maxlength="500"></textarea>
+    <button class="btn" type="submit">Create meeting</button>
+  </form>
+  <p class="note" id="linkOut"></p>
+</div>
+<script src="../call/config.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var base = (window.STR8TECH_CALL ? STR8TECH_CALL.base() : location.origin).replace(/\/$/, '');
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'X-Staff-Pin': pin(), 'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch(base + path, opts);
+  }
+  // 24-hour "14:30" -> 12-hour "2:30 PM".
+  function fmt12(t) {
+    if (!t) return '';
+    var p = t.split(':');
+    var h = parseInt(p[0], 10);
+    var m = p[1] || '00';
+    var ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if (h === 0) h = 12;
+    return h + ':' + m + ' ' + ap;
+  }
+  function roomUrl(id) { return location.origin + '/meet/room.html?id=' + encodeURIComponent(id); }
+  function load() {
+    return api('/api/meetings').then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); $('note').textContent = 'That PIN did not work. Go back to the suite page and re-enter it.'; throw new Error('bad pin'); }
+      return r.json();
+    }).then(function (list) {
+      var box = $('list');
+      box.innerHTML = '';
+      list = (list || []).slice().sort(function (a, b) { return (a.date + (a.start || '')) < (b.date + (b.start || '')) ? -1 : 1; });
+      if (!list.length) box.innerHTML = '<p class="note">No meetings yet. Make one below.</p>';
+      list.forEach(function (m) {
+        var d = document.createElement('div'); d.className = 'mtg';
+        var when = document.createElement('span'); when.className = 'when';
+        when.textContent = new Date(m.date + 'T12:00:00').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }) + (m.start ? ' · ' + fmt12(m.start) : '');
+        d.appendChild(when);
+        var b = document.createElement('b'); b.textContent = m.title; d.appendChild(b);
+        if (m.notes) { var meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = m.notes; d.appendChild(meta); }
+        var row = document.createElement('div'); row.className = 'row';
+        var join = document.createElement('a'); join.href = 'room.html?id=' + encodeURIComponent(m.id); join.textContent = 'Join meeting';
+        var copy = document.createElement('button'); copy.type = 'button'; copy.textContent = 'Copy link';
+        copy.onclick = function () {
+          var url = roomUrl(m.id);
+          if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { copy.textContent = 'Copied!'; setTimeout(function () { copy.textContent = 'Copy link'; }, 1500); });
+          else { $('linkOut').textContent = url; }
+        };
+        var del = document.createElement('button'); del.type = 'button'; del.className = 'del'; del.textContent = 'Delete';
+        del.onclick = function () { if (confirm('Delete "' + m.title + '"?')) api('/api/meetings/' + encodeURIComponent(m.id), { method: 'DELETE' }).then(load); };
+        row.appendChild(join); row.appendChild(copy); row.appendChild(del);
+        d.appendChild(row);
+        box.appendChild(d);
+      });
+    }).catch(function () {});
+  }
+  $('addForm').onsubmit = function (e) {
+    e.preventDefault();
+    var m = { title: $('fTitle').value.trim(), date: $('fDate').value, start: $('fStart').value, notes: $('fNotes').value.trim() };
+    if (!m.title || !m.date) return;
+    api('/api/meetings', { method: 'POST', body: JSON.stringify(m) }).then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); }
+      if (!r.ok) throw new Error('save failed');
+      return r.json();
+    }).then(function (created) {
+      $('fTitle').value = ''; $('fNotes').value = ''; $('fStart').value = '';
+      $('linkOut').textContent = 'Meeting link: ' + roomUrl(created.id);
+      return load();
+    }).catch(function () { $('note').textContent = 'Could not save that meeting. Check the PIN and try again.'; });
+  };
+  if (!pin()) $('note').textContent = 'Enter your staff PIN on the suite page first.';
+  else load();
+})();
+</script>
+</body>
+</html>
