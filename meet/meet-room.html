@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Meeting · Str8Tech</title>
+<style>
+  :root { --lime: #A6CE39; --bg: #000; --fg: #fff; --dim: #9a9a9a; --card: #111; --line: #262626; --red: #ff5a5a; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 18px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 18px 20px 32px; }
+  .logo { font-weight: 800; font-size: 22px; }
+  .logo span { color: var(--lime); }
+  h1 { font-size: clamp(24px, 6vw, 32px); margin: 10px 0 4px; line-height: 1.15; }
+  .note { color: var(--dim); font-size: 15px; margin: 4px 0 12px; }
+  .join { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin-top: 16px; }
+  .join input { width: 100%; min-height: 56px; border-radius: 12px; border: 2px solid #333; background: #0c0c0c; color: #fff; font-size: 18px; padding: 0 14px; margin: 6px 0; }
+  .btn { display: block; width: 100%; min-height: 60px; border-radius: 16px; border: 0; font-size: 20px; font-weight: 800; cursor: pointer; background: var(--lime); color: #000; margin-top: 8px; }
+  .btn.ghost { background: transparent; color: var(--fg); border: 2px solid #444; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 16px; }
+  .tile { position: relative; border-radius: 16px; overflow: hidden; background: #111; border: 1px solid var(--line); aspect-ratio: 4/3; }
+  .tile video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
+  .tile .name { position: absolute; left: 10px; bottom: 8px; background: rgba(0,0,0,.65); padding: 4px 10px; border-radius: 999px; font-size: 14px; font-weight: 700; }
+  .tile .off { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 16px; }
+  .controls { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .controls .btn { flex: 1; min-width: 140px; margin-top: 0; min-height: 56px; font-size: 18px; }
+  .controls .btn.ghost.on { border-color: var(--lime); color: var(--lime); }
+  .controls .btn.end { background: var(--red); color: #fff; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">Str8<span>Tech</span></div>
+  <h1 id="title">Meeting</h1>
+  <p class="note" id="note"></p>
+
+  <div class="join" id="joinBox">
+    <input id="nameIn" type="text" placeholder="Your name" maxlength="40" autocomplete="name">
+    <button class="btn" id="joinBtn">Join meeting</button>
+  </div>
+
+  <div id="room" class="hidden">
+    <div class="grid" id="grid"></div>
+    <div class="controls">
+      <button class="btn ghost" id="muteBtn">Mute</button>
+      <button class="btn ghost" id="camBtn">Camera off</button>
+      <button class="btn ghost" id="flipBtn">Flip camera</button>
+      <button class="btn end" id="leaveBtn">Leave</button>
+    </div>
+  </div>
+</div>
+<script src="../call/config.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var base = (window.STR8TECH_CALL ? STR8TECH_CALL.base() : location.origin).replace(/\/$/, '');
+  var wsBase = (window.STR8TECH_CALL ? STR8TECH_CALL.wsUrl() : location.origin.replace(/^http/, 'ws') + '/ws');
+  var meetingId = new URLSearchParams(location.search).get('id') || '';
+  var STUN = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+  var ws = null, myId = null, myName = 'Guest', stream = null, facing = 'user';
+  var pcs = {}; // peerId -> { pc, name, tile, video }
+  var muted = false, camOff = false;
+
+  function note(t) { $('note').textContent = t || ''; }
+  // Meeting title (public, no PIN).
+  fetch(base + '/api/meetings/' + encodeURIComponent(meetingId)).then(function (r) {
+    if (!r.ok) throw new Error('no meeting');
+    return r.json();
+  }).then(function (m) {
+    $('title').textContent = m.title;
+    note(new Date(m.date + 'T12:00:00').toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' }) + (m.start ? ' · ' + m.start : ''));
+  }).catch(function () { $('title').textContent = 'Meeting not found'; note('Check the link and try again.'); $('joinBox').classList.add('hidden'); });
+
+  function tileFor(id, name, isMe) {
+    var t = document.createElement('div'); t.className = 'tile'; t.id = 'tile-' + id;
+    var v = document.createElement('video'); v.playsInline = true; v.autoplay = true; if (isMe) v.muted = true;
+    t.appendChild(v);
+    var n = document.createElement('span'); n.className = 'name'; n.textContent = name + (isMe ? ' (you)' : '');
+    t.appendChild(n);
+    $('grid').appendChild(t);
+    return { tile: t, video: v };
+  }
+  function removeTile(id) {
+    var t = document.getElementById('tile-' + id);
+    if (t) t.remove();
+  }
+  function send(o) { if (ws && ws.readyState === 1) ws.send(JSON.stringify(o)); }
+  function newPc(peerId) {
+    var pc = new RTCPeerConnection(STUN);
+    pc.onicecandidate = function (e) { if (e.candidate) send({ type: 'meet-ice', to: peerId, candidate: e.candidate }); };
+    pc.ontrack = function (e) {
+      var p = pcs[peerId];
+      if (p) p.video.srcObject = e.streams[0];
+    };
+    if (stream) stream.getTracks().forEach(function (t) { pc.addTrack(t, stream); });
+    return pc;
+  }
+  function connectTo(peerId, name) {
+    if (pcs[peerId]) return;
+    var el = tileFor(peerId, name, false);
+    var pc = newPc(peerId);
+    pcs[peerId] = { pc: pc, name: name, video: el.video, tile: el.tile };
+    // I joined after them: I make the offer.
+    pc.createOffer().then(function (offer) {
+      return pc.setLocalDescription(offer);
+    }).then(function () {
+      send({ type: 'meet-offer', to: peerId, sdp: pc.localDescription });
+    }).catch(function () {});
+  }
+  function closePeer(peerId) {
+    var p = pcs[peerId];
+    if (!p) return;
+    try { p.pc.close(); } catch (e) {}
+    delete pcs[peerId];
+    removeTile(peerId);
+  }
+
+  $('joinBtn').onclick = function () {
+    myName = ($('nameIn').value.trim() || 'Guest').slice(0, 40);
+    var md = navigator.mediaDevices;
+    if (!md || !md.getUserMedia) { note('This browser cannot do video calls.'); return; }
+    $('joinBtn').disabled = true;
+    md.getUserMedia({ video: { facingMode: facing }, audio: true }).then(function (s) {
+      stream = s;
+      $('joinBox').classList.add('hidden');
+      $('room').classList.remove('hidden');
+      var me = tileFor('me', myName, true);
+      me.video.srcObject = s;
+      ws = new WebSocket(wsBase);
+      ws.onopen = function () { send({ type: 'meet-join', meeting: meetingId, name: myName }); };
+      ws.onclose = function () { note('Connection lost.'); };
+      ws.onmessage = function (e) {
+        var m; try { m = JSON.parse(e.data); } catch (x) { return; }
+        if (m.type === 'meet-error') { note(m.text || 'Could not join.'); return; }
+        if (m.type === 'meet-joined') {
+          myId = m.id;
+          (m.peers || []).forEach(function (p) { connectTo(p.id, p.name); });
+          return;
+        }
+        if (m.type === 'meet-peer-joined') {
+          // They joined after me: they will offer to me. Just make a tile and a connection.
+          if (!pcs[m.id]) {
+            var el = tileFor(m.id, m.name, false);
+            var pc = newPc(m.id);
+            pcs[m.id] = { pc: pc, name: m.name, video: el.video, tile: el.tile };
+          }
+          return;
+        }
+        if (m.type === 'meet-peer-left') { closePeer(m.id); return; }
+        if (m.type === 'meet-offer') {
+          var p = pcs[m.from];
+          if (!p) {
+            var el2 = tileFor(m.from, 'Guest', false);
+            var pc2 = newPc(m.from);
+            pcs[m.from] = { pc: pc2, name: 'Guest', video: el2.video, tile: el2.tile };
+            p = pcs[m.from];
+          }
+          p.pc.setRemoteDescription(new RTCSessionDescription(m.sdp)).then(function () {
+            return p.pc.createAnswer();
+          }).then(function (answer) {
+            return p.pc.setLocalDescription(answer);
+          }).then(function () {
+            send({ type: 'meet-answer', to: m.from, sdp: p.pc.localDescription });
+          }).catch(function () {});
+          return;
+        }
+        if (m.type === 'meet-answer') {
+          var pa = pcs[m.from];
+          if (pa && m.sdp) pa.pc.setRemoteDescription(new RTCSessionDescription(m.sdp)).catch(function () {});
+          return;
+        }
+        if (m.type === 'meet-ice') {
+          var pi = pcs[m.from];
+          if (pi && m.candidate) pi.pc.addIceCandidate(new RTCIceCandidate(m.candidate)).catch(function () {});
+          return;
+        }
+      };
+    }).catch(function () { $('joinBtn').disabled = false; note('Camera or microphone was blocked. Allow both and try again.'); });
+  };
+
+  $('muteBtn').onclick = function () {
+    muted = !muted;
+    if (stream) stream.getAudioTracks().forEach(function (t) { t.enabled = !muted; });
+    $('muteBtn').textContent = muted ? 'Unmute' : 'Mute';
+    $('muteBtn').classList.toggle('on', muted);
+  };
+  $('camBtn').onclick = function () {
+    camOff = !camOff;
+    if (stream) stream.getVideoTracks().forEach(function (t) { t.enabled = !camOff; });
+    $('camBtn').textContent = camOff ? 'Camera on' : 'Camera off';
+    $('camBtn').classList.toggle('on', camOff);
+  };
+  $('flipBtn').onclick = function () {
+    if (!stream) return;
+    facing = facing === 'user' ? 'environment' : 'user';
+    var oldTrack = stream.getVideoTracks()[0];
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: facing }, audio: false }).then(function (s) {
+      var nt = s.getVideoTracks()[0];
+      if (!nt) { s.getTracks().forEach(function (t) { t.stop(); }); throw new Error('no track'); }
+      Object.keys(pcs).forEach(function (id) {
+        var sender = pcs[id].pc.getSenders().find(function (x) { return x.track && x.track.kind === 'video'; });
+        if (sender) sender.replaceTrack(nt);
+      });
+      if (oldTrack) oldTrack.stop();
+      stream.removeTrack(oldTrack);
+      stream.addTrack(nt);
+      var me = document.querySelector('#tile-me video');
+      if (me) me.srcObject = stream;
+    }).catch(function () { facing = facing === 'user' ? 'environment' : 'user'; note('Could not switch camera.'); });
+  };
+  $('leaveBtn').onclick = function () {
+    send({ type: 'meet-leave' });
+    Object.keys(pcs).forEach(closePeer);
+    if (stream) stream.getTracks().forEach(function (t) { t.stop(); });
+    if (ws) try { ws.close(); } catch (e) {}
+    location.href = './';
+  };
+})();
+</script>
+</body>
+</html>
