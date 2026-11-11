@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<link rel="icon" type="image/png" href="../logos/noir-nail-bar.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Noir Nail Bar — Luxury Nail Salon, Calgary</title>
@@ -10,19 +10,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
     --bg:#0e0d0c; --bg2:#161412; --paper:#1d1a17;
     --cream:#f2ead9; --muted:#a89e8d; --gold:#c9a24b; --gold-2:#e3c47c;
     --line:rgba(201,162,75,.22);
-    --serif:'Playfair Display',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
-    --r:14px; --ease:cubic-bezier(.2,.7,.1,1);
+    --serif:'Manrope',system-ui,sans-serif; --sans:'Manrope',system-ui,sans-serif;
+    --r:16px; --ease:cubic-bezier(0.22,1,0.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--bg);color:var(--cream);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  body{background:var(--bg);color:var(--cream);font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
   @media(min-width:900px){body{padding-bottom:0}}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
@@ -31,97 +31,119 @@
   .wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
   @media(min-width:700px){.wrap{width:min(1180px,100% - 5rem)}}
   h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1}
-  h2{font-size:clamp(2.2rem,5.4vw,3.6rem);margin:.9rem 0 1rem}
-  h2 em{font-style:italic;color:var(--gold-2);font-weight:400}
-  .eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
-  .lede{color:var(--muted);max-width:34rem;font-size:1.05rem}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:0 1.7rem;font-weight:500;font-size:.92rem;letter-spacing:.1em;text-transform:uppercase;transition:all .3s var(--ease);white-space:nowrap;border:1px solid transparent}
+  h2{font-size:clamp(30px,5.4vw,48px);margin:16px 0 16px}
+  h2 em{color:var(--gold-2);font-weight:400}
+  .eyebrow{font-size:12px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+  .lede{color:var(--muted);max-width:34rem;font-size:16px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 24px;font-weight:500;font-size:14px;letter-spacing:.1em;transition:transform .5s var(--ease), opacity .5s var(--ease);white-space:nowrap;border:1px solid transparent}
   .btn svg{width:16px;height:16px;flex:none}
   .btn-gold{background:var(--gold);color:var(--bg)}
   .btn-gold:hover{background:var(--gold-2);transform:translateY(-2px)}
   .btn-line{border-color:var(--gold);color:var(--gold-2)}
   .btn-line:hover{background:rgba(201,162,75,.12)}
-  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+  .header{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent}
   .header.scrolled{background:rgba(14,13,12,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
   .header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .logo{font-family:var(--serif);font-size:1.6rem;font-weight:700;letter-spacing:.04em}
+  .logo{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+  @media(max-width:600px){.logo{font-size:20px;gap:8px}}
   .logo span{color:var(--gold)}
-  .nav{display:none;gap:2.1rem;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .nav{display:none;gap:32px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
   .nav a:hover{color:var(--gold-2)}
-  .header .btn{min-height:44px;padding:0 1.1rem;font-size:.8rem}
+  .header .btn{min-height:44px;padding:0 16px;font-size:12px}
   .header .num{display:none}
   @media(min-width:900px){.nav{display:flex}.header .num{display:inline}.header .lbl{display:none}}
   .hero{position:relative;min-height:96svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
   .hero-media{position:absolute;inset:0;z-index:-2}
   .hero-media img{width:100%;height:100%;object-fit:cover;opacity:.55}
-  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,13,12,.75),rgba(14,13,12,.25) 40%,rgba(14,13,12,.92) 88%)}
-  .hero-inner{padding:9rem 0 3.5rem}
-  .hero h1{font-size:clamp(3rem,9vw,6.5rem);margin:1.2rem 0 1.2rem}
-  .hero h1 em{font-style:italic;font-weight:400;color:var(--gold-2)}
-  .hero p{color:#d8cfbd;max-width:32rem;font-size:1.08rem}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
-  .hero-facts{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted);letter-spacing:.04em}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(14,13,12,.62)}
+  .hero-inner{padding:96px 0 48px}
+  .hero h1{font-size:clamp(48px,9vw,60px);margin:16px 0 16px}
+  .hero h1 em{font-weight:400;color:var(--gold-2)}
+  .hero p{color:#d8cfbd;max-width:32rem;font-size:16px}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
+  .hero-facts{display:flex;flex-wrap:wrap;gap:32px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);letter-spacing:.04em}
   .hero-facts b{color:var(--gold-2);font-weight:500}
   .hero-facts svg{width:14px;height:14px;fill:var(--gold-2);vertical-align:-2px}
-  .tape{background:var(--gold);color:var(--bg);overflow:hidden;padding:.85rem 0;margin:0;transform:rotate(-.6deg)}
-  .tape-track{display:flex;width:max-content;animation:run 28s linear infinite;font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-  .tape-track span{white-space:nowrap;padding-right:2.4rem}
-  .tape-track span::after{content:"";display:inline-block;width:.5em;height:.5em;background:currentColor;transform:rotate(45deg);margin-left:2.4rem;font-size:.6em;vertical-align:.05em}
+  .tape{background:var(--gold);color:var(--bg);overflow:hidden;padding:12px 0;margin:0;transform:rotate(-.6deg)}
+  .tape-track{display:flex;width:max-content;animation:run 28s linear infinite;font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .tape-track span{white-space:nowrap;padding-right:40px}
+  .tape-track span::after{content:"";display:inline-block;width:.5em;height:.5em;background:currentColor;transform:rotate(45deg);margin-left:40px;font-size:.6em;vertical-align:.05em}
   @keyframes run{to{transform:translateX(-50%)}}
   section{position:relative}
-  .pad{padding:clamp(4.5rem,10vw,7.5rem) 0}
-  .head{display:grid;gap:1.2rem;margin-bottom:3rem}
+  .pad{padding:clamp(64px,10vw,96px) 0}
+  .head{display:grid;gap:16px;margin-bottom:48px}
   @media(min-width:900px){.head{grid-template-columns:1.3fr 1fr;align-items:end}}
-  .grid{display:grid;gap:1.2rem}
+  .grid{display:grid;gap:16px}
   @media(min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
   @media(min-width:1040px){.grid{grid-template-columns:repeat(3,1fr)}}
-  .card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s;display:flex;flex-direction:column}
+  .card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .5s var(--ease);display:flex;flex-direction:column}
   .card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 24px 50px -24px rgba(201,162,75,.35)}
   .card-img{aspect-ratio:16/10;overflow:hidden}
-  .card-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:transform 1s var(--ease)}
+  .card-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:transform .5s var(--ease)}
   .card:hover .card-img img{transform:scale(1.06)}
-  .card-b{padding:1.5rem 1.6rem 1.7rem;display:flex;flex-direction:column;flex:1}
-  .card-b h3{font-size:1.55rem;margin-bottom:.5rem}
-  .card-b p{color:var(--muted);font-size:.95rem;flex:1}
-  .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--line)}
-  .price{font-family:var(--serif);font-size:1.5rem;color:var(--gold-2)}
-  .price-row a{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);border-bottom:1px solid var(--gold);padding-bottom:2px}
+  .card-b{padding:24px 24px 24px;display:flex;flex-direction:column;flex:1}
+  .card-b h3{font-size:24px;margin-bottom:8px}
+  .card-b p{color:var(--muted);font-size:14px;flex:1}
+  .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+  .price{font-family:var(--serif);font-size:24px;color:var(--gold-2)}
+  .price-row a{font-size:12px;letter-spacing:.14em;color:var(--cream);border-bottom:1px solid var(--gold);padding-bottom:2px}
   .price-row a:hover{color:var(--gold-2)}
-  .feature{display:grid;gap:3rem;align-items:center;background:var(--bg2);border-block:1px solid var(--line)}
-  @media(min-width:900px){.feature .wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}}
+  .feature{display:grid;gap:48px;align-items:center;background:var(--bg2);border-block:1px solid var(--line)}
+  @media(min-width:900px){.feature .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}}
   .feature-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/4.6;border:1px solid var(--line)}
   .feature-img img{width:100%;height:100%;object-fit:cover}
-  .feat-list{list-style:none;margin-top:1.8rem;border-top:1px solid var(--line)}
-  .feat-list li{display:flex;gap:1.1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);color:#d8cfbd}
-  .feat-list b{color:var(--gold);font-family:var(--serif);font-size:1.1rem}
-  .faq-grid{display:grid;gap:2.5rem}
-  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:4rem}}
-  details{background:var(--bg2);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0 1.3rem}
-  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font-family:var(--serif);font-size:1.2rem}
+  .feat-list{list-style:none;margin-top:32px;border-top:1px solid var(--line)}
+  .feat-list li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);color:#d8cfbd}
+  .feat-list b{color:var(--gold);font-family:var(--serif);font-size:16px}
+
+  .quotes{display:grid;gap:16px}
+  @media(min-width:800px){.quotes{grid-template-columns:repeat(3,1fr)}}
+  .quote-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:32px 24px}
+  .quote-card p{font-family:var(--serif);font-size:20px;line-height:1.4;color:var(--cream)}
+  .quote-card small{display:block;margin-top:16px;font-size:12px;color:var(--muted);letter-spacing:.05em}
+  .faq-grid{display:grid;gap:40px}
+  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:64px}}
+  details{background:var(--bg2);border:1px solid var(--line);border-radius:8px;margin-bottom:12px;padding:0 24px}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;font-family:var(--serif);font-size:18px}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";color:var(--gold);font-size:1.5rem;transition:transform .3s}
+  summary::after{content:"+";color:var(--gold);font-size:24px;transition:transform .5s}
   details[open] summary::after{transform:rotate(45deg)}
-  .answer{color:var(--muted);padding:0 0 1.2rem;font-size:.96rem}
+  .answer{color:var(--muted);padding:0 0 16px;font-size:14px}
   .answer a{color:var(--gold-2)}
-  .contact-card{border:1px solid var(--gold);border-radius:20px;background:linear-gradient(120deg,#171310,#0e0d0c 60%);padding:clamp(2rem,5vw,4rem);display:grid;gap:2.4rem}
+  .contact-card{border:1px solid var(--gold);border-radius:16px;background:#171310;padding:clamp(32px,5vw,64px);display:grid;gap:40px}
   @media(min-width:940px){.contact-card{grid-template-columns:1.2fr 1fr;align-items:center}}
-  .big-phone{font-family:var(--serif);font-size:clamp(2.1rem,5.4vw,3.4rem);color:var(--gold-2);display:inline-block;margin:1rem 0 1.6rem}
+  .big-phone{font-family:var(--serif);font-size:clamp(30px,5.4vw,48px);color:var(--gold-2);display:inline-block;margin:16px 0 24px}
   .big-phone:hover{color:#fff}
-  .info{display:grid;gap:.8rem}
-  .info-row{border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
-  .info-row svg{width:19px;height:19px;color:var(--gold);margin-top:.2rem}
-  .info-row small{display:block;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
-  footer{padding:2.6rem 0 2rem;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line)}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
-  .demo{border:1px dashed var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.76rem}
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(14,13,12,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--gold);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
-  .callbar .btn{min-height:52px;font-size:.84rem;padding:0 .8rem}
+  .info{display:grid;gap:12px}
+  .info-row{border:1px solid var(--line);border-radius:8px;padding:16px 16px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+  .info-row svg{width:19px;height:19px;color:var(--gold);margin-top:4px}
+  .info-row small{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  footer{padding:40px 0 32px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+  .demo{border:1px dashed var(--line);border-radius:8px;padding:8px 16px;font-size:12px}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(14,13,12,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--gold);display:grid;grid-template-columns:1fr 2fr;gap:8px}
+  .callbar .btn{min-height:52px;font-size:12px;padding:0 12px}
   @media(min-width:900px){.callbar{display:none}}
-  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal{opacity:0;transform:translateY(32px);transition:opacity .5s var(--ease), transform .5s var(--ease);transition-delay:var(--d,0s)}
   .js .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}.tape-track{animation:none}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transform:none}.tape-track{animation:none}}
+
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+em{font-style:normal}
+.hero h1{max-width:680px}
+.hero-link{display:inline-flex;align-items:center;min-height:44px;font-weight:500;text-decoration:underline;text-underline-offset:4px;transition:opacity .5s cubic-bezier(0.22,1,0.36,1),transform .5s cubic-bezier(0.22,1,0.36,1)}
+.hero-link:hover{opacity:.75}
+.hero-link:active{transform:scale(.98)}
+.btn:active{transform:scale(.98)}
+.tagline{padding:64px 0;text-align:center}
+.tagline-text{font-size:30px;font-weight:600;line-height:1.3;max-width:680px;margin:0 auto;text-wrap:balance}
+.tagline-text .w{opacity:.3;transition:opacity .5s cubic-bezier(0.22,1,0.36,1)}
+.tagline.in .w{opacity:1}
+@media(prefers-reduced-motion:reduce){.tagline-text .w{opacity:1;transition:none}}
+
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
 </head>
 <body>
 
@@ -134,7 +156,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Noir Nail Bar — home"><img src="../logos/noir-nail-bar.png" alt="Noir Nail Bar logo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;flex:none">NOIR <span>Nail Bar</span></a>
+    <a href="#top" class="logo" aria-label="Noir Nail Bar — home"><img src="../logos/noir-nail-bar.png" alt="Noir Nail Bar logo" style="width:40px;height:40px;border-radius:8px;object-fit:cover;flex:none">NOIR <span>Nail Bar</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#services">Services</a><a href="#house">The house</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
     </nav>
@@ -148,15 +170,15 @@
     <div class="wrap hero-inner">
       <span class="eyebrow reveal">Luxury nail bar · Calgary</span>
       <h1 class="reveal" style="--d:.08s">Nails, <em>after dark.</em></h1>
-      <p class="reveal" style="--d:.16s">Noir is Calgary's dark-luxury nail bar — precision Russian manicures, sculpted acrylic, couture finishes. Evening appointments, champagne on request.</p>
+      <p class="reveal" style="--d:.16s">Noir is Calgary's dark luxury nail bar — precision Russian manicures, sculpted acrylic, couture finishes. Evening appointments, champagne on request.</p>
       <div class="hero-ctas reveal" style="--d:.24s">
         <a class="btn btn-gold" href="tel:+14035550125"><svg><use href="#i-phone"/></svg>Call (403) 555-0125</a>
-        <a class="btn btn-line" href="#services">The menu</a>
+        <a class="hero-link" href="#services">The menu</a>
       </div>
       <div class="hero-facts reveal" style="--d:.32s">
         <span><b>Open late</b> · Tue–Sat till 9 PM</span>
         <span><b>812 1 St SE</b> · Calgary</span>
-        <span><b>5.0</b> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg> · 400+ reviews</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg> <b>Loved by regulars</b></span>
       </div>
     </div>
   </section>
@@ -170,12 +192,12 @@
         <p class="lede reveal" style="--d:.14s">Senior techs only. Every service includes meticulous cuticle work and a flawless finish. Prices in CAD.</p>
       </div>
       <div class="grid">
-        <article class="card reveal"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=800&q=75" alt="Elegant nude manicure"></div><div class="card-b"><h3>Couture Manicure</h3><p>Our signature — detailed shaping, cuticle care and a perfect polish.</p><div class="price-row"><span class="price">$65</span><a href="tel:+14035550125">Book</a></div></div></article>
-        <article class="card reveal" style="--d:.08s"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=800&q=75" alt="Luxury pedicure"></div><div class="card-b"><h3>Noir Pedicure</h3><p>Extended ritual with hot towels, exfoliation and gel finish.</p><div class="price-row"><span class="price">$85</span><a href="tel:+14035550125">Book</a></div></div></article>
-        <article class="card reveal" style="--d:.16s"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=800&q=75" alt="Nail technician sculpting acrylic nails"></div><div class="card-b"><h3>Sculpted Acrylic</h3><p>Hand-sculpted length — no tips. Almond, coffin or stiletto.</p><div class="price-row"><span class="price">$95 <small style="font-size:.8rem;color:var(--muted)">from</small></span><a href="tel:+14035550125">Book</a></div></div></article>
-        <article class="card reveal"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?auto=format&fit=crop&w=800&q=75" alt="Premium gel polish colours"></div><div class="card-b"><h3>Russian Manicure</h3><p>E-file precision cuticle work for the cleanest grow-out.</p><div class="price-row"><span class="price">$70</span><a href="tel:+14035550125">Book</a></div></div></article>
-        <article class="card reveal" style="--d:.08s"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=75" alt="Dark editorial nail art"></div><div class="card-b"><h3>BIAB Overlay</h3><p>Builder-gel strength on your natural nails, gel colour finish.</p><div class="price-row"><span class="price">$80</span><a href="tel:+14035550125">Book</a></div></div></article>
-        <article class="card reveal" style="--d:.16s"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=800&q=75" alt="Moody luxury salon interior"></div><div class="card-b"><h3>Bridal Couture</h3><p>Trial + wedding-day set, plus touch-up kit to take home.</p><div class="price-row"><span class="price">$120 <small style="font-size:.8rem;color:var(--muted)">from</small></span><a href="tel:+14035550125">Book</a></div></div></article>
+        <article class="card reveal"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=800&q=75" alt="Elegant nude manicure"></div><div class="card-b"><h3>Couture manicure</h3><p>Our signature — detailed shaping, cuticle care and a perfect polish.</p><div class="price-row"><span class="price">$65</span><a href="tel:+14035550125">Book</a></div></div></article>
+        <article class="card reveal" style="--d:.08s"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=800&q=75" alt="Luxury pedicure"></div><div class="card-b"><h3>Noir pedicure</h3><p>Extended ritual with hot towels, exfoliation and gel finish.</p><div class="price-row"><span class="price">$85</span><a href="tel:+14035550125">Book</a></div></div></article>
+        <article class="card reveal" style="--d:.16s"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=800&q=75" alt="Nail technician sculpting acrylic nails"></div><div class="card-b"><h3>Sculpted acrylic</h3><p>Hand sculpted length — no tips. Almond, coffin or stiletto.</p><div class="price-row"><span class="price">$95 <small style="font-size:12px;color:var(--muted)">from</small></span><a href="tel:+14035550125">Book</a></div></div></article>
+        <article class="card reveal"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?auto=format&fit=crop&w=800&q=75" alt="Premium gel polish colours"></div><div class="card-b"><h3>Russian manicure</h3><p>Electric file precision cuticle work for the cleanest grow out.</p><div class="price-row"><span class="price">$70</span><a href="tel:+14035550125">Book</a></div></div></article>
+        <article class="card reveal" style="--d:.08s"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=75" alt="Dark editorial nail art"></div><div class="card-b"><h3>BIAB overlay</h3><p>Builder gel strength on your natural nails, gel colour finish.</p><div class="price-row"><span class="price">$80</span><a href="tel:+14035550125">Book</a></div></div></article>
+        <article class="card reveal" style="--d:.16s"><div class="card-img"><img loading="lazy" src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=800&q=75" alt="Moody luxury salon interior"></div><div class="card-b"><h3>Bridal couture</h3><p>Trial + wedding day set, plus touch up kit to take home.</p><div class="price-row"><span class="price">$120 <small style="font-size:12px;color:var(--muted)">from</small></span><a href="tel:+14035550125">Book</a></div></div></article>
       </div>
     </div>
   </section>
@@ -197,32 +219,68 @@
     </div>
   </section>
 
+
+  <section class="pad" id="how">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow reveal">How it works</span><h2 class="reveal" style="--d:.08s">Three steps to your <em>evening ritual.</em></h2></div>
+        <p class="lede reveal" style="--d:.14s">Booked in minutes, remembered for weeks.</p>
+      </div>
+      <ul class="feat-list reveal" style="--d:.1s">
+        <li><b>01</b>Call to reserve — ring (403) 555-0125 and pick an evening that suits you.</li>
+        <li><b>02</b>Arrive and unwind — come in, settle into a deep chair, and choose your finish.</li>
+        <li><b>03</b>Leave polished — walk out with a flawless set, 90 minutes later.</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="tagline" aria-label="Why it matters">
+    <div class="wrap">
+      <p class="tagline-text"><span class="w" style="transition-delay:0.00s">Evenings</span> <span class="w" style="transition-delay:0.06s">were</span> <span class="w" style="transition-delay:0.12s">made</span> <span class="w" style="transition-delay:0.18s">for</span> <span class="w" style="transition-delay:0.24s">this.</span> <span class="w" style="transition-delay:0.30s">Slow</span> <span class="w" style="transition-delay:0.36s">down,</span> <span class="w" style="transition-delay:0.42s">sit</span> <span class="w" style="transition-delay:0.48s">back,</span> <span class="w" style="transition-delay:0.54s">leave</span> <span class="w" style="transition-delay:0.60s">polished.</span></p>
+    </div>
+  </section>
+  <section class="pad" id="reviews">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow reveal">Kind words</span><h2 class="reveal" style="--d:.08s">Word of <em>mouth.</em></h2></div>
+        <p class="lede reveal" style="--d:.14s">What clients say after a night at Noir.</p>
+      </div>
+      <div class="quotes">
+        <article class="quote-card reveal"><p>&ldquo;The Russian manicure is worth every minute. My cuticles have never looked this clean.&rdquo;</p><small>Elena &middot; Russian manicure</small></article>
+        <article class="quote-card reveal" style="--d:.08s"><p>&ldquo;Booked after work, left at nine feeling like I&rsquo;d been to a party, not an appointment.&rdquo;</p><small>Naomi &middot; Sculpted acrylic</small></article>
+        <article class="quote-card reveal" style="--d:.16s"><p>&ldquo;My bridal set was perfect — and the trial meant zero stress on the day.&rdquo;</p><small>Ava &middot; Bridal couture</small></article>
+      </div>
+    </div>
+  </section>
+
   <section class="pad" id="faq">
     <div class="wrap faq-grid">
       <div>
         <span class="eyebrow reveal">FAQ</span>
         <h2 class="reveal" style="--d:.08s">Before you <em>book.</em></h2>
-        <p class="lede reveal" style="--d:.14s;margin-top:1rem">For anything else, call — we answer.</p>
-        <p class="reveal" style="--d:.2s;margin-top:1.6rem"><a class="btn btn-gold" href="tel:+14035550125"><svg><use href="#i-phone"/></svg>(403) 555-0125</a></p>
+        <p class="lede reveal" style="--d:.14s;margin-top:16px">For anything else, call — we answer.</p>
+        <p class="reveal" style="--d:.2s;margin-top:24px"><a class="btn btn-gold" href="tel:+14035550125"><svg><use href="#i-phone"/></svg>(403) 555-0125</a></p>
       </div>
       <div class="reveal" style="--d:.1s">
-        <details open><summary>What is a Russian manicure?</summary><p class="answer">A meticulous dry manicure using an e-file for ultra-clean cuticles and a seamless grow-out. It takes longer — and lasts longer.</p></details>
-        <details><summary>Do you take walk-ins?</summary><p class="answer">Evenings book out fast, so we strongly recommend calling <a href="tel:+14035550125">(403) 555-0125</a> ahead. Daytime walk-ins are sometimes possible.</p></details>
+        <details open><summary>What is a Russian manicure?</summary><p class="answer">A meticulous dry manicure using an electric file for ultra clean cuticles and a seamless grow out. It takes longer — and lasts longer.</p></details>
+        <details><summary>Can I come without an appointment?</summary><p class="answer">Evenings book out fast, so we strongly recommend calling <a href="tel:+14035550125">(403) 555-0125</a> ahead. Daytime visits without an appointment are sometimes possible.</p></details>
         <details><summary>How far ahead should I book bridal?</summary><p class="answer">At least 4–6 weeks for the trial, so there's time to perfect the set before the day.</p></details>
         <details><summary>What are your hours?</summary><p class="answer">Tuesday–Saturday 11 AM – 9 PM, Sunday 12 – 5 PM. Closed Monday.</p></details>
         <details><summary>Where are you?</summary><p class="answer">812 1 St SE, Calgary, AB. <a href="https://www.google.com/maps/search/?api=1&query=812+1+St+SE+Calgary+AB" target="_blank" rel="noopener">Get directions</a>.</p></details>
+        <details><summary>Do you do fills on sets from other salons?</summary><p class="answer">Yes, after a quick look at your current set. Call and we will tell you honestly whether a fill or a fresh set is better.</p></details>
       </div>
     </div>
   </section>
 
-  <section id="contact" style="padding-bottom:clamp(3rem,7vw,5rem)">
+  <section id="contact" style="padding-bottom:clamp(48px,7vw,80px)">
     <div class="wrap">
       <div class="contact-card reveal">
         <div>
           <span class="eyebrow">Reserve your chair</span>
           <h2>Your table is <em>waiting.</em></h2>
           <a class="big-phone" href="tel:+14035550125">(403) 555-0125</a>
-          <div style="display:flex;flex-wrap:wrap;gap:.9rem">
+          <div style="display:flex;flex-wrap:wrap;gap:16px">
             <a class="btn btn-gold" href="tel:+14035550125"><svg><use href="#i-phone"/></svg>Call now</a>
             <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=812+1+St+SE+Calgary+AB" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Directions</a>
           </div>
@@ -241,7 +299,7 @@
   <div class="wrap">
     <span>Noir Nail Bar · 812 1 St SE, Calgary · <a href="tel:+14035550125">(403) 555-0125</a></span>
     <span class="demo">Demo website</span>
-    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></span>
+    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></span>
   </div>
 </footer>
 
@@ -257,10 +315,12 @@
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
   else{els.forEach(function(el){el.classList.add('in')})}
+  var tg=document.querySelector('.tagline');
+  if(tg){if('IntersectionObserver' in window){var tio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tg.classList.add('in');tio.disconnect()}})},{threshold:.4});tio.observe(tg)}else{tg.classList.add('in')}}
 </script>
 
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
 </body>
 </html>
