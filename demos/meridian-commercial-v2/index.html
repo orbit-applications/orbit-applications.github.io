@@ -1,19 +1,22 @@
 <!doctype html>
 <html lang="en-CA">
 <head>
-<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<link rel="icon" type="image/png" href="../logos/meridian-commercial.png">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meridian Commercial Realty — Calgary Office, Industrial &amp; Retail</title>
 <meta name="description" content="Independent Calgary commercial real estate brokerage for office, industrial and retail leasing, sales and advisory.">
 <meta name="theme-color" content="#101c2e">
 <link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#faf8f3;--paper-2:#f2eee4;--ink:#101c2e;--ink-2:#2b3647;--muted:#5a6270;
   --bronze:#a8824f;--bronze-text:#86663b;--bronze-light:#d2b183;--rule:#e1dacb;--rule-dark:rgba(255,255,255,.14);
-  --serif:Georgia,"Times New Roman",Times,serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:'Manrope',sans-serif;
+  --sans:'Manrope',sans-serif;
   --wrap:1200px;--gutter:20px;--header-h:64px;--callbar-h:60px;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -37,15 +40,15 @@ button,input,select,textarea{font:inherit;color:inherit}
 .eyebrow::before{content:"";width:28px;height:1px;background:var(--bronze);flex:none}
 .eyebrow.center{justify-content:center}
 .eyebrow-light{color:var(--bronze-light)}
-.display{font-family:var(--serif);font-size:clamp(2.35rem,8.5vw,4.6rem);line-height:1.04;letter-spacing:-.015em;margin-bottom:22px}
-.display-sm{font-size:clamp(2.1rem,6.5vw,3.6rem)}
-.h2{font-family:var(--serif);font-size:clamp(1.75rem,4.6vw,2.6rem);line-height:1.15;letter-spacing:-.01em}
+.display{font-family:var(--serif);font-size:clamp(36px,8.5vw,60px);line-height:1.04;letter-spacing:-.015em;margin-bottom:22px}
+.display-sm{font-size:clamp(30px,6.5vw,48px)}
+.h2{font-family:var(--serif);font-size:clamp(24px,4.6vw,36px);line-height:1.15;letter-spacing:-.01em}
 .h3{font-family:var(--serif);font-size:1.4rem;line-height:1.25;margin-bottom:10px}
 .lede{font-size:1.125rem;color:var(--ink-2);max-width:36em}
 .muted{color:var(--muted)}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 22px;border:1px solid transparent;border-radius:2px;font:600 14px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 22px;border:1px solid transparent;border-radius:8px;font:600 14px/1.2 var(--sans);letter-spacing:.06em;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .btn-lg{min-height:54px;padding:15px 28px}
 .btn-block{width:100%}
 .btn-ink{background:var(--ink);color:#fff}
@@ -54,7 +57,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .btn-bronze:hover{background:var(--bronze-light)}
 .btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
 .btn-line:hover{background:var(--ink);color:#fff}
-.text-link{display:inline-flex;align-items:center;gap:8px;font:600 13px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--bronze);padding-bottom:6px}
+.text-link{display:inline-flex;align-items:center;gap:8px;font:600 13px/1.2 var(--sans);letter-spacing:.02em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--bronze);padding-bottom:6px}
 .text-link:hover{color:var(--bronze-text)}
 
 /* top bar + header */
@@ -114,7 +117,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 /* listing cards */
 .cards{display:grid;gap:28px}
-.listing{background:#fff;border:1px solid var(--rule);display:flex;flex-direction:column}
+.listing{background:#fff;border:1px solid var(--rule);display:flex;flex-direction:column;border-radius:16px;overflow:hidden}
 .listing[hidden]{display:none}
 .listing-media{position:relative;overflow:hidden}
 .listing-media img{width:100%;aspect-ratio:10/7;object-fit:cover;transition:transform .6s ease}
@@ -142,7 +145,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .quote{grid-area:1/1;margin:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s}
 .quote.is-active{opacity:1;visibility:visible}
 .quote blockquote{margin:0 0 24px}
-.quote blockquote p{font:italic 400 clamp(1.4rem,4.4vw,2.1rem)/1.4 var(--serif);margin:0}
+.quote blockquote p{font:400 clamp(20px,4.4vw,30px)/1.4 var(--serif);margin:0}
 .quote blockquote p::before{content:"\201C"}
 .quote blockquote p::after{content:"\201D"}
 .quote figcaption{font:600 13px/1.5 var(--sans);letter-spacing:.12em;text-transform:uppercase}
@@ -156,7 +159,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .cta-band{background:var(--ink);color:#fff;padding:64px 0;position:relative;overflow:hidden}
 .cta-band::before{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:1px solid rgba(168,130,79,.35);border-radius:50%}
 .cta-inner{display:grid;gap:30px;position:relative}
-.cta-title{font:400 clamp(1.9rem,5.4vw,3rem)/1.12 var(--serif);margin-bottom:16px;max-width:18em}
+.cta-title{font:400 clamp(30px,5.4vw,48px)/1.12 var(--serif);margin-bottom:16px;max-width:18em}
 .cta-copy{color:#c6ccd5;max-width:34em;margin:0}
 
 /* footer */
@@ -183,7 +186,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .filter-meta{display:grid;gap:6px;padding:20px 0 30px}
 .result-count{margin:0;color:var(--muted)}
 .result-count strong{color:var(--ink)}
-.note{margin:0;font-family:var(--serif);font-style:italic;font-size:1.1rem}
+.note{margin:0;font-family:var(--serif);font-style:normal;font-size:1.1rem}
 .note a{color:var(--bronze-text);text-underline-offset:3px}
 .empty{padding:40px 0;text-align:center}
 
@@ -227,7 +230,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 /* contact */
 .contact-grid{display:grid;gap:32px}
-.call-card{display:block;background:var(--ink);color:#fff;text-decoration:none;padding:32px 26px;position:relative;overflow:hidden}
+.call-card{display:block;background:var(--ink);color:#fff;text-decoration:none;padding:32px 26px;position:relative;overflow:hidden;border-radius:16px}
 .call-card::after{content:"";position:absolute;right:-60px;bottom:-60px;width:180px;height:180px;border:1px solid rgba(168,130,79,.45);border-radius:50%}
 .call-card-label{display:block;font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-light);margin-bottom:12px}
 .call-card-num{display:block;font:400 clamp(2rem,8vw,2.8rem)/1.1 var(--serif);margin-bottom:12px;white-space:nowrap}
@@ -329,7 +332,26 @@ input[type=range]{width:100%;height:32px;margin:4px 0 0;accent-color:var(--bronz
   html{scroll-behavior:auto}
 }
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
+<style>
+h1,h2,h3{text-wrap:balance}em{font-style:normal}@media (max-width:640px){.actions{flex-direction:column;align-items:stretch}.actions .btn{flex:none;width:100%}}
+h1{max-width:680px}
+p{text-wrap:pretty}
+.btn:active{transform:scale(.98)}
+.tlink{display:inline-flex;align-items:center;gap:8px;min-height:54px;padding:0 4px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.tlink:active{transform:scale(.98)}
+.tagline{padding:64px 0;text-align:center}
+.tagline-text{font-size:clamp(30px,4.6vw,48px);line-height:1.15;font-weight:600;max-width:680px;margin:0 auto;text-wrap:balance}
+.tagline-text .w{opacity:.3;transition:opacity .5s cubic-bezier(.22,1,.36,1)}
+.tagline-text .w.on{opacity:1}
+.js-rv .rv{opacity:0;transform:translateY(32px);transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1)}
+.js-rv .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.tagline-text .w{opacity:1!important;transition:none!important}.js-rv .rv{opacity:1!important;transform:none!important;transition:none!important}}
+
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -364,13 +386,35 @@ input[type=range]{width:100%;height:32px;margin:4px 0 0;accent-color:var(--bronz
       <p class="lede">Meridian is an independent brokerage for office, industrial and retail property in Calgary. We lease, sell and advise — and we pick up the phone.</p>
       <div class="actions">
         <a class="btn btn-ink btn-lg" href="tel:+14035550115"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Call (403) 555-0115</span></a>
-        <a class="btn btn-line btn-lg" href="listings.html"><span>View listings</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        <a class="tlink" href="listings.html">View listings</a>
       </div>
     </div>
     <figure class="hero-media">
       <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1200&q=70&h=1400" alt="Glass office towers rising against a clear blue sky" width="1200" height="1400" fetchpriority="high">
       <figcaption class="hero-tag"><span class="dot" aria-hidden="true"></span>Now leasing — Downtown, Beltline &amp; Foothills</figcaption>
     </figure>
+  </div>
+</section>
+<section class="section" style="padding:48px 0 0">
+  <div class="wrap">
+    <p class="eyebrow">Why businesses choose Meridian</p>
+    <h2 class="h2">Independent advice, real results</h2>
+    <div class="services">
+      <div class="service"><p class="service-num">01</p><h3 class="h3">240 million dollars plus leased and sold</h3><p>120 plus deals closed across office, industrial, and retail in Calgary.</p></div>
+      <div class="service"><p class="service-num">02</p><h3 class="h3">Off market access</h3><p>Most of our deals never hit the public sites. One call gets you in.</p></div>
+      <div class="service"><p class="service-num">03</p><h3 class="h3">Independent, not a franchise</h3><p>Advice with no head office script, and a broker who picks up the phone.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section" style="padding:48px 0 0">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2 class="h2">Three steps to your next space</h2>
+    <div class="services">
+      <div class="service"><p class="service-num">01</p><h3 class="h3">Tell us what you need</h3><p>Size, budget, area, and timing. One call gets you a straight answer.</p></div>
+      <div class="service"><p class="service-num">02</p><h3 class="h3">See options that fit</h3><p>A shortlist built around your brief, including space that never reaches the public sites.</p></div>
+      <div class="service"><p class="service-num">03</p><h3 class="h3">Move in on your timeline</h3><p>We negotiate the terms, you sign, and we stay on call after move in.</p></div>
+    </div>
   </div>
 </section>
 <section class="stats" aria-label="Firm track record">
@@ -451,21 +495,22 @@ input[type=range]{width:100%;height:32px;margin:4px 0 0;accent-color:var(--bronz
     </div>
     <div class="services">
       <div class="service"><p class="service-num">01</p><h3 class="h3">Leasing</h3><p>Tenant and landlord representation for office, industrial and retail space — from a 1,500 sq ft storefront to a 60,000 sq ft distribution bay.</p></div>
-      <div class="service"><p class="service-num">02</p><h3 class="h3">Sales &amp; acquisitions</h3><p>Disposition and acquisition of owner-occupied buildings and investment property, with honest pricing and a quiet, qualified buyer list.</p></div>
+      <div class="service"><p class="service-num">02</p><h3 class="h3">Sales &amp; acquisitions</h3><p>Disposition and acquisition of owner occupied buildings and investment property, with honest pricing and a quiet, qualified buyer list.</p></div>
       <div class="service"><p class="service-num">03</p><h3 class="h3">Advisory</h3><p>Lease renewals, occupancy planning, portfolio reviews and market studies for owners and occupiers who want a second opinion.</p></div>
     </div>
   </div>
 </section>
+<section class="tagline"><div class="wrap"><p class="tagline-text"><span class="tl">Space that fits your business,</span><br><span class="tl">without the runaround or the pressure.</span></p></div></section>
 <section class="section">
   <div class="wrap narrow">
     <p class="eyebrow center">Client words</p>
     <div class="testimonials" data-rotate="6000">
       <figure class="quote is-active">
-        <blockquote><p>They found us a Beltline floor that wasn't on any site, and negotiated six months free on a five-year term. We would not have known to ask.</p></blockquote>
+        <blockquote><p>They found us a Beltline floor that wasn't on any site, and negotiated six months free on a five year term. We would not have known to ask.</p></blockquote>
         <figcaption>Jordan M. <span>— Operations Director, regional engineering firm</span></figcaption>
       </figure>
       <figure class="quote">
-        <blockquote><p>Our warehouse sold in five weeks at ninety-eight percent of asking. Every call was returned the same day, usually within the hour.</p></blockquote>
+        <blockquote><p>Our warehouse sold in five weeks at ninety eight percent of asking. Every call was returned the same day, usually within the hour.</p></blockquote>
         <figcaption>Elena R. <span>— Owner, specialty food distributor</span></figcaption>
       </figure>
       <figure class="quote">
@@ -477,6 +522,21 @@ input[type=range]{width:100%;height:32px;margin:4px 0 0;accent-color:var(--bronz
         <button type="button" aria-label="Testimonial 2" aria-pressed="false"></button>
         <button type="button" aria-label="Testimonial 3" aria-pressed="false"></button>
       </div>
+    </div>
+  </div>
+</section>
+<section class="section section-tight">
+  <div class="wrap narrow">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="h2">Before you sign a lease</h2>
+    <div class="faq">
+      <div class="faq-item"><h3 class="faq-q"><button type="button" aria-expanded="false" aria-controls="faq-a1">What does space actually cost?<span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-a" id="faq-a1" hidden><p>It depends on the area, the building and the term. Call <a href="tel:+14035550115">(403) 555-0115</a> with your size and budget and we will give you a straight range before you tour anything.</p></div></div>
+      <div class="faq-item"><h3 class="faq-q"><button type="button" aria-expanded="false" aria-controls="faq-a2">How long does a lease take?<span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-a" id="faq-a2" hidden><p>Most deals close in 4–8 weeks from first tour to signed lease. Tell us your deadline up front and we will plan around it.</p></div></div>
+      <div class="faq-item"><h3 class="faq-q"><button type="button" aria-expanded="false" aria-controls="faq-a3">Do you work with small businesses?<span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-a" id="faq-a3" hidden><p>Yes — from a 1,500 sq ft storefront to a 60,000 sq ft warehouse. Small tenants get the same attention as the big ones.</p></div></div>
+      <div class="faq-item"><h3 class="faq-q"><button type="button" aria-expanded="false" aria-controls="faq-a4">What is an off market listing?<span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-a" id="faq-a4" hidden><p>Space the landlord has not advertised publicly. Much of our deal flow works this way — one call gets you access to it.</p></div></div>
+      <div class="faq-item"><h3 class="faq-q"><button type="button" aria-expanded="false" aria-controls="faq-a5">Do you charge tenants?<span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-a" id="faq-a5" hidden><p>In most leases the landlord pays our fee, so tenant representation costs you nothing out of pocket. Ask us when you call.</p></div></div>
+      <div class="faq-item"><h3 class="faq-q"><button type="button" aria-expanded="false" aria-controls="faq-a6">Can you help with a renewal?<span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-a" id="faq-a6" hidden><p>Yes. We review your current lease, check the market, and negotiate your renewal or a move.</p></div></div>
+
     </div>
   </div>
 </section>
@@ -518,7 +578,7 @@ input[type=range]{width:100%;height:32px;margin:4px 0 0;accent-color:var(--bronz
   </div>
   <div class="wrap footer-base">
     <p>&copy; 2026 Meridian Commercial Realty. All figures in CAD.</p>
-    <p>Demonstration website — the firm, people, listings and market data are fictional.</p>
+    <p>Demonstration website — the firm, people, listings and market data are fictional. Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener" style="color:#c6ccd5">Str8Tech</a>.</p>
   </div>
 </footer>
 <a class="callbar" href="tel:+14035550115"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Call (403) 555-0115</span></a>
@@ -694,7 +754,10 @@ input[type=range]{width:100%;height:32px;margin:4px 0 0;accent-color:var(--bronz
 </script>
 
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
+<script>
+(function(){var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;var secs=document.querySelectorAll('main section:not(.hero):not(.tagline)');if(!reduce){document.documentElement.classList.add('js-rv');secs.forEach(function(s){s.classList.add('rv')});if('IntersectionObserver' in window){var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}})},{threshold:.12});secs.forEach(function(s){io2.observe(s)})}else{secs.forEach(function(s){s.classList.add('in')})}}document.querySelectorAll('.tagline-text').forEach(function(el){var lines=el.querySelectorAll('.tl');if(!lines.length){lines=[el]}lines.forEach(function(line){var words=line.textContent.trim().split(/\s+/);line.innerHTML=words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ')});var spans=el.querySelectorAll('.w');spans.forEach(function(sp,i){sp.style.transitionDelay=(reduce?0:i*70)+'ms'});if(reduce){spans.forEach(function(sp){sp.classList.add('on')});return;}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.6});spans.forEach(function(sp){io.observe(sp)})}else{spans.forEach(function(sp){sp.classList.add('on')})}});})();
+</script>
 </body>
 </html>
