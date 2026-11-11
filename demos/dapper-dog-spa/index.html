@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<link rel="icon" type="image/png" href="logo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dapper Dog Spa — Premium Dog Grooming, Calgary</title>
@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..800;1,6..96,500..700&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
@@ -19,9 +19,9 @@
     --brass:#c9a45c; --brass-2:#e2c27f; --brass-dim:rgba(201,164,92,.35);
     --cream:#f1e8d6; --cream-2:#e2d5ba; --muted:#b3ac98; --dim:#8a8676;
     --line:rgba(201,164,92,.22); --line-2:rgba(201,164,92,.4);
-    --serif:'Bodoni Moda',Didot,Georgia,serif;
-    --sans:'Libre Franklin',system-ui,-apple-system,sans-serif;
-    --ease:cubic-bezier(.2,.7,.1,1);
+    --serif:'Manrope:wght@400;500;600;700',system-ui,sans-serif;
+    --sans:'Manrope:wght@400;500;600;700',system-ui,sans-serif;
+    --ease:cubic-bezier(0.22,1,0.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -34,15 +34,15 @@
   .wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
   @media (min-width:700px){.wrap{width:min(1180px,100% - 5rem)}}
 
-  .kicker{display:inline-flex;align-items:center;gap:.9rem;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--brass)}
+  .kicker{display:inline-flex;align-items:center;gap:.9rem;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:none;color:var(--brass)}
   .kicker::before,.kicker::after{content:"";width:22px;height:1px;background:currentColor}
   .center{text-align:center}
   h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.01em}
-  h2{font-size:clamp(2.4rem,6vw,4.4rem)}
-  h2 em{font-style:italic;color:var(--brass-2)}
-  .lede{color:var(--muted);font-size:clamp(1rem,1.4vw,1.12rem);max-width:34rem}
+  h2{font-size:clamp(30px,6vw,48px)}
+  h2 em{font-style:normal;color:var(--brass-2)}
+  .lede{color:var(--muted);font-size:clamp(16px,1.4vw,18px);max-width:34rem}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.7rem;font-weight:600;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--brass);transition:transform .3s var(--ease),background .3s,color .3s;white-space:nowrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.7rem;font-weight:600;font-size:16px;letter-spacing:.1em;text-transform:none;border:1.5px solid var(--brass);transition:transform .3s var(--ease),background .3s,color .3s;white-space:nowrap}
   .btn svg{width:18px;height:18px;flex:none}
   .btn-brass{background:var(--brass);color:var(--green)}
   .btn-brass:hover{background:var(--brass-2);transform:translateY(-2px)}
@@ -54,36 +54,34 @@
   .header.scrolled{background:rgba(16,31,26,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
   .header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
   .logo{display:flex;align-items:center;gap:.75rem}
-  .logo-mark{width:46px;height:46px;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;color:var(--brass);flex:none;font-family:var(--serif);font-size:1.3rem;font-weight:700}
-  .logo b{display:block;font-family:var(--serif);font-weight:700;font-size:1.35rem;line-height:1.1}
-  .logo small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
-  .nav{display:none;gap:2rem;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .logo-mark{width:46px;height:46px;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;color:var(--brass);flex:none;font-family:var(--serif);font-size:20px;font-weight:700}
+  .logo b{display:block;font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.1}
+  .logo small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:none;color:var(--muted);margin-top:.2rem}
+  .nav{display:none;gap:2rem;font-size:.88rem;letter-spacing:.08em;text-transform:none;color:var(--muted)}
   .nav a{position:relative;padding:.25rem 0;transition:color .3s}
   .nav a:hover{color:var(--brass-2)}
-  .header .btn{min-height:46px;padding:0 1.2rem;font-size:.82rem}
+  .header .btn{min-height:46px;padding:0 1.2rem;font-size:14px}
   .header .btn .num{display:none}
   @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
 
   /* hero */
   .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;background:var(--green-3)}
-  .hero-media{position:absolute;inset:0;z-index:-2;background:linear-gradient(135deg,#1d352a,#101f1a)}
-  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;opacity:.75;filter:sepia(.25) contrast(1.05);transform:scale(1.06);animation:heroIn 2.4s var(--ease) forwards}
-  @keyframes heroIn{to{transform:scale(1)}}
-  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
-    linear-gradient(180deg,rgba(16,31,26,.7) 0%,rgba(16,31,26,.2) 30%,rgba(16,31,26,.5) 60%,var(--green) 100%),
-    linear-gradient(90deg,rgba(16,31,26,.85),rgba(16,31,26,0) 70%)}
+  .hero-media{position:absolute;inset:0;z-index:-2;background:var(--green-3)}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;opacity:.75;filter:sepia(.25) contrast(1.05)}
+  
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(16,31,26,.55)}
   .hero-inner{padding:8.5rem 0 3.5rem;position:relative;max-width:44rem}
-  .hero h1{font-size:clamp(3rem,9vw,7rem);margin:1.2rem 0 1.4rem}
+  .hero h1{font-size:clamp(36px,9vw,60px);margin:1.2rem 0 1.4rem}
   .hero h1 em{color:var(--brass-2)}
   .hero p{color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.18rem);max-width:32rem}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
   .hero-ctas .btn{flex:1 1 220px}
   @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
   .hero-stats{display:flex;gap:2.5rem;margin-top:2.6rem;border-top:1px solid var(--line);padding-top:1.6rem;flex-wrap:wrap}
-  .hero-stats div b{display:block;font-family:var(--serif);font-size:1.9rem;color:var(--brass-2);font-weight:700}
-  .hero-stats div span{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .hero-stats div b{display:block;font-family:var(--serif);font-size:30px;color:var(--brass-2);font-weight:700}
+  .hero-stats div span{font-size:.78rem;letter-spacing:.16em;text-transform:none;color:var(--muted)}
 
-  .pad{padding:clamp(4.5rem,10vw,8rem) 0}
+  .pad{padding:clamp(64px,10vw,96px) 0}
   .head{display:grid;gap:1.3rem;margin-bottom:clamp(2.6rem,5vw,4rem);text-align:center;justify-items:center;max-width:48rem;margin-inline:auto}
   .head h2{margin-top:1rem}
 
@@ -92,16 +90,16 @@
   @media (min-width:960px){.pkgs{grid-template-columns:repeat(3,1fr)}}
   .pkg{border:1.5px solid var(--line);background:var(--green-3);padding:2.4rem 2rem;position:relative;display:flex;flex-direction:column;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
   .pkg:hover{transform:translateY(-6px);border-color:var(--line-2);box-shadow:0 26px 50px -24px rgba(0,0,0,.6)}
-  .pkg.signature{border-color:var(--brass);background:linear-gradient(180deg,#1d2f24,#16291f)}
-  .pkg .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brass);color:var(--green);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.35rem 1rem;white-space:nowrap}
-  .pkg h3{font-size:1.9rem;margin-bottom:.3rem}
-  .pkg .sub{font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+  .pkg.signature{border-color:var(--brass);background:#1d2f24}
+  .pkg .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brass);color:var(--green);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:none;padding:.35rem 1rem;white-space:nowrap}
+  .pkg h3{font-size:30px;margin-bottom:.3rem}
+  .pkg .sub{font-size:14px;letter-spacing:.2em;text-transform:none;color:var(--muted);margin-bottom:1.2rem}
   .pkg ul{list-style:none;display:grid;gap:.65rem;margin-bottom:1.8rem;flex:1}
   .pkg li{display:flex;gap:.7rem;align-items:flex-start;font-size:.94rem;color:var(--cream-2)}
   .pkg li svg{width:17px;height:17px;color:var(--brass);flex:none;margin-top:.25rem}
   .pkg .price{border-top:1px solid var(--line);padding-top:1.2rem}
-  .pkg .price b{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--brass-2)}
-  .pkg .price span{display:block;font-size:.82rem;color:var(--muted);margin-top:.15rem}
+  .pkg .price b{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--brass-2)}
+  .pkg .price span{display:block;font-size:14px;color:var(--muted);margin-top:.15rem}
   .pkg .btn{margin-top:1.2rem}
 
   /* craft section */
@@ -113,16 +111,26 @@
   .craft-list li{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start}
   .craft-list .ico{width:48px;height:48px;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;color:var(--brass);flex:none}
   .craft-list .ico svg{width:22px;height:22px}
-  .craft-list h3{font-size:1.35rem;margin-bottom:.3rem}
-  .craft-list p{color:var(--muted);font-size:.95rem}
+  .craft-list h3{font-size:20px;margin-bottom:.3rem}
+  .craft-list p{color:var(--muted);font-size:16px}
 
   /* reviews */
   .rev{display:grid;gap:1.4rem}
   @media (min-width:900px){.rev{grid-template-columns:repeat(3,1fr)}}
   .quote{border:1.5px solid var(--line);padding:2rem 1.8rem;background:var(--green-3)}
   .quote .stars{color:var(--brass);letter-spacing:.2em;font-size:1.05rem;margin-bottom:1rem}
-  .quote p{font-family:var(--serif);font-size:1.3rem;font-style:italic;line-height:1.5}
-  .quote footer{margin-top:1.2rem;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .quote p{font-family:var(--serif);font-size:20px;font-style:normal;line-height:1.5}
+  .quote footer{margin-top:1.2rem;font-size:.8rem;letter-spacing:.14em;text-transform:none;color:var(--muted)}
+
+  /* faq */
+  .faq{max-width:820px;margin-inline:auto}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq details:first-of-type{border-top:1px solid var(--line)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.4rem 0;font-family:var(--serif);font-weight:600;font-size:24px;color:var(--cream);transition:color .3s}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:hover{color:var(--brass-2)}
+  .faq .answer{color:var(--muted);padding:0 2rem 1.5rem 0}
+  .faq .answer a{color:var(--brass-2);border-bottom:1px solid var(--brass-dim)}
 
   /* contact */
   .contact{border:1.5px solid var(--line-2);padding:clamp(2.4rem,6vw,4rem);display:grid;gap:2.4rem;text-align:center}
@@ -132,7 +140,7 @@
   .contact-list li{display:flex;gap:1rem;align-items:flex-start;justify-content:center}
   @media (min-width:960px){.contact-list li{justify-content:flex-start}}
   .contact-list svg{width:22px;height:22px;color:var(--brass);flex:none;margin-top:.2rem}
-  .contact-list b{display:block;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brass);margin-bottom:.15rem;font-weight:600}
+  .contact-list b{display:block;font-size:.72rem;letter-spacing:.28em;text-transform:none;color:var(--brass);margin-bottom:.15rem;font-weight:600}
   .cta-band{background:var(--ox);padding:clamp(2.6rem,7vw,4.5rem);text-align:center;margin-top:clamp(3rem,8vw,5rem);border:1.5px solid var(--ox-2)}
   .cta-band h2{color:#fff;margin:.8rem 0 1rem}
   .cta-band .kicker{color:var(--brass-2)}
@@ -144,25 +152,50 @@
   footer.site h3{color:var(--cream);font-size:1.15rem;margin-bottom:.7rem}
   footer.site p,footer.site a{font-size:.92rem}
   footer.site a:hover{color:var(--brass-2)}
-  .legal{border-top:1px solid var(--line);margin-top:2rem;padding-top:1.4rem;font-size:.82rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+  .legal{border-top:1px solid var(--line);margin-top:2rem;padding-top:1.4rem;font-size:14px;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
 
   .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(16,31,26,.96);backdrop-filter:blur(10px)}
   @media (min-width:900px){.callbar{display:none}}
-  .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;font-weight:600;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase}
+  .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;font-weight:600;font-size:.92rem;letter-spacing:.08em;text-transform:none}
   .callbar a svg{width:19px;height:19px}
   .callbar .call{background:var(--brass);color:var(--green)}
   .callbar .sms{border:1.5px solid var(--brass);color:var(--brass-2)}
+
+/* ---- landing design system ---- */
+.js .reveal{opacity:0;transform:translateY(32px);transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),transform 500ms cubic-bezier(0.22,1,0.36,1);transition-delay:var(--d,0s)}
+.btn{border-radius:8px;transition:transform 500ms cubic-bezier(0.22,1,0.36,1),opacity 500ms cubic-bezier(0.22,1,0.36,1)}
+.btn:active{transform:scale(.98)}
+.card:active{transform:scale(.98)}
+h1,h2,h3{text-wrap:balance}
+p,.lede,.answer{text-wrap:pretty}
+.hero h1{max-width:680px}
+.acc{color:var(--brass-2)}
+.proof{margin-top:32px;font-size:16px;font-weight:600}
+.tagline{padding:64px 0;text-align:center}
+.tagline p{font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.2;max-width:680px;margin-inline:auto;text-wrap:balance}
+.tagline .w{opacity:.3;transition:opacity 500ms cubic-bezier(0.22,1,0.36,1)}
+.tagline .w.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.tagline .w{opacity:1;transition:none}}
+
+.pkg,.quote,.contact,.cta-band{border-radius:16px}
+.how-grid{display:grid;gap:24px}
+@media (min-width:860px){.how-grid{grid-template-columns:repeat(3,1fr)}}
+.how-step{border:1.5px solid var(--line);border-radius:16px;padding:32px;background:var(--green-3)}
+.how-step h3{font-size:24px;margin:16px 0 8px}
+.how-n{font-size:30px;font-weight:700;color:var(--brass-2)}
+.how-step p{color:var(--muted);font-size:16px}
+
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
 </head>
 <body>
 <header class="header" id="header">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="Dapper Dog Spa home"><img src="logo.png" alt="Dapper Dog Spa logo" style="width:44px;height:44px;object-fit:cover;border-radius:10px;flex:none"><span><b>Dapper Dog Spa</b><small>Fine Grooming</small></span></a>
+    <a class="logo" href="#header" aria-label="Dapper Dog Spa home"><img src="logo.png" alt="Dapper Dog Spa logo" style="width:44px;height:44px;object-fit:cover;border-radius:10px;flex:none"><span><b>Dapper Dog Spa</b><small>Fine Grooming</small></span></a>
     <nav class="nav" aria-label="Primary">
-      <a href="#packages">Packages</a><a href="#craft">The Craft</a><a href="#reviews">Reviews</a><a href="#contact">Visit</a>
+      <a href="#packages">Packages</a><a href="#craft">The Craft</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a><a href="#contact">Visit</a>
     </nav>
-    <a class="btn btn-brass" href="tel:+14035550141"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><span class="lbl">Book</span><span class="num">(403) 555-0141</span></a>
+    <a class="btn btn-brass" href="tel:+14035550141"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><span class="lbl">Book an appointment</span><span class="num">(403) 555-0141</span></a>
   </div>
 </header>
 
@@ -171,53 +204,70 @@
     <div class="hero-media"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&q=80&auto=format&fit=crop" alt="Handsome dog with a sharp haircut" fetchpriority="high"></div>
     <div class="wrap"><div class="hero-inner">
       <span class="kicker">Est. 2021 · Downtown Calgary</span>
-      <h1>Sharp dogs,<br><em>dapper</em> owners.</h1>
-      <p>A grooming lounge with old-school polish: hot-towel finishes, precision scissor work and a proper appointment — no cages, no chaos.</p>
+      <h1>Sharp dogs,<br><span class="acc">dapper</span> owners.</h1>
+      <p>A grooming lounge with old school polish: hot towel finishes, precision scissor work and a proper appointment — no cages, no chaos.</p>
       <div class="hero-ctas">
         <a class="btn btn-brass" href="tel:+14035550141">Book an Appointment</a>
-        <a class="btn btn-line" href="#packages">View Packages</a>
       </div>
       <div class="hero-stats">
-        <div><b>4.9</b> <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span>310 reviews</span></div>
-        <div><b>12k+</b><span>grooms done</span></div>
         <div><b>1:1</b><span>private appointments</span></div>
+        <div><b>90 min</b><span>unhurried grooms</span></div>
+        <div><b>Certified</b><span>master groomers</span></div>
       </div>
     </div></div>
   </section>
 
+  <section class="pad" id="craft" style="padding-top:0"><div class="wrap">
+    <div class="head">
+      <span class="kicker">The Craft</span>
+      <h2>Grooming, <span class="acc">done properly.</span></h2>
+    </div>
+    <div class="craft">
+      <div class="craft-img"><img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=900&q=80&auto=format&fit=crop" alt="Groomer trimming a pug" loading="lazy"></div>
+      <div>
+        <ul class="craft-list">
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h3>Unhurried appointments</h3><p>90 minutes minimum per dog. We never double book the table — your dog has our full attention.</p></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7Z"/></svg></span><div><h3>Master groomers</h3><p>Every groomer is certified with 5+ years on the table. Breed standard cuts done by the book.</p></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.4-9.5 9-9.5 9Z"/></svg></span><div><h3>Stress free promise</h3><p>No cages, no dryers on blast, no rushing. Nervous dogs get patience, praise and plenty of breaks.</p></div></li>
+        </ul>
+        <div class="hero-ctas" style="margin-top:2.2rem"><a class="btn btn-brass" href="tel:+14035550141">Book an appointment</a></div>
+      </div>
+    </div>
+  </div></section>
+
   <section class="pad" id="packages"><div class="wrap">
     <div class="head">
       <span class="kicker">Grooming Packages</span>
-      <h2>Choose your <em>finish.</em></h2>
-      <p class="lede">Three signature packages. Every dog leaves with a hot-towel finish and a bow tie or bandana — his choice.</p>
+      <h2>Choose your <span class="acc">finish.</span></h2>
+      <p class="lede">Three signature packages. Every dog leaves with a hot towel finish and a bow tie or bandana — his choice.</p>
     </div>
     <div class="pkgs">
       <article class="pkg">
-        <h3>The Tidy-Up</h3><p class="sub">Maintenance between cuts</p>
+        <h3>The Tidy up</h3><p class="sub">Maintenance between cuts</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Warm bath &amp; hand fluff-dry</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Warm bath &amp; hand fluff dry</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Face, feet &amp; sanitary trim</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Nail trim &amp; ear clean</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Finishing cologne spritz</li>
         </ul>
         <div class="price"><b>C$55</b><span>small · C$70 medium · C$85 large</span></div>
-        <a class="btn btn-line" href="tel:+14035550141">Book Tidy-Up</a>
+        <a class="btn btn-line" href="tel:+14035550141">Book a tidy up</a>
       </article>
       <article class="pkg signature">
         <span class="flag">Signature</span>
         <h3>The Full Dapper</h3><p class="sub">Our namesake groom</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Deep-cleanse bath, two shampoos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Deep cleanse bath, two shampoos</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Precision scissor cut or breed clip</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>De-shedding undercoat treatment</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Hot-towel finish &amp; paw balm</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Deshedding undercoat treatment</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Hot towel finish &amp; paw balm</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Bow tie or bandana, his pick</li>
         </ul>
         <div class="price"><b>C$95</b><span>small · C$120 medium · C$145 large</span></div>
         <a class="btn btn-brass" href="tel:+14035550141">Book Full Dapper</a>
       </article>
       <article class="pkg">
-        <h3>The Gentleman</h3><p class="sub">The works, spa-grade</p>
+        <h3>The Gentleman</h3><p class="sub">The works, spa grade</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Everything in The Full Dapper</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Oatmeal mud mask &amp; coat oil</li>
@@ -231,33 +281,44 @@
     </div>
   </div></section>
 
-  <section class="pad" id="craft" style="padding-top:0"><div class="wrap">
+      <section class="tagline" aria-label="Our promise"><div class="wrap"><p>A sharp cut and a calm dog, groomed slowly by someone who takes their time.</p></div></section>
+
+<section class="pad" id="how" style="padding-top:0"><div class="wrap">
     <div class="head">
-      <span class="kicker">The Craft</span>
-      <h2>Grooming, <em>done properly.</em></h2>
+      <span class="kicker">How it works</span>
+      <h2>Three steps to a sharp dog.</h2>
     </div>
-    <div class="craft">
-      <div class="craft-img"><img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=900&q=80&auto=format&fit=crop" alt="Groomer trimming a pug" loading="lazy"></div>
-      <div>
-        <ul class="craft-list">
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h3>Unhurried appointments</h3><p>90 minutes minimum per dog. We never double-book the table — your dog has our full attention.</p></div></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7Z"/></svg></span><div><h3>Master groomers</h3><p>Every groomer is certified with 5+ years on the table. Breed-standard cuts done by the book.</p></div></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.4-9.5 9-9.5 9Z"/></svg></span><div><h3>Stress-free promise</h3><p>No cages, no dryers-on-blast, no rushing. Nervous dogs get patience, praise and plenty of breaks.</p></div></li>
-        </ul>
-        <div class="hero-ctas" style="margin-top:2.2rem"><a class="btn btn-brass" href="tel:+14035550141">Call (403) 555-0141</a></div>
-      </div>
+    <div class="how-grid">
+      <div class="how-step"><span class="how-n">1</span><h3>Call to book</h3><p>Ring (403) 555-0141 and tell us about your dog, their coat and the cut you have in mind.</p></div>
+      <div class="how-step"><span class="how-n">2</span><h3>Bring your dog in</h3><p>Come to the lounge at 110 5 Ave SW for a private 90 minute appointment, with no cages and no rush.</p></div>
+      <div class="how-step"><span class="how-n">3</span><h3>Pick up a dapper dog</h3><p>Head home with a sharp cut, a hot towel finish and a bow tie or bandana, his pick.</p></div>
     </div>
   </div></section>
 
-  <section class="pad" id="reviews" style="padding-top:0"><div class="wrap">
+<section class="pad" id="reviews" style="padding-top:0"><div class="wrap">
     <div class="head">
       <span class="kicker">Word of Mouth</span>
-      <h2>Distinguished <em>clientele.</em></h2>
+      <h2>Distinguished <span class="acc">clientele.</span></h2>
     </div>
     <div class="rev">
-      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"My schnauzer has never looked sharper. The hot-towel finish is such a nice touch — he struts out of there."</p><footer>— Marcus V. &amp; Winston</footer></blockquote>
-      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Booked The Gentleman for my lab before family photos. He looked like a show dog. The portrait was a lovely surprise."</p><footer>— Derek H. &amp; Cooper</footer></blockquote>
-      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Finally a groomer that takes doodle coats seriously. No shave-downs, no uneven patches — just a perfect cut."</p><footer>— James L. &amp; Archie</footer></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"My schnauzer has never looked sharper. The hot towel finish is such a nice touch — he struts out of there."</p><footer>— Marcus &amp; Winston</footer></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Booked The Gentleman for my lab before family photos. He looked like a show dog. The portrait was a lovely surprise."</p><footer>— Derek &amp; Cooper</footer></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Finally a groomer that takes doodle coats seriously. No shave downs, no uneven patches — just a perfect cut."</p><footer>— James &amp; Archie</footer></blockquote>
+    </div>
+  </div></section>
+
+  <section class="pad" id="faq" style="padding-top:0"><div class="wrap">
+    <div class="head">
+      <span class="kicker">Good to Know</span>
+      <h2>Questions, <span class="acc">answered.</span></h2>
+    </div>
+    <div class="faq">
+      <details><summary>How much does a groom cost?</summary><p class="answer">It depends on your dog's size and the package — The Tidy up starts at C$55, The Full Dapper at C$95, and The Gentleman at C$150 for small dogs. Call <a href="tel:+14035550141">(403) 555-0141</a> for a quote for your dog.</p></details>
+      <details><summary>Do you take nervous dogs?</summary><p class="answer">Yes. Appointments are one to one with no cages, and nervous dogs get patience, praise and plenty of breaks. Tell us about your dog when you book so we can plan the gentlest groom.</p></details>
+      <details><summary>How far ahead should I book?</summary><p class="answer">We usually book about a week out. Call or text and we'll find the next appointment that suits you.</p></details>
+      <details><summary>Do you take walk ins?</summary><p class="answer">Walk ins are welcome for nail trims only — all full grooms are by appointment so every dog gets the full 90 minutes.</p></details>
+      <details><summary>What should I bring to the appointment?</summary><p class="answer">Just your dog and their leash. If your dog has sensitive skin or a shampoo your vet recommended, bring that along and tell us when you call.</p></details>
+      <details><summary>What if my dog needs a break during the groom?</summary><p class="answer">Breaks are part of the groom here. Nervous dogs get patience, praise and time to settle, and we will call you if we think a shorter session suits them better.</p></details>
     </div>
   </div></section>
 
@@ -265,11 +326,10 @@
     <div class="contact">
       <div>
         <span class="kicker">Visit the Lounge</span>
-        <h2>Your dog's chair <em>is waiting.</em></h2>
-        <p class="lede">Walk-ins for nail trims only — all grooms by appointment. We book about a week out.</p>
+        <h2>Your dog's chair <span class="acc">is waiting.</span></h2>
+        <p class="lede">Walk ins for nail trims only — all grooms by appointment. We book about a week out.</p>
         <div class="hero-ctas" style="margin-top:1.8rem;justify-content:center">
-          <a class="btn btn-brass" href="tel:+14035550141">Call (403) 555-0141</a>
-          <a class="btn btn-line" href="sms:+14035550141">Text Us</a>
+          <a class="btn btn-brass" href="tel:+14035550141">Book an appointment</a>
         </div>
       </div>
       <ul class="contact-list">
@@ -279,29 +339,33 @@
       </ul>
     </div>
     <div class="cta-band">
-      <span class="kicker">Complimentary Consults</span>
-      <h2>First visit? The tidy-up's on us*.</h2>
-      <p class="lede" style="color:#f3ddd2;max-width:30rem;margin:0 auto 1.8rem">*New clients: book any full groom and get a complimentary face/feet tidy-up between visits.</p>
-      <div class="hero-ctas"><a class="btn btn-brass" href="tel:+14035550141">Call (403) 555-0141</a></div>
+      <span class="kicker">Book an appointment</span>
+      <h2>Sharp dogs, dapper owners.</h2>
+      <p class="lede" style="color:#f3ddd2;max-width:30rem;margin:0 auto 1.8rem">Call to book your dog in for a private, unhurried groom.</p>
+      <div class="hero-ctas"><a class="btn btn-brass" href="tel:+14035550141">Book an appointment</a></div>
     </div>
   </div></section>
 </main>
 
 <footer class="site"><div class="wrap">
   <div><h3>Dapper Dog Spa</h3><p>Upscale grooming lounge in downtown Calgary. Precision cuts, spa finishes, zero cages.</p><p style="margin-top:.8rem"><a href="tel:+14035550141">(403) 555-0141</a></p></div>
-  <div><h3>Packages</h3><p><a href="#packages">The Tidy-Up</a><br><a href="#packages">The Full Dapper</a><br><a href="#packages">The Gentleman</a></p></div>
+  <div><h3>Packages</h3><p><a href="#packages">The Tidy up</a><br><a href="#packages">The Full Dapper</a><br><a href="#packages">The Gentleman</a></p></div>
   <div><h3>Lounge</h3><p>110 5 Ave SW<br>Calgary, AB<br>Mon–Fri: 9 AM – 6 PM</p></div>
-</div><div class="wrap legal"><span>© 2026 Dapper Dog Spa. All rights reserved.</span><span>Demo site — prices illustrative.</span></div></footer>
+</div><div class="wrap legal"><span>© 2026 Dapper Dog Spa. All rights reserved.</span><span>Demo site — prices illustrative.</span><span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></span></div></footer>
 
-<div class="callbar"><a class="call" href="tel:+14035550141"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Book Now</a><a class="sms" href="sms:+14035550141">Text Us</a></div>
+<div class="callbar"><a class="call" href="tel:+14035550141">Book an appointment</a></div>
 
 <script>
   const h = document.getElementById('header');
   addEventListener('scroll', () => h.classList.toggle('scrolled', scrollY > 40), {passive:true});
 </script>
 
+<script>
+(function(){var t=document.querySelector('.tagline p');if(!t)return;var words=t.textContent.trim().split(/\s+/);t.innerHTML=words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');var spans=t.querySelectorAll('.w');function show(){spans.forEach(function(s){s.classList.add('on')})}if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){show();return}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=Array.prototype.indexOf.call(spans,e.target);setTimeout(function(){e.target.classList.add('on')},i*70);io.unobserve(e.target)}})},{threshold:.6});spans.forEach(function(s){io.observe(s)})})();
+</script>
+
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
 </body>
 </html>
