@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<link rel="icon" type="image/png" href="../logos/flutter-lash-bar.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Flutter Lash Bar — Lash Extensions, Lifts &amp; Tints, Calgary</title>
@@ -10,19 +10,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
     --bg:#faf4f7; --bg2:#f4e9f0; --paper:#fffcfd;
     --ink:#4d3442; --muted:#937586; --plum:#a86b8e; --plum-d:#8d5276; --gold:#d9a75f;
     --line:rgba(141,82,118,.16);
-    --serif:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
-    --r:20px; --ease:cubic-bezier(.2,.7,.1,1);
+    --serif:'Poppins',system-ui,sans-serif; --sans:'Poppins',system-ui,sans-serif;
+    --r:16px; --ease:cubic-bezier(0.22,1,0.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
   @media(min-width:900px){body{padding-bottom:0}}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
@@ -31,104 +31,129 @@
   .wrap{width:min(1140px,100% - 2.5rem);margin-inline:auto}
   @media(min-width:700px){.wrap{width:min(1140px,100% - 5rem)}}
   h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
-  h2{font-size:clamp(2.1rem,5vw,3.4rem);margin:.8rem 0 1rem}
-  h2 em{font-style:italic;color:var(--plum-d)}
-  .eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--plum-d)}
-  .lede{color:var(--muted);max-width:34rem;font-size:1.06rem}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:0 1.7rem;border-radius:999px;font-weight:500;font-size:.95rem;transition:all .3s var(--ease);white-space:nowrap}
+  h2{font-size:clamp(30px,5vw,48px);margin:12px 0 16px}
+  h2 em{color:var(--plum-d)}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--plum-d)}
+  .lede{color:var(--muted);max-width:34rem;font-size:16px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 24px;border-radius:8px;font-weight:500;font-size:14px;transition:transform .5s var(--ease), opacity .5s var(--ease);white-space:nowrap}
   .btn svg{width:17px;height:17px;flex:none}
   .btn-plum{background:var(--plum-d);color:#fff;box-shadow:0 12px 26px -12px rgba(141,82,118,.7)}
   .btn-plum:hover{background:var(--ink);transform:translateY(-2px)}
   .btn-line{border:1.5px solid var(--plum-d);color:var(--plum-d)}
   .btn-line:hover{background:var(--plum-d);color:#fff}
-  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s}
-  .header.scrolled{background:rgba(250,244,247,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+  .header{position:fixed;inset:0 0 auto;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
   .header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .logo{font-family:var(--serif);font-size:1.5rem;font-weight:600}
-  .logo em{font-style:italic;color:var(--plum-d)}
-  .nav{display:none;gap:2rem;font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+  .logo{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:24px;font-weight:600;white-space:nowrap}
+  @media(max-width:600px){.logo{font-size:18px;gap:8px}}
+  .logo em{color:var(--plum-d)}
+  .nav{display:none;gap:32px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
   .nav a:hover{color:var(--plum-d)}
-  .header .btn{min-height:44px;padding:0 1.15rem;font-size:.85rem}
+  .header .btn{min-height:44px;padding:0 16px;font-size:12px}
   .header .num{display:none}
   @media(min-width:900px){.nav{display:flex}.header .num{display:inline}.header .lbl{display:none}}
-  .hero{position:relative;padding:8rem 0 4.5rem;overflow:hidden}
-  .hero::before{content:"";position:absolute;width:640px;height:640px;left:-240px;top:-240px;border-radius:50%;background:radial-gradient(circle,rgba(168,107,142,.18),transparent 65%);pointer-events:none}
-  .hero-grid{display:grid;gap:3rem;align-items:center}
-  @media(min-width:940px){.hero-grid{grid-template-columns:1.05fr .95fr}.hero{padding:10rem 0 6rem}}
-  .hero h1{font-size:clamp(2.8rem,7vw,5.2rem);margin:1rem 0 1.2rem}
-  .hero h1 em{font-style:italic;color:var(--plum-d)}
-  .hero p{color:var(--muted);font-size:1.1rem;max-width:30rem}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+  .hero{position:relative;padding:96px 0 64px;overflow:hidden}
+  .hero-grid{display:grid;gap:48px;align-items:center}
+  @media(min-width:940px){.hero-grid{grid-template-columns:1.05fr .95fr}.hero{padding:96px 0 96px}}
+  .hero h1{font-size:clamp(36px,7vw,60px);margin:16px 0 16px}
+  .hero h1 em{color:var(--plum-d)}
+  .hero p{color:var(--muted);font-size:16px;max-width:30rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
   .hero-img{position:relative}
-  .hero-img .frame{border-radius:50% 50% var(--r) var(--r);overflow:hidden;aspect-ratio:4/4.7;box-shadow:0 40px 70px -35px rgba(141,82,118,.5);border:10px solid var(--paper)}
+  .hero-img .frame{border-radius:var(--r);overflow:hidden;aspect-ratio:4/4.7;box-shadow:0 40px 70px -35px rgba(141,82,118,.5);border:10px solid var(--paper)}
   .hero-img img{width:100%;height:100%;object-fit:cover}
-  .float-card{position:absolute;right:-8px;bottom:2.6rem;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.15rem;box-shadow:0 18px 34px -18px rgba(77,52,66,.4);font-size:.88rem}
-  .float-card b{font-family:var(--serif);font-size:1.15rem;display:block}
+  .float-card{position:absolute;right:-8px;bottom:2.6rem;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 16px;box-shadow:0 18px 34px -18px rgba(77,52,66,.4);font-size:14px}
+  .float-card b{font-family:var(--serif);font-size:18px;display:block}
   .stars{color:var(--gold);letter-spacing:.06em}
   .stars svg{width:15px;height:15px;vertical-align:-2px;margin-right:.1em}
   section{position:relative}
-  .pad{padding:clamp(4rem,9vw,7rem) 0}
-  .head{display:grid;gap:1rem;margin-bottom:2.8rem}
+  .pad{padding:clamp(64px,9vw,96px) 0}
+  .head{display:grid;gap:16px;margin-bottom:48px}
   @media(min-width:900px){.head{grid-template-columns:1.2fr 1fr;align-items:end}}
-  .menu{display:grid;gap:1.1rem}
+  .menu{display:grid;gap:16px}
   @media(min-width:680px){.menu{grid-template-columns:repeat(2,1fr)}}
   @media(min-width:1020px){.menu{grid-template-columns:repeat(3,1fr)}}
-  .svc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s}
-  .svc:hover{transform:translateY(-5px);box-shadow:0 26px 44px -26px rgba(141,82,118,.4)}
+  .svc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .5s var(--ease);box-shadow:0 26px 44px -26px rgba(141,82,118,.4)}
   .svc-img{aspect-ratio:16/10;overflow:hidden}
-  .svc-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+  .svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
   .svc:hover .svc-img img{transform:scale(1.06)}
-  .svc-b{padding:1.4rem 1.5rem 1.6rem}
-  .svc-b h3{font-size:1.5rem;margin-bottom:.4rem}
-  .svc-b p{color:var(--muted);font-size:.96rem;min-height:3.2em}
-  .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:1.1rem;padding-top:1rem;border-top:1px dashed var(--line)}
-  .price{font-family:var(--serif);font-size:1.45rem;font-weight:600;color:var(--plum-d)}
-  .price-row a{font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--plum)}
+  .svc-b{padding:24px 24px 24px}
+  .svc-b h3{font-size:24px;margin-bottom:8px}
+  .svc-b p{color:var(--muted);font-size:14px;min-height:3.2em}
+  .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
+  .price{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--plum-d)}
+  .price-row a{font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--ink);border-bottom:1px solid var(--plum)}
   .price-row a:hover{color:var(--plum-d)}
-  .fills{margin-top:2rem;background:var(--bg2);border-radius:var(--r);padding:1.8rem 2rem}
-  .fills h3{font-size:1.4rem;margin-bottom:1rem}
-  .fills ul{list-style:none;display:grid;gap:.7rem}
+  .fills{margin-top:32px;background:var(--bg2);border-radius:var(--r);padding:32px 32px}
+  .fills h3{font-size:20px;margin-bottom:16px}
+  .fills ul{list-style:none;display:grid;gap:12px}
   @media(min-width:700px){.fills ul{grid-template-columns:repeat(3,1fr)}}
-  .fills li{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;display:flex;justify-content:space-between;gap:1rem;font-size:.95rem}
-  .fills li b{font-family:var(--serif);font-size:1.15rem;color:var(--plum-d)}
-  .split{display:grid;gap:3rem;align-items:center}
+  .fills li{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 16px;display:flex;justify-content:space-between;gap:16px;font-size:14px}
+  .fills li b{font-family:var(--serif);font-size:18px;color:var(--plum-d)}
+  .split{display:grid;gap:48px;align-items:center}
   @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
   .split-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3.6;box-shadow:0 30px 60px -30px rgba(77,52,66,.35)}
   .split-img img{width:100%;height:100%;object-fit:cover}
-  .check{list-style:none;margin-top:1.6rem;display:grid;gap:.9rem}
-  .check li{display:flex;gap:.8rem;color:var(--muted)}
+  .check{list-style:none;margin-top:24px;display:grid;gap:16px}
+  .check li{display:flex;gap:12px;color:var(--muted)}
   .check b{color:var(--ink);font-weight:500}
-  .faq-grid{display:grid;gap:2.5rem}
-  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:4rem}}
-  details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;padding:0 1.3rem}
-  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font-family:var(--serif);font-size:1.2rem;font-weight:500}
+
+  .quotes{display:grid;gap:16px}
+  @media(min-width:800px){.quotes{grid-template-columns:repeat(3,1fr)}}
+  .quote-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:32px 24px}
+  .quote-card p{font-family:var(--serif);font-size:20px;line-height:1.4;color:var(--ink)}
+  .quote-card small{display:block;margin-top:16px;font-size:12px;color:var(--muted);letter-spacing:.05em}
+  .faq-grid{display:grid;gap:40px}
+  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:64px}}
+  details{background:var(--paper);border:1px solid var(--line);border-radius:8px;margin-bottom:12px;padding:0 24px}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;font-family:var(--serif);font-size:18px;font-weight:500}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";font-size:1.4rem;color:var(--plum-d);transition:transform .3s}
+  summary::after{content:"+";font-size:20px;color:var(--plum-d);transition:transform .5s}
   details[open] summary::after{transform:rotate(45deg)}
-  .answer{color:var(--muted);padding:0 0 1.2rem;font-size:.97rem}
+  .answer{color:var(--muted);padding:0 0 16px;font-size:14px}
   .answer a{color:var(--plum-d);font-weight:500}
-  .contact-card{background:var(--ink);color:#f6ecf2;border-radius:26px;padding:clamp(2rem,5vw,4rem);display:grid;gap:2.4rem;position:relative;overflow:hidden}
-  .contact-card::before{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-180px;border-radius:50%;background:radial-gradient(circle,rgba(168,107,142,.35),transparent 65%)}
+  .contact-card{background:var(--ink);color:#f6ecf2;border-radius:16px;padding:clamp(32px,5vw,64px);display:grid;gap:40px;position:relative;overflow:hidden}
   @media(min-width:940px){.contact-card{grid-template-columns:1.2fr 1fr;align-items:center}}
   .contact-card h2{color:#fff}
   .contact-card h2 em{color:#e3a9c4}
-  .big-phone{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);color:#e3a9c4;display:inline-block;margin:1rem 0 1.6rem}
+  .big-phone{font-family:var(--serif);font-size:clamp(30px,5vw,48px);color:#e3a9c4;display:inline-block;margin:16px 0 24px}
   .big-phone:hover{color:#fff}
-  .info{display:grid;gap:.8rem;position:relative}
-  .info-row{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
-  .info-row svg{width:19px;height:19px;color:#e3a9c4;margin-top:.2rem}
-  .info-row small{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,236,242,.6);font-weight:500}
-  footer{padding:2.6rem 0 2rem;color:var(--muted);font-size:.88rem}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
-  .demo{border:1px dashed var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.78rem}
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(250,244,247,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
-  .callbar .btn{min-height:52px;font-size:.88rem;padding:0 .8rem}
+  .info{display:grid;gap:12px;position:relative}
+  .info-row{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:16px 16px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+  .info-row svg{width:19px;height:19px;color:#e3a9c4;margin-top:4px}
+  .info-row small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,236,242,.6);font-weight:500}
+  footer{padding:40px 0 32px;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+  .demo{border:1px dashed var(--line);border-radius:8px;padding:8px 16px;font-size:12px}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(250,244,247,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:8px}
+  .callbar .btn{min-height:52px;font-size:14px;padding:0 12px}
   @media(min-width:900px){.callbar{display:none}}
-  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal{opacity:0;transform:translateY(32px);transition:opacity .5s var(--ease), transform .5s var(--ease);transition-delay:var(--d,0s)}
   .js .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transform:none}}
+
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+em{font-style:normal}
+.hero h1{max-width:680px}
+.hero-link{display:inline-flex;align-items:center;min-height:44px;font-weight:500;text-decoration:underline;text-underline-offset:4px;transition:opacity .5s cubic-bezier(0.22,1,0.36,1),transform .5s cubic-bezier(0.22,1,0.36,1)}
+.hero-link:hover{opacity:.75}
+.hero-link:active{transform:scale(.98)}
+.btn:active{transform:scale(.98)}
+.tagline{padding:64px 0;text-align:center}
+.tagline-text{font-size:30px;font-weight:600;line-height:1.3;max-width:680px;margin:0 auto;text-wrap:balance}
+.tagline-text .w{opacity:.3;transition:opacity .5s cubic-bezier(0.22,1,0.36,1)}
+.tagline.in .w{opacity:1}
+@media(prefers-reduced-motion:reduce){.tagline-text .w{opacity:1;transition:none}}
+
+.steps{display:grid;gap:16px;margin-top:32px}
+@media(min-width:800px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px}
+.step-n{font-size:30px;font-weight:600;color:var(--plum)}
+.step h3{font-size:20px;margin:8px 0}
+.step p{color:var(--muted);font-size:16px}
+.step a{color:var(--plum-d);font-weight:500}
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
 </head>
 <body>
 
@@ -141,7 +166,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Flutter Lash Bar — home"><img src="../logos/flutter-lash-bar.png" alt="Flutter Lash Bar logo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;flex:none">Flutter <em>Lash Bar</em></a>
+    <a href="#top" class="logo" aria-label="Flutter Lash Bar — home"><img src="../logos/flutter-lash-bar.png" alt="Flutter Lash Bar logo" style="width:40px;height:40px;border-radius:8px;object-fit:cover;flex:none">Flutter <em>Lash Bar</em></a>
     <nav class="nav" aria-label="Main">
       <a href="#services">Lashes</a><a href="#why">Why us</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
     </nav>
@@ -155,35 +180,35 @@
       <div>
         <span class="eyebrow reveal">Lash bar · Calgary</span>
         <h1 class="reveal" style="--d:.08s">Wake up with<br><em>fluttery lashes.</em></h1>
-        <p class="reveal" style="--d:.16s">Flutter Lash Bar specializes in soft, natural-looking lash extensions, lifts and tints — mapped to your eye shape, never one-size-fits-all.</p>
+        <p class="reveal" style="--d:.16s">Flutter Lash Bar specializes in soft, natural looking lash extensions, lifts and tints — mapped to your eye shape, never one size fits all.</p>
         <div class="hero-ctas reveal" style="--d:.24s">
           <a class="btn btn-plum" href="tel:+14035550126"><svg><use href="#i-phone"/></svg>Call (403) 555-0126</a>
-          <a class="btn btn-line" href="#services">Lash menu</a>
+          <a class="hero-link" href="#services">Lash menu</a>
         </div>
       </div>
       <div class="hero-img reveal" style="--d:.14s">
         <div class="frame"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1000&q=80" alt="Close-up of beautiful long eyelashes and soft makeup" fetchpriority="high"></div>
-        <div class="float-card"><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg></span><b>Certified artists</b>2,000+ sets and counting</div>
+        <div class="float-card"><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.56l-5.9 3.1 1.13-6.58L2.45 9.44l6.6-.96z"/></svg></span><b>Certified artists</b>Custom mapped to your eyes</div>
       </div>
     </div>
   </section>
 
-  <section class="pad" id="services" style="padding-top:1rem">
+  <section class="pad" id="services" style="padding-top:16px">
     <div class="wrap">
       <div class="head">
         <div><span class="eyebrow reveal">Lash menu</span><h2 class="reveal" style="--d:.08s">Find your <em>flutter.</em></h2></div>
         <p class="lede reveal" style="--d:.14s">Every full set includes a lash consultation, custom mapping and aftercare kit. Prices in CAD.</p>
       </div>
       <div class="menu">
-        <article class="svc reveal"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=75" alt="Natural classic lash extensions"></div><div class="svc-b"><h3>Classic Set</h3><p>One extension per lash — the natural, mascara-look finish.</p><div class="price-row"><span class="price">$95</span><a href="tel:+14035550126">Call to book</a></div></div></article>
-        <article class="svc reveal" style="--d:.08s"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=75" alt="Full hybrid lash set"></div><div class="svc-b"><h3>Hybrid Set</h3><p>Classic + volume mix for texture with softness.</p><div class="price-row"><span class="price">$120</span><a href="tel:+14035550126">Call to book</a></div></div></article>
-        <article class="svc reveal" style="--d:.16s"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=75" alt="Dramatic volume lashes"></div><div class="svc-b"><h3>Volume Set</h3><p>Feather-light fans for full, fluffy, glamorous lashes.</p><div class="price-row"><span class="price">$145</span><a href="tel:+14035550126">Call to book</a></div></div></article>
-        <article class="svc reveal"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=75" alt="Mega volume lashes close-up"></div><div class="svc-b"><h3>Mega Volume</h3><p>Maximum density, ultra-dark lash line — full drama.</p><div class="price-row"><span class="price">$165</span><a href="tel:+14035550126">Call to book</a></div></div></article>
-        <article class="svc reveal" style="--d:.08s"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=75" alt="Natural lashes after a lash lift"></div><div class="svc-b"><h3>Lash Lift + Tint</h3><p>Your natural lashes, curled and darkened — lasts 6–8 weeks.</p><div class="price-row"><span class="price">$85</span><a href="tel:+14035550126">Call to book</a></div></div></article>
-        <article class="svc reveal" style="--d:.16s"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=75" alt="Lash tint treatment"></div><div class="svc-b"><h3>Lash &amp; Brow Tint</h3><p>Darken and define — perfect with a lift or on its own.</p><div class="price-row"><span class="price">$30 <small style="font-size:.8rem;color:var(--muted)">from</small></span><a href="tel:+14035550126">Call to book</a></div></div></article>
+        <article class="svc reveal"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=75" alt="Natural classic lash extensions"></div><div class="svc-b"><h3>Classic set</h3><p>One extension per lash — the natural, mascara look finish.</p><div class="price-row"><span class="price">$95</span><a href="tel:+14035550126">Call to book</a></div></div></article>
+        <article class="svc reveal" style="--d:.08s"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=75" alt="Full hybrid lash set"></div><div class="svc-b"><h3>Hybrid set</h3><p>Classic + volume mix for texture with softness.</p><div class="price-row"><span class="price">$120</span><a href="tel:+14035550126">Call to book</a></div></div></article>
+        <article class="svc reveal" style="--d:.16s"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=75" alt="Full volume lash extensions"></div><div class="svc-b"><h3>Volume set</h3><p>Feather light fans for full, fluffy, glamorous lashes.</p><div class="price-row"><span class="price">$145</span><a href="tel:+14035550126">Call to book</a></div></div></article>
+        <article class="svc reveal"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=75" alt="Mega volume lashes close-up"></div><div class="svc-b"><h3>Mega volume</h3><p>Maximum density, ultra dark lash line — full drama.</p><div class="price-row"><span class="price">$165</span><a href="tel:+14035550126">Call to book</a></div></div></article>
+        <article class="svc reveal" style="--d:.08s"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=75" alt="Calm lash studio treatment room"></div><div class="svc-b"><h3>Lash lift + tint</h3><p>Your natural lashes, curled and darkened — lasts 6–8 weeks.</p><div class="price-row"><span class="price">$85</span><a href="tel:+14035550126">Call to book</a></div></div></article>
+        <article class="svc reveal" style="--d:.16s"><div class="svc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=75" alt="Lash tint treatment"></div><div class="svc-b"><h3>Lash &amp; brow tint</h3><p>Darken and define — perfect with a lift or on its own.</p><div class="price-row"><span class="price">$30 <small style="font-size:12px;color:var(--muted)">from</small></span><a href="tel:+14035550126">Call to book</a></div></div></article>
       </div>
       <div class="fills reveal">
-        <h3>Fills &amp; touch-ups</h3>
+        <h3>Fills &amp; touch ups</h3>
         <ul>
           <li><span>Classic fill (2–3 wks)</span><b>$55</b></li>
           <li><span>Volume fill (2–3 wks)</span><b>$70</b></li>
@@ -201,10 +226,45 @@
         <h2 class="reveal" style="--d:.08s">Lashes that look like <em>yours, but better.</em></h2>
         <ul class="check reveal" style="--d:.16s">
           <li><span><b>Custom mapping</b> — every set is designed for your eye shape and natural lashes.</span></li>
-          <li><span><b>Gentle adhesives</b> — sensitive-eye friendly options at every appointment.</span></li>
+          <li><span><b>Gentle adhesives</b> — sensitive eye friendly options at every appointment.</span></li>
           <li><span><b>Honest retention</b> — we tell you what your lashes can actually hold.</span></li>
           <li><span><b>Cozy studio</b> — heated beds, blankets, and naps encouraged.</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="pad" id="how" style="background:var(--bg2)">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow reveal">How it works</span><h2 class="reveal" style="--d:.08s">Three steps to <em>fluttery lashes.</em></h2></div>
+        <p class="lede reveal" style="--d:.14s">Your first visit takes about two hours — bring headphones, leave with lashes.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="step-n">01</span><h3>Call to book</h3><p>Ring <a href="tel:+14035550126">(403) 555-0126</a> and tell us the look you want, natural, full, or dramatic.</p></div>
+        <div class="step reveal" style="--d:.08s"><span class="step-n">02</span><h3>Consult and map</h3><p>We design the set for your eye shape and natural lashes, then confirm the price.</p></div>
+        <div class="step reveal" style="--d:.16s"><span class="step-n">03</span><h3>Relax and flutter</h3><p>Lie back for 90 minutes to 2 hours. Leave with lashes and an aftercare kit.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="tagline" aria-label="Why it matters">
+    <div class="wrap">
+      <p class="tagline-text"><span class="w" style="transition-delay:0.00s">Mornings</span> <span class="w" style="transition-delay:0.06s">get</span> <span class="w" style="transition-delay:0.12s">easier</span> <span class="w" style="transition-delay:0.18s">when</span> <span class="w" style="transition-delay:0.24s">your</span> <span class="w" style="transition-delay:0.30s">lashes</span> <span class="w" style="transition-delay:0.36s">are</span> <span class="w" style="transition-delay:0.42s">already</span> <span class="w" style="transition-delay:0.48s">done.</span></p>
+    </div>
+  </section>
+  <section class="pad" id="reviews" style="background:var(--bg2)">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow reveal">Kind words</span><h2 class="reveal" style="--d:.08s">Flutter, <em>in their words.</em></h2></div>
+        <p class="lede reveal" style="--d:.14s">What clients say after their first morning with lashes.</p>
+      </div>
+      <div class="quotes">
+        <article class="quote-card reveal"><p>&ldquo;I woke up, looked in the mirror, and genuinely forgot I wasn&rsquo;t wearing mascara.&rdquo;</p><small>Emma &middot; Classic set</small></article>
+        <article class="quote-card reveal" style="--d:.08s"><p>&ldquo;The most comfortable lash appointment I&rsquo;ve had — I fell asleep on the heated bed.&rdquo;</p><small>Chloe &middot; Volume set</small></article>
+        <article class="quote-card reveal" style="--d:.16s"><p>&ldquo;They talked me out of mega volume and into hybrid. It suits me so much better.&rdquo;</p><small>Sofia &middot; Hybrid set</small></article>
       </div>
     </div>
   </section>
@@ -214,27 +274,28 @@
       <div>
         <span class="eyebrow reveal">FAQ</span>
         <h2 class="reveal" style="--d:.08s">Lash <em>questions.</em></h2>
-        <p class="lede reveal" style="--d:.14s;margin-top:1rem">New to lashes? Call and we'll talk you through it.</p>
-        <p class="reveal" style="--d:.2s;margin-top:1.6rem"><a class="btn btn-plum" href="tel:+14035550126"><svg><use href="#i-phone"/></svg>(403) 555-0126</a></p>
+        <p class="lede reveal" style="--d:.14s;margin-top:16px">New to lashes? Call and we'll talk you through it.</p>
+        <p class="reveal" style="--d:.2s;margin-top:24px"><a class="btn btn-plum" href="tel:+14035550126"><svg><use href="#i-phone"/></svg>(403) 555-0126</a></p>
       </div>
       <div class="reveal" style="--d:.1s">
         <details open><summary>How long do extensions last?</summary><p class="answer">With fills every 2–3 weeks, a set can be maintained indefinitely. A lift + tint lasts 6–8 weeks on its own.</p></details>
         <details><summary>Will extensions damage my natural lashes?</summary><p class="answer">Not when applied correctly — we match the weight to what your natural lashes can hold, and never overload them.</p></details>
-        <details><summary>What's the difference between classic and volume?</summary><p class="answer">Classic is one extension per natural lash (natural look). Volume uses handmade fans of 2–6 ultra-fine lashes for fullness.</p></details>
-        <details><summary>Can I wear makeup with lashes?</summary><p class="answer">Yes — just avoid oil-based and waterproof products around the eyes, and we'll show you how to cleanse them.</p></details>
+        <details><summary>What's the difference between classic and volume?</summary><p class="answer">Classic is one extension per natural lash (natural look). Volume uses handmade fans of 2 to 6 ultra fine lashes for fullness.</p></details>
+        <details><summary>Can I wear makeup with lashes?</summary><p class="answer">Yes — just avoid oil based and waterproof products around the eyes, and we'll show you how to cleanse them.</p></details>
         <details><summary>Where are you located?</summary><p class="answer">1918 9 Ave SE, Calgary, AB. <a href="https://www.google.com/maps/search/?api=1&query=1918+9+Ave+SE+Calgary+AB" target="_blank" rel="noopener">Get directions</a>.</p></details>
+        <details><summary>How do I book a fill?</summary><p class="answer">Call and tell us when your last full set was. Fills are usually booked 2 to 3 weeks after a set.</p></details>
       </div>
     </div>
   </section>
 
-  <section id="contact" style="padding-bottom:clamp(3rem,7vw,5rem)">
+  <section id="contact" style="padding-bottom:clamp(48px,7vw,80px)">
     <div class="wrap">
       <div class="contact-card reveal">
         <div>
           <span class="eyebrow" style="color:#e3a9c4">Book your set</span>
           <h2>Ready to <em>flutter?</em></h2>
           <a class="big-phone" href="tel:+14035550126">(403) 555-0126</a>
-          <div style="display:flex;flex-wrap:wrap;gap:.8rem;position:relative">
+          <div style="display:flex;flex-wrap:wrap;gap:12px;position:relative">
             <a class="btn btn-plum" href="tel:+14035550126"><svg><use href="#i-phone"/></svg>Call now</a>
             <a class="btn btn-line" style="border-color:#e3a9c4;color:#e3a9c4" href="https://www.google.com/maps/search/?api=1&query=1918+9+Ave+SE+Calgary+AB" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Directions</a>
           </div>
@@ -253,7 +314,7 @@
   <div class="wrap">
     <span>Flutter Lash Bar · 1918 9 Ave SE, Calgary · <a href="tel:+14035550126">(403) 555-0126</a></span>
     <span class="demo">Demo website</span>
-    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></span>
+    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></span>
   </div>
 </footer>
 
@@ -269,10 +330,12 @@
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
   else{els.forEach(function(el){el.classList.add('in')})}
+  var tg=document.querySelector('.tagline');
+  if(tg){if('IntersectionObserver' in window){var tio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tg.classList.add('in');tio.disconnect()}})},{threshold:.4});tio.observe(tg)}else{tg.classList.add('in')}}
 </script>
 
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
 </body>
 </html>
