@@ -3,10 +3,11 @@ window.STR8TECH_CALL = {
   server: 'https://crewbot.tailb88b1c.ts.net',
 };
 
-// Shared helper: ?server=http://localhost:3000 overrides the URL (for testing).
+// Shared helper: the server URL is fixed. There is deliberately NO
+// ?server= override — a crafted link must never be able to redirect
+// the staff PIN, call audio, or typed messages to another site.
 window.STR8TECH_CALL.base = function () {
-  var q = new URLSearchParams(location.search).get('server');
-  return (q || window.STR8TECH_CALL.server || location.origin).replace(/\/$/, '');
+  return (window.STR8TECH_CALL.server || location.origin).replace(/\/+$/, '');
 };
 window.STR8TECH_CALL.wsUrl = function () {
   return window.STR8TECH_CALL.base().replace(/^http/, 'ws') + '/ws';
