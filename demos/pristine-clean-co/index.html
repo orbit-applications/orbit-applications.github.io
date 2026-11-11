@@ -10,32 +10,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
     --bg:#f2fbf9; --bg2:#e4f5f0; --paper:#ffffff;
     --ink:#1e3a34; --muted:#5f7a72; --teal:#0d9d8a; --teal-d:#0a7d6e; --sun:#ffc93c; --coral:#ff7a6b;
     --line:rgba(13,157,138,.16);
-    --disp:'Quicksand',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif;
-    --r:20px; --ease:cubic-bezier(.2,.7,.1,1);
+    --disp:'Poppins',system-ui,sans-serif; --sans:'Poppins',system-ui,sans-serif;
+    --r:20px; --ease:cubic-bezier(.22,1,.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
   @media(min-width:900px){body{padding-bottom:0}}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--teal);color:#fff}
-  :focus-visible{outline:2.5px solid var(--teal);outline-offset:3px;border-radius:10px}
+  :focus-visible{outline:2.5px solid var(--teal);outline-offset:3px;border-radius:8px}
   .wrap{width:min(1140px,100% - 2.5rem);margin-inline:auto}
   @media(min-width:700px){.wrap{width:min(1140px,100% - 5rem)}}
   h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.12;letter-spacing:-.01em}
-  h2{font-size:clamp(2rem,5vw,3.2rem);margin:.8rem 0 1rem}
+  h2{font-size:clamp(30px,5vw,48px);margin:12px 0 16px}
   h2 em{font-style:normal;color:var(--teal)}
-  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.76rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-d);background:#fff;border:1px solid var(--line);padding:.45rem 1rem;border-radius:999px}
-  .lede{color:var(--muted);max-width:34rem;font-size:1.06rem}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.8rem;border-radius:999px;font-family:var(--disp);font-weight:700;font-size:.98rem;transition:all .3s var(--ease);white-space:nowrap}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-d);background:#fff;border:1px solid var(--line);padding:4px 16px;border-radius:8px}
+  .lede{color:var(--muted);max-width:34rem;font-size:16px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 24px;border-radius:8px;font-family:var(--disp);font-weight:700;font-size:14px;transition:all .3s var(--ease);white-space:nowrap}
   .btn svg{width:18px;height:18px;flex:none}
   .btn-teal{background:var(--teal);color:#fff;box-shadow:0 14px 28px -14px rgba(13,157,138,.8)}
   .btn-teal:hover{background:var(--teal-d);transform:translateY(-2px)}
@@ -46,97 +46,117 @@
   .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s}
   .header.scrolled{background:rgba(242,251,249,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
   .header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .logo{font-family:var(--disp);font-size:1.45rem;font-weight:700;display:flex;align-items:center;gap:.55rem}
-  .logo i{width:30px;height:30px;border-radius:10px;background:var(--teal);display:grid;place-items:center;color:#fff;font-style:normal;font-size:1rem}
-  .nav{display:none;gap:2rem;font-weight:600;font-size:.92rem}
+  .logo{font-family:var(--disp);font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px;white-space:nowrap}
+  @media(max-width:600px){.logo{font-size:18px}}
+  .logo i{width:30px;height:30px;border-radius:8px;background:var(--teal);display:grid;place-items:center;color:#fff;font-style:normal;font-size:16px}
+  .nav{display:none;gap:32px;font-weight:600;font-size:14px}
   .nav a:hover{color:var(--teal)}
-  .header .btn{min-height:46px;padding:0 1.2rem;font-size:.88rem}
+  .header .btn{min-height:46px;padding:0 16px;font-size:14px}
   .header .num{display:none}
   @media(min-width:900px){.nav{display:flex}.header .num{display:inline}.header .lbl{display:none}}
-  .hero{position:relative;padding:8.5rem 0 4.5rem;overflow:hidden}
+  .hero{position:relative;padding:96px 0 64px;overflow:hidden}
   .blob{position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
   .b1{width:420px;height:420px;background:rgba(13,157,138,.12);right:-140px;top:-100px}
   .b2{width:300px;height:300px;background:rgba(255,201,60,.25);left:-120px;top:40%}
-  .hero-grid{display:grid;gap:3rem;align-items:center;position:relative}
-  @media(min-width:940px){.hero-grid{grid-template-columns:1.05fr .95fr}.hero{padding:10rem 0 6rem}}
-  .hero h1{font-size:clamp(2.7rem,7vw,4.9rem);margin:1.1rem 0 1.2rem}
+  .hero-grid{display:grid;gap:48px;align-items:center;position:relative}
+  @media(min-width:940px){.hero-grid{grid-template-columns:1.05fr .95fr}.hero{padding:96px 0 96px}}
+  .hero h1{font-size:clamp(36px,7vw,60px);margin:16px 0 16px}
   .hero h1 em{font-style:normal;color:var(--teal)}
-  .hero p{color:var(--muted);font-size:1.08rem;max-width:30rem}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
-  .trust{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem}
-  .trust span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.45rem .95rem;font-size:.85rem;font-weight:600;color:var(--teal-d)}
-  .hero-img .frame{border-radius:32px;overflow:hidden;aspect-ratio:4/4.4;box-shadow:0 40px 70px -35px rgba(13,157,138,.45);border:8px solid #fff;transform:rotate(2deg)}
+  .hero p{color:var(--muted);font-size:16px;max-width:30rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .trust span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 12px;font-size:12px;font-weight:600;color:var(--teal-d)}
+  .hero-img .frame{border-radius:16px;overflow:hidden;aspect-ratio:4/4.4;box-shadow:0 40px 70px -35px rgba(13,157,138,.45);border:8px solid #fff;transform:rotate(2deg)}
   .hero-img img{width:100%;height:100%;object-fit:cover}
   section{position:relative}
-  .pad{padding:clamp(4rem,9vw,7rem) 0}
-  .head{display:grid;gap:1rem;margin-bottom:2.8rem;text-align:center;justify-items:center}
+  .pad{padding:clamp(64px,9vw,96px)}
+  .head{display:grid;gap:16px;margin-bottom:40px;text-align:center;justify-items:center}
   .head .lede{margin-inline:auto}
-  .cards{display:grid;gap:1.2rem}
+  .cards{display:grid;gap:16px}
   @media(min-width:700px){.cards{grid-template-columns:repeat(2,1fr)}}
   @media(min-width:1020px){.cards{grid-template-columns:repeat(4,1fr)}}
-  .card{background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:1.9rem 1.6rem;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;display:flex;flex-direction:column;position:relative}
+  .card{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:24px 24px;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;display:flex;flex-direction:column;position:relative}
   .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 26px 44px -24px rgba(13,157,138,.45);border-color:var(--teal)}
   .card.pop{border-color:var(--sun);background:#fffdf4}
-  .card .icon{width:54px;height:54px;border-radius:16px;background:var(--bg2);display:grid;place-items:center;font-size:1.6rem;margin-bottom:1.2rem;overflow:hidden}
+  .card .icon{width:54px;height:54px;border-radius:8px;background:var(--bg2);display:grid;place-items:center;font-size:24px;margin-bottom:16px;overflow:hidden}
   .card .icon img{width:100%;height:100%;object-fit:cover}
   .trust span svg{width:13px;height:13px;vertical-align:-2px}
-  .card.pop .badge{position:absolute;top:-13px;right:18px;background:var(--sun);color:var(--ink);font-family:var(--disp);font-weight:700;font-size:.75rem;padding:.3rem .8rem;border-radius:999px;letter-spacing:.06em}
-  .card h3{font-size:1.35rem;margin-bottom:.5rem}
-  .card p{color:var(--muted);font-size:.94rem;flex:1}
-  .card ul{list-style:none;margin:1rem 0;font-size:.9rem;color:var(--muted);display:grid;gap:.35rem}
+  .card.pop .badge{position:absolute;top:-13px;right:18px;background:var(--sun);color:var(--ink);font-family:var(--disp);font-weight:700;font-size:12px;padding:4px 12px;border-radius:8px;letter-spacing:.06em}
+  .card h3{font-size:20px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14px;flex:1}
+  .card ul{list-style:none;margin:16px 0;font-size:14px;color:var(--muted);display:grid;gap:4px}
   .card ul li::before{content:"";display:inline-block;width:.95em;height:.95em;margin-right:.4em;vertical-align:-.14em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d9d8a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center/contain}
-  .price{font-family:var(--disp);font-size:1.7rem;font-weight:700;color:var(--teal-d)}
-  .price small{font-family:var(--sans);font-size:.8rem;color:var(--muted);font-weight:400}
-  .card .btn{margin-top:1.2rem}
-  .how{background:var(--ink);color:#eef7f4;border-radius:28px;padding:clamp(2.2rem,5vw,4rem);display:grid;gap:2rem}
+  .price{font-family:var(--disp);font-size:24px;font-weight:700;color:var(--teal-d)}
+  .price small{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400}
+  .card .btn{margin-top:16px}
+  .how{background:var(--ink);color:#eef7f4;border-radius:16px;padding:clamp(32px,5vw,64px);display:grid;gap:32px}
   @media(min-width:900px){.how{grid-template-columns:1fr 1.4fr;align-items:center}}
   .how h2{color:#fff}
   .how h2 em{color:var(--sun)}
   .how p{color:rgba(238,247,244,.75)}
-  .steps{display:grid;gap:1rem}
+  .steps{display:grid;gap:16px}
   @media(min-width:640px){.steps{grid-template-columns:repeat(3,1fr)}}
-  .step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:1.5rem 1.3rem}
-  .step b{font-family:var(--disp);font-size:1.9rem;color:var(--sun)}
-  .step h3{font-size:1.15rem;margin:.5rem 0 .3rem;color:#fff}
-  .step p{font-size:.9rem;color:rgba(238,247,244,.7)}
+  .step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:24px 16px}
+  .step b{font-family:var(--disp);font-size:30px;color:var(--sun)}
+  .step h3{font-size:18px;margin:8px 0 4px;color:#fff}
+  .step p{font-size:14px;color:rgba(238,247,244,.7)}
   .step a{color:var(--sun);font-weight:600}
-  .split{display:grid;gap:3rem;align-items:center}
+  .split{display:grid;gap:48px;align-items:center}
   @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
-  .split-img{border-radius:24px;overflow:hidden;aspect-ratio:4/3.4;box-shadow:0 30px 60px -30px rgba(30,58,52,.35);transform:rotate(-1.5deg);border:8px solid #fff}
+  .split-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3.4;box-shadow:0 30px 60px -30px rgba(30,58,52,.35);transform:rotate(-1.5deg);border:8px solid #fff}
   .split-img img{width:100%;height:100%;object-fit:cover}
-  .checks{list-style:none;margin-top:1.6rem;display:grid;gap:.9rem}
-  .checks li{display:flex;gap:.8rem;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;font-size:.95rem}
+  .checks{list-style:none;margin-top:24px;display:grid;gap:12px}
+  .checks li{display:flex;gap:12px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 16px;font-size:14px}
   .checks li::before{content:"";flex:none;width:26px;height:26px;border-radius:50%;background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center/13px}
-  .faq-grid{display:grid;gap:2.5rem}
-  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:4rem}}
-  details{background:#fff;border:2px solid var(--line);border-radius:16px;margin-bottom:.7rem;padding:0 1.3rem}
-  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font-family:var(--disp);font-size:1.12rem;font-weight:700}
+  .faq-grid{display:grid;gap:40px}
+  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:64px}}
+  details{background:#fff;border:2px solid var(--line);border-radius:16px;margin-bottom:8px;padding:0 16px}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;font-family:var(--disp);font-size:16px;font-weight:700}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";font-size:1.4rem;color:var(--teal);transition:transform .3s}
+  summary::after{content:"+";font-size:20px;color:var(--teal);transition:transform .3s}
   details[open] summary::after{transform:rotate(45deg)}
-  .answer{color:var(--muted);padding:0 0 1.2rem;font-size:.96rem}
+  .answer{color:var(--muted);padding:0 0 16px;font-size:14px}
   .answer a{color:var(--teal-d);font-weight:600}
-  .contact-card{background:linear-gradient(120deg,var(--teal-d),var(--teal));color:#fff;border-radius:28px;padding:clamp(2rem,5vw,4rem);display:grid;gap:2.4rem;position:relative;overflow:hidden}
+  .contact-card{background:var(--teal);color:#fff;border-radius:16px;padding:clamp(32px,5vw,64px);display:grid;gap:32px;position:relative;overflow:hidden}
   .contact-card::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(255,201,60,.35);right:-120px;bottom:-140px}
   @media(min-width:940px){.contact-card{grid-template-columns:1.2fr 1fr;align-items:center}}
   .contact-card h2{color:#fff}
-  .big-phone{font-family:var(--disp);font-size:clamp(2rem,5vw,3.2rem);color:var(--sun);display:inline-block;margin:1rem 0 1.6rem}
+  .big-phone{font-family:var(--disp);font-size:clamp(30px,5vw,48px);color:var(--sun);display:inline-block;margin:16px 0 24px}
   .big-phone:hover{color:#fff}
-  .info{display:grid;gap:.8rem;position:relative;z-index:1}
-  .info-row{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
-  .info-row svg{width:19px;height:19px;color:var(--sun);margin-top:.2rem}
-  .info-row small{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600}
-  footer{padding:2.6rem 0 2rem;color:var(--muted);font-size:.88rem}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
-  .demo{border:1px dashed var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.78rem}
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(242,251,249,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:2px solid var(--teal);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
-  .callbar .btn{min-height:54px;font-size:.88rem;padding:0 .8rem}
+  .info{display:grid;gap:12px;position:relative;z-index:1}
+  .info-row{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:16px 16px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+  .info-row svg{width:19px;height:19px;color:var(--sun);margin-top:2px}
+  .info-row small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600}
+  footer{padding:40px 0 32px;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+  .demo{border:1px dashed var(--line);border-radius:8px;padding:4px 12px;font-size:12px}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(242,251,249,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:2px solid var(--teal);display:grid;grid-template-columns:1fr 2fr;gap:8px}
+  .callbar .btn{min-height:54px;font-size:14px;padding:0 12px}
   @media(min-width:900px){.callbar{display:none}}
-  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal{opacity:0;transform:translateY(32px);transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0s)}
   .js .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+  .testi{background:var(--bg2);border-radius:16px;padding:clamp(32px,5vw,48px)}
+  .testi .head{margin-bottom:32px}
+  .testi-grid{display:grid;gap:16px}
+  @media(min-width:760px){.testi-grid{grid-template-columns:repeat(3,1fr)}}
+  .testi-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:24px 24px}
+  .testi-card .stars{color:var(--sun);letter-spacing:.15em;font-size:16px}
+  .testi-card p{color:var(--ink);font-size:14px;margin:8px 0 16px}
+  .testi-card b{font-family:var(--disp);color:var(--teal-d);font-size:14px}
+  
+  .hero h1{max-width:680px}
+  h1,h2,h3{text-wrap:balance}
+  em{font-style:normal}
+  p,.lede,.answer,li,figcaption{text-wrap:pretty}
+  .btn:active{transform:scale(.98)}
+  .tagline-sec{padding:64px 0;text-align:center}
+  .tagline{font-weight:700;font-size:clamp(30px,5vw,48px);line-height:1.2;max-width:680px;margin:0 auto;text-wrap:balance}
+  .tagline .tw{opacity:.3;transition:opacity .5s cubic-bezier(.22,1,.36,1)}
+  .tagline .tw.in{opacity:1}
+  @media (prefers-reduced-motion:reduce){.tagline .tw{opacity:1;transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
 </head>
 <body>
 
@@ -163,14 +183,13 @@
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow reveal">Home cleaning · Calgary</span>
-        <h1 class="reveal" style="--d:.08s">A spotless home, <em>without lifting a finger.</em></h1>
-        <p class="reveal" style="--d:.16s">Pristine Clean Co. sends friendly, background-checked cleaners with all supplies included — so you come home to fresh, every time.</p>
+        <h1 class="reveal" style="--d:.08s">A spotless home,<br><em>without lifting a finger.</em></h1>
+        <p class="reveal" style="--d:.16s">Pristine Clean Co. sends friendly, background checked cleaners with all supplies included — so you come home to fresh, every time.</p>
         <div class="hero-ctas reveal" style="--d:.24s">
           <a class="btn btn-teal" href="tel:+14035550130"><svg><use href="#i-phone"/></svg>Call (403) 555-0130</a>
-          <a class="btn btn-line" href="#services">See services</a>
         </div>
         <div class="trust reveal" style="--d:.3s">
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Background-checked</span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Supplies included</span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 200% happiness guarantee</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Background checked</span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Supplies included</span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 200% happiness guarantee</span>
         </div>
       </div>
       <div class="hero-img reveal" style="--d:.14s">
@@ -198,7 +217,7 @@
           <span class="badge">MOST POPULAR</span>
           <div class="icon"><img loading="lazy" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=70" alt="Bright renovated bathroom with glass shower and wood vanity"></div>
           <h3>Deep Clean</h3>
-          <p>The top-to-bottom reset — baseboards, grout, inside appliances.</p>
+          <p>The top to bottom reset — baseboards, grout, inside appliances.</p>
           <ul><li>Everything in Standard</li><li>Baseboards + blinds</li><li>Inside oven + fridge</li></ul>
           <div class="price">$199 <small>from</small></div>
           <a class="btn btn-sun" href="tel:+14035550130">Call to book</a>
@@ -206,8 +225,8 @@
         <article class="card reveal" style="--d:.16s">
           <div class="icon"><img loading="lazy" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=70" alt="Family home with manicured lawn, ready for a fresh start"></div>
           <h3>Move In / Out</h3>
-          <p>Empty-home detail clean for deposits and fresh starts.</p>
-          <ul><li>Inside all cabinets</li><li>Walls spot-cleaned</li><li>Deposit-ready detail</li></ul>
+          <p>Detail clean for an empty home for deposits and fresh starts.</p>
+          <ul><li>Inside all cabinets</li><li>Walls spot cleaned</li><li>Detail ready for your deposit</li></ul>
           <div class="price">$249 <small>from</small></div>
           <a class="btn btn-teal" href="tel:+14035550130">Call to book</a>
         </article>
@@ -242,16 +261,38 @@
 
   <section class="pad" style="padding-top:0">
     <div class="wrap split">
-      <div class="split-img reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=1000&q=75" alt="Eco-friendly cleaning supplies"></div>
+      <div class="split-img reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=1000&q=75" alt="Eco friendly cleaning supplies"></div>
       <div>
         <span class="eyebrow reveal">Why Pristine</span>
         <h2 class="reveal" style="--d:.08s">Cleaners you'd <em>invite for coffee.</em></h2>
         <ul class="checks reveal" style="--d:.16s">
-          <li><span><b style="font-weight:600">Background-checked &amp; insured</b> — every cleaner, every visit.</span></li>
+          <li><span><b style="font-weight:600">Background checked &amp; insured</b> — every cleaner, every visit.</span></li>
           <li><span><b style="font-weight:600">We bring everything</b> — supplies, equipment, even the playlist.</span></li>
-          <li><span><b style="font-weight:600">200% happiness guarantee</b> — not happy? We re-clean free.</span></li>
-          <li><span><b style="font-weight:600">Eco-friendly options</b> — safe for kids, pets and noses.</span></li>
+          <li><span><b style="font-weight:600">200% happiness guarantee</b> — not happy? We clean again free.</span></li>
+          <li><span><b style="font-weight:600">Eco friendly options</b> — safe for kids, pets and noses.</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="tagline-sec">
+    <div class="wrap">
+      <p class="tagline"><span class="tw" style="transition-delay:0ms">Come</span> <span class="tw" style="transition-delay:90ms">home</span> <span class="tw" style="transition-delay:180ms">to</span> <span class="tw" style="transition-delay:270ms">a</span> <span class="tw" style="transition-delay:360ms">spotless</span> <span class="tw" style="transition-delay:450ms">house.</span> <br> <span class="tw" style="transition-delay:540ms">We</span> <span class="tw" style="transition-delay:630ms">handle</span> <span class="tw" style="transition-delay:720ms">the</span> <span class="tw" style="transition-delay:810ms">cleaning,</span> <span class="tw" style="transition-delay:900ms">you</span> <span class="tw" style="transition-delay:990ms">enjoy</span> <span class="tw" style="transition-delay:1080ms">the</span> <span class="tw" style="transition-delay:1170ms">evening.</span></p>
+    </div>
+  </section>
+
+  <section class="pad" style="padding-top:0">
+    <div class="wrap">
+      <div class="testi reveal">
+        <div class="head">
+          <span class="eyebrow">What clients say</span>
+          <h2>Happy homes, <em>happy clients.</em></h2>
+        </div>
+        <div class="testi-grid">
+          <div class="testi-card"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><p>"The house has never looked this good — and I didn't lift a finger."</p><b>— Sarah</b></div>
+          <div class="testi-card"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><p>"Our cleaner is lovely and booking took two minutes. Same person every visit."</p><b>— Mike</b></div>
+          <div class="testi-card"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><p>"Came home to a spotless kitchen after a long week. Worth every dollar."</p><b>— Priya</b></div>
+        </div>
       </div>
     </div>
   </section>
@@ -260,16 +301,17 @@
     <div class="wrap faq-grid">
       <div>
         <span class="eyebrow reveal">FAQ</span>
-        <h2 class="reveal" style="--d:.08s">Squeaky-clean <em>answers.</em></h2>
+        <h2 class="reveal" style="--d:.08s">Squeaky clean <em>answers.</em></h2>
         <p class="lede reveal" style="--d:.14s;margin-top:1rem">Anything else — just call.</p>
         <p class="reveal" style="--d:.2s;margin-top:1.6rem"><a class="btn btn-teal" href="tel:+14035550130"><svg><use href="#i-phone"/></svg>(403) 555-0130</a></p>
       </div>
       <div class="reveal" style="--d:.1s">
         <details open><summary>Do I need to provide supplies?</summary><p class="answer">Nope — we bring everything, including the vacuum. If you prefer we use your products, just say so.</p></details>
-        <details><summary>Do I need to be home?</summary><p class="answer">Not at all. Most clients give us a key or code — we're insured and background-checked.</p></details>
+        <details><summary>Do I need to be home?</summary><p class="answer">Not at all. Most clients give us a key or code — we're insured and background checked.</p></details>
         <details><summary>How is pricing calculated?</summary><p class="answer">Flat rates based on bedrooms, bathrooms and condition — quoted upfront on the call at <a href="tel:+14035550130">(403) 555-0130</a>. No hourly surprises.</p></details>
-        <details><summary>What if I'm not happy?</summary><p class="answer">Tell us within 24 hours and we'll come back and re-clean the area free — that's the 200% guarantee.</p></details>
+        <details><summary>What if I'm not happy?</summary><p class="answer">Tell us within 24 hours and we'll come back and clean the area again free — that's the 200% guarantee.</p></details>
         <details><summary>Which areas do you serve?</summary><p class="answer">All of Calgary and nearby communities. Based at 4623 Bowness Rd NW. <a href="https://www.google.com/maps/search/?api=1&query=4623+Bowness+Rd+NW+Calgary+AB" target="_blank" rel="noopener">Get directions</a>.</p></details>
+        <details><summary>Can I book the same cleaner every time?</summary><p class="answer">Yes — ask for a recurring clean and we will match you with the same cleaner whenever they are available.</p></details>
       </div>
     </div>
   </section>
@@ -300,7 +342,7 @@
   <div class="wrap">
     <span>Pristine Clean Co. · Calgary · <a href="tel:+14035550130">(403) 555-0130</a></span>
     <span class="demo">Demo website</span>
-    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></span>
+    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></span>
   </div>
 </footer>
 
@@ -316,10 +358,13 @@
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(el){io.observe(el)})}
   else{els.forEach(function(el){el.classList.add('in')})}
+  var tws=document.querySelectorAll('.tagline .tw');
+  if('IntersectionObserver' in window){var two=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');two.unobserve(e.target)}})},{threshold:.5});tws.forEach(function(w){two.observe(w)})}
+  else{tws.forEach(function(w){w.classList.add('in')})}
 </script>
 
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
 </body>
 </html>
