@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
@@ -18,26 +18,26 @@
     --sky:#2e7fd6; --sky-2:#5aa7ec; --accent:#f5a623; --accent-d:#d98e12;
     --paper:#f6f8fb; --white:#ffffff; --ink:#101c2e; --muted:#52627a;
     --line:rgba(16,28,46,.12);
-    --disp:'Archivo',system-ui,sans-serif;
-    --body:'Inter',system-ui,-apple-system,sans-serif;
-    --ease:cubic-bezier(.2,.7,.1,1);
+    --disp:'Manrope',system-ui,sans-serif;
+    --body:'Manrope',system-ui,-apple-system,sans-serif;
+    --ease:cubic-bezier(0.22,1,0.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
   @media (min-width:900px){body{padding-bottom:0}}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--accent);color:var(--blue-3)}
   :focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:4px}
   .wrap{width:min(1200px,100% - 2.5rem);margin-inline:auto}
-  h1,h2,h3{font-family:var(--disp);font-weight:800;line-height:1.02;letter-spacing:-.02em}
-  h2{font-size:clamp(2rem,5.4vw,3.4rem)}
-  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--sky)}
+  h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing:-.02em}
+  h2{font-size:clamp(30px,5.4vw,48px)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--sky)}
   .eyebrow::before{content:"";width:26px;height:3px;background:var(--accent);border-radius:2px}
-  .lede{color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.15rem);max-width:36rem}
+  .lede{color:var(--muted);font-size:clamp(16px,1.5vw,18px);max-width:36rem}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.6rem;border-radius:12px;font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:.02em;transition:transform .3s var(--ease),box-shadow .3s,background .3s;white-space:nowrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 24px;border-radius:8px;font-family:var(--disp);font-weight:700;font-size:16px;letter-spacing:.02em;transition:transform .5s cubic-bezier(0.22,1,0.36,1),box-shadow .5s,background .5s;white-space:nowrap}
   .btn svg{width:19px;height:19px;flex:none}
   .btn-main{background:var(--accent);color:var(--blue-3);box-shadow:0 4px 0 var(--accent-d),0 14px 28px -12px rgba(245,166,35,.7)}
   .btn-main:hover{transform:translateY(-2px);background:#ffae2e}
@@ -48,128 +48,152 @@
   .btn-ghost:hover{background:rgba(255,255,255,.12)}
 
   /* header */
-  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s}
+  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .5s,box-shadow .5s}
   .header.scrolled{background:rgba(246,248,251,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line),0 12px 30px -18px rgba(13,42,82,.4)}
-  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
-  .logo{display:flex;align-items:center;gap:.7rem;color:#fff;transition:color .35s}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
+  .logo{display:flex;align-items:center;gap:12px;color:#fff;transition:color .5s}
   .scrolled .logo{color:var(--blue)}
-  .logo-mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--sky),var(--blue));display:grid;place-items:center;color:#fff;font-family:var(--disp);font-weight:800;font-size:1.4rem;box-shadow:0 8px 18px -8px rgba(46,127,214,.8);flex:none}
-  .logo b{display:block;font-family:var(--disp);font-weight:800;font-size:1.3rem;line-height:1;letter-spacing:-.01em}
-  .logo small{display:block;font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;opacity:.75;margin-top:.25rem}
-  .nav{display:none;gap:1.9rem;font-weight:600;font-size:.94rem;color:#fff}
+  .logo-mark{width:44px;height:44px;border-radius:8px;background:var(--sky);display:grid;place-items:center;color:#fff;font-family:var(--disp);font-weight:700;font-size:20px;box-shadow:0 8px 18px -8px rgba(46,127,214,.8);flex:none}
+  .logo b{display:block;font-family:var(--disp);font-weight:700;font-size:20px;line-height:1;letter-spacing:-.01em}
+  .logo small{display:block;font-size:12px;letter-spacing:.28em;text-transform:uppercase;opacity:.75;margin-top:4px}
+  .nav{display:none;gap:32px;font-weight:600;font-size:14px;color:#fff}
   .scrolled .nav{color:var(--blue)}
-  .nav a{position:relative;padding:.25rem 0}
-  .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+  .nav a{position:relative;padding:4px 0}
+  .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(0.22,1,0.36,1)}
   .nav a:hover::after{transform:scaleX(1)}
-  .header .btn{min-height:46px;padding:0 1.1rem;font-size:.92rem;box-shadow:none}
+  .header .btn{min-height:46px;padding:0 16px;font-size:14px;box-shadow:none}
   .header .btn .num{display:none}
   @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
 
   /* hero */
   .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;background:var(--blue-3);color:#fff}
-  .hero-media{position:absolute;inset:0;z-index:-2;background:linear-gradient(135deg,#17457e,#0a1e3d)}
+  .hero-media{position:absolute;inset:0;z-index:-2;background:var(--blue-3)}
   .hero-media img{width:100%;height:100%;object-fit:cover;object-position:60% 45%;opacity:.85;transform:scale(1.06);animation:heroIn 2.2s var(--ease) forwards}
   @keyframes heroIn{to{transform:scale(1)}}
-  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
-    linear-gradient(180deg,rgba(10,30,61,.72) 0%,rgba(10,30,61,.28) 30%,rgba(10,30,61,.55) 60%,rgba(10,30,61,.95) 100%),
-    linear-gradient(90deg,rgba(10,30,61,.8),rgba(10,30,61,0) 70%)}
-  .hero-inner{padding:8.5rem 0 3rem;display:grid;gap:2.5rem}
-  @media (min-width:960px){.hero-inner{grid-template-columns:1.5fr 1fr;align-items:end;padding-bottom:4.5rem}}
-  .hero h1{font-size:clamp(2.7rem,8vw,6rem);margin:1rem 0 1.3rem}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(10,30,61,.62)}
+  .hero-inner{padding:96px 0 48px;display:grid;gap:40px}
+  @media (min-width:960px){.hero-inner{grid-template-columns:1.5fr 1fr;align-items:end;padding-bottom:64px}}
+  .hero h1{font-size:clamp(36px,8vw,60px);margin:16px 0 24px;max-width:680px;}
   .hero h1 em{font-style:normal;color:var(--accent)}
-  .hero p{max-width:32rem;color:#d7e2f1;font-size:clamp(1.03rem,1.5vw,1.18rem)}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+  .hero p{max-width:32rem;color:#d7e2f1;font-size:clamp(16px,1.5vw,18px)}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
   .hero-ctas .btn{flex:1 1 220px}
   @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
-  .trust{position:relative;background:var(--white);color:var(--ink);border-radius:16px;padding:1.8rem 1.6rem 1.6rem;box-shadow:0 30px 60px -25px rgba(0,0,0,.55);max-width:420px;border-top:6px solid var(--accent)}
-  .trust h2{font-size:.85rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-family:var(--body)}
-  .trust ul{list-style:none;display:grid;gap:.65rem}
-  .trust li{display:flex;gap:.7rem;align-items:flex-start;font-size:.97rem;font-weight:500}
-  .trust li svg{width:20px;height:20px;color:var(--sky);flex:none;margin-top:.15rem}
-  .trust .star{margin-top:1rem;font-size:.9rem;color:var(--muted)}
+  .trust{position:relative;background:var(--white);color:var(--ink);border-radius:16px;padding:32px 24px 24px;box-shadow:0 30px 60px -25px rgba(0,0,0,.55);max-width:420px;border:2px solid var(--accent)}
+  .trust h2{font-size:14px;font-weight:700;letter-spacing:.16em;color:var(--muted);margin-bottom:16px;font-family:var(--body)}
+  .trust ul{list-style:none;display:grid;gap:8px}
+  .trust li{display:flex;gap:12px;align-items:flex-start;font-size:16px;font-weight:500}
+  .trust li svg{width:20px;height:20px;color:var(--sky);flex:none;margin-top:2px}
+  .trust .star{margin-top:16px;font-size:14px;color:var(--muted)}
   .trust .star b{color:var(--ink);font-family:var(--disp)}
 
   /* strip */
   .strip{background:var(--blue);color:#fff;overflow:hidden}
   .strip .wrap{display:flex;gap:0;overflow-x:auto}
-  .strip div{flex:1 0 auto;display:flex;align-items:center;gap:.7rem;padding:1.1rem 1.4rem;font-family:var(--disp);font-weight:600;font-size:.92rem;white-space:nowrap;border-left:1px solid rgba(255,255,255,.12)}
+  .strip div{flex:1 0 auto;display:flex;align-items:center;gap:12px;padding:16px 24px;font-family:var(--disp);font-weight:600;font-size:14px;white-space:nowrap;border-left:1px solid rgba(255,255,255,.12)}
   .strip div:first-child{border-left:0}
   .strip svg{width:20px;height:20px;color:var(--accent);flex:none}
 
-  .pad{padding:clamp(4rem,10vw,7.5rem) 0}
-  .head{display:grid;gap:1.3rem;margin-bottom:clamp(2.4rem,5vw,3.6rem);padding-bottom:1.6rem;border-bottom:2px solid var(--line)}
+  .pad{padding:clamp(64px,10vw,96px) 0}
+  .head{display:grid;gap:24px;margin-bottom:clamp(40px,5vw,64px);padding-bottom:24px;border-bottom:2px solid var(--line)}
   @media (min-width:900px){.head{grid-template-columns:1.3fr 1fr;align-items:end}}
-  .head h2{margin-top:1rem}
+  .head h2{margin-top:16px}
 
   /* services */
-  .svc{display:grid;gap:1.3rem}
+  .svc{display:grid;gap:24px}
   @media (min-width:640px){.svc{grid-template-columns:repeat(2,1fr)}}
   @media (min-width:1020px){.svc{grid-template-columns:repeat(3,1fr)}}
-  .card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:1.8rem 1.6rem;transition:transform .35s var(--ease),box-shadow .35s}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:32px 24px;transition:transform .5s cubic-bezier(0.22,1,0.36,1),box-shadow .5s}
   .card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -20px rgba(13,42,82,.35)}
-  .card-ico{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--sky),var(--blue));display:grid;place-items:center;margin-bottom:1.1rem}
+  .card-ico{width:54px;height:54px;border-radius:8px;background:var(--sky);display:grid;place-items:center;margin-bottom:16px}
   .card-ico svg{width:26px;height:26px;color:#fff}
-  .card h3{font-size:1.3rem;margin-bottom:.5rem}
-  .card p{color:var(--muted);font-size:.97rem}
-  .card .price{display:block;margin-top:1rem;font-family:var(--disp);font-weight:800;font-size:1.05rem;color:var(--blue)}
-  .card .price span{font-weight:500;color:var(--muted);font-size:.85rem;font-family:var(--body)}
+  .card h3{font-size:20px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:16px}
+  .card .price{display:block;margin-top:16px;font-family:var(--disp);font-weight:700;font-size:16px;color:var(--blue)}
+  .card .price span{font-weight:500;color:var(--muted);font-size:14px;font-family:var(--body)}
 
   /* how */
-  .how{background:var(--blue-3);color:#fff;border-radius:24px;padding:clamp(2.4rem,6vw,4.5rem);margin-block:clamp(4rem,10vw,7rem);display:grid;gap:2.2rem}
-  @media (min-width:960px){.how{grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center}}
+  .how{background:var(--blue-3);color:#fff;border-radius:16px;padding:clamp(40px,6vw,64px);margin-block:clamp(64px,10vw,96px);display:grid;gap:32px}
+  @media (min-width:960px){.how{grid-template-columns:1fr 1.4fr;gap:64px;align-items:center}}
   .how .eyebrow{color:var(--sky-2)}
   .how h2{color:#fff}
   .how .lede{color:#b9c8de}
-  .steps{list-style:none;display:grid;gap:1rem;counter-reset:step}
-  .steps li{position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1.4rem 1.4rem 1.4rem 4.4rem;counter-increment:step}
-  .steps li::before{content:counter(step);position:absolute;left:1.2rem;top:1.15rem;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:var(--blue-3);font-family:var(--disp);font-weight:800;display:grid;place-items:center}
-  .steps h3{font-size:1.15rem;margin-bottom:.35rem}
-  .steps p{color:#b9c8de;font-size:.96rem}
+  .steps{list-style:none;display:grid;gap:16px;counter-reset:step}
+  .steps li{position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:24px 24px 24px 64px;counter-increment:step}
+  .steps li::before{content:counter(step);position:absolute;left:1.2rem;top:1.15rem;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:var(--blue-3);font-family:var(--disp);font-weight:700;display:grid;place-items:center}
+  .steps h3{font-size:18px;margin-bottom:4px}
+  .steps p{color:#b9c8de;font-size:14px}
 
   /* reviews */
-  .rev{display:grid;gap:1.3rem}
+  .rev{display:grid;gap:24px}
   @media (min-width:900px){.rev{grid-template-columns:repeat(3,1fr)}}
-  .quote{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:1.8rem 1.6rem}
-  .quote .stars{color:var(--accent);letter-spacing:.15em;font-size:1.05rem;margin-bottom:.8rem}
-  .quote p{color:var(--ink);font-size:.98rem}
-  .quote footer{margin-top:1.1rem;font-size:.88rem;color:var(--muted);font-weight:600}
+  .quote{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:32px 24px}
+  .quote .stars{color:var(--accent);letter-spacing:.15em;font-size:16px;margin-bottom:12px}
+  .quote p{color:var(--ink);font-size:16px}
+  .quote footer{margin-top:16px;font-size:14px;color:var(--muted);font-weight:600}
 
   /* contact */
-  .contact{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:clamp(2.2rem,6vw,4rem);display:grid;gap:2.2rem}
-  @media (min-width:960px){.contact{grid-template-columns:1fr 1fr;gap:3.5rem}}
-  .contact-list{list-style:none;display:grid;gap:1.1rem;margin-top:1.6rem}
-  .contact-list li{display:flex;gap:1rem;align-items:flex-start}
-  .contact-list svg{width:22px;height:22px;color:var(--sky);flex:none;margin-top:.2rem}
-  .contact-list b{display:block;font-family:var(--disp);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem;font-weight:700}
-  .cta-band{background:linear-gradient(135deg,var(--blue),var(--blue-3));color:#fff;border-radius:24px;padding:clamp(2.4rem,6vw,4rem);text-align:center;margin-top:clamp(3rem,8vw,5rem)}
-  .cta-band h2{color:#fff;margin:.8rem 0 1rem}
+  .contact{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:clamp(32px,6vw,64px);display:grid;gap:32px}
+  @media (min-width:960px){.contact{grid-template-columns:1fr 1fr;gap:48px}}
+  .contact-list{list-style:none;display:grid;gap:16px;margin-top:24px}
+  .contact-list li{display:flex;gap:16px;align-items:flex-start}
+  .contact-list svg{width:22px;height:22px;color:var(--sky);flex:none;margin-top:2px}
+  .contact-list b{display:block;font-family:var(--disp);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;font-weight:700}
+  .cta-band{background:var(--blue);color:#fff;border-radius:16px;padding:clamp(40px,6vw,64px);text-align:center;margin-top:clamp(48px,8vw,80px)}
+  .cta-band h2{color:#fff;margin:12px 0 16px}
   .cta-band .hero-ctas{justify-content:center}
 
-  footer.site{background:var(--blue-3);color:#9fb0c8;padding:3rem 0 2rem;margin-top:clamp(3rem,8vw,5rem)}
-  footer.site .wrap{display:grid;gap:1.5rem}
+  footer.site{background:var(--blue-3);color:#9fb0c8;padding:48px 0 32px;margin-top:clamp(48px,8vw,80px)}
+  footer.site .wrap{display:grid;gap:24px}
   @media (min-width:800px){footer.site .wrap{grid-template-columns:1.4fr 1fr 1fr}}
-  footer.site h3{color:#fff;font-size:1rem;margin-bottom:.7rem}
-  footer.site p,footer.site a{font-size:.92rem}
+  footer.site h3{color:#fff;font-size:16px;margin-bottom:12px}
+  footer.site p,footer.site a{font-size:14px}
   footer.site a:hover{color:#fff}
-  .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:2rem;padding-top:1.4rem;font-size:.82rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+  .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding-top:24px;font-size:12px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
 
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(13,42,82,.96);backdrop-filter:blur(10px)}
+
+  /* faq */
+  .faq-list{display:grid;gap:16px}
+  .faq-list details{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:0 24px}
+  .faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 0;font-family:var(--disp);font-weight:700;font-size:20px}
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list .answer{color:var(--muted);padding:0 0 24px;max-width:640px}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:8px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(13,42,82,.96);backdrop-filter:blur(10px)}
   @media (min-width:900px){.callbar{display:none}}
-  .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;border-radius:12px;font-family:var(--disp);font-weight:700;font-size:1rem}
+  .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;border-radius:8px;font-family:var(--disp);font-weight:700;font-size:16px}
   .callbar a svg{width:19px;height:19px}
   .callbar .call{background:var(--accent);color:var(--blue-3)}
   .callbar .sms{border:2px solid rgba(255,255,255,.4);color:#fff}
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+
+<style>
+/* Orbit design system */
+h1,h2,h3{text-wrap:balance}
+p,li,blockquote,figcaption{text-wrap:pretty}
+i,em{font-style:normal}
+.btn:active,a:active{transform:scale(.98)}
+.orbit-credit{opacity:.78}.orbit-credit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.tagline{padding:64px 0;text-align:center}
+.tagline p{font-size:clamp(24px,4vw,36px);font-weight:600;line-height:1.3;max-width:680px;margin:0 auto}
+.tagline .tw{opacity:.3;transition:opacity .5s cubic-bezier(0.22,1,0.36,1)}
+.tagline .tw.on{opacity:1}
+.js .reveal{opacity:0;transform:translateY(32px);transition:opacity .5s cubic-bezier(0.22,1,0.36,1),transform .5s cubic-bezier(0.22,1,0.36,1);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .tagline .tw{opacity:1;transition:none}
+  .js .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
 </head>
-<body>
+<body id="top">
 <header class="header" id="header">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="Apex Handyman home"><img src="../logos/apex-handyman.png" alt="Apex Handyman logo" loading="lazy" style="height:42px;width:42px;border-radius:10px;object-fit:cover;flex:none"><span><b>Apex Handyman</b><small>Calgary &amp; Area</small></span></a>
+    <a class="logo" href="#top" aria-label="Apex Handyman home"><img src="../logos/apex-handyman.png" alt="Apex Handyman logo" loading="lazy" style="height:42px;width:42px;border-radius:10px;object-fit:cover;flex:none"><span><b>Apex Handyman</b><small>Calgary &amp; Area</small></span></a>
     <nav class="nav" aria-label="Primary">
-      <a href="#services">Services</a><a href="#process">How It Works</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+      <a href="#services">Services</a><a href="#process">How it works</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
     </nav>
-    <a class="btn btn-main" href="tel:+14035550136"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><span class="lbl">Call Now</span><span class="num">(403) 555-0136</span></a>
+    <a class="btn btn-main" href="tel:+14035550136"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><span class="lbl">Call now</span><span class="num">(403) 555-0136</span></a>
   </div>
 </header>
 
@@ -183,18 +207,17 @@
         <p>Apex Handyman handles the repairs, installs and upgrades Calgary homes throw at us — one visit, one fair price, zero mess left behind.</p>
         <div class="hero-ctas">
           <a class="btn btn-main" href="tel:+14035550136"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Call (403) 555-0136</a>
-          <a class="btn btn-ghost" href="#services">See Services</a>
         </div>
       </div>
       <aside class="trust" aria-label="Why choose Apex">
         <h2>The Apex Promise</h2>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Upfront flat-rate pricing — no hourly surprises</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Licensed, insured &amp; background-checked techs</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Same-week bookings across Calgary &amp; area</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>90-day workmanship guarantee on every job</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Upfront flat rate pricing, no hourly surprises</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Licensed, insured techs with background checks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Bookings the same week across Calgary &amp; area</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>90 day workmanship guarantee on every job</li>
         </ul>
-        <p class="star"><b>4.9</b> <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg> from 280+ Calgary reviews</p>
+        <p class="star">Highly rated by Calgary homeowners</p>
       </aside>
     </div>
   </section>
@@ -205,32 +228,46 @@
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Free quotes over the phone</div>
   </div></div>
 
+  <section class="pad" id="benefits" style="padding-bottom:0"><div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Why Apex</span><h2>Fixed once, and fixed properly.</h2></div>
+      <p class="lede">One visit, one fair price, and a home that works the way it should.</p>
+    </div>
+    <div class="svc">
+      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Know the price first</h3><p>You approve a flat rate price before we start. No hourly surprises, no bill that grows while we work.</p></article>
+      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Done in one visit</h3><p>Most jobs are finished the same day we arrive, so the job is behind you by dinner.</p></article>
+      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Left cleaner than we found it</h3><p>Boot covers on, dust swept up, and every surface wiped down before we leave.</p></article>
+    </div>
+  </div></section>
+
   <section class="pad" id="services"><div class="wrap">
     <div class="head">
       <div><span class="eyebrow">Services &amp; Rates</span><h2>Small jobs, big jobs, <em style="font-style:normal;color:var(--sky)">weird</em> jobs.</h2></div>
-      <p class="lede">Flat-rate pricing means you approve the price before we start. Prices include labour — materials at cost, always receipted.</p>
+      <p class="lede">Flat rate pricing means you approve the price before we start. Prices include labour — materials at cost, always receipted.</p>
     </div>
     <div class="svc">
-      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7Z"/></svg></div><h3>Drywall Repair</h3><p>Holes, cracks and dents patched, taped, sanded and paint-ready. Textured finishes matched.</p><span class="price">From C$95 <span>/ repair</span></span></article>
+      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7Z"/></svg></div><h3>Drywall Repair</h3><p>Holes, cracks and dents patched, taped, sanded and ready for paint. Textured finishes matched.</p><span class="price">From C$95 <span>/ repair</span></span></article>
       <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19a7 7 0 1 0-7-7c0-2 1-3.6 2.6-4.7L12 3l4.4 4.3A7 7 0 0 0 12 19Z"/></svg></div><h3>Interior Painting</h3><p>Single rooms or whole floors. Walls, ceilings, trim — furniture protected, mess cleaned daily.</p><span class="price">From C$240 <span>/ room</span></span></article>
-      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div><h3>Plumbing Fixes</h3><p>Leaky faucets, running toilets, caulking, shut-off valves and under-sink repairs.</p><span class="price">From C$120 <span>/ fix</span></span></article>
+      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div><h3>Plumbing Fixes</h3><p>Leaky faucets, running toilets, caulking, valves and repairs under the sink.</p><span class="price">From C$120 <span>/ fix</span></span></article>
       <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2Z"/></svg></div><h3>Light Fixtures</h3><p>Swap outdated fixtures, install ceiling fans, dimmers, pot lights and smart switches.</p><span class="price">From C$85 <span>/ fixture</span></span></article>
-      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div><h3>TV Mounting &amp; Furniture</h3><p>Wall mounts on any wall type, cord hiding, and flat-pack assembly done right.</p><span class="price">From C$99 <span>/ TV</span></span></article>
+      <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div><h3>TV Mounting &amp; Furniture</h3><p>Wall mounts on any wall type, cord hiding, and flat pack assembly done right.</p><span class="price">From C$99 <span>/ TV</span></span></article>
       <article class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10M9 20v-6h6v6"/></svg></div><h3>Exterior &amp; Fences</h3><p>Fence repairs, deck boards, siding patches, eavestrough cleaning and caulking.</p><span class="price">From C$150 <span>/ job</span></span></article>
     </div>
   </div></section>
 
+  <section class="tagline" aria-label="Our promise"><div class="wrap"><p><span class="tw">Done</span> <span class="tw">right</span> <span class="tw">the</span> <span class="tw">first</span> <span class="tw">time,</span><br><span class="tw">so</span> <span class="tw">your</span> <span class="tw">weekend</span> <span class="tw">stays</span> <span class="tw">yours.</span></p></div></section>
+
   <section id="process"><div class="wrap"><div class="how">
     <div>
-      <span class="eyebrow">How It Works</span>
+      <span class="eyebrow">How it works</span>
       <h2>Fixed up in three easy steps.</h2>
       <p class="lede">Most jobs are done in a single visit. Text us photos of the problem and we'll quote before we roll.</p>
-      <div class="hero-ctas"><a class="btn btn-main" href="tel:+14035550136">Get My Free Quote</a></div>
+      <div class="hero-ctas"><a class="btn btn-main" href="tel:+14035550136">Get my free quote</a></div>
     </div>
     <ol class="steps">
       <li><h3>Call or text a photo</h3><p>Tell us what's broken at (403) 555-0136. We reply with a flat price, fast.</p></li>
       <li><h3>We show up on time</h3><p>Book a window that suits you — evenings and Saturdays included. Boot covers on, always.</p></li>
-      <li><h3>Pay when it's perfect</h3><p>You inspect the work before paying a cent. 90-day guarantee on everything.</p></li>
+      <li><h3>Pay when it's perfect</h3><p>You inspect the work before paying a cent. 90 day guarantee on everything.</p></li>
     </ol>
   </div></div></section>
 
@@ -240,9 +277,24 @@
       <p class="lede">Real reviews from real neighbourhoods — Bridgeland to Shawnessy and everywhere between.</p>
     </div>
     <div class="rev">
-      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Patched four drywall holes and painted my whole stairwell in one day. Price was exactly what he quoted. Incredible."</p><footer>— Dana R., Brentwood</footer></blockquote>
-      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Finally, a handyman who texts you when he's on the way and actually arrives then. Mounted two TVs and hung all our shelving."</p><footer>— Marcus T., Seton</footer></blockquote>
-      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Fixed a running toilet, recaulked the tub and replaced a broken fan in one visit. Flat rate, receipt for parts, zero fuss."</p><footer>— Priya S., Kensington</footer></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Patched four drywall holes and painted my whole stairwell in one day. Price was exactly what he quoted. Incredible."</p><footer>— Dana</footer></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Finally, a handyman who texts you when he's on the way and actually arrives then. Mounted two TVs and hung all our shelving."</p><footer>— Marcus</footer></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Fixed a running toilet, recaulked the tub and replaced a broken fan in one visit. Flat rate, receipt for parts, zero fuss."</p><footer>— Priya</footer></blockquote>
+    </div>
+  </div></section>
+
+  <section class="pad" id="faq"><div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">FAQ</span><h2>Good to know.</h2></div>
+      <p class="lede">Anything else, just call. The quickest answer is always on the phone.</p>
+    </div>
+    <div class="faq-list">
+      <details><summary>How much will my job cost?</summary><p class="answer">Every job gets a flat rate price before we start. Call or text a photo of the problem and we will quote it over the phone, usually the same day.</p></details>
+      <details><summary>Do you charge by the hour?</summary><p class="answer">No. You approve a flat rate price up front, so the bill never grows while we work. Materials are at cost, always receipted.</p></details>
+      <details><summary>How soon can you come out?</summary><p class="answer">Most jobs are booked the same week. Call in the morning and we will usually find a slot within a few days.</p></details>
+      <details><summary>Are you licensed and insured?</summary><p class="answer">Yes. Every tech is licensed, insured and background checked, and every job carries a 90 day workmanship guarantee.</p></details>
+      <details><summary>What areas do you serve?</summary><p class="answer">Calgary, plus Airdrie, Okotoks, Cochrane and Chestermere. Travel fees are waived for jobs over C$150 inside the city.</p></details>
+      <details><summary>Do you clean up after the job?</summary><p class="answer">Always. Boot covers on, dust swept up, and surfaces wiped down before we leave. Zero mess left behind.</p></details>
     </div>
   </div></section>
 
@@ -250,7 +302,7 @@
     <div class="contact">
       <div>
         <span class="eyebrow">Get In Touch</span>
-        <h2 style="margin-top:1rem">Let's fix it this week.</h2>
+        <h2 style="margin-top:16px">Let's fix it this week.</h2>
         <ul class="contact-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><div><b>Phone</b><a href="tel:+14035550136">(403) 555-0136</a></div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b>Hours</b>Mon–Sat · 7:00 AM – 8:00 PM</div></li>
@@ -259,37 +311,45 @@
       </div>
       <div>
         <span class="eyebrow">Service Area</span>
-        <p class="lede" style="margin-top:1rem">We run service vans across <b>Calgary</b>, plus <b>Airdrie</b>, <b>Okotoks</b>, <b>Cochrane</b> and <b>Chestermere</b>. Travel fees waived for jobs over C$150 inside the city.</p>
-        <p class="lede" style="margin-top:1rem">Senior (65+) discount: <b>10% off labour</b>, every day.</p>
-        <div class="hero-ctas" style="margin-top:1.6rem">
+        <p class="lede" style="margin-top:16px">We run service vans across <b>Calgary</b>, plus <b>Airdrie</b>, <b>Okotoks</b>, <b>Cochrane</b> and <b>Chestermere</b>. Travel fees waived for jobs over C$150 inside the city.</p>
+        <p class="lede" style="margin-top:16px">Senior (65+) discount: <b>10% off labour</b>, every day.</p>
+        <div class="hero-ctas" style="margin-top:24px">
           <a class="btn btn-main" href="tel:+14035550136">Call (403) 555-0136</a>
-          <a class="btn btn-blue" href="sms:+14035550136">Text a Photo</a>
+          <a class="btn btn-blue" href="sms:+14035550136">Text a photo</a>
         </div>
       </div>
     </div>
     <div class="cta-band">
       <span class="eyebrow" style="color:var(--accent)">Free Phone Quotes</span>
-      <h2>That to-do list isn't fixing itself.</h2>
-      <div class="hero-ctas"><a class="btn btn-main" href="tel:+14035550136">Call Apex Now</a></div>
+      <h2>That list of jobs isn't fixing itself.</h2>
+      <div class="hero-ctas"><a class="btn btn-main" href="tel:+14035550136">Call (403) 555-0136</a></div>
     </div>
   </div></section>
 </main>
 
 <footer class="site"><div class="wrap">
-  <div><h3>Apex Handyman</h3><p>Flat-rate home repairs and renovations across Calgary and area. Licensed and insured.</p><p style="margin-top:.8rem"><a href="tel:+14035550136">(403) 555-0136</a></p></div>
+  <div><h3>Apex Handyman</h3><p>Flat rate home repairs and renovations across Calgary and area. Licensed and insured.</p><p style="margin-top:12px"><a href="tel:+14035550136">(403) 555-0136</a></p></div>
   <div><h3>Services</h3><p><a href="#services">Drywall</a><br><a href="#services">Painting</a><br><a href="#services">Plumbing Fixes</a><br><a href="#services">TV Mounting</a></p></div>
   <div><h3>Hours</h3><p>Mon–Sat: 7 AM – 8 PM<br>Sun: Closed<br>4520 Macleod Trail SW<br>Calgary, AB</p></div>
-</div><div class="wrap legal"><span>© 2026 Apex Handyman. All rights reserved.</span><span>Demo site — prices illustrative.</span></div></footer>
+</div><div class="wrap legal"><span>© 2026 Apex Handyman. All rights reserved.</span><span>Demo site — prices illustrative.</span><span class="orbit-credit">Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></span></div></footer>
 
-<div class="callbar"><a class="call" href="tel:+14035550136"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Call Now</a><a class="sms" href="sms:+14035550136">Text Us</a></div>
+<div class="callbar"><a class="call" href="tel:+14035550136"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Call now</a><a class="sms" href="sms:+14035550136">Text us</a></div>
 
 <script>
   const h = document.getElementById('header');
   addEventListener('scroll', () => h.classList.toggle('scrolled', scrollY > 40), {passive:true});
 </script>
 
+<script>
+(function(){var t=document.querySelector('.tagline');if(!t)return;var words=t.querySelectorAll('.tw');if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=+e.target.dataset.i;setTimeout(function(){e.target.classList.add('on')},i*70);io.unobserve(e.target)}})},{threshold:.6});words.forEach(function(w,i){w.dataset.i=i;io.observe(w)})}else{words.forEach(function(w){w.classList.add('on')})}})();
+</script>
+
+<script>
+(function(){var els=document.querySelectorAll('main section, .cta-band');if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});els.forEach(function(el){el.classList.add('reveal');io.observe(el)})}else{els.forEach(function(el){el.classList.add('reveal','in')})}})();
+</script>
+
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
 </body>
 </html>
