@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<link rel="icon" type="image/png" href="../logos/golden-hour-photo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Golden Hour Photography — Photographer, Calgary</title>
@@ -9,19 +9,19 @@
 <meta name="theme-color" content="#f5efe3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..600&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#f5efe3; --paper:#fbf8f2; --ink:#23201a; --muted:#6e675c;
     --gold:#c98a2e; --gold-d:#a56f22; --rust:#b4552d; --sage:#7d8a6a;
     --line:#e3d9c6;
-    --serif:'Fraunces',Georgia,serif;
-    --sans:'DM Sans',system-ui,sans-serif;
-    --ease:cubic-bezier(.22,.61,.36,1);
+    --serif:'Manrope',system-ui,sans-serif;
+    --sans:'Manrope',system-ui,sans-serif;
+    --ease:cubic-bezier(.22,1,.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
   @media (min-width:900px){body{padding-bottom:0}}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--gold);color:#fff}
@@ -29,11 +29,11 @@
   .wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
   @media (min-width:700px){.wrap{width:min(1180px,100% - 5rem)}}
   h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.05;letter-spacing:-.01em}
-  h2{font-size:clamp(2.4rem,5.8vw,4.2rem)}
-  h2 em,h1 em{font-style:italic;color:var(--gold-d);font-weight:500}
+  h2{font-size:clamp(36px,5.8vw,60px)}
+  h2 em,h1 em{font-style:normal;color:var(--gold-d);font-weight:500}
   .kicker{font-size:.76rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-d)}
   .lede{color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.14rem);max-width:35rem}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:0 1.7rem;border-radius:999px;font-weight:700;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;transition:transform .3s var(--ease),background .3s,box-shadow .3s;white-space:nowrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:0 1.7rem;border-radius:999px;font-weight:700;font-size:.88rem;letter-spacing:.06em;transition:transform .3s var(--ease),background .3s,box-shadow .3s;white-space:nowrap}
   .btn svg{width:18px;height:18px;flex:none}
   .btn-gold{background:var(--gold);color:#fff;box-shadow:0 10px 24px rgba(201,138,46,.35)}
   .btn-gold:hover{transform:translateY(-2px);background:var(--gold-d)}
@@ -50,19 +50,19 @@
   .header .btn{min-height:44px;padding:0 1.1rem;font-size:.78rem}
   .header .btn .num{display:none}
   @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
-  .hero{position:relative;padding:10rem 0 5rem;background:linear-gradient(170deg,var(--cream),var(--paper) 70%);overflow:hidden}
-  .hero::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(201,138,46,.25),transparent 70%)}
+  .hero{position:relative;padding:10rem 0 5rem;background:var(--cream);overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;background:none}
   .hero-grid{display:grid;gap:3rem;align-items:center}
   @media (min-width:960px){.hero-grid{grid-template-columns:1.1fr .9fr}}
-  .hero h1{font-size:clamp(3rem,8vw,6rem);margin:1.4rem 0 1.3rem}
+  .hero h1{font-size:clamp(48px,8vw,60px);margin:1.4rem 0 1.3rem}
   .hero p{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:32rem}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
   .hero-ctas .btn{flex:1 1 220px}
   @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
   .hero-meta{display:flex;gap:1.8rem;margin-top:2rem;font-size:.86rem;color:var(--muted)}
   .hero-meta b{display:block;font-family:var(--serif);font-size:1.5rem;color:var(--ink)}
-  .hero-art{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(150deg,#e8c98a,#c98a2e 60%,#7d5a2a);box-shadow:0 30px 60px rgba(120,85,30,.25)}
-  .hero-art::after{content:"\1F4F7";position:absolute;inset:0;display:grid;place-items:center;font-size:5rem;opacity:.5}
+  .hero-art{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#e8c98a;box-shadow:0 30px 60px rgba(120,85,30,.25)}
+  .hero-art img{width:100%;height:100%;object-fit:cover;display:block}
   .hero-art .cap{position:absolute;left:1.2rem;bottom:1.2rem;background:rgba(255,255,255,.9);padding:.5rem 1rem;border-radius:99px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
   section{position:relative}
   .pad{padding:clamp(5rem,11vw,8.5rem) 0}
@@ -70,13 +70,10 @@
   .grid{display:grid;gap:1.4rem}
   @media (min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
   @media (min-width:1060px){.grid{grid-template-columns:repeat(4,1fr)}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s}
   .card:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(120,85,30,.16)}
-  .card-art{aspect-ratio:4/3;display:grid;place-items:center;font-size:3.4rem}
-  .card-art.a1{background:linear-gradient(140deg,#f3d9a4,#dba84e)}
-  .card-art.a2{background:linear-gradient(140deg,#e8b4a0,#c96f4a)}
-  .card-art.a3{background:linear-gradient(140deg,#f7ead0,#c98a2e)}
-  .card-art.a4{background:linear-gradient(140deg,#d9c9a8,#a08a5a)}
+  .card-art{aspect-ratio:4/3;overflow:hidden;background:#e8c98a}
+  .card-art img{width:100%;height:100%;object-fit:cover;display:block}
   .card-body{padding:1.5rem 1.5rem 1.8rem;display:flex;flex-direction:column;flex:1}
   .card h3{font-size:1.55rem;margin-bottom:.4rem}
   .card .p-price{font-family:var(--serif);font-size:1.9rem;color:var(--gold-d);margin-bottom:.6rem}
@@ -84,27 +81,28 @@
   .card a.cta{margin-top:1.2rem;font-weight:700;font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-d);border-bottom:2px solid var(--gold)}
   .gal{display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
   @media (min-width:760px){.gal{grid-template-columns:repeat(4,1fr)}}
-  .gal div{aspect-ratio:1;border-radius:14px;display:grid;place-items:center;font-size:2.6rem;color:rgba(255,255,255,.75);font-weight:700}
-  .gal div:nth-child(1){background:linear-gradient(140deg,#e9b96a,#b57a28)}
-  .gal div:nth-child(2){background:linear-gradient(140deg,#d99a6c,#a85a30)}
-  .gal div:nth-child(3){background:linear-gradient(140deg,#cbb98a,#8a7448)}
-  .gal div:nth-child(4){background:linear-gradient(140deg,#e8c98a,#c98a2e)}
-  .gal div:nth-child(5){background:linear-gradient(140deg,#dfa08a,#b45a3a)}
-  .gal div:nth-child(6){background:linear-gradient(140deg,#f0dcae,#c9a24e)}
-  .gal div:nth-child(7){background:linear-gradient(140deg,#d4b48a,#96702e)}
-  .gal div:nth-child(8){background:linear-gradient(140deg,#eab98a,#bd7a34)}
-  .quote{background:var(--ink);color:var(--paper);border-radius:24px;padding:clamp(2.5rem,6vw,4.5rem);text-align:center;position:relative;overflow:hidden}
+  .gal figure{aspect-ratio:1;border-radius:16px;overflow:hidden;margin:0;background:#e8c98a}
+  .gal figure img{width:100%;height:100%;object-fit:cover;display:block}
+  .quote{background:var(--ink);color:var(--paper);border-radius:16px;padding:clamp(2.5rem,6vw,4.5rem);text-align:center;position:relative;overflow:hidden}
   .quote::before{content:"\201C";position:absolute;top:1rem;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:6rem;color:var(--gold);opacity:.35}
-  .quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3.4vw,2.2rem);max-width:40rem;margin:0 auto 1.2rem;position:relative}
+  .quote blockquote{font-family:var(--serif);font-style:normal;font-size:clamp(1.4rem,3.4vw,2.2rem);max-width:40rem;margin:0 auto 1.2rem;position:relative}
   .quote cite{font-style:normal;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
   .about{display:grid;gap:3rem;align-items:center}
   @media (min-width:940px){.about{grid-template-columns:.9fr 1.1fr;gap:5rem}}
-  .about-art{aspect-ratio:4/5;border-radius:200px 200px 18px 18px;background:linear-gradient(160deg,#eecf92,#b57a28);display:grid;place-items:center;font-size:4.5rem;color:rgba(255,255,255,.7)}
+  .about-art{aspect-ratio:4/5;border-radius:200px 200px 18px 18px;overflow:hidden;background:#eecf92}
+  .about-art img{width:100%;height:100%;object-fit:cover;display:block}
   .about h2{margin:1.1rem 0 1.2rem}
   .about ul{list-style:none;margin-top:1.6rem;display:grid;gap:.9rem}
   .about li{display:flex;gap:.8rem;color:var(--muted)}
   .about li::before{content:"\2713";color:var(--gold-d);font-weight:700}
+  .testi{display:grid;gap:1.2rem}
+  @media (min-width:860px){.testi{grid-template-columns:repeat(3,1fr)}}
+  .tcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.7rem 1.6rem}
+  .tcard .stars{color:var(--gold);letter-spacing:.18em;font-size:1rem;margin-bottom:.8rem}
+  .tcard p{color:var(--muted);font-size:.97rem}
+  .tcard footer{margin-top:1.1rem;font-weight:700;font-size:.88rem;padding:0}
   .faq-list{max-width:780px;margin:0 auto;border-top:2px solid var(--line)}
+  @media (max-width:560px){.hero-meta{gap:1.1rem}.hero-meta b{font-size:1.25rem}}
   details{border-bottom:1px solid var(--line)}
   summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.4rem 0;font-weight:700;font-size:1.08rem}
   summary::-webkit-details-marker{display:none}
@@ -113,7 +111,7 @@
   details[open] .pm{transform:rotate(45deg)}
   .answer{color:var(--muted);padding:0 2rem 1.5rem 0}
   .answer a{color:var(--gold-d);font-weight:600}
-  .contact{background:linear-gradient(160deg,var(--gold),var(--gold-d));border-radius:28px;color:#fff;overflow:hidden}
+  .contact{background:var(--gold);border-radius:16px;color:#fff;overflow:hidden}
   .contact-inner{display:grid;gap:2rem;padding:clamp(2.2rem,6vw,4rem)}
   @media (min-width:960px){.contact-inner{grid-template-columns:1.2fr 1fr;align-items:center}}
   .contact .kicker{color:#fff}
@@ -124,7 +122,7 @@
   @media (min-width:600px){.contact-ctas .btn{flex:0 0 auto}}
   .btn-paper{background:#fff;color:var(--gold-d)}
   .btn-paper:hover{transform:translateY(-2px)}
-  .info{background:rgba(255,255,255,.14);border-radius:18px;padding:1.6rem}
+  .info{background:rgba(255,255,255,.14);border-radius:16px;padding:1.6rem}
   .info-row{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.25)}
   .info-row:last-child{border-bottom:0}
   .info-row svg{width:22px;height:22px;margin-top:.2rem}
@@ -136,11 +134,27 @@
   .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(251,248,242,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:2px solid var(--gold);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
   .callbar .btn{min-height:52px;font-size:.8rem;padding:0 .8rem}
   @media (min-width:900px){.callbar{display:none}}
-  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal{opacity:0;transform:translateY(32px);transition:opacity .5s var(--ease),transform .5s var(--ease);transition-delay:var(--d,0s)}
   .js .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
+<style>
+h1,h2,h3{text-wrap:balance}em{font-style:normal}
+h1{max-width:680px}
+p{text-wrap:pretty}
+.btn:active{transform:scale(.98)}
+.tlink{display:inline-flex;align-items:center;gap:8px;min-height:54px;padding:0 4px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.tlink:active{transform:scale(.98)}
+.tagline{padding:64px 0;text-align:center}
+.tagline-text{font-size:clamp(30px,4.6vw,48px);line-height:1.15;font-weight:600;max-width:680px;margin:0 auto;text-wrap:balance}
+.tagline-text .w{opacity:.3;transition:opacity .5s cubic-bezier(.22,1,.36,1)}
+.tagline-text .w.on{opacity:1}
+.js-rv .rv{opacity:0;transform:translateY(32px);transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1)}
+.js-rv .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.tagline-text .w{opacity:1!important;transition:none!important}.js-rv .rv{opacity:1!important;transform:none!important;transition:none!important}}
+.tcard h3{margin-bottom:8px}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -164,10 +178,10 @@
       <div>
         <span class="kicker reveal">Photographer &middot; Calgary</span>
         <h1 class="reveal" style="--d:.1s">Light is<br>everything.<br><em>We chase it.</em></h1>
-        <p class="reveal" style="--d:.2s">Family, portrait, newborn and wedding photography with a warm, honest, golden-hour glow. No stiff poses — just you, at your best.</p>
+        <p class="reveal" style="--d:.2s">Family, portrait, newborn and wedding photography with a warm, honest, golden hour glow. No stiff poses — just you, at your best.</p>
         <div class="hero-ctas reveal" style="--d:.3s">
           <a class="btn btn-gold" href="tel:+14035550119"><svg><use href="#i-phone"/></svg>Call (403) 555-0119</a>
-          <a class="btn btn-line" href="#sessions">See sessions</a>
+          <a class="tlink" href="#sessions">See sessions</a>
         </div>
         <div class="hero-meta reveal" style="--d:.4s">
           <div><b>400+</b>sessions shot</div>
@@ -175,7 +189,33 @@
           <div><b>5.0&#9733;</b>client rating</div>
         </div>
       </div>
-      <div class="hero-art reveal" style="--d:.2s"><span class="cap">Golden hour, Fish Creek</span></div>
+      <div class="hero-art reveal" style="--d:.2s"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Bride and groom holding hands in golden hour light"><span class="cap">Golden hour, Fish Creek</span></div>
+    </div>
+  </section>
+<section class="pad" style="padding-top:clamp(3rem,6vw,4rem);padding-bottom:0">
+    <div class="wrap reveal">
+      <div class="s-head">
+        <span class="kicker">Why families choose us</span>
+        <h2>Good photos, <em>without the fuss.</em></h2>
+      </div>
+      <div class="testi">
+        <div class="tcard"><h3>Photos back fast</h3><p>Sneak peeks within 48 hours and your full gallery in 2 weeks, hand edited and ready to share.</p></div>
+        <div class="tcard"><h3>Relaxed, never stiff</h3><p>Gentle direction, real laughter, and room for kids and dogs to just be themselves.</p></div>
+        <div class="tcard"><h3>Prints that last</h3><p>Every session includes full printing rights and help choosing wall worthy enlargements.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="pad" style="padding-top:clamp(3rem,6vw,4rem);padding-bottom:0">
+    <div class="wrap reveal">
+      <div class="s-head">
+        <span class="kicker">How it works</span>
+        <h2>Three easy <em>steps.</em></h2>
+      </div>
+      <div class="testi">
+        <div class="tcard"><h3>1. Call and chat</h3><p>Tell us about your family, pick a date, and choose a spot you love.</p></div>
+        <div class="tcard"><h3>2. Shoot at golden hour</h3><p>We meet at the park, the river pathways, or your home for newborns.</p></div>
+        <div class="tcard"><h3>3. Get your gallery</h3><p>Hand edited photos in a private online gallery, with printing rights included.</p></div>
+      </div>
     </div>
   </section>
   <section class="pad" id="sessions">
@@ -183,17 +223,17 @@
       <div class="s-head">
         <span class="kicker reveal">Sessions &amp; pricing</span>
         <h2 class="reveal" style="--d:.08s">Stories worth <em>keeping.</em></h2>
-        <p class="lede reveal" style="--d:.16s">Every session includes an online gallery, hand-edited images and printing rights. Call to check availability — weekends book out.</p>
+        <p class="lede reveal" style="--d:.16s">Every session includes an online gallery, hand edited images and printing rights. Call to check availability — weekends book out.</p>
       </div>
       <div class="grid">
-        <div class="card reveal"><div class="card-art a1">&#128118;</div>
+        <div class="card reveal"><div class="card-art"><img loading="lazy" src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=800&q=75" alt="Family walking together outdoors at golden hour"></div>
           <div class="card-body"><h3>Family Session</h3><div class="p-price">$350</div><p>60 minutes at golden hour, up to 6 people. 40+ edited images in a private online gallery. Dogs welcome.</p><a class="cta" href="tel:+14035550119">Call to book</a></div></div>
-        <div class="card reveal" style="--d:.08s"><div class="card-art a2">&#128105;</div>
+        <div class="card reveal" style="--d:.08s"><div class="card-art"><img loading="lazy" src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?auto=format&fit=crop&w=800&q=75" alt="Portrait session with camera in warm light"></div>
           <div class="card-body"><h3>Portrait Session</h3><div class="p-price">$250</div><p>45 minutes, one location. 25+ edited images — perfect for grads, headshots and personal branding.</p><a class="cta" href="tel:+14035550119">Call to book</a></div></div>
-        <div class="card reveal" style="--d:.16s"><div class="card-art a3">&#128141;</div>
-          <div class="card-body"><h3>Wedding</h3><div class="p-price">from $1,800</div><p>Full-day or half-day coverage, 400+ edited images, sneak peeks within 48 hours. 2027 dates now open.</p><a class="cta" href="tel:+14035550119">Call to book</a></div></div>
-        <div class="card reveal" style="--d:.24s"><div class="card-art a4">&#128118;</div>
-          <div class="card-body"><h3>Newborn</h3><div class="p-price">$400</div><p>Unhurried 2-hour in-home session in the first two weeks. Wraps, patience and 35+ edited images included.</p><a class="cta" href="tel:+14035550119">Call to book</a></div></div>
+        <div class="card reveal" style="--d:.16s"><div class="card-art"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=75" alt="Wedding couple embracing at golden hour"></div>
+          <div class="card-body"><h3>Wedding</h3><div class="p-price">from $1,800</div><p>Full day or half day coverage, 400+ edited images, sneak peeks within 48 hours. 2027 dates now open.</p><a class="cta" href="tel:+14035550119">Call to book</a></div></div>
+        <div class="card reveal" style="--d:.24s"><div class="card-art"><img loading="lazy" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=75" alt="Newborn baby sleeping peacefully"></div>
+          <div class="card-body"><h3>Newborn</h3><div class="p-price">$400</div><p>Unhurried 2 hour in home session in the first two weeks. Wraps, patience and 35+ edited images included.</p><a class="cta" href="tel:+14035550119">Call to book</a></div></div>
       </div>
     </div>
   </section>
@@ -204,24 +244,38 @@
         <h2 class="reveal" style="--d:.08s">Recent <em>favourites.</em></h2>
       </div>
       <div class="gal reveal" style="--d:.1s">
-        <div>&#128118;</div><div>&#128141;</div><div>&#127796;</div><div>&#128105;</div>
-        <div>&#128118;</div><div>&#127795;</div><div>&#128141;</div><div>&#128118;</div>
+        <figure><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=75" alt="Wedding couple at golden hour"></figure><figure><img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=75" alt="Bride and groom holding hands"></figure><figure><img loading="lazy" src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=700&q=75" alt="Family walking together outdoors"></figure><figure><img loading="lazy" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=700&q=75" alt="Bride in soft light"></figure>
+        <figure><img loading="lazy" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=700&q=75" alt="Newborn baby sleeping"></figure><figure><img loading="lazy" src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=700&q=75" alt="Photographer working in a field at sunset"></figure><figure><img loading="lazy" src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?auto=format&fit=crop&w=700&q=75" alt="Photographer shooting at golden hour"></figure><figure><img loading="lazy" src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?auto=format&fit=crop&w=700&q=75" alt="Portrait session in warm evening light"></figure>
       </div>
     </div>
   </section>
   <section class="pad" id="about" style="padding-top:0">
     <div class="wrap about">
-      <div class="about-art reveal">&#128247;</div>
+      <div class="about-art reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=900&q=75" alt="Maya, photographer, with her camera in a wildflower field"></div>
       <div>
         <span class="kicker reveal">Meet your photographer</span>
         <h2 class="reveal" style="--d:.08s">Hi, I'm <em>Maya.</em></h2>
         <p class="lede reveal" style="--d:.16s">Nine years, four hundred sessions, one belief: the best photos happen when you forget the camera is there. I keep sessions relaxed, give gentle direction, and chase the good light.</p>
         <ul class="reveal" style="--d:.24s">
-          <li>Golden-hour specialist — most sessions shot in the last two hours of daylight</li>
+          <li>Golden hour specialist — most sessions shot in the last two hours of daylight</li>
           <li>Patient with kids, calm with newborns, invisible at weddings</li>
-          <li>Hand-edited images, never batch-filtered</li>
-          <li>Print lab partnerships for wall-worthy enlargements</li>
+          <li>Hand edited images, never batch filtered</li>
+          <li>Print lab partnerships for wall worthy enlargements</li>
         </ul>
+      </div>
+    </div>
+  </section>
+<section class="tagline"><div class="wrap"><p class="tagline-text"><span class="tl">Real light, real moments,</span><br><span class="tl">photos your family will keep forever.</span></p></div></section>
+  <section class="pad" id="reviews" style="padding-top:0">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker reveal">Kind words</span>
+        <h2 class="reveal" style="--d:.08s">Loved by <em>families.</em></h2>
+      </div>
+      <div class="testi">
+        <div class="tcard reveal"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Maya made our two kids actually enjoy photo day. The gallery looks like a magazine — we cried happy tears."</p><footer>— Sarah, family session</footer></div>
+        <div class="tcard reveal" style="--d:.08s"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"She caught moments we didn't even see happening. Our wedding photos feel like reliving the day."</p><footer>— Emily, wedding</footer></div>
+        <div class="tcard reveal" style="--d:.16s"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"So patient with our newborn, and the photos are beyond beautiful. We have already booked our next session."</p><footer>— Jess, newborn session</footer></div>
       </div>
     </div>
   </section>
@@ -234,9 +288,9 @@
       <div class="faq-list reveal" style="--d:.1s">
         <details><summary>How far ahead should we book?<span class="pm">+</span></summary><div class="answer">Family and portrait sessions: 2&ndash;4 weeks. Weddings: 6&ndash;12 months — 2027 dates are open now. Call <a href="tel:+14035550119">(403) 555-0119</a> to check.</div></details>
         <details><summary>What happens if it rains?<span class="pm">+</span></summary><div class="answer">We watch the forecast together and reschedule free if the light won't cooperate. No fee, no stress.</div></details>
-        <details><summary>How many photos do we get?<span class="pm">+</span></summary><div class="answer">Family: 40+. Portrait: 25+. Newborn: 35+. Wedding: 400+. Every image is hand-edited and delivered in a private online gallery.</div></details>
+        <details><summary>How many photos do we get?<span class="pm">+</span></summary><div class="answer">Family: 40+. Portrait: 25+. Newborn: 35+. Wedding: 400+. Every image is hand edited and delivered in a private online gallery.</div></details>
         <details><summary>Do we get printing rights?<span class="pm">+</span></summary><div class="answer">Yes — every session includes full printing rights, plus guidance on where to print for the best quality.</div></details>
-        <details><summary>Can we bring our dog?<span class="pm">+</span></summary><div class="answer">Absolutely — dogs are family. Mention it when you call so we pick a dog-friendly spot.</div></details>
+        <details><summary>Can we bring our dog?<span class="pm">+</span></summary><div class="answer">Absolutely — dogs are family. Mention it when you call so we pick a dog friendly spot.</div></details>
         <details><summary>Where do sessions happen?<span class="pm">+</span></summary><div class="answer">Outdoors around Calgary — Fish Creek, Nose Hill, the river pathways — or in your home for newborns.</div></details>
       </div>
     </div>
@@ -268,6 +322,7 @@
   <div class="wrap">
     <span>Golden Hour Photography &middot; Calgary, AB &middot; <a href="tel:+14035550119">(403) 555-0119</a></span>
     <span class="demo">Demo site</span>
+    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></span>
   </div>
 </footer>
 <div class="callbar">
@@ -287,7 +342,10 @@
 </script>
 
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
+<script>
+(function(){var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;document.querySelectorAll('.tagline-text').forEach(function(el){var lines=el.querySelectorAll('.tl');if(!lines.length){lines=[el]}lines.forEach(function(line){var words=line.textContent.trim().split(/\s+/);line.innerHTML=words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ')});var spans=el.querySelectorAll('.w');spans.forEach(function(sp,i){sp.style.transitionDelay=(reduce?0:i*70)+'ms'});if(reduce){spans.forEach(function(sp){sp.classList.add('on')});return;}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.6});spans.forEach(function(sp){io.observe(sp)})}else{spans.forEach(function(sp){sp.classList.add('on')})}});})();
+</script>
 </body>
 </html>
