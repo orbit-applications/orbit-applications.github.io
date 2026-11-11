@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Slides · Str8Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Nunito:wght@400;700&family=Oswald:wght@400;700&family=Raleway:wght@400;700&family=Ubuntu:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Inter:wght@400;700&family=Rubik:wght@400;700&family=Quicksand:wght@400;700&family=Comfortaa:wght@400;700&family=Fredoka:wght@400;700&family=Baloo+2:wght@400;700&family=Pacifico&family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Titan+One&family=Bangers&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<style>
+  /* ===== Google Slides exact-copy look (default theme) ===== */
+  :root {
+    --yellow: #F9AB00; --yellow-dark: #E8710A; --yellow-soft: #FEF3E2;
+    --bg: #FFFFFF; --fg: #202124; --dim: #5F6368; --line: #DADCE0; --line-soft: #E8EAED;
+    --header-bg: #FFFFFF; --toolbar-bg: #F9F9F9; --panel-bg: #F8F9FA; --canvas-bg: #E8EAED;
+    --hover: #F1F3F4; --accent: #F9AB00; --accent-dark: #E8710A; --font: Arial, Helvetica, sans-serif;
+  }
+  body.theme-dark {
+    --yellow: #A6CE39; --yellow-dark: #8FB82E; --yellow-soft: rgba(166, 206, 57, .14);
+    --bg: #0B0B0C; --fg: #F5F5F2; --dim: #9A9A94; --line: #26272B; --line-soft: #1E1F22;
+    --header-bg: #0B0B0C; --toolbar-bg: #141516; --panel-bg: #141516; --canvas-bg: #0E0F10;
+    --hover: #1E1F22; --accent: #A6CE39; --accent-dark: #8FB82E; --font: Manrope, -apple-system, sans-serif;
+  }
+  body.theme-blue {
+    --yellow: #1A73E8; --yellow-dark: #1557B0; --yellow-soft: #E8F0FE;
+    --bg: #FFFFFF; --fg: #202124; --dim: #5F6368; --line: #DADCE0; --line-soft: #E8EAED;
+    --header-bg: #FFFFFF; --toolbar-bg: #F8F9FA; --panel-bg: #F8F9FA; --canvas-bg: #E8EAED;
+    --hover: #F1F3F4; --accent: #1A73E8; --accent-dark: #1557B0; --font: Arial, Helvetica, sans-serif;
+  }
+  body.theme-warm {
+    --yellow: #E8710A; --yellow-dark: #C25E00; --yellow-soft: #FEF3E2;
+    --bg: #FFFEF9; --fg: #3C4043; --dim: #5F6368; --line: #E8E0D0; --line-soft: #F1EBDD;
+    --header-bg: #FFFEF9; --toolbar-bg: #FBF7EE; --panel-bg: #FBF7EE; --canvas-bg: #EFE7D6;
+    --hover: #F5EFE2; --accent: #E8710A; --accent-dark: #C25E00; --font: Arial, Helvetica, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: var(--font); }
+  body { font-size: 14px; -webkit-font-smoothing: antialiased; }
+  button, input, select { font-family: var(--font); }
+  .hidden { display: none !important; }
+
+  /* Header */
+  .gs-header { background: var(--header-bg); border-bottom: 1px solid var(--line); padding: 6px 12px 0; }
+  .gs-top { display: flex; align-items: center; gap: 10px; }
+  .gs-icon { width: 36px; height: 36px; flex: 0 0 auto; cursor: pointer; }
+  .gs-icon svg { width: 30px; height: 30px; }
+  .gs-title-wrap { flex: 1; min-width: 0; }
+  .gs-title { border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--fg); font-size: 18px; padding: 2px 8px; width: 100%; max-width: 420px; outline: none; }
+  .gs-title:hover { border-color: var(--line); }
+  .gs-title:focus { border-color: var(--accent); }
+  .gs-saved { font-size: 12px; color: var(--dim); padding: 0 8px; white-space: nowrap; }
+  .gs-style { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--dim); }
+  .gs-style select { border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 6px; padding: 5px 6px; font-size: 13px; outline: none; }
+  .gs-back { color: var(--dim); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; padding: 6px 8px; border-radius: 6px; }
+  .gs-back:hover { background: var(--hover); color: var(--fg); }
+  .gs-menu { display: flex; gap: 2px; margin-top: 2px; flex-wrap: wrap; }
+  .gs-menu button { background: none; border: 0; color: var(--fg); font-size: 14px; padding: 5px 9px; border-radius: 4px; cursor: pointer; }
+  .gs-menu button:hover { background: var(--hover); }
+  .gs-menu button.active { background: var(--hover); }
+
+  /* Toolbar */
+  .gs-toolbar { display: flex; align-items: center; gap: 2px; background: var(--toolbar-bg); border-bottom: 1px solid var(--line); padding: 4px 10px; flex-wrap: wrap; }
+  .tb { background: none; border: 0; border-radius: 4px; color: var(--fg); font-size: 14px; min-width: 30px; height: 30px; padding: 0 7px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  .tb:hover { background: var(--hover); }
+  .tb.on { background: var(--yellow-soft); color: var(--yellow-dark); }
+  .tb-sep { width: 1px; height: 22px; background: var(--line); margin: 0 5px; flex: 0 0 auto; }
+  .tb select { border: 1px solid transparent; background: transparent; color: var(--fg); font-size: 13px; border-radius: 4px; padding: 4px 2px; outline: none; max-width: 110px; }
+  .tb select:hover { background: var(--hover); }
+  .tb input[type=color] { width: 26px; height: 26px; border: 0; background: none; padding: 0; cursor: pointer; }
+
+  /* Main area: thumbnails + canvas */
+  .gs-main { display: flex; height: calc(100vh - 150px); min-height: 400px; }
+  .gs-thumbs { width: 200px; flex: 0 0 auto; background: var(--panel-bg); border-right: 1px solid var(--line); overflow-y: auto; padding: 12px 10px; }
+  .gs-thumb { border: 2px solid var(--line); border-radius: 4px; background: #fff; margin-bottom: 10px; cursor: pointer; position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+  .gs-thumb.sel { border-color: var(--accent-dark); box-shadow: 0 0 0 2px var(--yellow-soft); }
+  .gs-thumb .num { position: absolute; left: 4px; top: 2px; font-size: 11px; color: var(--dim); z-index: 2; background: rgba(255,255,255,.8); padding: 0 4px; border-radius: 3px; }
+  .gs-thumb .mini { position: absolute; inset: 0; transform-origin: top left; }
+  .gs-add-slide { width: 100%; border: 1px dashed var(--line); background: none; color: var(--dim); border-radius: 6px; padding: 10px; cursor: pointer; font-size: 13px; font-weight: 700; }
+  .gs-add-slide:hover { border-color: var(--accent-dark); color: var(--accent-dark); }
+  .gs-canvas-wrap { flex: 1; background: var(--canvas-bg); overflow: auto; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .gs-slide { width: 960px; height: 540px; flex: 0 0 auto; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.25); position: relative; overflow: hidden; }
+  .gs-shape { position: absolute; cursor: move; overflow: hidden; word-wrap: break-word; }
+  .gs-shape.sel { outline: 2px solid var(--accent-dark); outline-offset: -2px; }
+  .gs-shape .txt { width: 100%; height: 100%; outline: none; overflow: hidden; }
+  .gs-bottom { background: var(--header-bg); border-top: 1px solid var(--line); display: flex; align-items: center; gap: 16px; padding: 0 14px; height: 36px; font-size: 12px; color: var(--dim); }
+  .gs-bottom button { background: none; border: 0; color: var(--dim); font-size: 12px; cursor: pointer; padding: 4px 6px; border-radius: 4px; }
+  .gs-bottom button:hover { background: var(--hover); color: var(--fg); }
+
+  /* Present mode */
+  .gs-present { position: fixed; inset: 0; background: #000; z-index: 100; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .gs-present .gs-slide { width: 96vw; height: 54vw; max-height: 96vh; max-width: 170.6vh; box-shadow: none; }
+  @keyframes slideFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideIn { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+
+  /* List view */
+  .gs-list { max-width: 900px; margin: 0 auto; padding: 20px 20px 40px; }
+  .gs-list h1 { font-size: 28px; font-weight: 400; margin: 8px 0 2px; }
+  .gs-list .note { color: var(--dim); font-size: 14px; margin: 4px 0 16px; }
+  .gs-list h2 { font-size: 16px; font-weight: 700; margin: 22px 0 10px; }
+  .tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+  .tpl { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px; cursor: pointer; text-align: left; color: var(--fg); }
+  .tpl:hover { border-color: var(--accent-dark); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+  .tpl b { display: block; font-size: 14px; font-weight: 700; }
+  .tpl span { color: var(--dim); font-size: 12px; }
+  .item { display: flex; gap: 12px; align-items: center; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin: 8px 0; }
+  .item .body { flex: 1; min-width: 0; }
+  .item b { font-size: 15px; font-weight: 700; display: block; }
+  .item .meta { color: var(--dim); font-size: 13px; margin-top: 2px; }
+  .item button { flex: 0 0 auto; background: none; border: 0; font-size: 14px; font-weight: 700; cursor: pointer; padding: 4px 0; }
+  .item .open { color: var(--yellow-dark); margin-right: 12px; }
+  .item .del { color: #D93025; }
+  .btn { display: inline-block; min-height: 40px; border-radius: 6px; border: 0; font-size: 14px; font-weight: 700; cursor: pointer; background: var(--accent); color: #fff; padding: 0 18px; margin-top: 10px; }
+  .btn.ghost { background: var(--hover); color: var(--fg); }
+  .fld { display: block; font-size: 12px; font-weight: 700; color: var(--dim); margin: 16px 0 0; }
+  .menu-pop { position: absolute; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.18); padding: 6px 0; z-index: 50; min-width: 200px; }
+  .menu-pop button { display: block; width: 100%; text-align: left; background: none; border: 0; color: var(--fg); font-size: 14px; padding: 8px 16px; cursor: pointer; }
+  .menu-pop button:hover { background: var(--hover); }
+  .menu-pop .sep { height: 1px; background: var(--line); margin: 5px 0; }
+</style>
+</head>
+<body>
+<div id="listView" class="gs-list">
+  <div class="gs-top">
+    <div class="gs-icon" title="Slides">
+      <svg viewBox="0 0 36 36"><rect x="2" y="2" width="32" height="32" rx="4" fill="#F9AB00"/><rect x="8" y="7" width="20" height="14" rx="2" fill="#fff"/><rect x="11" y="24" width="14" height="2" rx="1" fill="#fff"/><rect x="11" y="28" width="9" height="2" rx="1" fill="#fff" opacity=".7"/><rect x="12" y="11" width="12" height="2" fill="#5F6368"/><rect x="12" y="16" width="8" height="2" fill="#BDC1C6"/></svg>
+    </div>
+    <h1 style="margin:0">Slides</h1>
+    <span class="gs-style" style="margin-left:auto">Style
+      <select id="styleSel">
+        <option value="google">Google</option>
+        <option value="dark">Dark</option>
+        <option value="blue">Blue</option>
+        <option value="warm">Warm</option>
+      </select>
+    </span>
+    <a class="gs-back" href="./">← Suite</a>
+  </div>
+  <p class="note" id="note">Presentations for the business — just like Google Slides. Start from a template or a blank deck.</p>
+  <h2>Start from a template</h2>
+  <div class="tpl-grid" id="tplGrid"></div>
+  <h2>Your presentations</h2>
+  <div id="list"></div>
+  <br><button class="btn" id="newBlank" type="button">+ Blank presentation</button>
+</div>
+
+<div id="editView" class="hidden">
+  <div class="gs-header">
+    <div class="gs-top">
+      <div class="gs-icon" id="homeIcon" title="Slides">
+        <svg viewBox="0 0 36 36"><rect x="2" y="2" width="32" height="32" rx="4" fill="#F9AB00"/><rect x="8" y="7" width="20" height="14" rx="2" fill="#fff"/><rect x="11" y="24" width="14" height="2" rx="1" fill="#fff"/><rect x="11" y="28" width="9" height="2" rx="1" fill="#fff" opacity=".7"/><rect x="12" y="11" width="12" height="2" fill="#5F6368"/><rect x="12" y="16" width="8" height="2" fill="#BDC1C6"/></svg>
+      </div>
+      <div class="gs-title-wrap">
+        <input class="gs-title" id="deckTitle" type="text" maxlength="200" value="Untitled presentation">
+        <div class="gs-saved" id="savedState" style="padding:0 8px">Saved</div>
+      </div>
+      <span class="gs-style">Style
+        <select id="styleSel2">
+          <option value="google">Google</option>
+          <option value="dark">Dark</option>
+          <option value="blue">Blue</option>
+          <option value="warm">Warm</option>
+        </select>
+      </span>
+      <a class="gs-back" href="./">← Suite</a>
+    </div>
+    <div class="gs-menu" id="menuBar">
+      <button data-menu="file">File</button>
+      <button data-menu="edit">Edit</button>
+      <button data-menu="view">View</button>
+      <button data-menu="insert">Insert</button>
+      <button data-menu="format">Format</button>
+      <button data-menu="slide">Slide</button>
+      <button data-menu="help">Help</button>
+    </div>
+  </div>
+  <div class="gs-toolbar" id="toolbar">
+    <button class="tb" id="undoBtn" title="Undo">↩</button>
+    <button class="tb" id="redoBtn" title="Redo">↪</button>
+    <button class="tb" id="printBtn" title="Print">⎙</button>
+    <span class="tb-sep"></span>
+    <button class="tb" id="addTextBtn" title="Add text box">T</button>
+    <button class="tb" id="addRectBtn" title="Add rectangle">▭</button>
+    <button class="tb" id="addCircleBtn" title="Add circle">○</button>
+    <button class="tb" id="addTriBtn" title="Add triangle">△</button>
+    <button class="tb" id="addStarBtn" title="Add star">★</button>
+    <button class="tb" id="addArrowBtn" title="Add arrow">➔</button>
+    <button class="tb" id="addLineBtn" title="Add line">―</button>
+    <button class="tb" id="addImageBtn" title="Add image">Image</button>
+    <input type="file" id="imageFile" accept="image/*" style="display:none">
+    <select id="transitionSel" title="Slide transition">
+      <option value="none">No transition</option>
+      <option value="fade">Fade</option>
+      <option value="slide">Slide</option>
+    </select>
+    <span class="tb-sep"></span>
+    <select id="fontSel" title="Font">
+      <option value="Arial">Arial</option>
+      <option value="Manrope">Manrope</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Verdana">Verdana</option>
+      <option value="Trebuchet MS">Trebuchet MS</option>
+      <option value="Comic Sans MS">Comic Sans MS</option>
+      <option value="Impact">Impact</option>
+      <option value="Roboto">Roboto</option>
+      <option value="Open Sans">Open Sans</option>
+      <option value="Lato">Lato</option>
+      <option value="Montserrat">Montserrat</option>
+      <option value="Poppins">Poppins</option>
+      <option value="Nunito">Nunito</option>
+      <option value="Oswald">Oswald</option>
+      <option value="Raleway">Raleway</option>
+      <option value="Ubuntu">Ubuntu</option>
+      <option value="Merriweather">Merriweather</option>
+      <option value="Playfair Display">Playfair Display</option>
+      <option value="Inter">Inter</option>
+      <option value="Rubik">Rubik</option>
+      <option value="Quicksand">Quicksand</option>
+      <option value="Comfortaa">Comfortaa</option>
+      <option value="Fredoka">Fredoka</option>
+      <option value="Baloo 2">Baloo 2</option>
+      <option value="Pacifico">Pacifico</option>
+      <option value="Caveat">Caveat</option>
+      <option value="Dancing Script">Dancing Script</option>
+      <option value="Titan One">Titan One</option>
+      <option value="Bangers">Bangers</option>
+    </select>
+    <input id="fontSizeSel" type="number" min="8" max="200" value="24" title="Font size (8–200)" style="width:56px;border:1px solid transparent;background:transparent;color:var(--fg);font-size:13px;border-radius:4px;padding:4px 2px;outline:none">
+    <button class="tb" id="boldBtn" title="Bold"><b>B</b></button>
+    <button class="tb" id="italicBtn" title="Italic"><i>I</i></button>
+    <label class="tb" title="Text color" style="cursor:pointer">A<input type="color" id="textColor" value="#202124" style="position:absolute;opacity:0;width:1px;height:1px"></label>
+    <label class="tb" title="Fill color" style="cursor:pointer">▦<input type="color" id="fillColor" value="#ffffff" style="position:absolute;opacity:0;width:1px;height:1px"></label>
+    <span class="tb-sep"></span>
+    <button class="tb" data-align="left" title="Align left">☰</button>
+    <button class="tb" data-align="center" title="Align center">☰</button>
+    <button class="tb" data-align="right" title="Align right">☰</button>
+    <span class="tb-sep"></span>
+    <label class="tb" title="Slide background" style="cursor:pointer">BG<input type="color" id="bgColor" value="#ffffff" style="position:absolute;opacity:0;width:1px;height:1px"></label>
+    <span class="tb-sep"></span>
+    <button class="tb" id="delShapeBtn" title="Delete selected">Delete</button>
+    <button class="tb" id="dupSlideBtn" title="Duplicate slide">Duplicate</button>
+    <span class="tb-sep"></span>
+    <button class="tb" id="presentBtn" title="Present">Present</button>
+    <button class="tb" id="exportBtn" title="Download .pptx">Export .pptx</button>
+    <button class="tb" id="saveBtn" title="Save">Save</button>
+    <button class="tb" id="closeBtn" title="Close">Close</button>
+  </div>
+  <div class="gs-main">
+    <div class="gs-thumbs" id="thumbs"></div>
+    <div class="gs-canvas-wrap" id="canvasWrap">
+      <div class="gs-slide" id="slideCanvas"></div>
+      <textarea id="notesBox" placeholder="Speaker notes for this slide…" style="width:100%;min-height:56px;margin-top:10px;padding:8px;border:1px solid var(--line);border-radius:8px;font:14px/1.5 Manrope,sans-serif;resize:vertical"></textarea>
+    </div>
+  </div>
+  <div class="gs-bottom">
+    <span id="slideCount">Slide 1 of 1</span>
+    <button id="prevSlideBtn" style="margin-left:auto">← Prev</button>
+    <button id="nextSlideBtn">Next →</button>
+  </div>
+</div>
+<div id="presentView" class="gs-present hidden"><div class="gs-slide" id="presentCanvas"></div></div>
+<script src="../call/config.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var base = (window.STR8TECH_CALL ? STR8TECH_CALL.base() : location.origin).replace(/\/$/, '');
+  var currentId = null, decks = [];
+  var slides = [], cur = 0, selShape = -1;
+  var saveTimer = null, undoStack = [], redoStack = [];
+  var STYLE_KEY = 'str8tech-slides-style';
+  var SLIDE_W = 960, SLIDE_H = 540;
+
+  function applyStyle(name) {
+    document.body.classList.remove('theme-dark', 'theme-blue', 'theme-warm');
+    if (name === 'dark') document.body.classList.add('theme-dark');
+    else if (name === 'blue') document.body.classList.add('theme-blue');
+    else if (name === 'warm') document.body.classList.add('theme-warm');
+    localStorage.setItem(STYLE_KEY, name);
+    var a = $('styleSel'), b = $('styleSel2');
+    if (a) a.value = name;
+    if (b) b.value = name;
+  }
+  function initStyle() {
+    var saved = localStorage.getItem(STYLE_KEY) || 'google';
+    applyStyle(saved);
+    var a = $('styleSel'), b = $('styleSel2');
+    if (a) a.onchange = function () { applyStyle(a.value); };
+    if (b) b.onchange = function () { applyStyle(b.value); };
+  }
+  function blankSlide(bg) {
+    return { bg: bg || '#ffffff', shapes: [], notes: '' };
+  }
+  function textShape(x, y, w, h, text, size, opts) {
+    opts = opts || {};
+    return { type: 'text', x: x, y: y, w: w, h: h, text: text, size: size || 24, bold: !!opts.bold, italic: false, color: opts.color || '#202124', fill: 'transparent', align: opts.align || 'left', font: opts.font || 'Arial' };
+  }
+
+  var TEMPLATES = [
+    { title: 'Business Pitch', desc: 'Pitch a client on a website', slides: [
+      { bg: '#0B0B0C', shapes: [textShape(8, 30, 84, 20, 'Your business needs a website', 48, { bold: true, color: '#FFFFFF', align: 'center' }), textShape(20, 55, 60, 10, 'Str8Tech — Apps, Websites & Video', 20, { color: '#A6CE39', align: 'center' })] },
+      { bg: '#ffffff', shapes: [textShape(8, 8, 84, 12, 'The problem', 36, { bold: true }), textShape(8, 25, 84, 50, 'When people Google your business, they find nothing — no website, no prices, no way to book. Customers go to the business that DOES have a website.', 24, {})] },
+      { bg: '#ffffff', shapes: [textShape(8, 8, 84, 12, 'What you get', 36, { bold: true }), textShape(8, 25, 84, 50, 'Template website — C$1,000\nCustom website — C$1,200\nPromo video — C$2,000–3,000\nTablet add-on — C$500\n\nNo hosting fee. 50% deposit, 50% on launch.', 24, {})] },
+      { bg: '#0F9D58', shapes: [textShape(8, 35, 84, 20, 'Let\'s build it.', 44, { bold: true, color: '#FFFFFF', align: 'center' }), textShape(20, 60, 60, 10, 'str8tech.ca  ·  (403) 899-1550', 20, { color: '#FFFFFF', align: 'center' })] }
+    ] },
+    { title: 'Title Slide', desc: 'A big title, one line under it', slides: [
+      { bg: '#ffffff', shapes: [textShape(8, 32, 84, 18, 'Title here', 60, { bold: true, align: 'center' }), textShape(20, 55, 60, 10, 'Subtitle here', 24, { color: '#5F6368', align: 'center' })] }
+    ] },
+    { title: 'Title + Bullets', desc: 'Title on top, points below', slides: [
+      { bg: '#ffffff', shapes: [textShape(8, 6, 84, 12, 'Title here', 36, { bold: true }), textShape(8, 22, 84, 60, '• First point\n• Second point\n• Third point', 24, {})] }
+    ] },
+    { title: 'Photo Story', desc: 'Dark slides, big words', slides: [
+      { bg: '#0B0B0C', shapes: [textShape(8, 38, 84, 16, 'Big statement', 48, { bold: true, color: '#FFFFFF', align: 'center' })] },
+      { bg: '#0B0B0C', shapes: [textShape(8, 38, 84, 16, 'Another big statement', 40, { bold: true, color: '#A6CE39', align: 'center' })] }
+    ] }
+  ];
+
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'X-Staff-Pin': pin(), 'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch(base + path, opts);
+  }
+
+  // ---------- List view ----------
+  function renderTemplates() {
+    var g = $('tplGrid'); g.innerHTML = '';
+    TEMPLATES.forEach(function (t) {
+      var b = document.createElement('button'); b.className = 'tpl'; b.type = 'button';
+      var tb = document.createElement('b'); tb.textContent = t.title;
+      var ts = document.createElement('span'); ts.textContent = t.desc;
+      b.appendChild(tb); b.appendChild(ts);
+      b.onclick = function () { createFromTemplate(t); };
+      g.appendChild(b);
+    });
+  }
+  function createFromTemplate(t) {
+    var slidesCopy = JSON.parse(JSON.stringify(t.slides));
+    api('/api/slides', { method: 'POST', body: JSON.stringify({ title: t.title, slides: slidesCopy }) })
+      .then(function (r) { if (!r.ok) throw new Error('save failed'); return r.json(); })
+      .then(function (d) { openDeck(d.id); })
+      .catch(function () { $('note').textContent = 'Could not create that deck. Check the PIN and try again.'; });
+  }
+  function load() {
+    return api('/api/slides').then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); $('note').textContent = 'That PIN did not work. Go back and re-enter it.'; throw new Error('bad pin'); }
+      return r.json();
+    }).then(function (list) { decks = list || []; renderList(); }).catch(function () {});
+  }
+  function renderList() {
+    var box = $('list'); box.innerHTML = '';
+    if (!decks.length) { box.innerHTML = '<p class="note">No presentations yet — pick a template or start blank.</p>'; return; }
+    decks.forEach(function (d) {
+      var dv = document.createElement('div'); dv.className = 'item';
+      var body = document.createElement('div'); body.className = 'body';
+      var b = document.createElement('b'); b.textContent = d.title; body.appendChild(b);
+      var m = document.createElement('div'); m.className = 'meta';
+      m.textContent = d.updatedAt ? new Date(d.updatedAt).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+      body.appendChild(m); dv.appendChild(body);
+      var o = document.createElement('button'); o.className = 'open'; o.textContent = 'Open';
+      o.onclick = function () { openDeck(d.id); };
+      dv.appendChild(o);
+      var del = document.createElement('button'); del.className = 'del'; del.textContent = 'Delete';
+      del.onclick = function () { if (confirm('Delete "' + d.title + '"?')) api('/api/slides/' + encodeURIComponent(d.id), { method: 'DELETE' }).then(load); };
+      dv.appendChild(del);
+      box.appendChild(dv);
+    });
+  }
+  function openDeck(id) {
+    api('/api/slides/' + encodeURIComponent(id)).then(function (r) { return r.json(); }).then(function (d) {
+      currentId = d.id;
+      $('deckTitle').value = d.title || '';
+      slides = decodeShapes((d.slides && d.slides.length) ? d.slides : [blankSlide()]);
+      cur = 0; selShape = -1;
+      $('listView').classList.add('hidden');
+      $('editView').classList.remove('hidden');
+      $('savedState').textContent = 'Saved';
+      renderAll();
+      window.scrollTo(0, 0);
+    }).catch(function () { $('note').textContent = 'Could not open that deck.'; });
+  }
+  function newBlank() {
+    currentId = null;
+    $('deckTitle').value = 'Untitled presentation';
+    slides = [blankSlide()];
+    cur = 0; selShape = -1;
+    $('listView').classList.add('hidden');
+    $('editView').classList.remove('hidden');
+    $('savedState').textContent = 'Not saved yet';
+    renderAll();
+    window.scrollTo(0, 0);
+  }
+  function scheduleSave() {
+    $('savedState').textContent = 'Saving…';
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDeck, 1000);
+  }
+  function saveDeck() {
+    var title = $('deckTitle').value.trim() || 'Untitled presentation';
+    var payload = JSON.stringify({ title: title, slides: encodeShapesForSave(slides) });
+    var req = currentId
+      ? api('/api/slides/' + encodeURIComponent(currentId), { method: 'PUT', body: payload })
+      : api('/api/slides', { method: 'POST', body: payload });
+    return req.then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); throw new Error('bad pin'); }
+      if (!r.ok) throw new Error('save failed');
+      return r.json();
+    }).then(function (d) {
+      currentId = d.id;
+      $('savedState').textContent = 'Saved ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    }).catch(function () { $('savedState').textContent = 'Could not save. Check the PIN.'; });
+  }
+  // The server only keeps shape types text/rect/circle/triangle/image, so the
+  // newer shapes are stored as rect + a marker in src, and decoded on load.
+  var SHAPE_MARKER = 'shape:';
+  function encodeShapesForSave(slidesIn) {
+    return slidesIn.map(function (s) {
+      var copy = JSON.parse(JSON.stringify(s));
+      copy.shapes.forEach(function (sh) {
+        if (sh.type === 'star' || sh.type === 'arrow' || sh.type === 'line') {
+          sh.src = SHAPE_MARKER + sh.type;
+          sh.type = 'rect';
+        }
+      });
+      return copy;
+    });
+  }
+  function decodeShapes(slidesIn) {
+    (slidesIn || []).forEach(function (s) {
+      (s.shapes || []).forEach(function (sh) {
+        if (sh.type === 'rect' && typeof sh.src === 'string' && sh.src.indexOf(SHAPE_MARKER) === 0) {
+          sh.type = sh.src.slice(SHAPE_MARKER.length);
+          sh.src = '';
+        }
+      });
+    });
+    return slidesIn;
+  }
+  function pushUndo() {
+    undoStack.push(JSON.stringify(slides));
+    if (undoStack.length > 50) undoStack.shift();
+    redoStack = [];
+  }
+  function doUndo() {
+    if (!undoStack.length) return;
+    redoStack.push(JSON.stringify(slides));
+    slides = JSON.parse(undoStack.pop());
+    if (cur >= slides.length) cur = slides.length - 1;
+    selShape = -1;
+    renderAll(); scheduleSave();
+  }
+  function doRedo() {
+    if (!redoStack.length) return;
+    undoStack.push(JSON.stringify(slides));
+    slides = JSON.parse(redoStack.pop());
+    if (cur >= slides.length) cur = slides.length - 1;
+    selShape = -1;
+    renderAll(); scheduleSave();
+  }
+
+  // ---------- Rendering ----------
+  function shapeEl(sh, scale, editable) {
+    var el = document.createElement('div');
+    el.className = 'gs-shape';
+    el.style.left = sh.x + '%'; el.style.top = sh.y + '%';
+    el.style.width = sh.w + '%'; el.style.height = sh.h + '%';
+    if (sh.type === 'rect') { el.style.background = sh.fill && sh.fill !== 'transparent' ? sh.fill : '#DADCE0'; el.style.borderRadius = '4px'; }
+    if (sh.type === 'circle') { el.style.background = sh.fill && sh.fill !== 'transparent' ? sh.fill : '#DADCE0'; el.style.borderRadius = '50%'; }
+    if (sh.type === 'triangle') { el.style.background = sh.fill && sh.fill !== 'transparent' ? sh.fill : '#DADCE0'; el.style.clipPath = 'polygon(50% 0, 100% 100%, 0 100%)'; }
+    if (sh.type === 'star') { el.style.background = sh.fill && sh.fill !== 'transparent' ? sh.fill : '#F9AB00'; el.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'; }
+    if (sh.type === 'arrow') { el.style.background = sh.fill && sh.fill !== 'transparent' ? sh.fill : '#1A73E8'; el.style.clipPath = 'polygon(0 35%, 65% 35%, 65% 0, 100% 50%, 65% 100%, 65% 65%, 0 65%)'; }
+    if (sh.type === 'line') { el.style.background = sh.fill && sh.fill !== 'transparent' ? sh.fill : '#202124'; }
+    if (sh.type === 'image' && sh.src) {
+      var im = document.createElement('img');
+      im.src = sh.src; im.alt = '';
+      im.style.width = '100%'; im.style.height = '100%'; im.style.objectFit = 'cover'; im.style.display = 'block';
+      im.draggable = false;
+      el.appendChild(im);
+    }
+    if (sh.type === 'text') {
+      var t = document.createElement('div');
+      t.className = 'txt';
+      t.textContent = sh.text || '';
+      t.style.fontSize = (sh.size * scale) + 'px';
+      t.style.fontFamily = sh.font || 'Arial';
+      t.style.fontWeight = sh.bold ? '700' : '400';
+      t.style.fontStyle = sh.italic ? 'italic' : 'normal';
+      t.style.color = sh.color || '#202124';
+      t.style.textAlign = sh.align || 'left';
+      t.style.whiteSpace = 'pre-wrap';
+      if (editable) { t.contentEditable = 'true'; t.spellcheck = false; }
+      el.appendChild(t);
+    }
+    return el;
+  }
+  function renderCanvas() {
+    var cv = $('slideCanvas');
+    cv.innerHTML = '';
+    var s = slides[cur];
+    if (!s) return;
+    cv.style.background = s.bg || '#ffffff';
+    s.shapes.forEach(function (sh, i) {
+      var el = shapeEl(sh, 1, true);
+      if (i === selShape) el.classList.add('sel');
+      el.dataset.i = i;
+      el.addEventListener('mousedown', function (e) { startDrag(e, i, el); });
+      var txt = el.querySelector('.txt');
+      if (txt) {
+        txt.addEventListener('input', function () { sh.text = txt.textContent; scheduleSave(); renderThumbs(); });
+        txt.addEventListener('dblclick', function (e) { e.stopPropagation(); });
+        txt.addEventListener('mousedown', function (e) { e.stopPropagation(); selectShape(i); });
+      }
+      cv.appendChild(el);
+    });
+    $('slideCount').textContent = 'Slide ' + (cur + 1) + ' of ' + slides.length;
+    var nb = $('notesBox');
+    if (nb) nb.value = s.notes || '';
+  }
+  function renderThumbs() {
+    var box = $('thumbs'); box.innerHTML = '';
+    slides.forEach(function (s, i) {
+      var th = document.createElement('div');
+      th.className = 'gs-thumb' + (i === cur ? ' sel' : '');
+      var num = document.createElement('span'); num.className = 'num'; num.textContent = i + 1;
+      th.appendChild(num);
+      var mini = document.createElement('div');
+      mini.className = 'mini';
+      mini.style.background = s.bg || '#ffffff';
+      mini.style.width = SLIDE_W + 'px'; mini.style.height = SLIDE_H + 'px';
+      mini.style.transform = 'scale(' + (178 / SLIDE_W) + ')';
+      s.shapes.forEach(function (sh) { mini.appendChild(shapeEl(sh, 178 / SLIDE_W, false)); });
+      th.appendChild(mini);
+      th.onclick = function () { cur = i; selShape = -1; renderAll(); };
+      box.appendChild(th);
+    });
+    var add = document.createElement('button');
+    add.className = 'gs-add-slide'; add.type = 'button'; add.textContent = '+ Add slide';
+    add.onclick = addSlide;
+    box.appendChild(add);
+  }
+  function renderAll() { renderCanvas(); renderThumbs(); syncToolbar(); }
+  function selectShape(i) {
+    selShape = i;
+    renderCanvas();
+    syncToolbar();
+  }
+  function syncToolbar() {
+    var sh = (slides[cur] && slides[cur].shapes[selShape]) || null;
+    $('boldBtn').classList.toggle('on', !!(sh && sh.bold));
+    $('italicBtn').classList.toggle('on', !!(sh && sh.italic));
+    $('fontSel').value = sh ? (sh.font || 'Arial') : 'Arial';
+    $('fontSizeSel').value = sh ? String(sh.size) : '24';
+  }
+  function curSlide() { return slides[cur]; }
+  function addSlide() {
+    pushUndo();
+    slides.splice(cur + 1, 0, blankSlide());
+    cur++;
+    selShape = -1;
+    renderAll(); scheduleSave();
+  }
+  function addShape(type) {
+    pushUndo();
+    var sh;
+    if (type === 'text') sh = textShape(30, 40, 40, 15, 'Click to edit', 24, {});
+    else if (type === 'rect') sh = { type: 'rect', x: 30, y: 40, w: 30, h: 20, text: '', size: 24, bold: false, italic: false, color: '#202124', fill: '#A6CE39', align: 'left', font: 'Arial' };
+    else if (type === 'triangle') sh = { type: 'triangle', x: 35, y: 35, w: 20, h: 20, text: '', size: 24, bold: false, italic: false, color: '#202124', fill: '#F9AB00', align: 'left', font: 'Arial' };
+    else if (type === 'star') sh = { type: 'star', x: 35, y: 35, w: 20, h: 20, text: '', size: 24, bold: false, italic: false, color: '#202124', fill: '#F9AB00', align: 'left', font: 'Arial' };
+    else if (type === 'arrow') sh = { type: 'arrow', x: 30, y: 42, w: 30, h: 12, text: '', size: 24, bold: false, italic: false, color: '#202124', fill: '#1A73E8', align: 'left', font: 'Arial' };
+    else if (type === 'line') sh = { type: 'line', x: 30, y: 48, w: 30, h: 2, text: '', size: 24, bold: false, italic: false, color: '#202124', fill: '#202124', align: 'left', font: 'Arial' };
+    else if (type === 'image') { $('imageFile').click(); return; }
+    else sh = { type: 'circle', x: 35, y: 35, w: 20, h: 20, text: '', size: 24, bold: false, italic: false, color: '#202124', fill: '#F9AB00', align: 'left', font: 'Arial' };
+    curSlide().shapes.push(sh);
+    selShape = curSlide().shapes.length - 1;
+    renderAll(); scheduleSave();
+  }
+  function startDrag(e, i, el) {
+    if (e.target.classList && e.target.classList.contains('txt')) return;
+    e.preventDefault();
+    selectShape(i);
+    var sh = curSlide().shapes[i];
+    var cv = $('slideCanvas').getBoundingClientRect();
+    var startX = e.clientX, startY = e.clientY, ox = sh.x, oy = sh.y;
+    pushUndo();
+    function move(ev) {
+      sh.x = Math.max(0, Math.min(100 - sh.w, ox + (ev.clientX - startX) / cv.width * 100));
+      sh.y = Math.max(0, Math.min(100 - sh.h, oy + (ev.clientY - startY) / cv.height * 100));
+      el.style.left = sh.x + '%'; el.style.top = sh.y + '%';
+    }
+    function up() {
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseup', up);
+      renderThumbs(); scheduleSave();
+    }
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', up);
+  }
+  function applyShape(fn) {
+    var sh = (curSlide() && curSlide().shapes[selShape]) || null;
+    if (!sh) return;
+    pushUndo();
+    fn(sh);
+    renderAll(); scheduleSave();
+  }
+
+  // ---------- Toolbar ----------
+  $('undoBtn').onclick = doUndo;
+  $('redoBtn').onclick = doRedo;
+  $('printBtn').onclick = function () { window.print(); };
+  $('addTextBtn').onclick = function () { addShape('text'); };
+  $('addRectBtn').onclick = function () { addShape('rect'); };
+  $('addCircleBtn').onclick = function () { addShape('circle'); };
+  $('addTriBtn').onclick = function () { addShape('triangle'); };
+  $('addStarBtn').onclick = function () { addShape('star'); };
+  $('addArrowBtn').onclick = function () { addShape('arrow'); };
+  $('addLineBtn').onclick = function () { addShape('line'); };
+  $('addImageBtn').onclick = function () { $('imageFile').click(); };
+  $('imageFile').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      pushUndo();
+      var sh = { type: 'image', x: 25, y: 25, w: 50, h: 50, src: rd.result, text: '', size: 24, bold: false, italic: false, color: '#202124', fill: 'transparent', align: 'left', font: 'Arial' };
+      curSlide().shapes.push(sh);
+      selShape = curSlide().shapes.length - 1;
+      renderAll(); scheduleSave();
+    };
+    rd.readAsDataURL(f);
+    this.value = '';
+  });
+  $('notesBox').addEventListener('input', function () {
+    if (slides[cur]) { slides[cur].notes = this.value; scheduleSave(); }
+  });
+  var deckTransition = 'none';
+  $('transitionSel').onchange = function () { deckTransition = this.value; };
+  function applyTransition(el) {
+    if (deckTransition === 'fade') {
+      el.style.animation = 'none'; void el.offsetWidth;
+      el.style.animation = 'slideFade .45s ease';
+    } else if (deckTransition === 'slide') {
+      el.style.animation = 'none'; void el.offsetWidth;
+      el.style.animation = 'slideIn .45s ease';
+    } else {
+      el.style.animation = 'none';
+    }
+  }
+  $('boldBtn').onclick = function () { applyShape(function (sh) { sh.bold = !sh.bold; }); };
+  $('italicBtn').onclick = function () { applyShape(function (sh) { sh.italic = !sh.italic; }); };
+  $('fontSel').onchange = function () { var v = this.value; applyShape(function (sh) { sh.font = v; }); };
+  $('fontSizeSel').onchange = function () { var v = Math.max(8, Math.min(200, parseInt(this.value, 10) || 24)); this.value = v; applyShape(function (sh) { sh.size = v; }); };
+  $('textColor').onchange = function () { var v = this.value; applyShape(function (sh) { sh.color = v; }); };
+  $('fillColor').onchange = function () { var v = this.value; applyShape(function (sh) { sh.fill = v; }); };
+  $('bgColor').onchange = function () { var v = this.value; pushUndo(); curSlide().bg = v; renderAll(); scheduleSave(); };
+  document.querySelectorAll('[data-align]').forEach(function (b) {
+    b.onclick = function () { var a = b.dataset.align; applyShape(function (sh) { sh.align = a; }); };
+  });
+  $('delShapeBtn').onclick = function () {
+    if (selShape < 0) return;
+    pushUndo();
+    curSlide().shapes.splice(selShape, 1);
+    selShape = -1;
+    renderAll(); scheduleSave();
+  };
+  $('dupSlideBtn').onclick = function () {
+    pushUndo();
+    slides.splice(cur + 1, 0, JSON.parse(JSON.stringify(curSlide())));
+    cur++;
+    selShape = -1;
+    renderAll(); scheduleSave();
+  };
+  $('prevSlideBtn').onclick = function () { if (cur > 0) { cur--; selShape = -1; renderAll(); } };
+  $('nextSlideBtn').onclick = function () { if (cur < slides.length - 1) { cur++; selShape = -1; renderAll(); } };
+  $('saveBtn').onclick = saveDeck;
+  $('closeBtn').onclick = closeEditor;
+  $('homeIcon').onclick = closeEditor;
+  $('deckTitle').addEventListener('change', scheduleSave);
+  function closeEditor() {
+    $('editView').classList.add('hidden');
+    $('listView').classList.remove('hidden');
+    load();
+  }
+
+  // ---------- Present mode ----------
+  var presentIdx = 0;
+  function showPresent(i) {
+    presentIdx = Math.max(0, Math.min(slides.length - 1, i));
+    var cv = $('presentCanvas');
+    cv.innerHTML = '';
+    var s = slides[presentIdx];
+    cv.style.background = s.bg || '#ffffff';
+    s.shapes.forEach(function (sh) { cv.appendChild(shapeEl(sh, 1, false)); });
+    applyTransition(cv);
+  }
+  $('presentBtn').onclick = function () {
+    $('presentView').classList.remove('hidden');
+    showPresent(cur);
+  };
+  $('presentView').onclick = function (e) {
+    if (presentIdx < slides.length - 1) showPresent(presentIdx + 1);
+    else $('presentView').classList.add('hidden');
+  };
+  document.addEventListener('keydown', function (e) {
+    if (!$('presentView').classList.contains('hidden')) {
+      if (e.key === 'Escape') $('presentView').classList.add('hidden');
+      if (e.key === 'ArrowRight') showPresent(presentIdx + 1);
+      if (e.key === 'ArrowLeft') showPresent(presentIdx - 1);
+    }
+  });
+
+  // ---------- Export .pptx ----------
+  $('exportBtn').onclick = function () {
+    if (typeof PptxGenJS === 'undefined') { alert('Could not load the export tool. Check your connection and try again.'); return; }
+    var pptx = new PptxGenJS();
+    pptx.defineLayout({ name: 'WIDE', width: 13.33, height: 7.5 });
+    pptx.layout = 'WIDE';
+    slides.forEach(function (s) {
+      var slide = pptx.addSlide();
+      slide.background = { color: (s.bg || '#ffffff').replace('#', '') };
+      s.shapes.forEach(function (sh) {
+        var x = sh.x / 100 * 13.33, y = sh.y / 100 * 7.5, w = sh.w / 100 * 13.33, h = sh.h / 100 * 7.5;
+        if (sh.type === 'rect') slide.addShape('rect', { x: x, y: y, w: w, h: h, fill: { color: (sh.fill || '#DADCE0').replace('#', '') } });
+        else if (sh.type === 'circle') slide.addShape('ellipse', { x: x, y: y, w: w, h: h, fill: { color: (sh.fill || '#DADCE0').replace('#', '') } });
+        else if (sh.type === 'triangle') slide.addShape('triangle', { x: x, y: y, w: w, h: h, fill: { color: (sh.fill || '#DADCE0').replace('#', '') } });
+        else if (sh.type === 'star') slide.addShape('star5', { x: x, y: y, w: w, h: h, fill: { color: (sh.fill || '#F9AB00').replace('#', '') } });
+        else if (sh.type === 'arrow') slide.addShape('rightArrow', { x: x, y: y, w: w, h: h, fill: { color: (sh.fill || '#1A73E8').replace('#', '') } });
+        else if (sh.type === 'line') slide.addShape('line', { x: x, y: y, w: w, h: h, line: { color: (sh.fill || '#202124').replace('#', ''), width: 2 } });
+        else if (sh.type === 'image' && sh.src) slide.addImage({ data: sh.src, x: x, y: y, w: w, h: h });
+        else slide.addText(sh.text || '', { x: x, y: y, w: w, h: h, fontSize: sh.size, bold: sh.bold, italic: sh.italic, color: (sh.color || '#202124').replace('#', ''), align: sh.align || 'left', valign: 'top', fontFace: sh.font || 'Arial' });
+      });
+      if (s.notes) slide.addNotes(s.notes);
+    });
+    pptx.writeFile({ fileName: ($('deckTitle').value.trim() || 'presentation').replace(/[^\w\-]+/g, '-') + '.pptx' });
+  };
+
+  // ---------- Menus ----------
+  var MENUS = {
+    file: [['New presentation', function () { newBlank(); }], ['Open…', function () { closeEditor(); }], ['—'], ['Download as .pptx', function () { $('exportBtn').click(); }], ['—'], ['Print', function () { window.print(); }], ['Close', closeEditor]],
+    edit: [['Undo', doUndo], ['Redo', doRedo], ['—'], ['Delete selected shape', function () { $('delShapeBtn').click(); }]],
+    view: [['Present', function () { $('presentBtn').click(); }]],
+    insert: [['Text box', function () { addShape('text'); }], ['Rectangle', function () { addShape('rect'); }], ['Circle', function () { addShape('circle'); }], ['Triangle', function () { addShape('triangle'); }], ['Star', function () { addShape('star'); }], ['Arrow', function () { addShape('arrow'); }], ['Line', function () { addShape('line'); }], ['Image…', function () { addShape('image'); }], ['New slide', addSlide]],
+    format: [['Bold', function () { applyShape(function (sh) { sh.bold = !sh.bold; }); }], ['Italic', function () { applyShape(function (sh) { sh.italic = !sh.italic; }); }]],
+    slide: [['New slide', addSlide], ['Duplicate slide', function () { $('dupSlideBtn').click(); }], ['Delete slide', function () { if (slides.length > 1) { pushUndo(); slides.splice(cur, 1); if (cur >= slides.length) cur = slides.length - 1; selShape = -1; renderAll(); scheduleSave(); } }], ['—'], ['Transition: None', function () { deckTransition = 'none'; $('transitionSel').value = 'none'; }], ['Transition: Fade', function () { deckTransition = 'fade'; $('transitionSel').value = 'fade'; }], ['Transition: Slide', function () { deckTransition = 'slide'; $('transitionSel').value = 'slide'; }]],
+    help: [['About', function () { alert('Slides — a Google Slides copy for Str8Tech. Click a shape to move it, double-click text to edit.'); }]]
+  };
+  var openMenuEl = null;
+  function closeMenu() { if (openMenuEl) { openMenuEl.remove(); openMenuEl = null; } document.querySelectorAll('#menuBar button.active').forEach(function (b) { b.classList.remove('active'); }); }
+  document.addEventListener('click', function (e) { if (openMenuEl && !openMenuEl.contains(e.target) && !e.target.closest('button[data-menu]')) closeMenu(); });
+  $('menuBar').addEventListener('click', function (e) {
+    e.stopPropagation();
+    var btn = e.target.closest('button[data-menu]');
+    if (!btn) return;
+    if (openMenuEl) { closeMenu(); return; }
+    btn.classList.add('active');
+    var items = MENUS[btn.dataset.menu] || [];
+    var pop = document.createElement('div'); pop.className = 'menu-pop';
+    items.forEach(function (it) {
+      if (it[0] === '—') { var s = document.createElement('div'); s.className = 'sep'; pop.appendChild(s); return; }
+      var b = document.createElement('button'); b.type = 'button'; b.textContent = it[0];
+      b.onclick = function () { closeMenu(); it[1](); };
+      pop.appendChild(b);
+    });
+    var r = btn.getBoundingClientRect();
+    pop.style.left = r.left + 'px'; pop.style.top = (r.bottom + 4) + 'px';
+    document.body.appendChild(pop);
+    openMenuEl = pop;
+  });
+
+  $('newBlank').onclick = newBlank;
+
+  initStyle();
+  renderTemplates();
+  if (!pin()) $('note').textContent = 'Enter your staff PIN on the suite page first.';
+  else load();
+})();
+</script>
+</body>
+</html>
