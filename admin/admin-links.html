@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Links · Str8Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --lime: #A6CE39; --lime-soft: rgba(166, 206, 57, .14); --bg: #0B0B0C; --fg: #F5F5F2; --dim: #9A9A94; --card: #17181A; --card2: #1E1F22; --line: #26272B; --red: #FF6B6B; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 16px/1.5 Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 20px 20px 40px; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+  .logo span { color: var(--lime); }
+  a.back { color: var(--dim); font-size: 15px; font-weight: 600; text-decoration: none; }
+  a.back:hover { color: var(--fg); }
+  h1 { font-size: clamp(30px, 7vw, 40px); font-weight: 800; letter-spacing: -1px; margin: 16px 0 2px; line-height: 1.1; }
+  .note { color: var(--dim); font-size: 15px; margin: 4px 0 12px; }
+  .link { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px; margin: 10px 0; }
+  .link .body { flex: 1; min-width: 0; }
+  .link a.title { font-size: 17px; font-weight: 800; color: var(--fg); text-decoration: none; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .link a.title:hover { color: var(--lime); text-decoration: underline; }
+  .link .url { color: var(--dim); font-size: 14px; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .link .del { flex: 0 0 auto; background: none; border: 0; color: var(--red); font-size: 14px; font-weight: 700; cursor: pointer; padding: 4px 0 0; }
+  form.add { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-top: 20px; }
+  form.add b { font-size: 19px; font-weight: 800; }
+  .fld { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin: 14px 0 0; }
+  form.add input { width: 100%; min-height: 54px; border-radius: 14px; border: 1px solid var(--line); background: #0E0F10; color: var(--fg); font: 600 16px Manrope, sans-serif; padding: 0 14px; margin: 6px 0; }
+  form.add input:focus { outline: none; border-color: var(--lime); }
+  .btn { display: block; width: 100%; min-height: 58px; border-radius: 16px; border: 0; font-size: 18px; font-weight: 800; cursor: pointer; background: var(--lime); color: #000; margin-top: 10px; font-family: Manrope, sans-serif; }
+  .btn:active { transform: scale(.99); }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="logo">Str8<span>Tech</span></div>
+    <a class="back" href="./">← Suite</a>
+  </div>
+  <h1>Links</h1>
+  <p class="note" id="note">Save a link with a label — a Google Sheet, a demo, anything. Everyone on the team sees it here.</p>
+  <div id="list"></div>
+
+  <form class="add" id="addForm">
+    <b>Add a link</b>
+    <label class="fld" for="fLabel">Label</label>
+    <input id="fLabel" type="text" placeholder="What is it? (e.g. First 20 walk-ins sheet)" maxlength="80" required>
+    <label class="fld" for="fUrl">Link</label>
+    <input id="fUrl" type="url" placeholder="https://…" maxlength="500" required>
+    <button class="btn" type="submit">Save link</button>
+  </form>
+</div>
+<script src="../call/config.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var base = (window.STR8TECH_CALL ? STR8TECH_CALL.base() : location.origin).replace(/\/$/, '');
+  var links = [];
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'X-Staff-Pin': pin(), 'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch(base + path, opts);
+  }
+  function load() {
+    return api('/api/links').then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); $('note').textContent = 'That PIN did not work. Go back and re-enter it.'; throw new Error('bad pin'); }
+      return r.json();
+    }).then(function (list) { links = list || []; render(); }).catch(function () {});
+  }
+  function render() {
+    var box = $('list');
+    box.innerHTML = '';
+    if (!links.length) { box.innerHTML = '<p class="note">No links saved yet.</p>'; return; }
+    links.forEach(function (l) {
+      var d = document.createElement('div'); d.className = 'link';
+      var body = document.createElement('div'); body.className = 'body';
+      var a = document.createElement('a'); a.className = 'title'; a.href = l.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = l.label;
+      body.appendChild(a);
+      var u = document.createElement('div'); u.className = 'url'; u.textContent = l.url; body.appendChild(u);
+      d.appendChild(body);
+      var del = document.createElement('button'); del.className = 'del'; del.textContent = 'Delete';
+      del.onclick = function () { if (confirm('Delete "' + l.label + '"?')) api('/api/links/' + encodeURIComponent(l.id), { method: 'DELETE' }).then(load); };
+      d.appendChild(del);
+      box.appendChild(d);
+    });
+  }
+  $('addForm').onsubmit = function (e) {
+    e.preventDefault();
+    var l = { label: $('fLabel').value.trim(), url: $('fUrl').value.trim() };
+    if (!l.label || !l.url) return;
+    api('/api/links', { method: 'POST', body: JSON.stringify(l) }).then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); }
+      if (!r.ok) throw new Error('save failed');
+      $('fLabel').value = ''; $('fUrl').value = '';
+      return load();
+    }).catch(function () { $('note').textContent = 'Could not save that link. Check the PIN and try again.'; });
+  };
+  if (!pin()) $('note').textContent = 'Enter your staff PIN on the suite page first.';
+  else load();
+  render();
+})();
+</script>
+</body>
+</html>
