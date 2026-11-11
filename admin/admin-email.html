@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Email · Str8Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --lime: #A6CE39; --lime-soft: rgba(166, 206, 57, .14); --bg: #0B0B0C; --fg: #F5F5F2; --dim: #9A9A94; --card: #17181A; --card2: #1E1F22; --line: #26272B; --red: #FF6B6B; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 16px/1.5 Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 20px 20px 40px; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+  .logo span { color: var(--lime); }
+  a.back { color: var(--dim); font-size: 15px; font-weight: 600; text-decoration: none; }
+  a.back:hover { color: var(--fg); }
+  h1 { font-size: clamp(30px, 7vw, 40px); font-weight: 800; letter-spacing: -1px; margin: 16px 0 2px; line-height: 1.1; }
+  .note { color: var(--dim); font-size: 15px; margin: 4px 0 12px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-top: 16px; }
+  .card b { font-size: 19px; font-weight: 800; }
+  .fld { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin: 14px 0 0; }
+  input, textarea { width: 100%; min-height: 54px; border-radius: 14px; border: 1px solid var(--line); background: #0E0F10; color: var(--fg); font: 600 16px Manrope, sans-serif; padding: 0 14px; margin: 8px 0; }
+  input:focus, textarea:focus { outline: none; border-color: var(--lime); }
+  textarea { min-height: 120px; padding: 12px 14px; resize: vertical; }
+  .btn { display: block; width: 100%; min-height: 58px; border-radius: 16px; border: 0; font-size: 18px; font-weight: 800; cursor: pointer; background: var(--lime); color: #000; margin-top: 10px; font-family: Manrope, sans-serif; }
+  .btn:active { transform: scale(.99); }
+  .btn.ghost { background: var(--card2); color: var(--fg); min-height: 50px; font-size: 16px; }
+  .btn.small { display: inline-block; width: auto; min-height: 44px; font-size: 15px; padding: 0 18px; margin: 6px 6px 0 0; }
+  .msg { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; margin: 10px 0; cursor: pointer; }
+  .msg:hover { border-color: var(--lime); }
+  .msg b { font-size: 16px; font-weight: 800; display: block; }
+  .msg .from { color: var(--dim); font-size: 14px; margin-top: 2px; }
+  .msg .snip { color: var(--dim); font-size: 14px; margin-top: 6px; white-space: pre-wrap; word-break: break-word; }
+  .read { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-top: 16px; }
+  .read h2 { font-size: 20px; margin: 0 0 4px; }
+  .read .meta { color: var(--dim); font-size: 14px; }
+  .read .body { white-space: pre-wrap; word-break: break-word; margin-top: 12px; font-size: 15px; line-height: 1.6; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="logo">Str8<span>Tech</span></div>
+    <a class="back" href="./">← Suite</a>
+  </div>
+  <h1>Email</h1>
+  <p class="note" id="note">Your business inbox, inside the suite. Sends from support@str8tech.ca.</p>
+
+  <div id="setupView" class="card hidden">
+    <b>Connect your email</b>
+    <p class="note">Enter the password for the support@str8tech.ca mailbox once. It is saved on the server only — it is never shown anywhere, and it is never sent to anyone else.</p>
+    <label class="fld" for="mailPass">Mailbox password</label>
+    <input id="mailPass" type="password" autocomplete="current-password" placeholder="The support@str8tech.ca password">
+    <button class="btn" id="savePassBtn" type="button">Connect email</button>
+  </div>
+
+  <div id="mailView" class="hidden">
+    <button class="btn small" id="composeBtn" type="button">Compose</button>
+    <button class="btn small ghost" id="refreshBtn" type="button">Refresh inbox</button>
+    <div id="inbox"></div>
+  </div>
+
+  <div id="readView" class="read hidden">
+    <button class="btn small ghost" id="backInboxBtn" type="button">← Back to inbox</button>
+    <h2 id="readSubject"></h2>
+    <div class="meta" id="readMeta"></div>
+    <div class="body" id="readBody"></div>
+    <button class="btn small" id="replyBtn" type="button">Reply</button>
+  </div>
+
+  <div id="composeView" class="card hidden">
+    <b>Compose</b>
+    <label class="fld" for="cTo">To</label>
+    <input id="cTo" type="text" placeholder="name@example.com">
+    <label class="fld" for="cSubject">Subject</label>
+    <input id="cSubject" type="text" placeholder="Subject" maxlength="200">
+    <label class="fld" for="cBody">Message</label>
+    <textarea id="cBody" placeholder="Write your message…"></textarea>
+    <button class="btn" id="sendBtn" type="button">Send</button>
+    <button class="btn ghost" id="cancelComposeBtn" type="button">Cancel</button>
+  </div>
+</div>
+<script src="../call/config.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var base = (window.STR8TECH_CALL ? STR8TECH_CALL.base() : location.origin).replace(/\/$/, '');
+  var inbox = [], current = null;
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'X-Staff-Pin': pin(), 'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch(base + path, opts);
+  }
+  function show(view) {
+    ['setupView', 'mailView', 'readView', 'composeView'].forEach(function (v) { $(v).classList.add('hidden'); });
+    $(view).classList.remove('hidden');
+  }
+  function checkStatus() {
+    api('/api/mail/status').then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); $('note').textContent = 'That PIN did not work. Go back and re-enter it.'; throw new Error('bad pin'); }
+      return r.json();
+    }).then(function (s) {
+      if (s.configured) { show('mailView'); loadInbox(); }
+      else show('setupView');
+    }).catch(function () {});
+  }
+  $('savePassBtn').onclick = function () {
+    var pw = $('mailPass').value;
+    if (!pw) return;
+    api('/api/mail/settings', { method: 'POST', body: JSON.stringify({ password: pw }) }).then(function (r) {
+      if (!r.ok) throw new Error('save failed');
+      $('mailPass').value = '';
+      $('note').textContent = 'Email connected.';
+      show('mailView'); loadInbox();
+    }).catch(function () { $('note').textContent = 'Could not connect. Check the password and try again.'; });
+  };
+  function loadInbox() {
+    $('note').textContent = 'Loading inbox…';
+    api('/api/mail/inbox?limit=25').then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); throw new Error('bad pin'); }
+      if (!r.ok) return r.text().then(function (t) { throw new Error(t || 'inbox failed'); });
+      return r.json();
+    }).then(function (list) {
+      inbox = list || [];
+      $('note').textContent = inbox.length ? inbox.length + ' newest emails.' : 'Inbox is empty.';
+      renderInbox();
+    }).catch(function (e) { $('note').textContent = 'Could not load the inbox. ' + (e.message || ''); });
+  }
+  function renderInbox() {
+    var box = $('inbox'); box.innerHTML = '';
+    inbox.forEach(function (m) {
+      var d = document.createElement('div'); d.className = 'msg';
+      var b = document.createElement('b'); b.textContent = m.subject || '(no subject)'; d.appendChild(b);
+      var f = document.createElement('div'); f.className = 'from';
+      f.textContent = (m.from || '') + (m.date ? ' · ' + new Date(m.date).toLocaleDateString([], { month: 'short', day: 'numeric' }) : '');
+      d.appendChild(f);
+      var sn = document.createElement('div'); sn.className = 'snip';
+      sn.textContent = (m.body || '').replace(/\s+/g, ' ').slice(0, 140);
+      d.appendChild(sn);
+      d.onclick = function () { openMsg(m); };
+      box.appendChild(d);
+    });
+  }
+  function openMsg(m) {
+    current = m;
+    $('readSubject').textContent = m.subject || '(no subject)';
+    $('readMeta').textContent = 'From: ' + (m.from || '') + (m.date ? ' · ' + new Date(m.date).toLocaleString() : '');
+    $('readBody').textContent = m.body || '';
+    show('readView');
+    window.scrollTo(0, 0);
+  }
+  $('backInboxBtn').onclick = function () { show('mailView'); };
+  $('refreshBtn').onclick = loadInbox;
+  $('composeBtn').onclick = function () { $('cTo').value = ''; $('cSubject').value = ''; $('cBody').value = ''; show('composeView'); };
+  $('cancelComposeBtn').onclick = function () { show('mailView'); };
+  $('replyBtn').onclick = function () {
+    if (!current) return;
+    $('cTo').value = current.from || '';
+    $('cSubject').value = 'Re: ' + (current.subject || '');
+    $('cBody').value = '\n\n—\nOn ' + (current.date || '') + ', ' + (current.from || '') + ' wrote:\n' + (current.body || '');
+    show('composeView');
+  };
+  $('sendBtn').onclick = function () {
+    var to = $('cTo').value.trim(), subject = $('cSubject').value.trim(), text = $('cBody').value;
+    if (!to || !subject) { $('note').textContent = 'Add a recipient and a subject first.'; return; }
+    api('/api/mail/send', { method: 'POST', body: JSON.stringify({ to: to, subject: subject, text: text }) }).then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); throw new Error('bad pin'); }
+      if (!r.ok) return r.text().then(function (t) { throw new Error(t || 'send failed'); });
+      $('note').textContent = 'Sent.';
+      show('mailView'); loadInbox();
+    }).catch(function (e) { $('note').textContent = 'Could not send. ' + (e.message || ''); });
+  };
+
+  if (!pin()) $('note').textContent = 'Enter your staff PIN on the suite page first.';
+  else checkStatus();
+})();
+</script>
+</body>
+</html>

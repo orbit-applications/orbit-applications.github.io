@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Docs · Str8Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
+<style>
+  :root { --lime: #A6CE39; --lime-soft: rgba(166, 206, 57, .14); --bg: #0B0B0C; --fg: #F5F5F2; --dim: #9A9A94; --card: #17181A; --card2: #1E1F22; --line: #26272B; --red: #FF6B6B; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  body { font: 16px/1.5 Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 20px 40px; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+  .logo span { color: var(--lime); }
+  a.back { color: var(--dim); font-size: 15px; font-weight: 600; text-decoration: none; }
+  a.back:hover { color: var(--fg); }
+  h1 { font-size: clamp(30px, 7vw, 40px); font-weight: 800; letter-spacing: -1px; margin: 16px 0 2px; line-height: 1.1; }
+  .note { color: var(--dim); font-size: 15px; margin: 4px 0 12px; }
+  h2 { font-size: 19px; font-weight: 800; margin: 24px 0 8px; }
+  .tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+  .tpl { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; cursor: pointer; text-align: left; font-family: Manrope, sans-serif; color: var(--fg); }
+  .tpl:hover { border-color: var(--lime); }
+  .tpl b { display: block; font-size: 15px; font-weight: 800; }
+  .tpl span { color: var(--dim); font-size: 13px; }
+  .item { display: flex; gap: 12px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; margin: 10px 0; }
+  .item .body { flex: 1; min-width: 0; }
+  .item b { font-size: 17px; font-weight: 800; display: block; }
+  .item .meta { color: var(--dim); font-size: 14px; margin-top: 2px; }
+  .item button { flex: 0 0 auto; background: none; border: 0; font-size: 14px; font-weight: 700; cursor: pointer; padding: 4px 0; }
+  .item .open { color: var(--lime); margin-right: 12px; }
+  .item .del { color: var(--red); }
+  .btn { display: block; width: 100%; min-height: 58px; border-radius: 16px; border: 0; font-size: 18px; font-weight: 800; cursor: pointer; background: var(--lime); color: #000; margin-top: 10px; font-family: Manrope, sans-serif; }
+  .btn:active { transform: scale(.99); }
+  .btn.ghost { background: var(--card2); color: var(--fg); min-height: 50px; font-size: 16px; }
+  .btn.small { display: inline-block; width: auto; min-height: 44px; font-size: 15px; padding: 0 18px; margin: 6px 6px 0 0; }
+  .fld { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin: 14px 0 0; }
+  input[type=text], input[type=file] { width: 100%; min-height: 54px; border-radius: 14px; border: 1px solid var(--line); background: #0E0F10; color: var(--fg); font: 600 16px Manrope, sans-serif; padding: 0 14px; margin: 8px 0; }
+  input[type=text]:focus { outline: none; border-color: var(--lime); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; }
+  .toolbar button { min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--fg); font: 800 15px Manrope, sans-serif; padding: 0 14px; cursor: pointer; }
+  .toolbar button:hover { border-color: var(--lime); }
+  .editor { min-height: 420px; background: #0E0F10; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-top: 8px; font-size: 16px; line-height: 1.6; outline: none; }
+  .editor:focus { border-color: var(--lime); }
+  .editor h1 { font-size: 28px; margin: 8px 0; }
+  .editor h2 { font-size: 22px; margin: 8px 0; }
+  .editor p { margin: 8px 0; }
+  .toolbar2 { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+  .toolbar2 .title { flex: 1; min-width: 200px; margin: 0; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="logo">Str8<span>Tech</span></div>
+    <a class="back" href="./">← Suite</a>
+  </div>
+  <h1>Docs</h1>
+  <p class="note" id="note">Documents for the business. Upload one you already made, or start from a template.</p>
+
+  <div id="listView">
+    <h2>Start from a template</h2>
+    <div class="tpl-grid" id="tplGrid"></div>
+
+    <h2>Your docs</h2>
+    <div id="list"></div>
+
+    <label class="fld" for="uploadFile">Upload a doc you already made (.txt, .md, or .docx)</label>
+    <input type="file" id="uploadFile" accept=".txt,.md,.docx">
+    <button class="btn ghost" id="newBlank" type="button">+ Blank doc</button>
+  </div>
+
+  <div id="editView" class="hidden">
+    <div class="toolbar2">
+      <input class="title" id="docTitle" type="text" maxlength="200" placeholder="Doc title">
+      <button class="btn small" id="saveBtn" type="button">Save</button>
+      <button class="btn small ghost" id="exportBtn" type="button">Export .txt</button>
+      <button class="btn small ghost" id="closeBtn" type="button">Close</button>
+    </div>
+    <div class="toolbar">
+      <button type="button" data-cmd="bold"><b>B</b></button>
+      <button type="button" data-cmd="italic"><i>I</i></button>
+      <button type="button" data-cmd="underline"><u>U</u></button>
+      <button type="button" data-cmd="formatBlock" data-val="h1">H1</button>
+      <button type="button" data-cmd="formatBlock" data-val="h2">H2</button>
+      <button type="button" data-cmd="insertUnorderedList">• List</button>
+      <button type="button" data-cmd="insertOrderedList">1. List</button>
+    </div>
+    <div class="editor" id="editor" contenteditable="true"></div>
+  </div>
+</div>
+<script src="../call/config.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var base = (window.STR8TECH_CALL ? STR8TECH_CALL.base() : location.origin).replace(/\/$/, '');
+  var currentId = null, docs = [];
+
+  // ---------- Built-in templates ----------
+  var TEMPLATES = [
+    { title: 'Client Contract', desc: 'Website order agreement', html: '<h1>Website Agreement — Str8Tech</h1><p><b>Client:</b> ___________<br><b>Business:</b> ___________<br><b>Date:</b> ___________</p><h2>What you get</h2><p>☐ Template website — C$1,000<br>☐ Custom website — C$1,200<br>☐ Promo video add-on — C$2,000–3,000<br>☐ Tablet add-on — C$500 each</p><h2>Payment</h2><p>50% deposit to start, 50% when the site goes live. Paid by e-transfer.</p><h2>Revisions</h2><p>2 revision rounds included. After that, C$50 per update.</p><p>Parent/guardian co-signs for clients under 18.</p><p><br>Client signature: ___________ &nbsp;&nbsp; Date: ___________</p><p>Str8Tech: ___________ &nbsp;&nbsp; Date: ___________</p>' },
+    { title: 'Invoice', desc: 'Bill a client', html: '<h1>Invoice</h1><p><b>Str8Tech</b> — Apps, Websites &amp; Video<br>str8tech.ca | support@str8tech.ca</p><p><b>Bill to:</b> ___________<br><b>Date:</b> ___________<br><b>Invoice #:</b> ___________</p><p><b>Service:</b> ___________<br><b>Amount:</b> C$___________</p><p><b>Deposit paid:</b> C$___________<br><b>Balance due:</b> C$___________</p><p>Pay by e-transfer. Thank you for your business!</p>' },
+    { title: 'Quote / Estimate', desc: 'Price a job before they commit', html: '<h1>Quote</h1><p><b>Str8Tech</b> — str8tech.ca | support@str8tech.ca</p><p><b>For:</b> ___________<br><b>Date:</b> ___________</p><p><b>Template website:</b> C$1,000<br><b>Custom website:</b> C$1,200<br><b>Promo video:</b> C$2,000–3,000<br><b>Tablet add-on:</b> C$500 each</p><p><b>Total estimate:</b> C$___________</p><p>This quote is good for 30 days. No hosting fee. 50% deposit to start.</p>' },
+    { title: 'Outreach Email', desc: 'Pitch a business that has no website', html: '<p>Hi [name],</p><p>I noticed [business name] doesn\'t have a website yet — when people Google you, they only find a Facebook page / directory listing.</p><p>I build websites for Calgary businesses. I already made a demo of what yours could look like: [demo link]</p><p>A template site is C$1,000, custom is C$1,200, no hosting fee. Happy to show you the demo in person.</p><p>Thanks from the Str8Tech team,<br>Apps, Websites &amp; Video<br>str8tech.ca | Phone: str8tech.ca/call</p>' },
+    { title: 'Meeting Notes', desc: 'Notes from a client meeting', html: '<h1>Meeting Notes</h1><p><b>Date:</b> ___________<br><b>Who was there:</b> ___________<br><b>Business:</b> ___________</p><h2>What they want</h2><p></p><h2>Decisions</h2><p></p><h2>Next steps</h2><p></p>' },
+    { title: 'Website Brief', desc: 'Questions to ask a new client', html: '<h1>Website Brief</h1><p><b>Business name:</b> ___________<br><b>What do you do?</b> ___________<br><b>Who are your customers?</b> ___________</p><h2>Pages needed</h2><p>☐ Home &nbsp; ☐ Services &nbsp; ☐ About &nbsp; ☐ Gallery &nbsp; ☐ Booking &nbsp; ☐ Contact</p><h2>Style</h2><p><b>Colors you like:</b> ___________<br><b>Other websites you like:</b> ___________</p><h2>Booking / payments</h2><p>☐ Booking portal &nbsp; ☐ Online payments (Square / Stripe) &nbsp; ☐ Tablet add-on</p>' },
+    { title: 'Receipt', desc: 'Proof of payment', html: '<h1>Receipt</h1><p><b>Str8Tech</b> — str8tech.ca | support@str8tech.ca</p><p><b>Date:</b> ___________<br><b>Received from:</b> ___________<br><b>For:</b> ___________<br><b>Amount:</b> C$___________<br><b>Payment method:</b> e-transfer</p><p>Thank you!</p>' },
+    { title: 'Thank You Note', desc: 'After a site goes live', html: '<p>Hi [name],</p><p>Your website is live! Thank you for trusting Str8Tech with it.</p><p>If you ever want changes, the first 2 revision rounds are included — after that it\'s C$50 per update. Just reply to this email or call us.</p><p>Thanks from the Str8Tech team,<br>Apps, Websites &amp; Video<br>str8tech.ca</p>' },
+    { title: 'Business Plan Outline', desc: 'The plan, section by section', html: '<h1>Business Plan</h1><h2>What we do</h2><p>Apps, websites, and video for local businesses.</p><h2>Who we serve</h2><p></p><h2>Services &amp; prices</h2><p>Template website C$1,000 · Custom website C$1,200 · Promo video C$2,000–3,000 · Tablet C$500</p><h2>Goals</h2><p>3 clients by December · 10 by March · 25+ in 2027</p><h2>Team</h2><p>Nash — builds apps and websites · Barclay — video and adult business duties · Cole — marketing and business support</p>' },
+    { title: 'Terms of Service', desc: 'Basic terms for clients', html: '<h1>Terms of Service — Str8Tech</h1><p><b>Payment:</b> 50% deposit to start, 50% when the site goes live, by e-transfer.</p><p><b>Revisions:</b> 2 revision rounds included. After that, C$50 per update.</p><p><b>Content:</b> The client provides their own text, photos, and logo, and confirms they have the right to use them.</p><p><b>Hosting:</b> No hosting fee. The site is hosted on GitHub Pages.</p><p><b>Ownership:</b> Once paid in full, the website belongs to the client.</p>' },
+    { title: 'Privacy Policy', desc: 'What the order form collects', html: '<h1>Privacy Policy — Str8Tech</h1><p>When you fill in our order form, we collect your name, business name, email, and phone number so we can build your website and contact you about it.</p><p>We do not sell your information. We do not run ads or trackers on our site.</p><p>Questions: support@str8tech.ca</p>' },
+    { title: 'Launch Checklist', desc: 'Before a site goes live', html: '<h1>Launch Checklist</h1><p>☐ Client approved the design<br>☐ All pages proofread<br>☐ Phone, email, and address correct<br>☐ Demo links replaced with the real business info<br>☐ Payment banner removed (if it was a demo)<br>☐ Order form tested<br>☐ Site loads on a phone<br>☐ Balance paid<br>☐ Client shown how to ask for updates</p>' }
+  ];
+
+  function pin() { return localStorage.getItem('str8tech-pin') || ''; }
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'X-Staff-Pin': pin(), 'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch(base + path, opts);
+  }
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+  function renderTemplates() {
+    var g = $('tplGrid'); g.innerHTML = '';
+    TEMPLATES.forEach(function (t) {
+      var b = document.createElement('button'); b.className = 'tpl'; b.type = 'button';
+      var tb = document.createElement('b'); tb.textContent = t.title;
+      var ts = document.createElement('span'); ts.textContent = t.desc;
+      b.appendChild(tb); b.appendChild(ts);
+      b.onclick = function () { createFromTemplate(t); };
+      g.appendChild(b);
+    });
+  }
+  function createFromTemplate(t) {
+    api('/api/docs', { method: 'POST', body: JSON.stringify({ title: t.title, html: t.html }) })
+      .then(function (r) { if (!r.ok) throw new Error('save failed'); return r.json(); })
+      .then(function (d) { openDoc(d.id); })
+      .catch(function () { $('note').textContent = 'Could not create that doc. Check the PIN and try again.'; });
+  }
+  function load() {
+    return api('/api/docs').then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); $('note').textContent = 'That PIN did not work. Go back and re-enter it.'; throw new Error('bad pin'); }
+      return r.json();
+    }).then(function (list) { docs = list || []; renderList(); }).catch(function () {});
+  }
+  function renderList() {
+    var box = $('list'); box.innerHTML = '';
+    if (!docs.length) { box.innerHTML = '<p class="note">No docs yet — pick a template or upload one.</p>'; return; }
+    docs.forEach(function (d) {
+      var dv = document.createElement('div'); dv.className = 'item';
+      var body = document.createElement('div'); body.className = 'body';
+      var b = document.createElement('b'); b.textContent = d.title; body.appendChild(b);
+      var m = document.createElement('div'); m.className = 'meta';
+      m.textContent = d.updatedAt ? new Date(d.updatedAt).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+      body.appendChild(m); dv.appendChild(body);
+      var o = document.createElement('button'); o.className = 'open'; o.textContent = 'Open';
+      o.onclick = function () { openDoc(d.id); };
+      dv.appendChild(o);
+      var del = document.createElement('button'); del.className = 'del'; del.textContent = 'Delete';
+      del.onclick = function () { if (confirm('Delete "' + d.title + '"?')) api('/api/docs/' + encodeURIComponent(d.id), { method: 'DELETE' }).then(load); };
+      dv.appendChild(del);
+      box.appendChild(dv);
+    });
+  }
+  function openDoc(id) {
+    api('/api/docs/' + encodeURIComponent(id)).then(function (r) { return r.json(); }).then(function (d) {
+      currentId = d.id;
+      $('docTitle').value = d.title || '';
+      $('editor').innerHTML = d.html || '';
+      $('listView').classList.add('hidden');
+      $('editView').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }).catch(function () { $('note').textContent = 'Could not open that doc.'; });
+  }
+  function newBlank() {
+    currentId = null;
+    $('docTitle').value = 'Untitled doc';
+    $('editor').innerHTML = '<p><br></p>';
+    $('listView').classList.add('hidden');
+    $('editView').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+  function saveDoc() {
+    var title = $('docTitle').value.trim() || 'Untitled doc';
+    var payload = JSON.stringify({ title: title, html: $('editor').innerHTML });
+    var req = currentId
+      ? api('/api/docs/' + encodeURIComponent(currentId), { method: 'PUT', body: payload })
+      : api('/api/docs', { method: 'POST', body: payload });
+    return req.then(function (r) {
+      if (r.status === 401) { localStorage.removeItem('str8tech-pin'); throw new Error('bad pin'); }
+      if (!r.ok) throw new Error('save failed');
+      return r.json();
+    }).then(function (d) {
+      currentId = d.id;
+      $('note').textContent = 'Saved.';
+      return load();
+    }).catch(function () { $('note').textContent = 'Could not save. Check the PIN and try again.'; });
+  }
+  function exportTxt() {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = $('editor').innerHTML;
+    var text = tmp.innerText || '';
+    var blob = new Blob([text], { type: 'text/plain' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = ($('docTitle').value.trim() || 'doc').replace(/[^\w\-]+/g, '-') + '.txt';
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+  // Toolbar
+  Array.prototype.forEach.call(document.querySelectorAll('.toolbar button'), function (b) {
+    b.onclick = function () {
+      var cmd = b.getAttribute('data-cmd');
+      var val = b.getAttribute('data-val') || null;
+      document.execCommand(cmd, false, val);
+      $('editor').focus();
+    };
+  });
+  // Upload (.txt / .md / .docx)
+  $('uploadFile').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    var title = f.name.replace(/\.[^.]+$/, '');
+    var saveText = function (text) {
+      var html = esc(text).split(/\r?\n/).map(function (line) { return '<p>' + (line || '<br>') + '</p>'; }).join('');
+      api('/api/docs', { method: 'POST', body: JSON.stringify({ title: title, html: html }) })
+        .then(function (r) { if (!r.ok) throw new Error('save failed'); return r.json(); })
+        .then(function (d) { openDoc(d.id); })
+        .catch(function () { $('note').textContent = 'Could not save that upload.'; });
+    };
+    if (/\.docx$/i.test(f.name)) {
+      var rd = new FileReader();
+      rd.onload = function () {
+        if (typeof mammoth === 'undefined') { $('note').textContent = 'Could not read that .docx file.'; return; }
+        mammoth.extractRawText({ arrayBuffer: rd.result }).then(function (res) { saveText(res.value || ''); }).catch(function () { $('note').textContent = 'Could not read that .docx file.'; });
+      };
+      rd.readAsArrayBuffer(f);
+    } else {
+      var rd2 = new FileReader();
+      rd2.onload = function () { saveText(String(rd2.result || '')); };
+      rd2.readAsText(f);
+    }
+    this.value = '';
+  });
+
+  $('newBlank').onclick = newBlank;
+  $('saveBtn').onclick = saveDoc;
+  $('exportBtn').onclick = exportTxt;
+  $('closeBtn').onclick = function () { $('editView').classList.add('hidden'); $('listView').classList.remove('hidden'); load(); };
+
+  renderTemplates();
+  if (!pin()) $('note').textContent = 'Enter your staff PIN on the suite page first.';
+  else load();
+})();
+</script>
+</body>
+</html>
