@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<link rel="icon" type="image/png" href="../logos/wild-rose-blooms.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Wild Rose Blooms — Bold Calgary Florist &amp; Wedding Flowers</title>
@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
@@ -18,10 +18,10 @@
     --paper:#f6efe9; --muted:#a89a94; --dim:#7a6d68;
     --magenta:#ff2e88; --magenta-d:#d11668; --lime:#c6ff3d; --violet:#8b5cf6;
     --line:rgba(255,255,255,.12);
-    --display:'Anton',Impact,'Arial Narrow',sans-serif;
-    --body:'Space Grotesk',system-ui,sans-serif;
-    --mono:'Space Mono',ui-monospace,monospace;
-    --ease:cubic-bezier(.2,.7,.1,1);
+    --display:'Poppins',system-ui,sans-serif;
+    --body:'Poppins',system-ui,sans-serif;
+    --mono:'Poppins',system-ui,sans-serif;
+    --ease:cubic-bezier(.22,1,.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -36,13 +36,13 @@
 
   .tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--lime);padding:.35rem .7rem}
   .tag.dark{background:var(--ink);color:var(--lime);border:1px solid var(--lime)}
-  h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.005em}
-  h2{font-size:clamp(3rem,9vw,7rem)}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.9;letter-spacing:.005em}
+  h2{font-size:clamp(48px,9vw,60px)}
   h2 .o{color:transparent;-webkit-text-stroke:2px var(--paper)}
   h2 .m{color:var(--magenta)}
   .lede{color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:34rem}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.5rem;font-family:var(--mono);font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--paper);transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s;white-space:nowrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.5rem;font-family:var(--mono);font-weight:700;font-size:.9rem;letter-spacing:.06em;border:2px solid var(--paper);transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s;white-space:nowrap}
   .btn svg{width:18px;height:18px;flex:none}
   .btn-mag{background:var(--magenta);color:#fff;border-color:var(--magenta);box-shadow:5px 5px 0 var(--paper)}
   .btn-mag:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--paper);background:var(--magenta-d)}
@@ -64,14 +64,12 @@
 
   /* hero */
   .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;background:#14090f}
-  .hero-media{position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 70% 40%,#331420,#100b0e 70%)}
+  .hero-media{position:absolute;inset:0;z-index:-2;background:#1d0e15}
   .hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform:scale(1.06);animation:zoom 2.2s var(--ease) forwards}
   @keyframes zoom{to{transform:scale(1)}}
-  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
-    linear-gradient(180deg,rgba(16,11,14,.7) 0%,rgba(16,11,14,.1) 30%,rgba(16,11,14,.45) 60%,var(--ink) 100%),
-    linear-gradient(90deg,rgba(16,11,14,.85) 0%,rgba(16,11,14,0) 65%)}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(16,11,14,.55)}
   .hero-inner{padding:8rem 0 2.5rem;position:relative}
-  .hero h1{font-size:clamp(4rem,17vw,13rem);line-height:.84;margin:1.2rem 0 1.4rem}
+  .hero h1{font-size:clamp(48px,17vw,60px);line-height:.84;margin:1.2rem 0 1.4rem}
   .hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--paper)}
   .hero h1 .m{color:var(--magenta);text-shadow:0 0 40px rgba(255,46,136,.4)}
   .hero p{max-width:30rem;color:#d4c9c4;font-size:clamp(1.02rem,1.5vw,1.2rem)}
@@ -103,7 +101,7 @@
   .grid{display:grid;gap:1.4rem}
   @media (min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
   @media (min-width:1060px){.grid{grid-template-columns:repeat(3,1fr)}}
-  .card{position:relative;display:flex;flex-direction:column;background:var(--ink-2);border:2px solid var(--ink-3);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+  .card{position:relative;display:flex;flex-direction:column;background:var(--ink-2);border:2px solid var(--ink-3);border-radius:16px;overflow:hidden;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
   .card:hover{transform:translate(-4px,-4px);border-color:var(--magenta);box-shadow:8px 8px 0 var(--magenta)}
   .card-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#241720}
   .card-media img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.1);transition:transform .8s var(--ease)}
@@ -143,13 +141,13 @@
   /* contact */
   .contact{display:grid;gap:2rem}
   @media (min-width:960px){.contact{grid-template-columns:1fr 1fr;gap:3rem}}
-  .cbox{background:var(--ink-2);border:2px solid var(--ink-3);padding:1.8rem}
+  .cbox{background:var(--ink-2);border:2px solid var(--ink-3);border-radius:16px;padding:1.8rem}
   .cbox h3{font-size:1.8rem;margin-bottom:1rem}
   .cbox ul{list-style:none;display:grid;gap:1rem}
   .cbox li{display:flex;gap:.9rem;align-items:flex-start}
   .cbox svg{width:20px;height:20px;color:var(--magenta);flex:none;margin-top:.2rem}
   .cbox b{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.1rem}
-  .cta-band{border:2px solid var(--paper);padding:clamp(2.6rem,7vw,4.5rem);text-align:center;margin-top:clamp(3rem,8vw,5rem)}
+  .cta-band{border:2px solid var(--paper);border-radius:16px;padding:clamp(2.6rem,7vw,4.5rem);text-align:center;margin-top:clamp(3rem,8vw,5rem)}
   .cta-band h2{margin:.8rem 0 1rem}
   .cta-band .hero-ctas{justify-content:center}
 
@@ -161,6 +159,14 @@
   footer.site a:hover{color:var(--magenta)}
   .legal{border-top:1px solid var(--line);margin-top:2rem;padding-top:1.4rem;font-size:.82rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-family:var(--mono)}
 
+  .faq-list{max-width:820px;margin:0 auto;display:grid;gap:.8rem}
+  .faq-list details{background:var(--ink-2);border:2px solid var(--ink-3);padding:0 1.4rem}
+  .faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 0;font-family:var(--display);font-size:1.15rem;letter-spacing:.03em}
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list summary::after{content:"+";font-size:1.5rem;color:var(--magenta);font-weight:700}
+  .faq-list details[open] summary::after{content:"\2212"}
+  .faq-list .answer{color:var(--muted);padding:0 0 1.3rem}
+  .faq-list .answer a{color:var(--magenta);font-weight:700}
   .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(16,11,14,.97)}
   @media (min-width:900px){.callbar{display:none}}
   .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;font-family:var(--mono);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em}
@@ -168,12 +174,28 @@
   .callbar .call{background:var(--magenta);color:#fff}
   .callbar .sms{border:2px solid var(--paper);color:var(--paper)}
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
+<style>
+h1,h2,h3{text-wrap:balance}em{font-style:normal}
+h1{max-width:680px}
+p{text-wrap:pretty}
+.btn:active{transform:scale(.98)}
+.tlink{display:inline-flex;align-items:center;gap:8px;min-height:54px;padding:0 4px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.tlink:active{transform:scale(.98)}
+.tagline{padding:64px 0;text-align:center}
+.tagline-text{font-size:clamp(30px,4.6vw,48px);line-height:1.15;font-weight:600;max-width:680px;margin:0 auto;text-wrap:balance}
+.tagline-text .w{opacity:.3;transition:opacity .5s cubic-bezier(.22,1,.36,1)}
+.tagline-text .w.on{opacity:1}
+.js-rv .rv{opacity:0;transform:translateY(32px);transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1)}
+.js-rv .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.tagline-text .w{opacity:1!important;transition:none!important}.js-rv .rv{opacity:1!important;transform:none!important;transition:none!important}}
+
+</style>
 </head>
 <body>
 <header class="header" id="header">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="Wild Rose Blooms home"><img src="../logos/wild-rose-blooms.png" alt="Wild Rose Blooms logo" loading="lazy" style="height:40px;width:40px;border-radius:50%;object-fit:cover;flex:none"><span>Wild Rose</span></a>
+    <a class="logo" href="#header" aria-label="Wild Rose Blooms home"><img src="../logos/wild-rose-blooms.png" alt="Wild Rose Blooms logo" loading="lazy" style="height:40px;width:40px;border-radius:50%;object-fit:cover;flex:none"><span>Wild Rose</span></a>
     <nav class="nav" aria-label="Primary">
       <a href="#florals">Florals</a><a href="#weddings">Weddings</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
     </nav>
@@ -187,22 +209,44 @@
     <div class="wrap hero-inner">
       <div>
         <span class="tag">Calgary Florist · Est. 2019</span>
-        <h1>FLOWERS <span class="m">LOUDER</span><br><span class="o">THAN WORDS</span></h1>
+        <h1>Flowers <span class="m">louder</span><br><span class="o">than words</span></h1>
         <p>Wild Rose Blooms does flowers with attitude — statement bouquets, wedding takeovers and event installs that people photograph before they even say hello.</p>
         <div class="hero-ctas">
           <a class="btn btn-mag" href="tel:+14035550139"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Call (403) 555-0139</a>
-          <a class="btn btn-line" href="#florals">Shop Florals</a>
+          <a class="tlink" href="#florals">Shop florals</a>
         </div>
         <div class="sticker">Wedding<br>season<br>open</div>
       </div>
       <div class="hero-facts">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Same-day delivery in Calgary</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Same day delivery in Calgary</div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>40+ weddings a year</div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Custom designs welcome</div>
       </div>
     </div>
   </section>
 
+<section class="pad" style="padding-top:clamp(3rem,6vw,4rem);padding-bottom:0"><div class="wrap">
+    <div class="head">
+      <div><span class="tag">Why Calgary goes bold</span><h2>Big flowers, <span class="m">bigger feelings</span></h2></div>
+      <p class="lede">Statement bouquets and wedding florals that people photograph before they even say hello.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="card-body"><h3>40 plus weddings a year</h3><p>Statement florals across Calgary and the mountains, from arches to tablescapes.</p></div></article>
+      <article class="card"><div class="card-body"><h3>Order by 1 pm, delivered today</h3><p>Same day delivery in Calgary, free over 75 dollars.</p></div></article>
+      <article class="card"><div class="card-body"><h3>Custom is our favourite word</h3><p>One of a kind designs built around your colours, your budget, and your vibe.</p></div></article>
+    </div>
+  </div></section>
+  <section class="pad" style="padding-top:clamp(3rem,6vw,4rem);padding-bottom:0"><div class="wrap">
+    <div class="head">
+      <div><span class="tag">How it works</span><h2>Three steps to <span class="m">going big</span></h2></div>
+      <p class="lede">From first call to final delivery, we handle the flowers so you can enjoy the moment.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="card-body"><h3>Step 1. Call or visit the studio</h3><p>Tell us the occasion, your colours, and your budget. Consults are free.</p></div></article>
+      <article class="card"><div class="card-body"><h3>Step 2. We design your flowers</h3><p>Your florist builds the bouquet or the full wedding plan, stem by stem.</p></div></article>
+      <article class="card"><div class="card-body"><h3>Step 3. We deliver and set up</h3><p>Hand delivered in Calgary, and set up on site for weddings and events.</p></div></article>
+    </div>
+  </div></section>
   <div class="tape" aria-hidden="true"><div class="tape-track">
     <span>Statement bouquets</span><span>Wedding florals</span><span>Event installs</span><span>Weekly subscriptions</span>
     <span>Statement bouquets</span><span>Wedding florals</span><span>Event installs</span><span>Weekly subscriptions</span>
@@ -217,16 +261,16 @@
       <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&q=80&auto=format&fit=crop" alt="Red rose statement bouquet" loading="lazy"><span class="sku">WR-01</span></div><div class="card-body"><h3>Red Riot</h3><p>18 premium red roses with black wrap. Zero subtlety, all impact.</p><div class="card-cta"><span>C$75</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
       <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80&auto=format&fit=crop" alt="Neon pastel bouquet" loading="lazy"><span class="sku">WR-02</span></div><div class="card-body"><h3>Neon Garden</h3><p>Hot pink, orange and lime — the bouquet that walks into the room first.</p><div class="card-cta"><span>C$58</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
       <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=800&q=80&auto=format&fit=crop" alt="Moody wild bouquet" loading="lazy"><span class="sku">WR-03</span></div><div class="card-body"><h3>Midnight Wild</h3><p>Deep burgundy, plum and dark foliage. Moody, dramatic, unforgettable.</p><div class="card-cta"><span>C$62</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
-      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=80&auto=format&fit=crop" alt="Luxury white bouquet" loading="lazy"><span class="sku">WR-04</span></div><div class="card-body"><h3>White Noise</h3><p>All-white luxury: roses, ranunculus, orchids. Minimal, expensive-looking.</p><div class="card-cta"><span>C$95</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
+      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=80&auto=format&fit=crop" alt="Luxury white bouquet" loading="lazy"><span class="sku">WR-04</span></div><div class="card-body"><h3>White Noise</h3><p>All white luxury: roses, ranunculus, orchids. Minimal, expensive looking.</p><div class="card-cta"><span>C$95</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
       <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80&auto=format&fit=crop" alt="Tropical bouquet" loading="lazy"><span class="sku">WR-05</span></div><div class="card-body"><h3>Tropical Punch</h3><p>Bird of paradise, anthurium, monstera. Vacation energy, Calgary address.</p><div class="card-cta"><span>C$70</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
-      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=800&q=80&auto=format&fit=crop" alt="Mega bouquet" loading="lazy"><span class="sku">WR-06</span></div><div class="card-body"><h3>The Mega</h3><p>36+ stems of pure chaos in our signature wrap. For grand gestures only.</p><div class="card-cta"><span>C$140</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
+      <article class="card"><div class="card-media"><img src="https://images.unsplash.com/photo-1469259943454-aa100abba749?w=800&q=80&auto=format&fit=crop" alt="Mega bouquet of bright fresh flowers" loading="lazy"><span class="sku">WR-06</span></div><div class="card-body"><h3>The Mega</h3><p>36+ stems of pure chaos in our signature wrap. For grand gestures only.</p><div class="card-cta"><span>C$140</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></article>
     </div>
   </div></section>
 
   <section class="wed pad" id="weddings"><div class="wrap">
     <div class="head">
       <div><span class="tag">Weddings</span><h2>Your wedding, <span class="m">but make it art</span></h2></div>
-      <p class="lede">Full-service wedding florals: bouquets, boutonnieres, ceremony arches, tablescapes and teardown. We book 40+ weddings a year across Alberta.</p>
+      <p class="lede">Full service wedding florals: bouquets, boutonnieres, ceremony arches, tablescapes and teardown. We book 40+ weddings a year across Alberta.</p>
     </div>
     <div class="wed-grid">
       <div class="wed-img"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80&auto=format&fit=crop" alt="Wedding ceremony flowers" loading="lazy"></div>
@@ -235,14 +279,15 @@
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" width="13" height="13" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Bridal party</b><p>Bouquets from C$95, boutonnieres C$18, corsages C$28.</p></div></li>
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" width="13" height="13" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Ceremony</b><p>Arches from C$450, aisle markers, statement urns.</p></div></li>
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" width="13" height="13" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Reception</b><p>Centrepieces from C$65/table, head table garlands, cake florals.</p></div></li>
-          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" width="13" height="13" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Full service</b><p>Delivery, setup and next-day teardown included in every package.</p></div></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" width="13" height="13" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Full service</b><p>Delivery, setup and next day teardown included in every package.</p></div></li>
         </ul>
-        <div class="hero-ctas"><a class="btn btn-mag" href="tel:+14035550139">Book a Consult</a></div>
+        <div class="hero-ctas"><a class="btn btn-mag" href="tel:+14035550139">Book a consult</a></div>
         <p class="price-note">WEDDING MINIMUM: C$1,200. Peak months (June–Sept) book 6+ months out. Consults are free.</p>
       </div>
     </div>
   </div></section>
 
+<section class="tagline"><div class="wrap"><p class="tagline-text"><span class="tl">Bold flowers for big feelings,</span><br><span class="tl">delivered while they are still perfect.</span></p></div></section>
   <section class="pad" id="reviews"><div class="wrap">
     <div class="head">
       <div><span class="tag">Reviews</span><h2>Word on <span class="o">the street</span></h2></div>
@@ -250,8 +295,24 @@
     </div>
     <div class="rev">
       <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Our wedding arch was the most photographed thing at the venue. The florist cried. We cried. 10/10."</p><footer>— Amara &amp; Josh · Canmore wedding</footer></blockquote>
-      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Asked for 'loud'. Got LOUD. My desk arrangement stops people mid-sentence. Worth every dollar."</p><footer>— Renee D. · Downtown office</footer></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"Asked for 'loud'. Got LOUD. My desk arrangement stops people mid sentence. Worth every dollar."</p><footer>— Renee D. · Downtown office</footer></blockquote>
       <blockquote class="quote"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg></div><p>"The Mega bouquet for my wife's 40th. She screamed. The neighbours came out. Legendary."</p><footer>— Tom W. · Aspen Woods</footer></blockquote>
+    </div>
+  </div></section>
+
+  <section class="pad" id="faq"><div class="wrap">
+    <div class="head">
+      <div><span class="tag">FAQ</span><h2>Before you <span class="m">order</span></h2></div>
+      <p class="lede">Quick answers. Anything else — just call.</p>
+    </div>
+    <div class="faq-list">
+      <details><summary>How fast is delivery?</summary><p class="answer">Order by 1 PM for same day delivery in Calgary. Delivery is C$12 flat, free over C$75.</p></details>
+      <details><summary>Can you make something custom?</summary><p class="answer">Custom is our favourite word. Call <a href="tel:+14035550139">(403) 555-0139</a> with your colours, budget and vibe and we will design something one of a kind.</p></details>
+      <details><summary>How far ahead should we book a wedding?</summary><p class="answer">Peak months (June–September) book 6+ months out. Wedding minimum is C$1,200 and consults are free.</p></details>
+      <details><summary>Do you offer subscriptions?</summary><p class="answer">Yes — weekly office or home flowers from C$40/week. Pause anytime, swap styles whenever you like.</p></details>
+      <details><summary>Do you deliver outside Calgary?</summary><p class="answer">We deliver across Calgary and nearby towns like Cochrane and Canmore. Call for a quote outside the city.</p></details>
+      <details><summary>What if my flowers fade fast?</summary><p class="answer">Tell us within 7 days and we will replace the bouquet or make it right.</p></details>
+
     </div>
   </div></section>
 
@@ -267,12 +328,12 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b>Hours</b>Tue–Sat · 9 AM – 6 PM<br>Sun &amp; Mon: by appointment</div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg><div><b>Phone</b><a href="tel:+14035550139">(403) 555-0139</a></div></li>
         </ul>
-        <div class="hero-ctas" style="margin-top:1.6rem"><a class="btn btn-mag" href="tel:+14035550139">Call Now</a><a class="btn btn-line" href="sms:+14035550139">Text Us</a></div>
+        <div class="hero-ctas" style="margin-top:1.6rem"><a class="btn btn-mag" href="tel:+14035550139">Call now</a><a class="btn btn-line" href="sms:+14035550139">Text us</a></div>
       </div>
       <div class="cbox">
         <h3>Good to know</h3>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div><b>Delivery</b>Same-day in Calgary when you order by 1 PM. C$12 flat, free over C$75.</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div><b>Delivery</b>Same day in Calgary when you order by 1 PM. C$12 flat, free over C$75.</div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div><b>Subscriptions</b>Weekly office or home flowers from C$40/week. Pause anytime.</div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div><b>Events</b>Corporate and party installs quoted free within 48 hours.</div></li>
         </ul>
@@ -290,9 +351,9 @@
   <div><h3>Wild Rose Blooms</h3><p>Bold, modern florist in downtown Calgary. Statement bouquets, weddings and events.</p><p style="margin-top:.8rem"><a href="tel:+14035550139">(403) 555-0139</a></p></div>
   <div><h3>Explore</h3><p><a href="#florals">Florals</a><br><a href="#weddings">Weddings</a><br><a href="#reviews">Reviews</a></p></div>
   <div><h3>Studio</h3><p>918 8 Ave SW<br>Calgary, AB<br>Tue–Sat: 9 AM – 6 PM</p></div>
-</div><div class="wrap legal"><span>© 2026 Wild Rose Blooms. All rights reserved.</span><span>Demo site — prices illustrative.</span></div></footer>
+</div><div class="wrap legal"><span>© 2026 Wild Rose Blooms. All rights reserved.</span><span>Demo site — prices illustrative. Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a>.</span></div></footer>
 
-<div class="callbar"><a class="call" href="tel:+14035550139"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Call Now</a><a class="sms" href="sms:+14035550139">Text Us</a></div>
+<div class="callbar"><a class="call" href="tel:+14035550139"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>Call now</a><a class="sms" href="sms:+14035550139">Text us</a></div>
 
 <script>
   const h = document.getElementById('header');
@@ -300,7 +361,10 @@
 </script>
 
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
+<script>
+(function(){var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;var secs=document.querySelectorAll('main section:not(.hero):not(.tagline)');if(!reduce){document.documentElement.classList.add('js-rv');secs.forEach(function(s){s.classList.add('rv')});if('IntersectionObserver' in window){var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}})},{threshold:.12});secs.forEach(function(s){io2.observe(s)})}else{secs.forEach(function(s){s.classList.add('in')})}}document.querySelectorAll('.tagline-text').forEach(function(el){var lines=el.querySelectorAll('.tl');if(!lines.length){lines=[el]}lines.forEach(function(line){var words=line.textContent.trim().split(/\s+/);line.innerHTML=words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ')});var spans=el.querySelectorAll('.w');spans.forEach(function(sp,i){sp.style.transitionDelay=(reduce?0:i*70)+'ms'});if(reduce){spans.forEach(function(sp){sp.classList.add('on')});return;}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.6});spans.forEach(function(sp){io.observe(sp)})}else{spans.forEach(function(sp){sp.classList.add('on')})}});})();
+</script>
 </body>
 </html>
