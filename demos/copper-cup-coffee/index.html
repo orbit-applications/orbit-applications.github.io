@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<link rel="icon" type="image/png" href="../logos/copper-cup-coffee.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Copper Cup Coffee — Coffee Shop, Calgary</title>
@@ -9,31 +9,31 @@
 <meta name="theme-color" content="#fff4e6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fredoka:wght@600&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#fff4e6; --paper:#fffaf3; --ink:#3d2b1f; --muted:#8a7360;
     --copper:#b5651d; --copper-d:#8f4e14; --honey:#e8a94e; --sage:#9aa88a;
     --line:#ecdcc4;
-    --round:'Fredoka',system-ui,sans-serif;
-    --body:'Nunito',system-ui,sans-serif;
-    --ease:cubic-bezier(.34,1.4,.4,1);
+    --round:'Poppins',system-ui,sans-serif;
+    --body:'Poppins',system-ui,sans-serif;
+    --ease:cubic-bezier(0.22,1,0.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+  body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
   @media (min-width:900px){body{padding-bottom:0}}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--honey);color:var(--ink)}
-  :focus-visible{outline:3px solid var(--copper);outline-offset:3px;border-radius:12px}
+  :focus-visible{outline:3px solid var(--copper);outline-offset:3px;border-radius:16px}
   .wrap{width:min(1140px,100% - 2.5rem);margin-inline:auto}
   @media (min-width:700px){.wrap{width:min(1140px,100% - 5rem)}}
   h1,h2,h3{font-family:var(--round);font-weight:600;line-height:1.1}
-  h2{font-size:clamp(2.2rem,5.4vw,3.6rem)}
+  h2{font-size:clamp(1.875rem,5.4vw,3rem)}
   h2 .hl{color:var(--copper)}
-  .kicker{display:inline-block;font-weight:800;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);background:#fbeed9;padding:.45rem 1rem;border-radius:99px}
-  .lede{color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.12rem);max-width:34rem;font-weight:600}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.8rem;border-radius:99px;font-weight:800;font-size:.92rem;transition:transform .3s var(--ease),box-shadow .3s,background .3s;white-space:nowrap}
+  .kicker{display:inline-block;font-weight:700;font-size:0.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);background:#fbeed9;padding:0.75rem 1rem;border-radius:16px}
+  .lede{color:var(--muted);font-size:clamp(1rem,1.5vw,1rem);max-width:34rem;font-weight:600}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.75rem;min-height:56px;padding:0 1.5rem;border-radius:16px;font-weight:700;font-size:0.875rem;transition:transform .3s var(--ease),box-shadow .3s,background .3s;white-space:nowrap}
   .btn svg{width:18px;height:18px;flex:none}
   .btn-copper{background:var(--copper);color:#fff;box-shadow:0 10px 22px rgba(181,101,29,.35)}
   .btn-copper:hover{transform:translateY(-3px) scale(1.02);background:var(--copper-d)}
@@ -42,31 +42,31 @@
   .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,border-color .35s;border-bottom:2px solid transparent}
   .header.scrolled{background:rgba(255,244,230,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
   .header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
-  .logo{font-family:var(--round);font-weight:700;font-size:1.4rem;line-height:1}
+  .logo{font-family:'Fredoka',system-ui,sans-serif;font-weight:600;font-size:1.25rem;line-height:1}
   .logo .cup{color:var(--copper)}
-  .logo small{display:block;font-family:var(--body);font-size:.62rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
-  .nav{display:none;gap:2rem;font-weight:700;font-size:.92rem;color:var(--muted)}
+  .logo small{display:block;font-family:var(--body);font-size:0.75rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:0.75rem}
+  .nav{display:none;gap:1.875rem;font-weight:700;font-size:0.875rem;color:var(--muted)}
   .nav a:hover{color:var(--copper)}
-  .header .btn{min-height:44px;padding:0 1.1rem;font-size:.8rem}
+  .header .btn{min-height:44px;padding:0 1rem;font-size:0.75rem}
   .header .btn .num{display:none}
   @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
-  .hero{position:relative;padding:9.5rem 0 4rem;overflow:hidden}
-  .hero::before{content:"\2615";position:absolute;left:4%;top:14%;font-size:8rem;opacity:.1;transform:rotate(-12deg)}
-  .hero::after{content:"\2615";position:absolute;right:5%;bottom:8%;font-size:6rem;opacity:.08;transform:rotate(14deg)}
-  .hero-grid{display:grid;gap:2.5rem;align-items:center;position:relative}
+  .hero{position:relative;padding:3.75rem 0 3.75rem;overflow:hidden}
+  .hero-grid{display:grid;gap:2.25rem;align-items:center;position:relative}
   @media (min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr}}
-  .hero h1{font-size:clamp(2.9rem,7.6vw,5.4rem);margin:1.3rem 0 1.2rem}
+  .hero h1{font-size:clamp(2.25rem,7.6vw,3.75rem);margin:1.25rem 0 1.125rem}
   .hero h1 .hl{color:var(--copper)}
-  .hero p{color:var(--muted);font-weight:600;font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:32rem}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+  .hero p{color:var(--muted);font-weight:600;font-size:clamp(1rem,1.6vw,1.125rem);max-width:32rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:0.875rem;margin-top:1.875rem}
   .hero-ctas .btn{flex:1 1 220px}
   @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
-  .hero-perks{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem}
-  .hero-perks span{background:#fff;border:2px solid var(--line);padding:.5rem 1rem;border-radius:99px;font-size:.85rem;font-weight:700}
-  .hero-card{background:#fff;border:3px solid var(--ink);border-radius:26px;padding:2rem;box-shadow:8px 8px 0 var(--honey);transform:rotate(1.5deg)}
+  .hero-perks{display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:1.5rem}
+  .hero-perks span{background:#fff;border:2px solid var(--line);padding:0.75rem 1rem;border-radius:16px;font-size:0.75rem;font-weight:700}
+  .hero-photo{border-radius:16px;overflow:hidden;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--honey);margin-bottom:1.25rem;transform:rotate(1deg)}
+  .hero-photo img{width:100%;height:230px;object-fit:cover;display:block}
+  .hero-card{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:1.875rem;box-shadow:8px 8px 0 var(--honey);transform:rotate(1.5deg)}
   .hero-card h3{font-size:1.5rem;margin-bottom:1rem}
-  .hours-list{list-style:none;display:grid;gap:.5rem}
-  .hours-list li{display:flex;justify-content:space-between;font-weight:700;font-size:.95rem;border-bottom:2px dashed var(--line);padding-bottom:.5rem}
+  .hours-list{list-style:none;display:grid;gap:0.75rem}
+  .hours-list li{display:flex;justify-content:space-between;font-weight:700;font-size:0.875rem;border-bottom:2px dashed var(--line);padding-bottom:0.75rem}
   .hours-list li:last-child{border:0}
   .hours-list .closed{color:var(--muted)}
   section{position:relative}
@@ -74,80 +74,112 @@
   .s-head{text-align:center;display:grid;justify-items:center;gap:1rem;margin-bottom:clamp(2.5rem,6vw,4rem)}
   .menu-cat{margin-bottom:3rem}
   .menu-cat:last-child{margin-bottom:0}
-  .menu-cat h3{font-size:1.9rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
-  .menu-cat h3 .ico{font-size:1.6rem}
-  .drinks{display:grid;gap:.9rem}
+  .menu-cat h3{font-size:1.875rem;margin-bottom:1.125rem;display:flex;align-items:center;gap:0.75rem}
+  .menu-cat h3 .ico{font-size:1.5rem}
+  .drinks{display:grid;gap:0.875rem}
   @media (min-width:700px){.drinks{grid-template-columns:repeat(2,1fr)}}
-  .drink{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:baseline;transition:transform .3s var(--ease),border-color .3s}
+  .drink{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:1.125rem 1.25rem;display:flex;gap:1rem;align-items:baseline;transition:transform .3s var(--ease),border-color .3s}
   .drink:hover{transform:translateY(-3px);border-color:var(--copper)}
-  .drink .nm{font-weight:800;font-size:1.08rem}
-  .drink .ds{font-size:.88rem;color:var(--muted);font-weight:600}
-  .drink .pr{margin-left:auto;flex:none;font-family:var(--round);font-weight:700;font-size:1.3rem;color:var(--copper)}
-  .drink .pr small{font-family:var(--body);font-size:.72rem;color:var(--muted);display:block;text-align:right;font-weight:700}
-  .treats{display:grid;gap:1.2rem}
+  .drink .nm{font-weight:700;font-size:1rem}
+  .drink .ds{font-size:0.875rem;color:var(--muted);font-weight:600}
+  .drink .pr{margin-left:auto;flex:none;font-family:var(--round);font-weight:700;font-size:1.25rem;color:var(--copper)}
+  .drink .pr small{font-family:var(--body);font-size:0.75rem;color:var(--muted);display:block;text-align:right;font-weight:700}
+  .treats{display:grid;gap:1.125rem}
   @media (min-width:700px){.treats{grid-template-columns:repeat(3,1fr)}}
-  .treat{background:#fff;border:2.5px solid var(--ink);border-radius:20px;padding:1.8rem 1.6rem;text-align:center;box-shadow:5px 5px 0 var(--line);transition:transform .3s var(--ease)}
+  .treat{background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:1.5rem 1.5rem;text-align:center;box-shadow:5px 5px 0 var(--line);transition:transform .3s var(--ease)}
   .treat:hover{transform:translateY(-4px) rotate(-1deg)}
-  .treat .ico{font-size:2.8rem;display:block;margin-bottom:.8rem}
-  .treat h3{font-size:1.4rem;margin-bottom:.4rem}
-  .treat p{color:var(--muted);font-size:.92rem;font-weight:600}
-  .treat .pr{font-family:var(--round);font-weight:700;font-size:1.5rem;color:var(--copper);margin-top:.6rem;display:block}
-  .vibe{background:var(--ink);color:var(--cream);border-radius:28px;padding:clamp(2.2rem,6vw,4rem);display:grid;gap:2rem}
+  .treat .ico{font-size:2.25rem;display:flex;justify-content:center;margin-bottom:0.75rem}
+  .menu-cat h3 .ico svg,.treat .ico svg{width:1em;height:1em;display:block;color:var(--copper)}
+  .testi-grid{display:grid;gap:1rem}
+  @media(min-width:800px){.testi-grid{grid-template-columns:repeat(3,1fr)}}
+  .testi-card{background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:1.5rem 1.5rem;box-shadow:5px 5px 0 var(--line)}
+  .testi-card .stars{color:var(--copper);letter-spacing:.15em;font-weight:700}
+  .testi-card blockquote{font-family:var(--round);font-size:1.25rem;line-height:1.4;margin:0.75rem 0 1rem}
+  .testi-card cite{font-style:normal;font-weight:700;color:var(--muted);font-size:0.875rem}
+  .treat h3{font-size:1.25rem;margin-bottom:0.75rem}
+  .treat p{color:var(--muted);font-size:0.875rem;font-weight:600}
+  .treat .pr{font-family:var(--round);font-weight:700;font-size:1.5rem;color:var(--copper);margin-top:0.75rem;display:block}
+  .vibe{background:var(--ink);color:var(--cream);border-radius:16px;padding:clamp(2.2rem,6vw,4rem);display:grid;gap:1.875rem}
   @media (min-width:900px){.vibe{grid-template-columns:1fr 1fr;align-items:center}}
   .vibe .kicker{background:rgba(232,169,78,.16);color:var(--honey)}
-  .vibe h3{font-size:clamp(1.8rem,4.4vw,2.7rem);margin:1rem 0 .8rem;color:#fff}
+  .vibe h3{font-size:clamp(1.5rem,4.4vw,2.25rem);margin:1rem 0 0.75rem;color:#fff}
   .vibe p{color:#c9b8a3;font-weight:600}
-  .vibe ul{list-style:none;margin-top:1.4rem;display:grid;gap:.7rem}
-  .vibe li{display:flex;gap:.7rem;font-weight:700;color:#efe3d0}
-  .vibe li::before{content:"\2713";color:var(--honey);font-weight:800}
+  .vibe ul{list-style:none;margin-top:1.25rem;display:grid;gap:0.75rem}
+  .vibe li{display:flex;gap:0.75rem;font-weight:700;color:#efe3d0}
+  .vibe li::before{content:"\2713";color:var(--honey);font-weight:700}
   .vibe .side{display:grid;gap:1rem}
-  .vibe .fact{background:rgba(255,255,255,.07);border-radius:16px;padding:1.4rem;text-align:center}
-  .vibe .fact b{display:block;font-family:var(--round);font-size:2rem;color:var(--honey)}
-  .vibe .fact span{font-size:.85rem;font-weight:700;color:#c9b8a3}
+  .vibe .fact{background:rgba(255,255,255,.07);border-radius:16px;padding:1.25rem;text-align:center}
+  .vibe .fact b{display:block;font-family:var(--round);font-size:1.875rem;color:var(--honey)}
+  .vibe .fact span{font-size:0.75rem;font-weight:700;color:#c9b8a3}
   .faq-list{max-width:780px;margin:0 auto;border-top:2px solid var(--line)}
   details{border-bottom:2px solid var(--line)}
-  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.4rem 0;font-weight:800;font-size:1.08rem}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.25rem 0;font-weight:700;font-size:1rem}
   summary::-webkit-details-marker{display:none}
   summary:hover{color:var(--copper)}
-  .pm{font-size:1.6rem;color:var(--copper);font-weight:700}
+  .pm{font-size:1.5rem;color:var(--copper);font-weight:700}
   details[open] .pm{transform:rotate(45deg)}
-  .answer{color:var(--muted);padding:0 2rem 1.5rem 0;font-weight:600}
-  .answer a{color:var(--copper);font-weight:800}
-  .contact{background:var(--copper);border-radius:28px;color:#fff;overflow:hidden}
-  .contact-inner{display:grid;gap:2rem;padding:clamp(2.2rem,6vw,4rem)}
+  .answer{color:var(--muted);padding:0 1.875rem 1.5rem 0;font-weight:600}
+  .answer a{color:var(--copper);font-weight:700}
+  .contact{background:var(--copper);border-radius:16px;color:#fff;overflow:hidden}
+  .contact-inner{display:grid;gap:1.875rem;padding:clamp(2.2rem,6vw,4rem)}
   @media (min-width:960px){.contact-inner{grid-template-columns:1.2fr 1fr;align-items:center}}
   .contact .kicker{background:rgba(255,255,255,.18);color:#fff}
   .contact h2{color:#fff;margin:1rem 0}
-  .big-phone{display:inline-block;font-family:var(--round);font-weight:700;font-size:clamp(2.2rem,6.5vw,3.8rem);color:#fff;margin:.4rem 0 1.6rem}
-  .contact-ctas{display:flex;flex-wrap:wrap;gap:.9rem}
+  .big-phone{display:inline-block;font-family:var(--round);font-weight:700;font-size:clamp(1.875rem,6.5vw,3.75rem);color:#fff;margin:0.75rem 0 1.5rem}
+  .contact-ctas{display:flex;flex-wrap:wrap;gap:0.875rem}
   .contact-ctas .btn{flex:1 1 200px}
   @media (min-width:600px){.contact-ctas .btn{flex:0 0 auto}}
   .btn-cream{background:var(--cream);color:var(--copper-d)}
   .btn-cream:hover{transform:translateY(-2px)}
-  .info{background:rgba(255,255,255,.14);border-radius:18px;padding:1.6rem}
+  .info{background:rgba(255,255,255,.14);border-radius:16px;padding:1.5rem}
   .info-row{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.25)}
   .info-row:last-child{border-bottom:0}
-  .info-row svg{width:22px;height:22px;margin-top:.2rem}
-  .info-row small{display:block;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:.2rem}
+  .info-row svg{width:22px;height:22px;margin-top:0.75rem}
+  .info-row small{display:block;font-size:0.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:0.75rem}
   .info-row b{font-weight:700}
-  footer{padding:2.4rem 0;color:var(--muted);font-size:.86rem;font-weight:600}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center}
-  .demo{font-size:.76rem;border:2px dashed #cbb894;padding:.4rem .8rem;border-radius:10px}
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(255,244,230,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:3px solid var(--copper);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
-  .callbar .btn{min-height:52px;font-size:.8rem;padding:0 .8rem}
+  footer{padding:2.25rem 0;color:var(--muted);font-size:0.75rem;font-weight:600}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1.125rem 1.875rem;justify-content:space-between;align-items:center}
+  .demo{font-size:0.75rem;border:2px dashed #cbb894;padding:0.75rem 0.75rem;border-radius:8px}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(255,244,230,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:3px solid var(--copper);display:grid;grid-template-columns:1fr 2fr;gap:0.75rem}
+  .callbar .btn{min-height:52px;font-size:0.75rem;padding:0 0.75rem}
   @media (min-width:900px){.callbar{display:none}}
-  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
   .js .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
+<style>
+*,*::before,*::after{transition-property:transform,opacity!important;transition-duration:.5s!important;transition-timing-function:cubic-bezier(0.22,1,0.36,1)!important}
+h1,h2,h3{text-wrap:balance}
+em,i{font-style:normal}
+p{text-wrap:pretty}
+.hero h1{max-width:680px}
+a:active,.btn:active{transform:scale(.98)}
+.text-link{align-self:center;font-weight:600;text-decoration:underline;text-underline-offset:4px;padding:12px 8px}
+section.tagline{padding:64px 0;text-align:center}
+.tagline-words{font-size:clamp(1.875rem,4vw,3rem);line-height:1.2;font-weight:600;max-width:680px;margin:0 auto;text-wrap:balance}
+.tagline-words .tl-line{display:block}
+.tagline-words span.w{opacity:.3;transition:opacity .5s cubic-bezier(0.22,1,0.36,1)}
+.tagline-words span.w.lit{opacity:1}
+.how-grid{display:grid;gap:16px}
+@media(min-width:800px){.how-grid{grid-template-columns:repeat(3,1fr)}}
+.how-card{border:2px solid var(--line);border-radius:16px;padding:24px}
+.how-n{display:grid;place-items:center;width:40px;height:40px;border-radius:8px;background:var(--copper);color:#fff;font-weight:700;font-size:20px;margin-bottom:16px}
+.how-card h3{font-size:20px;margin-bottom:8px}
+.how-card p{color:var(--muted);font-size:16px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.tagline-words span.w{opacity:1}.reveal{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
-  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8z"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M20 10h1.5a2.5 2.5 0 0 1 0 5H20"/><path d="M8 5.5c0-1 .8-1 .8-2M12 5.5c0-1 .8-1 .8-2"/></symbol>
+  <symbol id="i-drip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+  <symbol id="i-croissant" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c1.5-5 4.5-8 8-8s6.5 3 8 8c-1.5 1.8-4 2.5-8 2.5S5.5 16.8 4 15z"/><path d="M9 9.5 8 12M15 9.5 16 12"/></symbol>
+  <symbol id="i-bread" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15a9 5.5 0 0 1 18 0v3.5H3z"/><path d="M8 15v-2.5M12 15v-3.5M16 15v-2.5"/></symbol>
+  <symbol id="i-cookie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="10" r=".9" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r=".9" fill="currentColor" stroke="none"/><circle cx="10" cy="15" r=".9" fill="currentColor" stroke="none"/><circle cx="14.5" cy="9" r=".9" fill="currentColor" stroke="none"/></symbol>
 </svg>
 <header class="header" id="top">
   <div class="wrap">
@@ -167,19 +199,22 @@
         <p class="reveal" style="--d:.2s">Locally roasted beans, oat milk always free, and pastries from the oven next door. The coziest corner in the neighbourhood.</p>
         <div class="hero-ctas reveal" style="--d:.3s">
           <a class="btn btn-copper" href="tel:+14035550122"><svg><use href="#i-phone"/></svg>Call (403) 555-0122</a>
-          <a class="btn btn-line" href="#menu">See the menu</a>
+          <a class="text-link" href="#menu">See the menu</a>
         </div>
         <div class="hero-perks reveal" style="--d:.4s">
-          <span>&#9733; 4.9 rated</span><span>&#9749; Locally roasted</span><span>&#128054; Dog friendly patio</span>
+          <span>Locally roasted</span><span>Dog friendly patio</span><span>Oat milk always free</span>
         </div>
       </div>
-      <div class="hero-card reveal" style="--d:.2s">
+      <div class="reveal" style="--d:.2s">
+        <div class="hero-photo"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=75" alt="Warm, bright coffee shop interior with tables and plants" fetchpriority="high"></div>
+      <div class="hero-card">
         <h3>Open hours</h3>
         <ul class="hours-list">
           <li><b>Mon &ndash; Fri</b><span>6:30 AM &ndash; 6 PM</span></li>
           <li><b>Saturday</b><span>7 AM &ndash; 6 PM</span></li>
           <li><b>Sunday</b><span>8 AM &ndash; 4 PM</span></li>
         </ul>
+      </div>
       </div>
     </div>
   </section>
@@ -191,7 +226,7 @@
         <p class="lede reveal" style="--d:.16s">Every drink made with double shots of our house espresso. Oat, almond and soy milk always free.</p>
       </div>
       <div class="menu-cat">
-        <h3 class="reveal"><span class="ico">&#9749;</span>Espresso</h3>
+        <h3 class="reveal"><span class="ico"><svg><use href="#i-cup"/></svg></span>Espresso</h3>
         <div class="drinks">
           <div class="drink reveal"><div><div class="nm">Copper Latte</div><div class="ds">Our signature — honey &amp; cinnamon</div></div><span class="pr">$5.25<small>12 / 16 oz</small></span></div>
           <div class="drink reveal" style="--d:.06s"><div><div class="nm">Cappuccino</div><div class="ds">Classic dry foam, cocoa dust</div></div><span class="pr">$4.75<small>12 / 16 oz</small></span></div>
@@ -200,12 +235,12 @@
         </div>
       </div>
       <div class="menu-cat">
-        <h3 class="reveal"><span class="ico">&#129380;</span>Brew bar</h3>
+        <h3 class="reveal"><span class="ico"><svg><use href="#i-drip"/></svg></span>Brew bar</h3>
         <div class="drinks">
-          <div class="drink reveal"><div><div class="nm">Pour Over</div><div class="ds">Single-origin, brewed to order</div></div><span class="pr">$5.75<small>12 oz</small></span></div>
+          <div class="drink reveal"><div><div class="nm">Pour Over</div><div class="ds">Single origin, brewed to order</div></div><span class="pr">$5.75<small>12 oz</small></span></div>
           <div class="drink reveal" style="--d:.06s"><div><div class="nm">Drip of the Day</div><div class="ds">Rotating house roast, bottomless till 9</div></div><span class="pr">$3.50<small>12 / 16 oz</small></span></div>
           <div class="drink reveal"><div><div class="nm">Cold Brew</div><div class="ds">18-hour steep, served over ice</div></div><span class="pr">$5.25<small>16 oz</small></span></div>
-          <div class="drink reveal" style="--d:.06s"><div><div class="nm">Chai Latte</div><div class="ds">House-spiced, real tea</div></div><span class="pr">$5.00<small>12 / 16 oz</small></span></div>
+          <div class="drink reveal" style="--d:.06s"><div><div class="nm">Chai Latte</div><div class="ds">House spiced, real tea</div></div><span class="pr">$5.00<small>12 / 16 oz</small></span></div>
         </div>
       </div>
     </div>
@@ -217,9 +252,9 @@
         <h2 class="reveal" style="--d:.08s">Little <span class="hl">treats.</span></h2>
       </div>
       <div class="treats">
-        <div class="treat reveal"><span class="ico">&#129366;</span><h3>Butter Croissant</h3><p>Flaky, golden, baked at dawn.</p><span class="pr">$4.25</span></div>
-        <div class="treat reveal" style="--d:.08s"><span class="ico">&#129473;</span><h3>Banana Bread</h3><p>Thick slice, toasted, salted butter.</p><span class="pr">$4.00</span></div>
-        <div class="treat reveal" style="--d:.16s"><span class="ico">&#127850;</span><h3>Choc Chunk Cookie</h3><p>Sea salt on top. Still warm at 9.</p><span class="pr">$3.75</span></div>
+        <div class="treat reveal"><span class="ico"><svg><use href="#i-croissant"/></svg></span><h3>Butter Croissant</h3><p>Flaky, golden, baked at dawn.</p><span class="pr">$4.25</span></div>
+        <div class="treat reveal" style="--d:.08s"><span class="ico"><svg><use href="#i-bread"/></svg></span><h3>Banana Bread</h3><p>Thick slice, toasted, salted butter.</p><span class="pr">$4.00</span></div>
+        <div class="treat reveal" style="--d:.16s"><span class="ico"><svg><use href="#i-cookie"/></svg></span><h3>Choc Chunk Cookie</h3><p>Sea salt on top. Still warm at 9.</p><span class="pr">$3.75</span></div>
       </div>
     </div>
   </section>
@@ -229,17 +264,50 @@
         <div>
           <span class="kicker">The vibe</span>
           <h3>Your third place.</h3>
-          <p>Not home, not the office — the cozy in-between. Stay for an hour or the whole afternoon.</p>
+          <p>Not home, not the office — the cozy in between. Stay for an hour or the whole afternoon.</p>
           <ul>
             <li>Fast free wifi &amp; plenty of outlets</li>
-            <li>Dog-friendly patio in summer</li>
+            <li>Dog friendly patio in summer</li>
             <li>Local art on the walls, rotating monthly</li>
           </ul>
         </div>
         <div class="side">
-          <div class="fact"><b>4.9&#9733;</b><span>420+ reviews</span></div>
+          <div class="fact"><b>6:30 AM</b><span>Doors open weekdays</span></div>
           <div class="fact"><b>100%</b><span>arabica, roasted local</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="pad" style="padding-top:0">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker reveal">How it works</span>
+        <h2 class="reveal" style="--d:.08s">Good coffee in <span class="hl">three steps.</span></h2>
+      </div>
+      <div class="how-grid">
+        <div class="how-card reveal"><span class="how-n">1</span><h3>Call or drop in</h3><p>Order ahead by phone or walk in and order at the counter.</p></div>
+        <div class="how-card reveal" style="--d:.08s"><span class="how-n">2</span><h3>We make your drink</h3><p>Double shots, steamed milk, and your favourite flavours, made to order.</p></div>
+        <div class="how-card reveal" style="--d:.16s"><span class="how-n">3</span><h3>Sip, stay, or take beans home</h3><p>Settle in with wifi or grab a bag of beans for the morning.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tagline">
+    <div class="wrap">
+      <p class="tagline-words"><span class="tl-line">Slow mornings start with a good cup.</span><span class="tl-line">Come as you are, stay as long as you like.</span></p>
+    </div>
+  </section>
+
+  <section class="pad" id="love" style="padding-top:0">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker reveal">Kind words</span>
+        <h2 class="reveal" style="--d:.08s">Regulars <span class="hl">say it best.</span></h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal"><span class="stars">★★★★★</span><blockquote>&ldquo;My morning stop, every single day. The Copper Latte is the best in the neighbourhood.&rdquo;</blockquote><cite>&mdash; Emma, weekday regular</cite></div>
+        <div class="testi-card reveal" style="--d:.08s"><span class="stars">★★★★★</span><blockquote>&ldquo;Cozy, fast wifi, and they remember my order. It feels like my second living room.&rdquo;</blockquote><cite>&mdash; Jordan, laptop regular</cite></div>
+        <div class="testi-card reveal" style="--d:.16s"><span class="stars">★★★★★</span><blockquote>&ldquo;Brought my dog, stayed for a pour over, left with a bag of beans. Perfect morning.&rdquo;</blockquote><cite>&mdash; Alex, weekend visitor</cite></div>
       </div>
     </div>
   </section>
@@ -252,8 +320,8 @@
       <div class="faq-list reveal" style="--d:.1s">
         <details><summary>Do you have wifi?<span class="pm">+</span></summary><div class="answer">Yes — fast, free, no password hoops. Plenty of outlets along the window bar for laptops.</div></details>
         <details><summary>Is there a charge for oat milk?<span class="pm">+</span></summary><div class="answer">Never. Oat, almond and soy are always free here.</div></details>
-        <details><summary>Can I bring my dog?<span class="pm">+</span></summary><div class="answer">Dogs are welcome on the patio, and we keep treats behind the counter. Well-behaved pups only, please.</div></details>
-        <details><summary>Do you sell beans to take home?<span class="pm">+</span></summary><div class="answer">Yes — 340g bags of our house espresso and rotating single-origins, $19. Grind it however you brew.</div></details>
+        <details><summary>Can I bring my dog?<span class="pm">+</span></summary><div class="answer">Dogs are welcome on the patio, and we keep treats behind the counter. Well behaved pups only, please.</div></details>
+        <details><summary>Do you sell beans to take home?<span class="pm">+</span></summary><div class="answer">Yes — 340g bags of our house espresso and rotating single origins, $19. Grind it however you brew.</div></details>
         <details><summary>Where are you located?<span class="pm">+</span></summary><div class="answer">5520 4 St NW, Calgary — on the corner, look for the copper awning.</div></details>
         <details><summary>What are your hours?<span class="pm">+</span></summary><div class="answer">Monday to Friday 6:30 AM&ndash;6 PM, Saturday 7 AM&ndash;6 PM, Sunday 8 AM&ndash;4 PM.</div></details>
       </div>
@@ -286,6 +354,7 @@
   <div class="wrap">
     <span>Copper Cup Coffee &middot; 5520 4 St NW, Calgary &middot; <a href="tel:+14035550122">(403) 555-0122</a></span>
     <span class="demo">Demo site</span>
+    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></span>
   </div>
 </footer>
 <div class="callbar">
@@ -304,8 +373,11 @@
   }else{els.forEach(function(el){el.classList.add('in')})}
 </script>
 
+<script>
+(function(){var lines=document.querySelectorAll('.tagline-words .tl-line');lines.forEach(function(line){var words=line.textContent.trim().split(/\s+/);line.innerHTML=words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ')});var t=document.querySelector('section.tagline');if(!t)return;var ws=t.querySelectorAll('span.w');function light(){ws.forEach(function(s,i){setTimeout(function(){s.classList.add('lit')},i*80)})}if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ws.forEach(function(s){s.classList.add('lit')});return}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){light();io.disconnect()}})},{threshold:.35});io.observe(t)}else{light()}})();
+</script>
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
 </body>
 </html>
