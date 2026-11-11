@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="../../logo.png?v=3">
+<link rel="icon" type="image/png" href="../logos/frosty-fox-creamery.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Frosty Fox Creamery — Small-Batch Ice Cream, Calgary</title>
-<meta name="description" content="Frosty Fox Creamery — playful small-batch ice cream in Calgary. Cones from $5.50, sundaes $8.50, pints $11. Call (403) 555-0135.">
+<title>Frosty Fox Creamery — Small batch ice cream, Calgary</title>
+<meta name="description" content="Frosty Fox Creamery — playful small batch ice cream in Calgary. Cones from $5.50, sundaes $8.50, pints $11. Call (403) 555-0135.">
 <meta name="theme-color" content="#fff8ef">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fredoka:wght@600&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
     --bg:#fff8ef; --bg2:#ffefe0; --paper:#ffffff;
     --ink:#3b2b20; --muted:#8a7561; --coral:#ff5a5f; --coral-d:#e04449; --teal:#0fb5a6; --teal-d:#0a8d83; --sun:#ffc93c; --grape:#8b5fbf;
     --line:rgba(255,90,95,.2);
-    --disp:'Fredoka',system-ui,sans-serif; --sans:'Nunito',system-ui,sans-serif;
-    --ease:cubic-bezier(.2,.7,.1,1);
+    --disp:'Poppins',system-ui,sans-serif; --sans:'Poppins',system-ui,sans-serif;
+    --ease:cubic-bezier(0.22,1,0.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
   @media(min-width:900px){body{padding-bottom:0}}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--coral);color:#fff}
-  :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:10px}
+  :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:8px}
   .wrap{width:min(1160px,100% - 2.5rem);margin-inline:auto}
   @media(min-width:700px){.wrap{width:min(1160px,100% - 5rem)}}
   h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.05;letter-spacing:-.01em}
-  h2{font-size:clamp(2.2rem,6vw,3.8rem);margin:.9rem 0 1rem}
+  h2{font-size:clamp(1.875rem,6vw,3.75rem);margin:0.875rem 0 1rem}
   h2 em{font-style:normal;color:var(--coral)}
-  .eyebrow{display:inline-block;font-size:.76rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:var(--teal);padding:.5rem 1.1rem;border-radius:999px;transform:rotate(-2deg)}
-  .lede{color:var(--muted);max-width:34rem;font-size:1.06rem;font-weight:500}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.8rem;border-radius:999px;font-family:var(--disp);font-weight:600;font-size:1rem;transition:all .25s var(--ease);white-space:nowrap;border:3px solid transparent}
+  .eyebrow{display:inline-block;font-size:0.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:var(--teal);padding:0.75rem 1rem;border-radius:16px;transform:rotate(-2deg)}
+  .lede{color:var(--muted);max-width:34rem;font-size:1rem;font-weight:500}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.75rem;min-height:56px;padding:0 1.5rem;border-radius:16px;font-family:var(--disp);font-weight:600;font-size:1rem;transition:all .25s var(--ease);white-space:nowrap;border:3px solid transparent}
   .btn svg{width:18px;height:18px;flex:none}
   .btn-coral{background:var(--coral);color:#fff;box-shadow:4px 4px 0 var(--ink)}
   .btn-coral:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
@@ -46,97 +46,125 @@
   .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
   .header.scrolled{background:rgba(255,248,239,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 2px 0 var(--ink)}
   .header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .logo{font-family:var(--disp);font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:.55rem}
-  .logo i{width:34px;height:34px;border-radius:50%;background:var(--coral);display:grid;place-items:center;color:#fff;font-style:normal;font-size:1.2rem;border:2px solid var(--ink)}
+  .logo{font-family:'Fredoka',system-ui,sans-serif;font-size:1.5rem;font-weight:600;display:flex;align-items:center;gap:0.75rem}
+  .logo i{width:34px;height:34px;border-radius:50%;background:var(--coral);display:grid;place-items:center;color:#fff;font-style:normal;font-size:1.125rem;border:2px solid var(--ink)}
   .logo span{color:var(--coral)}
-  .nav{display:none;gap:2rem;font-weight:800;font-size:.92rem}
+  .nav{display:none;gap:1.875rem;font-weight:700;font-size:0.875rem}
   .nav a:hover{color:var(--coral)}
-  .header .btn{min-height:46px;padding:0 1.2rem;font-size:.88rem;box-shadow:3px 3px 0 var(--ink)}
+  .header .btn{min-height:46px;padding:0 1.125rem;font-size:0.875rem;box-shadow:3px 3px 0 var(--ink)}
   .header .num{display:none}
   @media(min-width:900px){.nav{display:flex}.header .num{display:inline}.header .lbl{display:none}}
-  .hero{position:relative;padding:8.5rem 0 4rem;overflow:hidden}
-  .sprinkle{position:absolute;font-size:1.6rem;opacity:.5;pointer-events:none;animation:float 7s ease-in-out infinite}
+  .hero{position:relative;padding:3.75rem 0 3.75rem;overflow:hidden}
+  .sprinkle{position:absolute;font-size:1.5rem;opacity:.5;pointer-events:none;animation:float 7s ease-in-out infinite}
   @keyframes float{50%{transform:translateY(-16px) rotate(14deg)}}
   .hero-grid{display:grid;gap:3rem;align-items:center;position:relative}
-  @media(min-width:940px){.hero-grid{grid-template-columns:1.05fr .95fr}.hero{padding:10rem 0 5.5rem}}
-  .hero h1{font-size:clamp(3rem,9vw,5.8rem);margin:1.1rem 0 1.2rem}
+  @media(min-width:940px){.hero-grid{grid-template-columns:1.05fr .95fr}.hero{padding:3.75rem 0 3.75rem}}
+  .hero h1{font-size:clamp(3rem,9vw,3.75rem);margin:1rem 0 1.125rem}
   .hero h1 em{font-style:normal;color:var(--coral)}
   .hero h1 .t{color:var(--teal)}
-  .hero p{color:var(--muted);font-size:1.1rem;max-width:30rem;font-weight:500}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+  .hero p{color:var(--muted);font-size:1rem;max-width:30rem;font-weight:500}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:0.875rem;margin-top:1.875rem}
   .hero-img{position:relative}
-  .hero-img .frame{border-radius:36px;overflow:hidden;aspect-ratio:4/4.3;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--sun);transform:rotate(2deg)}
+  .hero-img .frame{border-radius:16px;overflow:hidden;aspect-ratio:4/4.3;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--sun);transform:rotate(2deg)}
   .hero-img img{width:100%;height:100%;object-fit:cover}
-  .sticker{position:absolute;top:-18px;right:6px;width:110px;height:110px;border-radius:50%;background:var(--grape);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--disp);font-weight:700;font-size:.95rem;line-height:1.15;transform:rotate(10deg);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .sticker{position:absolute;top:-18px;right:12px;width:110px;height:110px;border-radius:50%;background:var(--grape);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--disp);font-weight:700;font-size:0.875rem;line-height:1.15;transform:rotate(10deg);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
   section{position:relative}
   .pad{padding:clamp(4rem,9vw,7rem) 0}
-  .head{text-align:center;margin-bottom:2.8rem}
+  .head{text-align:center;margin-bottom:2.25rem}
   .head .lede{margin-inline:auto}
   .flavors{display:grid;gap:1rem}
   @media(min-width:640px){.flavors{grid-template-columns:repeat(2,1fr)}}
   @media(min-width:1000px){.flavors{grid-template-columns:repeat(4,1fr)}}
-  .flav{background:var(--paper);border:3px solid var(--ink);border-radius:22px;padding:1.6rem 1.4rem;text-align:center;transition:transform .3s var(--ease);position:relative}
+  .flav{background:var(--paper);border:3px solid var(--ink);border-radius:16px;padding:1.5rem 1.25rem;text-align:center;transition:transform .3s var(--ease);position:relative}
   .flav:hover{transform:translateY(-6px) rotate(-1deg)}
   .flav .dot{width:64px;height:64px;border-radius:50%;margin:0 auto 1rem;border:3px solid var(--ink)}
-  .flav h3{font-size:1.25rem;margin-bottom:.3rem}
-  .flav p{color:var(--muted);font-size:.88rem;font-weight:500}
-  .flav .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg);background:var(--sun);border:2px solid var(--ink);font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px;white-space:nowrap}
-  .menu-board{background:var(--ink);color:#fff8ef;border-radius:28px;padding:clamp(2rem,5vw,3.6rem);margin-top:3rem;display:grid;gap:2rem;position:relative;overflow:hidden}
+  .flav h3{font-size:1.25rem;margin-bottom:0.75rem}
+  .flav p{color:var(--muted);font-size:0.875rem;font-weight:500}
+  .flav .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg);background:var(--sun);border:2px solid var(--ink);font-size:0.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:0.75rem 0.75rem;border-radius:16px;white-space:nowrap}
+  .menu-board{background:var(--ink);color:#fff8ef;border-radius:16px;padding:clamp(2rem,5vw,3.6rem);margin-top:3rem;display:grid;gap:1.875rem;position:relative;overflow:hidden}
   .menu-board::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=70') center/cover;opacity:.08}
   @media(min-width:900px){.menu-board{grid-template-columns:1fr 1fr;align-items:start}}
   .menu-board h2{color:#fff}
   .menu-board h2 em{color:var(--sun)}
-  .board-col h3{font-size:1.4rem;color:var(--sun);margin-bottom:1rem}
-  .board-col ul{list-style:none;display:grid;gap:.7rem}
-  .board-col li{display:flex;justify-content:space-between;gap:1rem;border-bottom:2px dotted rgba(255,248,239,.25);padding-bottom:.7rem;font-weight:600}
-  .board-col li small{display:block;font-weight:500;color:rgba(255,248,239,.6);font-size:.85rem}
-  .board-col li span{font-family:var(--disp);font-size:1.3rem;color:var(--sun);white-space:nowrap}
-  .fun{display:grid;gap:1.2rem;margin-top:2.6rem}
+  .board-col h3{font-size:1.25rem;color:var(--sun);margin-bottom:1rem}
+  .board-col ul{list-style:none;display:grid;gap:0.75rem}
+  .board-col li{display:flex;justify-content:space-between;gap:1rem;border-bottom:2px dotted rgba(255,248,239,.25);padding-bottom:0.75rem;font-weight:600}
+  .board-col li small{display:block;font-weight:500;color:rgba(255,248,239,.6);font-size:0.75rem}
+  .board-col li span{font-family:var(--disp);font-size:1.25rem;color:var(--sun);white-space:nowrap}
+  .fun{display:grid;gap:1.125rem;margin-top:2.25rem}
   @media(min-width:800px){.fun{grid-template-columns:repeat(3,1fr)}}
-  .fun-card{border-radius:22px;padding:2rem 1.8rem;color:#fff;position:relative;overflow:hidden}
+  .fun-card{border-radius:16px;padding:1.875rem 1.5rem;color:#fff;position:relative;overflow:hidden}
   .fun-card:nth-child(1){background:var(--coral)}
   .fun-card:nth-child(2){background:var(--teal)}
   .fun-card:nth-child(3){background:var(--grape)}
-  .fun-card h3{font-size:1.6rem;margin-bottom:.5rem;color:#fff}
-  .fun-card p{font-weight:500;color:rgba(255,255,255,.85);font-size:.95rem}
-  .fun-card .big{font-family:var(--disp);font-size:2.6rem;display:block;margin-top:1rem}
+  .fun-card h3{font-size:1.5rem;margin-bottom:0.75rem;color:#fff}
+  .fun-card p{font-weight:500;color:rgba(255,255,255,.85);font-size:0.875rem}
+  .fun-card .big{font-family:var(--disp);font-size:2.25rem;display:block;margin-top:1rem}
   .split{display:grid;gap:3rem;align-items:center}
   @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
-  .split-img{border-radius:26px;overflow:hidden;aspect-ratio:4/3.5;border:4px solid var(--ink);box-shadow:8px 8px 0 var(--teal);transform:rotate(-1.5deg)}
+  .split-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3.5;border:4px solid var(--ink);box-shadow:8px 8px 0 var(--teal);transform:rotate(-1.5deg)}
   .split-img img{width:100%;height:100%;object-fit:cover}
-  .why-list{list-style:none;margin-top:1.6rem;display:grid;gap:1rem}
-  .why-list li{display:flex;gap:1rem;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:1.1rem 1.3rem;font-weight:600;align-items:center}
-  .why-list li i{font-style:normal;font-size:1.6rem}
-  .faq-grid{display:grid;gap:2.5rem}
-  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:4rem}}
-  details{background:#fff;border:3px solid var(--ink);border-radius:16px;margin-bottom:.8rem;padding:0 1.3rem}
-  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;font-family:var(--disp);font-size:1.1rem;font-weight:600}
+  .why-list{list-style:none;margin-top:1.5rem;display:grid;gap:1rem}
+  .why-list li{display:flex;gap:1rem;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:1rem 1.25rem;font-weight:600;align-items:center}
+  .why-list li i{font-style:normal;font-size:1.5rem}
+  .fun-card a.big{color:#fff;text-decoration:underline;text-underline-offset:4px}
+  .testi-grid{display:grid;gap:1rem}
+  @media(min-width:800px){.testi-grid{grid-template-columns:repeat(3,1fr)}}
+  .testi-card{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:1.5rem 1.5rem}
+  .testi-card .stars{color:var(--coral);letter-spacing:.15em;font-weight:700}
+  .testi-card blockquote{font-family:var(--disp);font-size:1.25rem;line-height:1.35;margin:0.75rem 0 1rem}
+  .testi-card cite{font-style:normal;font-weight:700;color:var(--muted);font-size:0.875rem}
+  .faq-grid{display:grid;gap:2.25rem}
+  @media(min-width:940px){.faq-grid{grid-template-columns:1fr 1.5fr;gap:3.75rem}}
+  details{background:#fff;border:3px solid var(--ink);border-radius:16px;margin-bottom:0.75rem;padding:0 1.25rem}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;font-family:var(--disp);font-size:1rem;font-weight:600}
   summary::-webkit-details-marker{display:none}
   summary::after{content:"+";font-size:1.5rem;color:var(--coral);transition:transform .3s}
   details[open] summary::after{transform:rotate(45deg)}
-  .answer{color:var(--muted);padding:0 0 1.2rem;font-weight:500}
+  .answer{color:var(--muted);padding:0 0 1.125rem;font-weight:500}
   .answer a{color:var(--coral-d);font-weight:700}
-  .contact-card{background:linear-gradient(130deg,var(--coral),#ff7a5c);border:4px solid var(--ink);border-radius:28px;padding:clamp(2rem,5vw,4rem);display:grid;gap:2.2rem;color:#fff;box-shadow:10px 10px 0 var(--ink)}
+  .contact-card{background:var(--coral);border:4px solid var(--ink);border-radius:16px;padding:clamp(2rem,5vw,4rem);display:grid;gap:1.875rem;color:#fff;box-shadow:10px 10px 0 var(--ink)}
   @media(min-width:940px){.contact-card{grid-template-columns:1.2fr 1fr;align-items:center}}
   .contact-card h2{color:#fff}
   .contact-card h2 em{color:var(--sun)}
-  .big-phone{font-family:var(--disp);font-size:clamp(2rem,5vw,3.2rem);color:#fff;display:inline-block;margin:1rem 0 1.6rem;text-shadow:3px 3px 0 rgba(0,0,0,.2)}
+  .big-phone{font-family:var(--disp);font-size:clamp(1.875rem,5vw,3rem);color:#fff;display:inline-block;margin:1rem 0 1.5rem;text-shadow:3px 3px 0 rgba(0,0,0,.2)}
   .big-phone:hover{color:var(--sun)}
-  .info{display:grid;gap:.8rem}
-  .info-row{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.4);border-radius:14px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
-  .info-row svg{width:19px;height:19px;color:#fff;margin-top:.2rem}
-  .info-row small{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);font-weight:800}
-  footer{padding:2.6rem 0 2rem;color:var(--muted);font-size:.88rem;font-weight:600}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
-  .demo{border:2px dashed var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.78rem}
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(255,248,239,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:3px solid var(--ink);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
-  .callbar .btn{min-height:54px;font-size:.88rem;padding:0 .8rem;box-shadow:none}
+  .info{display:grid;gap:0.75rem}
+  .info-row{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.4);border-radius:16px;padding:1rem 1.125rem;display:grid;grid-template-columns:auto 1fr;gap:0.875rem;align-items:start}
+  .info-row svg{width:19px;height:19px;color:#fff;margin-top:0.75rem}
+  .info-row small{display:block;font-size:0.75rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);font-weight:700}
+  footer{padding:2.25rem 0 1.875rem;color:var(--muted);font-size:0.875rem;font-weight:600}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 1.875rem;justify-content:space-between;align-items:center}
+  .demo{border:2px dashed var(--line);border-radius:16px;padding:0.75rem 0.875rem;font-size:0.75rem}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(255,248,239,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:3px solid var(--ink);display:grid;grid-template-columns:1fr 2fr;gap:0.75rem}
+  .callbar .btn{min-height:54px;font-size:0.875rem;padding:0 0.75rem;box-shadow:none}
   @media(min-width:900px){.callbar{display:none}}
-  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
   .js .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}.sprinkle{animation:none}}
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
+<style>
+*,*::before,*::after{transition-property:transform,opacity!important;transition-duration:.5s!important;transition-timing-function:cubic-bezier(0.22,1,0.36,1)!important}
+h1,h2,h3{text-wrap:balance}
+em,i{font-style:normal}
+p{text-wrap:pretty}
+.hero h1{max-width:680px}
+a:active,.btn:active{transform:scale(.98)}
+.text-link{align-self:center;font-weight:600;text-decoration:underline;text-underline-offset:4px;padding:12px 8px}
+section.tagline{padding:64px 0;text-align:center}
+.tagline-words{font-size:clamp(1.875rem,4vw,3rem);line-height:1.2;font-weight:600;max-width:680px;margin:0 auto;text-wrap:balance}
+.tagline-words .tl-line{display:block}
+.tagline-words span.w{opacity:.3;transition:opacity .5s cubic-bezier(0.22,1,0.36,1)}
+.tagline-words span.w.lit{opacity:1}
+.how-grid{display:grid;gap:16px}
+@media(min-width:800px){.how-grid{grid-template-columns:repeat(3,1fr)}}
+.how-card{border:3px solid var(--ink);border-radius:16px;padding:24px}
+.how-n{display:grid;place-items:center;width:40px;height:40px;border-radius:8px;background:var(--coral);color:#fff;font-weight:700;font-size:20px;margin-bottom:16px}
+.how-card h3{font-size:20px;margin-bottom:8px}
+.how-card p{color:var(--muted);font-size:16px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.tagline-words span.w{opacity:1}.reveal{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
 
@@ -149,7 +177,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Frosty Fox Creamery — home"><img src="../logos/frosty-fox-creamery.png" alt="Frosty Fox Creamery logo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;flex:none"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=100&q=70" alt="Frosty Fox" loading="lazy" style="width:30px;height:30px;border-radius:50%;object-fit:cover;vertical-align:-7px;margin-right:6px">Frosty <span>Fox</span></a>
+    <a href="#top" class="logo" aria-label="Frosty Fox Creamery — home"><img src="../logos/frosty-fox-creamery.png" alt="Frosty Fox Creamery logo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;flex:none">Frosty <span>Fox</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#flavors">Flavors</a><a href="#menu">Menu</a><a href="#faq">FAQ</a><a href="#contact">Visit</a>
     </nav>
@@ -165,12 +193,12 @@
     <span class="sprinkle" style="top:74%;right:6%;animation-delay:3.6s"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=100&q=70" alt="Strawberry ice cream" loading="lazy" style="width:46px;height:46px;border-radius:50%;object-fit:cover"></span>
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow reveal">Small-batch ice cream · Calgary</span>
+        <span class="eyebrow reveal">Small batch ice cream · Calgary</span>
         <h1 class="reveal" style="--d:.08s">Scoops of<br><em>pure joy.</em></h1>
-        <p class="reveal" style="--d:.16s">Frosty Fox churns small batches daily — wild flavors, waffle cones made in-house, and a toppings bar that dreams are made of.</p>
+        <p class="reveal" style="--d:.16s">Frosty Fox churns small batches daily — wild flavors, waffle cones made in house, and a toppings bar that dreams are made of.</p>
         <div class="hero-ctas reveal" style="--d:.24s">
           <a class="btn btn-coral" href="tel:+14035550135"><svg><use href="#i-phone"/></svg>Call (403) 555-0135</a>
-          <a class="btn btn-line" href="#flavors">See flavors</a>
+          <a class="text-link" href="#flavors">See flavors</a>
         </div>
       </div>
       <div class="hero-img reveal" style="--d:.14s">
@@ -184,24 +212,24 @@
     <div class="wrap">
       <div class="head">
         <div><span class="eyebrow reveal">This week's churn</span><h2 class="reveal" style="--d:.08s">Flavors that <em>pop.</em></h2></div>
-        <p class="lede reveal" style="--d:.14s">Twelve flavors on rotation, always — plus one wild experimental flavor every Friday. Dairy-free options marked "Vegan".</p>
+        <p class="lede reveal" style="--d:.14s">Twelve flavors on rotation, always — plus one wild experimental flavor every Friday. Dairy free options marked "Vegan".</p>
       </div>
       <div class="flavors">
-        <article class="flav reveal"><span class="tag">Fox fave</span><div class="dot" style="background:linear-gradient(135deg,#ff9a9e,#fecfef)"></div><h3>Strawberry Cloud</h3><p>Real Alberta strawberries, whipped cream base</p></article>
-        <article class="flav reveal" style="--d:.06s"><div class="dot" style="background:linear-gradient(135deg,#6b4226,#a06a35)"></div><h3>Midnight Fudge Fox</h3><p>Triple chocolate with brownie chunks</p></article>
-        <article class="flav reveal" style="--d:.12s"><div class="dot" style="background:linear-gradient(135deg,#b8e986,#7bc47f)"></div><h3>Mint Chip Mischief</h3><p>Fresh mint, dark chocolate shards</p></article>
-        <article class="flav reveal" style="--d:.18s"><div class="dot" style="background:linear-gradient(135deg,#ffe29f,#ffa99f)"></div><h3>Salted Caramel Den</h3><p>Burnt caramel, flaky sea salt</p></article>
-        <article class="flav reveal"><span class="tag">Vegan</span><div class="dot" style="background:linear-gradient(135deg,#f6d365,#fda085)"></div><h3>Mango Tango</h3><p>Alphonso mango sorbet, coconut splash</p></article>
-        <article class="flav reveal" style="--d:.06s"><div class="dot" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb)"></div><h3>Grape Soda Pop</h3><p>Fizzy grape, popping candy surprise</p></article>
-        <article class="flav reveal" style="--d:.12s"><div class="dot" style="background:linear-gradient(135deg,#fddb92,#d1fdff)"></div><h3>Vanilla Bean Classic</h3><p>Madagascar vanilla, simple perfection</p></article>
-        <article class="flav reveal" style="--d:.18s"><span class="tag">Friday drop</span><div class="dot" style="background:linear-gradient(135deg,#ff5a5f,#8b5fbf)"></div><h3>Fox's Mystery Mix</h3><p>New experimental flavor every Friday!</p></article>
+        <article class="flav reveal"><span class="tag">Fox fave</span><div class="dot" style="background:#ff9a9e"></div><h3>Strawberry Cloud</h3><p>Real Alberta strawberries, whipped cream base</p></article>
+        <article class="flav reveal" style="--d:.06s"><div class="dot" style="background:#6b4226"></div><h3>Midnight Fudge Fox</h3><p>Triple chocolate with brownie chunks</p></article>
+        <article class="flav reveal" style="--d:.12s"><div class="dot" style="background:#7bc47f"></div><h3>Mint Chip Mischief</h3><p>Fresh mint, dark chocolate shards</p></article>
+        <article class="flav reveal" style="--d:.18s"><div class="dot" style="background:#ffa99f"></div><h3>Salted Caramel Den</h3><p>Burnt caramel, flaky sea salt</p></article>
+        <article class="flav reveal"><span class="tag">Vegan</span><div class="dot" style="background:#fda085"></div><h3>Mango Tango</h3><p>Alphonso mango sorbet, coconut splash</p></article>
+        <article class="flav reveal" style="--d:.06s"><div class="dot" style="background:#a18cd1"></div><h3>Grape Soda Pop</h3><p>Fizzy grape, popping candy surprise</p></article>
+        <article class="flav reveal" style="--d:.12s"><div class="dot" style="background:#fddb92"></div><h3>Vanilla Bean Classic</h3><p>Madagascar vanilla, simple perfection</p></article>
+        <article class="flav reveal" style="--d:.18s"><span class="tag">Friday drop</span><div class="dot" style="background:#ff5a5f"></div><h3>Fox's Mystery Mix</h3><p>New experimental flavor every Friday!</p></article>
       </div>
 
       <div class="menu-board reveal" id="menu">
         <div>
           <span class="eyebrow" style="background:var(--sun);color:var(--ink);transform:rotate(2deg)">The menu</span>
           <h2>Scoop it <em>your way.</em></h2>
-          <p style="color:rgba(255,248,239,.7);font-weight:500">Waffle cones made fresh in-house all day. Prices in CAD.</p>
+          <p style="color:rgba(255,248,239,.7);font-weight:500">Waffle cones made fresh in house all day. Prices in CAD.</p>
         </div>
         <div style="display:grid;gap:2rem">
           <div class="board-col">
@@ -210,7 +238,7 @@
               <li><div>Kid scoop<small>One small scoop, cake cone</small></div><span>$4.25</span></li>
               <li><div>Single scoop<small>Cake cone or cup</small></div><span>$5.50</span></li>
               <li><div>Double scoop<small>Any cone or cup</small></div><span>$6.75</span></li>
-              <li><div>Waffle cone<small>Fresh-made, any scoops</small></div><span>+$1.50</span></li>
+              <li><div>Waffle cone<small>Fresh made, any scoops</small></div><span>+$1.50</span></li>
             </ul>
           </div>
           <div class="board-col">
@@ -227,8 +255,8 @@
 
       <div class="fun">
         <div class="fun-card reveal"><h3>Birthday Parties</h3><p>Sundae bar + private room for up to 20 kids. The fox makes an appearance.</p><span class="big">$199</span></div>
-        <div class="fun-card reveal" style="--d:.08s"><h3>Fox Truck</h3><p>Our ice cream truck for weddings, school events &amp; block parties.</p><span class="big">Book it</span></div>
-        <div class="fun-card reveal" style="--d:.16s"><h3>Flavor Contest</h3><p>Suggest a flavor — if we churn it, you get free pints for a year.</p><span class="big">Enter</span></div>
+        <div class="fun-card reveal" style="--d:.08s"><h3>Fox Truck</h3><p>Our ice cream truck for weddings, school events &amp; block parties.</p><a class="big" href="tel:+14035550135">Book it</a></div>
+        <div class="fun-card reveal" style="--d:.16s"><h3>Flavor Contest</h3><p>Suggest a flavor — if we churn it, you get free pints for a year.</p><a class="big" href="tel:+14035550135">Enter</a></div>
       </div>
     </div>
   </section>
@@ -241,10 +269,46 @@
         <h2 class="reveal" style="--d:.08s">Churned daily, <em>gone nightly.</em></h2>
         <ul class="why-list reveal" style="--d:.16s">
           <li><img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=100&q=70" alt="Dairy farm" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Alberta dairy from a family farm 40 minutes away</li>
-          <li><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=100&q=70" alt="Plant based" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Always 3+ dairy-free options churning</li>
+          <li><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=100&q=70" alt="Plant based" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Always 3+ dairy free options churning</li>
           <li><img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=100&q=70" alt="Fresh waffles" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Waffle cones pressed fresh every single hour</li>
-          <li><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=100&q=70" alt="Birthday celebration" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Kids eat free on their birthday (with a grown-up scoop)</li>
+          <li><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=100&q=70" alt="Birthday celebration" loading="lazy" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:-10px;margin-right:10px">Kids eat free on their birthday (with a grown up scoop)</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow reveal">How it works</span>
+        <h2 class="reveal" style="--d:.08s">Scoops in <em>three steps.</em></h2>
+        <p class="lede reveal" style="--d:.14s">Pick, scoop, smile. That is the whole process.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-card reveal"><span class="how-n">1</span><h3>Pick your flavours</h3><p>Twelve flavours on rotation, plus one wild flavour every Friday.</p></div>
+        <div class="how-card reveal" style="--d:.08s"><span class="how-n">2</span><h3>We scoop and top it</h3><p>Cone or cup, waffle cone made fresh, toppings bar included.</p></div>
+        <div class="how-card reveal" style="--d:.16s"><span class="how-n">3</span><h3>Lick, smile, repeat</h3><p>That is it. Come back tomorrow and try the next flavour.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tagline">
+    <div class="wrap">
+      <p class="tagline-words"><span class="tl-line">Life is short.</span><span class="tl-line">Eat the ice cream first.</span></p>
+    </div>
+  </section>
+
+  <section class="pad" id="love" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow reveal">Kind words</span>
+        <h2 class="reveal" style="--d:.08s">Scoops of <em>happy.</em></h2>
+        <p class="lede reveal" style="--d:.14s">What families say after a visit to the Fox.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal"><span class="stars">★★★★★</span><blockquote>&ldquo;My kids ask to come here every weekend. The Friday flavour drop is our family event.&rdquo;</blockquote><cite>&mdash; Hannah, weekend regular</cite></div>
+        <div class="testi-card reveal" style="--d:.08s"><span class="stars">★★★★★</span><blockquote>&ldquo;The waffle cones are still warm when they hand them over. Nothing beats that.&rdquo;</blockquote><cite>&mdash; Noah, cone loyalist</cite></div>
+        <div class="testi-card reveal" style="--d:.16s"><span class="stars">★★★★★</span><blockquote>&ldquo;Booked the Fox Truck for our block party &mdash; the line never stopped smiling.&rdquo;</blockquote><cite>&mdash; Olivia, block party host</cite></div>
       </div>
     </div>
   </section>
@@ -258,11 +322,12 @@
         <p class="reveal" style="--d:.2s;margin-top:1.6rem"><a class="btn btn-coral" href="tel:+14035550135"><svg><use href="#i-phone"/></svg>(403) 555-0135</a></p>
       </div>
       <div class="reveal" style="--d:.1s">
-        <details open><summary>Do you have dairy-free options?</summary><p class="answer">Always! At least 3 dairy-free flavors are churning at any time — coconut, oat and sorbet bases.</p></details>
+        <details open><summary>Do you have dairy free options?</summary><p class="answer">Always! At least 3 dairy free flavors are churning at any time — coconut, oat and sorbet bases.</p></details>
         <details><summary>Can I order pints ahead?</summary><p class="answer">Yes — call <a href="tel:+14035550135">(403) 555-0135</a> and we'll pack any flavor fresh. Great for parties.</p></details>
         <details><summary>Do you cater events?</summary><p class="answer">Our Fox Truck does weddings, school events and block parties. Call for availability and pricing.</p></details>
         <details><summary>What are your hours?</summary><p class="answer">Sunday–Thursday 12–9 PM, Friday–Saturday 12–10 PM. Summer hours extend to 11 PM.</p></details>
         <details><summary>Where are you?</summary><p class="answer">5216 20 St SW, Calgary, AB. <a href="https://www.google.com/maps/search/?api=1&query=5216+20+St+SW+Calgary+AB" target="_blank" rel="noopener">Get directions</a>.</p></details>
+        <details><summary>Do you host birthday parties?</summary><p class="answer">Yes &mdash; a sundae bar and private room for up to 20 kids. Call to check dates and pricing.</p></details>
       </div>
     </div>
   </section>
@@ -293,7 +358,7 @@
   <div class="wrap">
     <span>Frosty Fox Creamery · 5216 20 St SW, Calgary · <a href="tel:+14035550135">(403) 555-0135</a></span>
     <span class="demo">Demo website</span>
-    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></span>
+    <span>Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></span>
   </div>
 </footer>
 
@@ -311,8 +376,11 @@
   else{els.forEach(function(el){el.classList.add('in')})}
 </script>
 
+<script>
+(function(){var lines=document.querySelectorAll('.tagline-words .tl-line');lines.forEach(function(line){var words=line.textContent.trim().split(/\s+/);line.innerHTML=words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ')});var t=document.querySelector('section.tagline');if(!t)return;var ws=t.querySelectorAll('span.w');function light(){ws.forEach(function(s,i){setTimeout(function(){s.classList.add('lit')},i*80)})}if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ws.forEach(function(s){s.classList.add('lit')});return}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){light();io.disconnect()}})},{threshold:.35});io.observe(t)}else{light()}})();
+</script>
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
 </body>
 </html>
