@@ -10,20 +10,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
     --blush:#fff8f4; --petal:#fbe7e3; --rose:#f6d3cf; --white:#fffdfb;
     --berry:#1f6fb8; --berry-d:#155a94; --leaf:#22303f; --leaf-2:#2f4657; --gold:#aeb9c4;
     --ink:#2b1d22; --muted:#6c5560;
-    --serif:'Playfair Display',Georgia,serif;
-    --sans:'Jost',system-ui,-apple-system,sans-serif;
-    --ease:cubic-bezier(.2,.7,.1,1);
+    --serif:'Manrope',system-ui,sans-serif;
+    --sans:'Manrope',system-ui,-apple-system,sans-serif;
+    --ease:cubic-bezier(0.22,1,0.36,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--blush);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  body{background:var(--blush);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
   @media (min-width:900px){body{padding-bottom:0}}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
@@ -33,13 +33,13 @@
   @media (min-width:700px){.wrap{width:min(1200px,100% - 5rem)}}
 
   h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.06;letter-spacing:-.01em}
-  h2{font-size:clamp(2.2rem,5.6vw,4rem)}
+  h2{font-size:clamp(30px,5.6vw,60px)}
   h2 i,h1 i{font-weight:500;color:var(--berry)}
-  .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.78rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--leaf-2)}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--leaf-2)}
   .eyebrow svg{width:18px;height:18px;color:var(--berry)}
-  .lede{color:var(--muted);font-size:clamp(1.02rem,1.4vw,1.14rem);max-width:34rem}
+  .lede{color:var(--muted);font-size:clamp(16px,1.4vw,18px);max-width:34rem}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:0 1.7rem;border-radius:999px;font-family:var(--sans);font-weight:500;font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;transition:transform .35s var(--ease),background .35s,color .35s,box-shadow .35s,border-color .35s;white-space:nowrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 24px;border-radius:8px;font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.08em;transition:transform .5s cubic-bezier(0.22,1,0.36,1),background .5s,color .5s,box-shadow .5s,border-color .5s;white-space:nowrap}
   .btn svg{width:19px;height:19px;flex:none}
   .btn-berry{background:var(--berry);color:#fff;box-shadow:0 12px 30px -12px rgba(31,111,184,.6)}
   .btn-berry:hover{background:var(--berry-d);transform:translateY(-2px)}
@@ -47,159 +47,171 @@
   .btn-outline:hover{background:var(--ink);color:var(--white)}
 
   /* header */
-  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,box-shadow .4s}
+  .header{position:fixed;inset:0 0 auto;z-index:50;transition:background .5s,box-shadow .5s}
   .header.scrolled{background:rgba(255,248,244,.88);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:0 1px 0 rgba(31,111,184,.12)}
-  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:1rem}
+  .header .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:16px}
   .logo{display:flex;flex-direction:column;line-height:1}
-  .logo b{font-family:var(--serif);font-weight:600;font-size:1.45rem;letter-spacing:-.01em}
+  .logo b{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:-.01em}
   .logo b i{color:var(--berry);font-weight:500}
-  .logo span{font-size:.62rem;letter-spacing:.36em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
-  .nav{display:none;gap:2.2rem;font-size:.92rem;color:var(--muted)}
-  .nav a{transition:color .25s}
+  .logo span{font-size:12px;letter-spacing:.36em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .nav{display:none;gap:32px;font-size:14px;color:var(--muted)}
+  .nav a{transition:color .5s}
   .nav a:hover{color:var(--berry)}
-  .header .btn{min-height:46px;padding:0 1.2rem;font-size:.82rem}
+  .header .btn{min-height:46px;padding:0 16px;font-size:12px}
   .header .btn .num{display:none}
   @media (min-width:900px){.nav{display:flex}.header .btn .num{display:inline}.header .btn .lbl{display:none}}
 
   /* hero */
   .hero{position:relative;min-height:100svh;display:flex;align-items:center;isolation:isolate;overflow:hidden;background:var(--petal)}
   .hero-media{position:absolute;inset:0;z-index:-2}
-  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:70% 50%;transform:scale(1.05);animation:bloom 2.6s var(--ease) forwards}
-  @keyframes bloom{to{transform:scale(1)}}
-  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,248,244,.85) 0,rgba(255,248,244,0) 150px),linear-gradient(90deg,rgba(255,248,244,.97) 0%,rgba(255,248,244,.9) 38%,rgba(255,248,244,.35) 70%,rgba(255,248,244,.1) 100%)}
-  @media (max-width:760px){.hero::after{background:linear-gradient(180deg,rgba(255,248,244,.75) 0%,rgba(255,248,244,.88) 45%,rgba(255,248,244,.97) 100%)}}
-  .hero-inner{padding:8rem 0 4rem;max-width:640px}
-  .hero h1{font-size:clamp(2.9rem,8.4vw,6.2rem);margin:1.3rem 0 1.4rem}
-  .hero p{max-width:31rem;color:#4d3a42;font-size:clamp(1.05rem,1.5vw,1.2rem)}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:70% 50%;transform:scale(1.05);animation:gleamIn 2.6s var(--ease) forwards}
+  @keyframes gleamIn{to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(255,248,244,.82)}
+  @media (max-width:760px){.hero::after{background:rgba(255,248,244,.9)}}
+  .hero-inner{padding:96px 0 64px;max-width:640px}
+  .hero h1{font-size:clamp(36px,8.4vw,60px);margin:24px 0 24px;max-width:680px;}
+  .hero p{max-width:31rem;color:#4d3a42;font-size:clamp(16px,1.5vw,18px)}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
   .hero-ctas .btn{flex:1 1 220px}
   @media (min-width:600px){.hero-ctas .btn{flex:0 0 auto}}
-  .hero-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:2.4rem;font-size:.95rem;color:#4d3a42}
-  .hero-meta span{display:inline-flex;align-items:center;gap:.5rem}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:40px;font-size:14px;color:#4d3a42}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
   .hero-meta svg{width:18px;height:18px;color:var(--berry)}
   .seal{position:absolute;right:clamp(1.2rem,5vw,4rem);bottom:clamp(6rem,10vw,5rem);width:clamp(120px,15vw,170px);aspect-ratio:1;display:none}
   @media (min-width:761px){.seal{display:block}}
   .seal svg.ring{width:100%;height:100%;animation:spin 28s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   .seal-core{position:absolute;inset:22%;border-radius:50%;background:var(--berry);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--serif);line-height:1;box-shadow:0 16px 40px -14px rgba(21,90,148,.7)}
-  .seal-core small{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;margin-bottom:.25rem}
-  .seal-core b{font-size:clamp(1.3rem,2vw,1.7rem);font-weight:600}
+  .seal-core small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:4px}
+  .seal-core b{font-size:clamp(20px,2vw,24px);font-weight:600}
 
   /* heritage strip */
-  .heritage{background:var(--leaf);color:#f3ebe3;padding:1.6rem 0}
-  .heritage .wrap{display:flex;flex-wrap:wrap;gap:.8rem 2.6rem;justify-content:center;align-items:center;text-align:center}
-  .heritage p{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem)}
+  .heritage{background:var(--leaf);color:#f3ebe3;padding:24px 0}
+  .heritage .wrap{display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:center;align-items:center;text-align:center}
+  .heritage p{font-family:var(--serif);font-style:normal;font-size:clamp(18px,2.4vw,24px)}
   .heritage p b{font-style:normal;color:#d6e6f5;font-weight:600}
   .heritage .sep{width:7px;height:7px;transform:rotate(45deg);background:var(--gold)}
 
   section{position:relative}
-  .pad{padding:clamp(5rem,11vw,8.5rem) 0}
-  .head{display:grid;gap:1.4rem;margin-bottom:clamp(2.8rem,6vw,4.2rem)}
+  .pad{padding:clamp(80px,11vw,96px) 0}
+  .head{display:grid;gap:24px;margin-bottom:clamp(48px,6vw,64px)}
   @media (min-width:900px){.head{grid-template-columns:1.3fr 1fr;align-items:end}}
 
   /* services: arched cards */
-  .svc{display:grid;gap:2rem 1.4rem;grid-template-columns:1fr}
+  .svc{display:grid;gap:32px 24px;grid-template-columns:1fr}
   @media (min-width:620px){.svc{grid-template-columns:repeat(2,1fr)}}
   @media (min-width:1020px){.svc{grid-template-columns:repeat(3,1fr)}}
-  .card{display:flex;flex-direction:column;transition:transform .5s var(--ease)}
+  .card{display:flex;flex-direction:column;transition:transform .5s cubic-bezier(0.22,1,0.36,1)}
   .card:hover{transform:translateY(-6px)}
-  .arch{position:relative;aspect-ratio:4/4.6;border-radius:999px 999px 14px 14px;overflow:hidden;background:var(--petal);box-shadow:0 26px 50px -30px rgba(21,90,148,.45)}
-  .arch img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+  .arch{position:relative;aspect-ratio:4/4.6;border-radius:16px;overflow:hidden;background:var(--petal);box-shadow:0 26px 50px -30px rgba(21,90,148,.45)}
+  .arch img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(0.22,1,0.36,1)}
   .card:hover .arch img{transform:scale(1.06)}
   .arch::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 6px rgba(255,253,251,.65)}
-  .card-num{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);z-index:1;font-family:var(--serif);font-style:italic;font-size:.95rem;background:var(--white);color:var(--berry);padding:.25rem .9rem;border-radius:999px}
-  .card-body{padding:1.4rem .4rem 0;text-align:center}
-  .card h3{font-size:1.6rem;margin-bottom:.45rem}
-  .card p{color:var(--muted);font-size:.98rem;max-width:22rem;margin-inline:auto}
-  .card-link{display:inline-flex;align-items:center;gap:.45rem;margin-top:.9rem;font-size:.82rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--berry);border-bottom:1px solid rgba(31,111,184,.35);padding-bottom:.15rem}
-  .card-link svg{width:16px;height:16px;transition:transform .35s var(--ease)}
+  .card-num{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);z-index:1;font-family:var(--serif);font-style:normal;font-size:14px;background:var(--white);color:var(--berry);padding:4px 12px;border-radius:8px}
+  .card-body{padding:24px 4px 0;text-align:center}
+  .card h3{font-size:24px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:16px;max-width:22rem;margin-inline:auto}
+  .card-link{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;font-weight:500;letter-spacing:.16em;color:var(--berry);border-bottom:1px solid rgba(31,111,184,.35);padding-bottom:2px}
+  .card-link svg{width:16px;height:16px;transition:transform .5s cubic-bezier(0.22,1,0.36,1)}
   .card:hover .card-link svg{transform:translateX(4px)}
-  .svc-note{margin-top:clamp(2.8rem,6vw,4rem);text-align:center;color:var(--muted);font-size:1.02rem}
+  .svc-note{margin-top:clamp(48px,6vw,64px);text-align:center;color:var(--muted);font-size:16px}
   .svc-note a{color:var(--berry);font-weight:500;border-bottom:1px solid rgba(31,111,184,.4)}
 
   /* steps */
   .steps-wrap{background:var(--petal)}
-  .steps{display:grid;gap:1.2rem}
-  @media (min-width:860px){.steps{grid-template-columns:repeat(3,1fr);gap:1.4rem}}
-  .step{background:var(--white);border-radius:18px;padding:clamp(1.8rem,3.5vw,2.6rem);position:relative;overflow:hidden}
-  .step::before{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,var(--rose),transparent 70%);opacity:.7}
-  .step-n{font-family:var(--serif);font-style:italic;font-size:3.4rem;line-height:1;color:var(--berry);display:block;margin-bottom:1.2rem;position:relative}
-  .step h3{font-size:1.5rem;margin-bottom:.5rem}
-  .step p{color:var(--muted);font-size:.98rem}
+  .steps{display:grid;gap:16px}
+  @media (min-width:860px){.steps{grid-template-columns:repeat(3,1fr);gap:24px}}
+  .step{background:var(--white);border-radius:16px;padding:clamp(32px,3.5vw,40px);position:relative;overflow:hidden}
+  .step::before{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:none;opacity:.7}
+  .step-n{font-family:var(--serif);font-style:normal;font-size:48px;line-height:1;color:var(--berry);display:block;margin-bottom:16px;position:relative}
+  .step h3{font-size:24px;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:16px}
   .step a{color:var(--berry);border-bottom:1px solid rgba(31,111,184,.35)}
 
   /* gallery */
-  .gallery{display:grid;gap:.9rem;grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
-  @media (min-width:800px){.gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:1.1rem}}
-  .gallery figure{position:relative;overflow:hidden;border-radius:14px;background:var(--petal)}
-  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+  .gallery{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  @media (min-width:800px){.gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:16px}}
+  .gallery figure{position:relative;overflow:hidden;border-radius:16px;background:var(--petal)}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(0.22,1,0.36,1)}
   .gallery figure:hover img{transform:scale(1.05)}
   .g1{grid-row:span 2}
   .g4{grid-column:span 2}
   @media (min-width:800px){.g1{grid-row:span 2}.g3{grid-row:span 2}.g4{grid-column:span 1}}
-  .ig{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between;margin-top:2rem;padding:1.4rem 1.6rem;border-radius:16px;border:1px solid rgba(31,111,184,.18);background:var(--white)}
+  .ig{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;margin-top:32px;padding:24px 24px;border-radius:16px;border:1px solid rgba(31,111,184,.18);background:var(--white)}
   .ig p{color:var(--muted)}
   .ig p b{color:var(--ink);font-weight:500}
-  .ig a.btn{max-width:100%;white-space:normal;text-align:center;padding-inline:1.2rem}
+  .ig a.btn{max-width:100%;white-space:normal;text-align:center;padding-inline:16px}
 .ig a.btn svg{width:20px;height:20px}
-  .note{margin-top:1rem;font-size:.82rem;color:var(--muted)}
+  .note{margin-top:16px;font-size:12px;color:var(--muted)}
 
   /* faq */
-  .faq-grid{display:grid;gap:3rem}
-  @media (min-width:960px){.faq-grid{grid-template-columns:1fr 1.35fr;gap:5rem}}
-  .faq-aside .lede{margin-top:1.3rem}
-  .faq-aside .btn{margin-top:1.8rem}
+  .faq-grid{display:grid;gap:48px}
+  @media (min-width:960px){.faq-grid{grid-template-columns:1fr 1.35fr;gap:80px}}
+  .faq-aside .lede{margin-top:24px}
+  .faq-aside .btn{margin-top:32px}
   .faq-list{border-top:1px solid rgba(43,29,34,.15)}
   details{border-bottom:1px solid rgba(43,29,34,.15)}
-  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.5rem 0;font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.4rem);transition:color .3s}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-family:var(--serif);font-weight:600;font-size:clamp(18px,2.2vw,20px);transition:color .5s}
   summary::-webkit-details-marker{display:none}
   summary:hover{color:var(--berry)}
-  .bud{position:relative;width:36px;height:36px;flex:none;border-radius:50%;border:1.5px solid rgba(31,111,184,.35);transition:background .35s,transform .45s var(--ease)}
+  .bud{position:relative;width:36px;height:36px;flex:none;border-radius:50%;border:1.5px solid rgba(31,111,184,.35);transition:background .5s,transform .5s cubic-bezier(0.22,1,0.36,1)}
   .bud::before,.bud::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--berry);transform:translate(-50%,-50%)}
-  .bud::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .45s var(--ease)}
+  .bud::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .5s cubic-bezier(0.22,1,0.36,1)}
   details[open] .bud{background:var(--berry);transform:rotate(180deg)}
   details[open] .bud::before,details[open] .bud::after{background:#fff}
   details[open] .bud::after{transform:translate(-50%,-50%) rotate(0)}
-  .answer{color:var(--muted);padding:0 3.2rem 1.6rem 0;max-width:40rem}
+  .answer{color:var(--muted);padding:0 48px 24px 0;max-width:40rem}
   .answer a{color:var(--berry);border-bottom:1px solid rgba(31,111,184,.35)}
   details[open] .answer{animation:drop .5s var(--ease)}
   @keyframes drop{from{opacity:0;transform:translateY(-6px)}}
 
   /* contact */
-  .contact-card{position:relative;border-radius:26px;overflow:hidden;background:var(--leaf);color:#f6efe8;isolation:isolate}
+  .contact-card{position:relative;border-radius:16px;overflow:hidden;background:var(--leaf);color:#f6efe8;isolation:isolate}
   .contact-bg{position:absolute;inset:0;z-index:-2}
   .contact-bg img{width:100%;height:100%;object-fit:cover;object-position:70% 50%}
-  .contact-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(31,61,43,.97) 25%,rgba(31,61,43,.85) 55%,rgba(31,61,43,.45))}
-  .contact-inner{display:grid;gap:3rem;padding:clamp(2.2rem,6vw,4.8rem)}
+  .contact-card::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(31,61,43,.88)}
+  .contact-inner{display:grid;gap:48px;padding:clamp(32px,6vw,80px)}
   @media (min-width:960px){.contact-inner{grid-template-columns:1.15fr 1fr;align-items:center}}
   .contact .eyebrow{color:#d6e6f5}
   .contact .eyebrow svg{color:#d6e6f5}
-  .contact h2{color:#fff;margin:1.1rem 0 .8rem}
+  .contact h2{color:#fff;margin:16px 0 12px}
   .contact h2 i{color:#d6e6f5}
-  .big-phone{display:inline-block;font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5.6vw,3.4rem);color:#fff;margin:.3rem 0 1.8rem;border-bottom:2px solid rgba(241,198,207,.5);line-height:1.2}
+  .big-phone{display:inline-block;font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.6vw,48px);color:#fff;margin:4px 0 32px;border-bottom:2px solid rgba(241,198,207,.5);line-height:1.2}
   .big-phone:hover{border-color:#d6e6f5}
-  .contact-ctas{display:flex;flex-wrap:wrap;gap:.8rem}
+  .contact-ctas{display:flex;flex-wrap:wrap;gap:12px}
   .contact-ctas .btn{flex:1 1 200px}
   @media (min-width:600px){.contact-ctas .btn{flex:0 0 auto}}
   .contact .btn-outline{border-color:rgba(255,255,255,.6);color:#fff;background:transparent}
   .contact .btn-outline:hover{background:#fff;color:var(--leaf)}
   .info{display:grid;border-top:1px solid rgba(255,255,255,.18)}
-  .info-row{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.18);align-items:start}
-  .info-row svg{width:22px;height:22px;color:#d6e6f5;margin-top:.2rem}
-  .info-row small{display:block;font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#ccd8e4;margin-bottom:.2rem}
-  .info-row b{font-weight:500;font-size:1.06rem}
+  .info-row{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18);align-items:start}
+  .info-row svg{width:22px;height:22px;color:#d6e6f5;margin-top:2px}
+  .info-row small{display:block;font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#ccd8e4;margin-bottom:2px}
+  .info-row b{font-weight:500;font-size:16px}
   a.info-row:hover b{color:#d6e6f5}
 
-  footer{padding:3rem 0 2.6rem;color:var(--muted);font-size:.9rem}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center}
+  footer{padding:48px 0 40px;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
   footer a:hover{color:var(--berry)}
-  .demo{width:100%;padding-top:1.2rem;border-top:1px solid rgba(43,29,34,.12);font-size:.84rem}
+  .demo{width:100%;padding-top:16px;border-top:1px solid rgba(43,29,34,.12);font-size:12px}
 
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(255,248,244,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(31,111,184,.15);display:grid;grid-template-columns:1fr 2fr;gap:.6rem}
-  .callbar .btn{min-height:54px;font-size:.84rem;padding:0 1rem}
+
+  /* benefits + reviews */
+  .ben{display:grid;gap:16px}
+  @media (min-width:860px){.ben{grid-template-columns:repeat(3,1fr)}}
+  .ben article{background:var(--white);border-radius:16px;padding:24px}
+  .ben h3{font-size:24px;margin-bottom:8px}
+  .ben p{color:var(--muted);font-size:16px}
+  .rev{display:grid;gap:16px}
+  @media (min-width:900px){.rev{grid-template-columns:repeat(3,1fr)}}
+  .rev blockquote{background:var(--white);border-radius:16px;padding:24px}
+  .rev blockquote p{font-size:16px}
+  .rev footer{margin-top:16px;font-weight:600;color:var(--berry)}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,248,244,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(31,111,184,.15);display:grid;grid-template-columns:1fr 2fr;gap:8px}
+  .callbar .btn{min-height:54px;font-size:12px;padding:0 16px}
   @media (min-width:900px){.callbar{display:none}}
 
-  .js .reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+  .js .reveal{opacity:0;transform:translateY(32px);transition:opacity .5s cubic-bezier(0.22,1,0.36,1),transform .5s cubic-bezier(0.22,1,0.36,1);transition-delay:var(--d,0s)}
   .js .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -208,7 +220,25 @@
     .hero-media img{transform:none}
   }
 </style>
-<style>body{padding-top:44px !important}.orbit-pay-banner-offset{display:none}</style>
+
+<style>
+/* Orbit design system */
+h1,h2,h3{text-wrap:balance}
+p,li,blockquote,figcaption{text-wrap:pretty}
+i,em{font-style:normal}
+.btn:active,a:active{transform:scale(.98)}
+.tagline{padding:64px 0;text-align:center}
+.tagline p{font-size:clamp(24px,4vw,36px);font-weight:600;line-height:1.3;max-width:680px;margin:0 auto}
+.tagline .tw{opacity:.3;transition:opacity .5s cubic-bezier(0.22,1,0.36,1)}
+.tagline .tw.on{opacity:1}
+.js .reveal{opacity:0;transform:translateY(32px);transition:opacity .5s cubic-bezier(0.22,1,0.36,1),transform .5s cubic-bezier(0.22,1,0.36,1);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .tagline .tw{opacity:1;transition:none}
+  .js .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+</style>
+<style>body{padding-top:44px}.orbit-pay-banner-offset{display:none}@media(max-width:640px){.orbit-pay-banner-extra{display:none}}</style><script>function orbitBannerFix(){var b=document.querySelector('.orbit-pay-banner');if(!b)return;var h=b.offsetHeight;document.body.style.paddingTop=h+'px';document.documentElement.style.setProperty('--orbit-banner-h',h+'px');var a=document.querySelectorAll('body *');for(var i=0;i<a.length;i++){var el=a[i];if(el===b||!el.getClientRects().length)continue;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='sticky')&&cs.top==='0px'){el.style.top=h+'px'}}}document.addEventListener('DOMContentLoaded',orbitBannerFix);window.addEventListener('load',orbitBannerFix);window.addEventListener('resize',orbitBannerFix);</script>
 </head>
 <body>
 
@@ -226,12 +256,12 @@
 
 <header class="header" id="top">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Gleam Auto Spa — home"><img src="logo.png" alt="Gleam Auto Spa logo" style="width:44px;height:44px;object-fit:cover;border-radius:10px;flex:none"><b>Bloom <i>&amp; Co</i></b>
+    <a href="#top" class="logo" aria-label="Gleam Auto Spa — home"><img src="logo.png" alt="Gleam Auto Spa logo" style="width:44px;height:44px;object-fit:cover;border-radius:10px;flex:none"><b>Gleam Auto Spa</b>
       <span>Calgary · Auto Spa</span>
     </a>
     <nav class="nav" aria-label="Main">
-      <a href="#flowers">Detailing</a>
-      <a href="#order">How it works</a>
+      <a href="#services">Detailing</a>
+      <a href="#how">How it works</a>
       <a href="#gallery">Gallery</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Visit</a>
@@ -248,20 +278,19 @@
     <div class="wrap">
       <div class="hero-inner">
         <span class="eyebrow reveal"><svg><use href="#i-spark"/></svg>Auto spa · NE Calgary</span>
-        <h1 class="reveal" style="--d:.1s">Showroom shine, <i>engineered</i> to last.</h1>
+        <h1 class="reveal" style="--d:.1s">Showroom shine,<br><i>engineered</i> to last.</h1>
         <p class="reveal" style="--d:.2s">Exterior and interior detailing, paint correction and ceramic coating — showroom results with protection that lasts for years. Serving Calgary from 8840 32 Ave NE.</p>
         <div class="hero-ctas reveal" style="--d:.3s">
           <a class="btn btn-berry" href="tel:+14035550146"><svg><use href="#i-phone"/></svg>Call (403) 555-0146</a>
-          <a class="btn btn-outline" href="#flowers">Browse flowers</a>
         </div>
         <div class="hero-meta reveal" style="--d:.4s">
           <span><svg><use href="#i-pin"/></svg>8840 32 Ave NE, Calgary</span>
-          <span><svg><use href="#i-ig"/></svg><a href="#" target="_blank" rel="noopener">@gleamautospa</a></span>
+          <span><svg><use href="#i-ig"/></svg><span>@gleamautospa</span></span>
         </div>
       </div>
     </div>
     <div class="seal reveal" style="--d:.5s" aria-hidden="true">
-      <svg class="ring" viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text font-family="Jost, sans-serif" font-size="15" fill="#155a94"><textPath href="#circ" textLength="486" lengthAdjust="spacing">GLEAM AUTO SPA · CALGARY · CERAMIC · </textPath></text></svg>
+      <svg class="ring" viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text font-family="Manrope, sans-serif" font-size="15" fill="#155a94"><textPath href="#circ" textLength="486" lengthAdjust="spacing">GLEAM AUTO SPA · CALGARY · CERAMIC · </textPath></text></svg>
       <div class="seal-core"><div><small>Est.</small><b>2019</b></div></div>
     </div>
   </section>
@@ -276,51 +305,70 @@
     </div>
   </div>
 
-  <section class="pad" id="flowers">
+  <section class="pad" id="benefits" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow reveal"><svg><use href="#i-spark"/></svg>Why Gleam</span>
+          <h2 class="reveal" style="--d:.08s;margin-top:1.1rem">A shine that stays.</h2>
+        </div>
+        <p class="lede reveal" style="--d:.16s">Not just clean for a day. Detailed properly, protected properly, and priced clearly before we start.</p>
+      </div>
+      <div class="ben">
+        <article class="reveal"><h3>Showroom results that last</h3><p>Paint correction and ceramic coating that keep the gloss for years, not weeks.</p></article>
+        <article class="reveal" style="--d:.08s"><h3>One visit, inside and out</h3><p>The complete detail resets the whole car in a single visit, cabin and paintwork together.</p></article>
+        <article class="reveal" style="--d:.16s"><h3>Clear pricing before we start</h3><p>Tell us the vehicle and its condition and we will quote the right package over the phone.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="services">
     <div class="wrap">
       <div class="head">
         <div>
           <span class="eyebrow reveal"><svg><use href="#i-spark"/></svg>Detailing for every vehicle</span>
-          <h2 class="reveal" style="--d:.08s;margin-top:1.1rem">Shine like <i>it just left the lot.</i></h2>
+          <h2 class="reveal" style="--d:.08s;margin-top:16px">Shine like <i>it just left the lot.</i></h2>
         </div>
         <p class="lede reveal" style="--d:.16s">Tell us the vehicle, its condition and what you want done — we'll help you choose the right package.</p>
       </div>
       <div class="svc">
         <a class="card reveal" href="tel:+14035550146">
           <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=75" alt="A car covered in foam during a hand wash"><span class="card-num">i.</span></div>
-          <div class="card-body"><h3>Exterior Shine — C$129</h3><p>Foam bath, hand wash, wheels and tires dressed, windows in and out, spray sealant. C$129. The maintenance wash that keeps daily drivers looking sharp.</p><span class="card-link">Call to order <svg><use href="#i-arrow"/></svg></span></div>
+          <div class="card-body"><h3>Exterior Shine — C$129</h3><p>Foam bath, hand wash, wheels and tires dressed, windows in and out, spray sealant. C$129. The maintenance wash that keeps daily drivers looking sharp.</p><span class="card-link">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
         </a>
         <a class="card reveal" style="--d:.08s" href="tel:+14035550146">
-          <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1605437241278-c1806d14a4d9?auto=format&fit=crop&w=800&q=75" alt="A freshly vacuumed car interior"><span class="card-num">ii.</span></div>
-          <div class="card-body"><h3>Interior Detail — C$119</h3><p>Deep vacuum, shampooed seats and carpets, dash and console detailed, interior glass. C$119. For the cabin that sees coffee, kids and commutes.</p><span class="card-link">Call to order <svg><use href="#i-arrow"/></svg></span></div>
+          <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1605437241278-c1806d14a4d9?auto=format&fit=crop&w=800&q=75" alt="Black leather car interior with steering wheel"><span class="card-num">ii.</span></div>
+          <div class="card-body"><h3>Interior Detail — C$119</h3><p>Deep vacuum, shampooed seats and carpets, dash and console detailed, interior glass. C$119. For the cabin that sees coffee, kids and commutes.</p><span class="card-link">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
         </a>
         <a class="card reveal" style="--d:.16s" href="tel:+14035550146">
           <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?auto=format&fit=crop&w=800&q=75" alt="A glossy black sports car front end"><span class="card-num">iii.</span></div>
-          <div class="card-body"><h3>Complete Detail — C$249</h3><p>Exterior Shine plus Interior Detail in one visit — C$249. The full reset, inside and out. Ask about timing when you call.</p><span class="card-link">Call to order <svg><use href="#i-arrow"/></svg></span></div>
+          <div class="card-body"><h3>Complete Detail — C$249</h3><p>Exterior Shine plus Interior Detail in one visit — C$249. The full reset, inside and out. Ask about timing when you call.</p><span class="card-link">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
         </a>
         <a class="card reveal" href="tel:+14035550146">
-          <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1552176625-e47ff529b595?auto=format&fit=crop&w=800&q=75" alt="A detailer machine-polishing a car hood"><span class="card-num">iv.</span></div>
-          <div class="card-body"><h3>Ceramic Coating — from C$899</h3><p>Multi-year paint protection with deep gloss and hydrophobic beading. From C$899 depending on vehicle size and paint condition. Call to talk through your car, the coating levels and what to expect.</p><span class="card-link">Call to enquire <svg><use href="#i-arrow"/></svg></span></div>
+          <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&w=800&q=75" alt="A freshly detailed car gleaming in a studio"><span class="card-num">iv.</span></div>
+          <div class="card-body"><h3>Ceramic Coating — from C$899</h3><p>Paint protection that lasts for years, with deep gloss and hydrophobic beading. From C$899 depending on vehicle size and paint condition. Call to talk through your car, the coating levels and what to expect.</p><span class="card-link">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
         </a>
         <a class="card reveal" style="--d:.08s" href="tel:+14035550146">
-          <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=75" alt="A cloudy headlight being polished clear"><span class="card-num">v.</span></div>
-          <div class="card-body"><h3>Paint Correction — from C$549</h3><p>Machine polishing to remove swirls, light scratches and oxidation. From C$549. Tell us the car's age and paint condition when you call and we will talk through the stages.</p><span class="card-link">Call to order <svg><use href="#i-arrow"/></svg></span></div>
+          <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=75" alt="White sports car with headlights on in a dark garage"><span class="card-num">v.</span></div>
+          <div class="card-body"><h3>Paint Correction — from C$549</h3><p>Machine polishing to remove swirls, light scratches and oxidation. From C$549. Tell us the car's age and paint condition when you call and we will talk through the stages.</p><span class="card-link">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
         </a>
         <a class="card reveal" style="--d:.16s" href="tel:+14035550146">
-          <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=75" alt="Hands drying a car with a microfibre towel"><span class="card-num">vi.</span></div>
-          <div class="card-body"><h3>Headlight Restoration — C$89</h3><p>Cloudy, yellowed headlights polished clear for better night visibility. C$89 for the pair. A quick win before a road trip or a sale.</p><span class="card-link">Call to order <svg><use href="#i-arrow"/></svg></span></div>
+          <div class="arch"><img loading="lazy" src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=800&q=75" alt="White car headlight glowing in a dark garage"><span class="card-num">vi.</span></div>
+          <div class="card-body"><h3>Headlight Restoration — C$89</h3><p>Cloudy, yellowed headlights polished clear for better night visibility. C$89 for the pair. A quick win before a road trip or a sale.</p><span class="card-link">Call for a quote <svg><use href="#i-arrow"/></svg></span></div>
         </a>
       </div>
       <p class="svc-note reveal">Pricing depends on vehicle size and condition — call <a href="tel:+14035550146">(403) 555-0146</a> for options. Call to ask about mobile service.</p>
     </div>
   </section>
 
-  <section class="steps-wrap pad" id="order">
+  <section class="tagline" aria-label="Our promise"><div class="wrap"><p><span class="tw">A</span> <span class="tw">shine</span> <span class="tw">that</span> <span class="tw">turns</span> <span class="tw">heads,</span><br><span class="tw">and</span> <span class="tw">protection</span> <span class="tw">that</span> <span class="tw">lasts</span> <span class="tw">for</span> <span class="tw">years.</span></p></div></section>
+
+  <section class="steps-wrap pad" id="how">
     <div class="wrap">
       <div class="head">
         <div>
           <span class="eyebrow reveal"><svg><use href="#i-spark"/></svg>How it works</span>
-          <h2 class="reveal" style="--d:.08s;margin-top:1.1rem">Three steps to <i>a showroom shine.</i></h2>
+          <h2 class="reveal" style="--d:.08s;margin-top:16px">Three steps to <i>a showroom shine.</i></h2>
         </div>
         <p class="lede reveal" style="--d:.16s">No complicated checkout. A quick conversation is the easiest way to get the right package for your car.</p>
       </div>
@@ -337,21 +385,38 @@
       <div class="head">
         <div>
           <span class="eyebrow reveal"><svg><use href="#i-spark"/></svg>The results</span>
-          <h2 class="reveal" style="--d:.08s;margin-top:1.1rem">In full <i>shine.</i></h2>
+          <h2 class="reveal" style="--d:.08s;margin-top:16px">In full <i>shine.</i></h2>
         </div>
-        <p class="lede reveal" style="--d:.16s">Before-and-after gloss from the bay. Follow along on Instagram for recent details.</p>
+        <p class="lede reveal" style="--d:.16s">Before and after gloss from the bay. Follow along on Instagram for recent details.</p>
       </div>
       <div class="gallery reveal">
         <figure class="g1"><img loading="lazy" src="https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&w=700&q=75" alt="Glossy car paint reflecting studio lights"></figure>
-        <figure class="g2"><img loading="lazy" src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=700&q=75" alt="A bunch of soft pink peonies"></figure>
-        <figure class="g3"><img loading="lazy" src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=700&q=75" alt="A dramatic still life of red and orange flowers against a dark background"></figure>
-        <figure class="g4"><img loading="lazy" src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=700&q=75" alt="Two hands holding a heart-shaped cluster of colourful flowers"></figure>
-        <figure class="g5"><img loading="lazy" src="https://images.unsplash.com/photo-1552176625-e47ff529b595?auto=format&fit=crop&w=700&q=75" alt="A classic car with a mirror-gloss finish"></figure>
+        <figure class="g2"><img loading="lazy" src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=700&q=75" alt="Black sports car being pressure washed"></figure>
+        <figure class="g3"><img loading="lazy" src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=700&q=75" alt="Red sports car in a bright showroom"></figure>
+        <figure class="g4"><img loading="lazy" src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=700&q=75" alt="Detailer hand washing a black sports car covered in foam"></figure>
+        <figure class="g5"><img loading="lazy" src="https://images.unsplash.com/photo-1552176625-e47ff529b595?auto=format&fit=crop&w=700&q=75" alt="Black sports car covered in frost in a dark garage"></figure>
       </div>
       <p class="note">Illustrative imagery — not the shop's own work.</p>
       <div class="ig reveal">
-        <p><b>Follow Gleam Auto Spa on Instagram</b><br>See their latest details.</p>
-        <a class="btn btn-outline" href="#" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>@gleamautospa</a>
+        <p><b>Find Gleam Auto Spa on Instagram</b><br>See the latest details at @gleamautospa.</p>
+        <a class="btn btn-outline" href="tel:+14035550146"><svg><use href="#i-phone"/></svg>Call (403) 555-0146</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="reviews" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow reveal"><svg><use href="#i-spark"/></svg>Reviews</span>
+          <h2 class="reveal" style="--d:.08s;margin-top:1.1rem">Cars that came back <i>gleaming.</i></h2>
+        </div>
+        <p class="lede reveal" style="--d:.16s">Drivers who wanted more than a wash, and got it.</p>
+      </div>
+      <div class="rev">
+        <blockquote class="reveal"><p>"My SUV looks brand new inside and out. The coating still beads water months later."</p><footer>— Alex</footer></blockquote>
+        <blockquote class="reveal" style="--d:.08s"><p>"They explained every option, no pressure, and the paint correction took years off the car."</p><footer>— Jordan</footer></blockquote>
+        <blockquote class="reveal" style="--d:.16s"><p>"Booked the complete detail before a road trip. Picked it up shining and it stayed that way."</p><footer>— Sam</footer></blockquote>
       </div>
     </div>
   </section>
@@ -360,7 +425,7 @@
     <div class="wrap faq-grid">
       <div class="faq-aside">
         <span class="eyebrow reveal"><svg><use href="#i-spark"/></svg>Questions</span>
-        <h2 class="reveal" style="--d:.08s;margin-top:1.1rem">Good to <i>know.</i></h2>
+        <h2 class="reveal" style="--d:.08s;margin-top:16px">Good to <i>know.</i></h2>
         <p class="lede reveal" style="--d:.16s">For anything else, the quickest answer is a phone call to the shop.</p>
         <a class="btn btn-berry reveal" style="--d:.24s" href="tel:+14035550146"><svg><use href="#i-phone"/></svg>(403) 555-0146</a>
       </div>
@@ -370,6 +435,7 @@
         <details><summary>How far ahead should I book?<span class="bud" aria-hidden="true"></span></summary><p class="answer">Ask about turnaround when you call. For ceramic coating and paint correction, booking ahead is always a good idea.</p></details>
         <details><summary>Do you work on all vehicles?<span class="bud" aria-hidden="true"></span></summary><p class="answer">Cars, trucks and SUVs. Tell us the vehicle and its condition when you call and we will talk through the right package.</p></details>
         <details><summary>What are your hours?<span class="bud" aria-hidden="true"></span></summary><p class="answer">Call for hours and availability: <a href="tel:+14035550146">(403) 555-0146</a>.</p></details>
+        <details><summary>How do I prepare my car?<span class="bud" aria-hidden="true"></span></summary><p class="answer">Just bring it as it is. Clear personal items out of the cabin if you can, and we handle the rest.</p></details>
       </div>
     </div>
   </section>
@@ -384,16 +450,16 @@
             <h2>Let's make <i>it shine.</i></h2>
             <a class="big-phone" href="tel:+14035550146">(403) 555-0146</a>
             <div class="contact-ctas">
-              <a class="btn btn-berry" href="tel:+14035550146"><svg><use href="#i-phone"/></svg>Call now</a>
+              <a class="btn btn-berry" href="tel:+14035550146"><svg><use href="#i-phone"/></svg>Call (403) 555-0146</a>
               <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=Gleam%20Auto%20Spa%208840%2032%20Ave%20NE%2C%20Calgary%2C%20AB%20T3J%200K2" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Get directions</a>
             </div>
           </div>
           <div class="info">
             <a class="info-row" href="https://www.google.com/maps/search/?api=1&amp;query=Gleam%20Auto%20Spa%208840%2032%20Ave%20NE%2C%20Calgary%2C%20AB%20T3J%200K2" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><div><small>Address</small><b>8840 32 Ave NE<br>Calgary, AB T3J 0K2</b></div></a>
             <a class="info-row" href="tel:+14035550146"><svg><use href="#i-phone"/></svg><div><small>Phone</small><b>(403) 555-0146</b></div></a>
-            <a class="info-row" href="#" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><div><small>Instagram</small><b>@gleamautospa</b></div></a>
+            <div class="info-row"><svg><use href="#i-ig"/></svg><div><small>Instagram</small><b>@gleamautospa</b></div></div>
             <div class="info-row"><svg><use href="#i-clock"/></svg><div><small>Hours</small><b>Call for hours / availability</b></div></div>
-            <div class="info-row"><svg><use href="#i-truck"/></svg><div><small>Delivery</small><b>Call to ask about mobile service</b></div></div>
+            <div class="info-row"><svg><use href="#i-truck"/></svg><div><small>Mobile service</small><b>Call to ask about mobile service</b></div></div>
           </div>
         </div>
       </div>
@@ -403,9 +469,9 @@
 
 <footer>
   <div class="wrap">
-    <a href="#top" class="logo"><b>Bloom <i>&amp; Co</i></b><span>Calgary · Auto Spa</span></a>
-    <span>Gleam Auto Spa · 8840 32 Ave NE, Calgary, AB T3J 0K2 · <a href="tel:+14035550146">(403) 555-0146</a> · <a href="#" target="_blank" rel="noopener">@gleamautospa</a></span>
-    <p class="orbit-credit">Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Orbit Apps</a></p>
+    <a href="#top" class="logo"><b>Gleam Auto Spa</b><span>Calgary · Auto Spa</span></a>
+    <span>Gleam Auto Spa · 8840 32 Ave NE, Calgary, AB T3J 0K2 · <a href="tel:+14035550146">(403) 555-0146</a> · <span>@gleamautospa</span></span>
+    <p class="orbit-credit">Made by <a href="https://orbit-applications.github.io" target="_blank" rel="noopener">Str8Tech</a></p>
   </div>
 </footer>
 
@@ -434,8 +500,12 @@
 
 
 
+<script>
+(function(){var t=document.querySelector('.tagline');if(!t)return;var words=t.querySelectorAll('.tw');if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=+e.target.dataset.i;setTimeout(function(){e.target.classList.add('on')},i*70);io.unobserve(e.target)}})},{threshold:.6});words.forEach(function(w,i){w.dataset.i=i;io.observe(w)})}else{words.forEach(function(w){w.classList.add('on')})}})();
+</script>
+
 <div class="orbit-pay-banner" style="background:#1a1a1a;color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-family:system-ui,-apple-system,sans-serif;position:fixed;top:0;left:0;right:0;z-index:9999">
-  Take payments right on your site — Square &amp; Stripe integration available. <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
+  Take payments right on your site <span class="orbit-pay-banner-extra">— Square &amp; Stripe integration available.</span> <a href="https://orbit-applications.github.io/#order" style="color:#8fd14f;font-weight:600">Ask us how</a>
 </div>
 </body>
 </html>
